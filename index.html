@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tien Nguyen, AI-native PM who reads the diff and builds the spec engine</title>
+<meta name="description" content="Tien Nguyen, AI-native Product Manager and ex-full-stack engineer. I engineer PM systems where agents draft the spec, a second model verifies, and every requirement traces to source, and I stay the reviewer who signs off.">
+
+<!-- Open Graph / social card -->
+<meta property="og:title" content="Tien Nguyen, a PM who reads the diff and builds the spec engine">
+<meta property="og:description" content="AI-native PM / ex-full-stack engineer. Agents draft, a second model verifies, every requirement traces to source, and I sign off. Colonial Surety: PCI certified under deadline across 3 platforms. ~30% lift on the Olmo booking flow.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tiennguyentt.github.io/">
+<meta property="og:image" content="https://tiennguyentt.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tien Nguyen, a PM who reads the diff and builds the spec engine">
+<meta name="twitter:description" content="AI-native PM / ex-full-stack engineer. Agents draft, a second model verifies, every requirement traces to source, and I sign off.">
+<meta name="twitter:image" content="https://tiennguyentt.github.io/og-image.png">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='6'%20fill='%230B0E14'/%3E%3Crect%20x='5'%20y='6'%20width='22'%20height='2.2'%20fill='%237C8CFF'/%3E%3Crect%20x='14.9'%20y='8'%20width='2.2'%20height='13'%20fill='%23E7EAF0'/%3E%3Crect%20x='20'%20y='22'%20width='7'%20height='4'%20fill='%237C8CFF'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <a class="wordmark" href="#hero" aria-label="Tien Nguyen, home">TN</a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="#ai-native" data-navlink="ai-native">AI-Native<span class="cursor" aria-hidden="true"></span></a>
+      <a href="#work" data-navlink="work">Work<span class="cursor" aria-hidden="true"></span></a>
+      <a href="#building" data-navlink="building">Building<span class="cursor" aria-hidden="true"></span></a>
+      <a href="#how" data-navlink="how">How I Work<span class="cursor" aria-hidden="true"></span></a>
+      <a href="#toolkit" data-navlink="toolkit">Toolkit<span class="cursor" aria-hidden="true"></span></a>
+      <a href="#contact" data-navlink="contact">Contact<span class="cursor" aria-hidden="true"></span></a>
+    </nav>
+    <div class="topbar-links">
+      <span class="availability"><span class="avail-dot" aria-hidden="true"></span>Open to PM/PO roles</span>
+      <a href="https://www.linkedin.com/in/tiennguyenthithao/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/tiennguyentt" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="mailto:tiennguyentthao@gmail.com">Email</a>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <!-- Persistent line-number gutter rail 00 to 12 -->
+  <div class="rail" aria-hidden="true">
+    <ol class="rail-list" id="rail">
+      <li>00</li><li>01</li><li>02</li><li>03</li><li>04</li><li>05</li>
+      <li>06</li><li>07</li><li>08</li><li>09</li><li>10</li><li>11</li>
+      <li>12</li><li>13</li><li>14</li><li>15</li><li>16</li>
+    </ol>
+  </div>
+
+  <main id="main" class="content">
+
+    <!-- 00 HERO -->
+    <section class="section hero" id="hero" data-section="hero" data-rail="0" aria-labelledby="hero-title">
+      <p class="kicker"><span class="diff-mark" aria-hidden="true">+</span>AI-native PM / ex-full-stack engineer / B2B · fintech</p>
+      <h1 class="hero-title" id="hero-title">I build the agents that draft the spec. Then I read the <span style="white-space:nowrap">diff.<span class="block-cursor" aria-hidden="true"></span></span></h1>
+      <p class="hero-sub">I engineer the systems that do the PM work. Mine turn meeting transcripts and live Jira state into specs engineers can build from. Agents write the first draft, a second model checks it, and every requirement links back to its source. I stay the one who reviews and signs off.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#work">See selected work<span class="cursor" aria-hidden="true"></span></a>
+        <a class="btn btn-secondary" href="#contact">Get in touch<span class="cursor" aria-hidden="true"></span></a>
+      </div>
+      <div class="diff-strip" role="img" aria-label="Added lines: transcript to wiki to schema to spec, two-model peer review, live Jira and Drive check. Removed line: one-model unchecked draft.">
+<pre class="diff-pre"><span class="diff-add"><span class="dm">+</span> transcript -&gt; wiki -&gt; schema -&gt; spec</span>
+<span class="diff-add"><span class="dm">+</span> two-model peer review</span>
+<span class="diff-add"><span class="dm">+</span> live Jira / Drive check</span>
+<span class="diff-del"><span class="dm">-</span> one-model unchecked draft</span></pre>
+      </div>
+    </section>
+
+    <!-- 01 POSITIONING -->
+    <section class="section" id="positioning" data-section="positioning" data-rail="2" aria-labelledby="pos-head">
+      <header class="spec-head reveal">
+        <h2 class="spec-id" id="pos-head"><span class="sid">01</span> / Positioning</h2>
+        <div class="meter" aria-hidden="true"><span></span></div>
+      </header>
+      <p class="lead">A PM who reads the diff and builds the spec engine.</p>
+      <div class="pos-grid">
+        <div class="pos-col">
+          <p class="mono-label"><span class="diff-mark" aria-hidden="true">+</span>B2B fintech</p>
+          <p class="pos-line">Payments, gateway migrations, PCI under deadline.</p>
+        </div>
+        <div class="pos-col">
+          <p class="mono-label"><span class="diff-mark" aria-hidden="true">+</span>Web3 fintech</p>
+          <p class="pos-line">Non-custodial wallets, bridging, settlement, trading.</p>
+        </div>
+        <div class="pos-col">
+          <p class="mono-label"><span class="diff-mark" aria-hidden="true">+</span>AI-native workflows</p>
+          <p class="pos-line">Agents drafting requirements so people decide.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 AI-NATIVE -->
+    <section class="section" id="ai-native" data-section="ai-native" data-rail="4" aria-labelledby="ai-head">
+      <header class="spec-head reveal">
+        <h2 class="spec-id" id="ai-head"><span class="sid">02</span> / AI-Native</h2>
+        <div class="meter" aria-hidden="true"><span></span></div>
+      </header>
+      <p class="lead reveal">I engineered the workflow, not just adopted the tools.</p>
+      <p class="ai-body reveal">Most PMs prompt a chatbot and paste the output. I built a system: agents draft the specs, a second model independently verifies them, and every requirement is traceable to its source before it ships. The agents do the drafting; I read the diff and own the call.</p>
+      <ul class="ai-list reveal" aria-label="Method">
+        <li class="ai-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><span class="ai-item-text"><span class="ai-item-key">Two-model peer pipeline.</span> One model drafts the spec, a second model independently reviews and verifies, and they converge by evidence rank before anything ships. This site was designed by that same Claude + Codex loop.</span></li>
+        <li class="ai-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><span class="ai-item-text"><span class="ai-item-key">Transcript-to-wiki knowledge base.</span> The raw meeting transcript stays the immutable source of truth, an LLM maintains a living wiki on top of it, and a schema flags contradictions against the transcript before anything reaches review.</span></li>
+        <li class="ai-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><span class="ai-item-text"><span class="ai-item-key">Custom PM agents and skills.</span> Purpose-built agents for spec grading, requirement drafting (BRD / FRD / SRS), and ticket generation, working against live Jira and Drive state, never a stale snapshot.</span></li>
+        <li class="ai-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><span class="ai-item-text"><span class="ai-item-key">Provenance tags and quality gates.</span> Every requirement carries a provenance tag back to its source, and automated gates block anything that doesn't pass. Specs arrive with source links, acceptance criteria, and review notes, so engineering has fewer questions to ask.</span></li>
+      </ul>
+    </section>
+
+    <!-- 03 SELECTED WORK -->
+    <section class="section" id="work" data-section="work" data-rail="6" aria-labelledby="work-head">
+      <header class="spec-head reveal">
+        <h2 class="spec-id" id="work-head"><span class="sid">03</span> / Selected Work <span class="status">/ 3 Entries</span></h2>
+        <div class="meter" aria-hidden="true"><span></span></div>
+      </header>
+
+      <article class="card reveal" aria-labelledby="card-cs">
+        <h3 class="card-title" id="card-cs">Colonial Surety</h3>
+        <dl class="fields">
+          <div class="field"><dt>Role</dt><dd>Product Owner</dd></div>
+          <div class="field"><dt>Domain</dt><dd>B2B fintech / payments</dd></div>
+          <div class="field"><dt>Problem</dt><dd>Migrate the payment gateway from Transax to CardPointe across three production platforms without breaking live transactions.</dd></div>
+          <div class="field"><dt>Decision</dt><dd>Sequence the migration platform by platform and drive Fiserv PCI certification with engineering and compliance against a hard deadline.</dd></div>
+          <div class="field"><dt>Outcome</dt><dd>Transax-to-CardPointe migration completed across three production platforms, Fiserv PCI certification met under deadline, plus insurance-bundling logic and a partner SSO flow shipped.</dd></div>
+        </dl>
+        <ul class="shipped" aria-label="Shipped">
+          <li class="ship-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span>Gateway migration across three platforms</li>
+          <li class="ship-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span>Fiserv PCI certification under deadline</li>
+          <li class="ship-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span>Insurance-bundling logic and partner SSO</li>
+        </ul>
+        <div class="metric">
+          <span class="metric-figure">0</span>
+          <span class="metric-label">downtime · 3 platforms migrated · PCI certified under deadline</span>
+        </div>
+      </article>
+
+      <article class="card reveal" aria-labelledby="card-hk">
+        <h3 class="card-title" id="card-hk">Hoookie</h3>
+        <dl class="fields">
+          <div class="field"><dt>Role</dt><dd>Product Owner</dd></div>
+          <div class="field"><dt>Domain</dt><dd>Web3 / fintech</dd></div>
+          <div class="field"><dt>Problem</dt><dd>Take a non-custodial cross-chain wallet from concept to production with regulated money movement and trading.</dd></div>
+          <div class="field"><dt>Decision</dt><dd>Own the full surface end to end: KYC/AML, fiat-crypto bridging, settlement, and trading, with Telegram-integrated tooling for the ecosystem.</dd></div>
+          <div class="field"><dt>Outcome</dt><dd>Non-custodial cross-chain wallet delivered end to end across KYC/AML, fiat-crypto bridging, settlement, and trading, plus Telegram-integrated tools for the TON ecosystem and Bittensor.</dd></div>
+        </dl>
+        <ul class="shipped" aria-label="Shipped">
+          <li class="ship-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span>KYC/AML, bridging, settlement, trading</li>
+          <li class="ship-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span>Telegram-integrated TON tooling</li>
+          <li class="ship-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span>Bittensor tooling</li>
+        </ul>
+      </article>
+
+      <article class="card reveal" aria-labelledby="card-ol">
+        <h3 class="card-title" id="card-ol">Olmo</h3>
+        <dl class="fields">
+          <div class="field"><dt>Role</dt><dd>Delivery Lead</dd></div>
+          <div class="field"><dt>Domain</dt><dd>Marketplace / mobile</dd></div>
+          <div class="field"><dt>Problem</dt><dd>The mobile booking flow on a livestream-and-marketplace app was costing conversions.</dd></div>
+          <div class="field"><dt>Decision</dt><dd>Lead a 12-person scrum team to rework the booking flow rather than patch around it.</dd></div>
+          <div class="field"><dt>Outcome</dt><dd>Led a 12-person scrum team; reworked the mobile booking flow.</dd></div>
+        </dl>
+        <div class="metric">
+          <span class="metric-figure">~30%</span>
+          <span class="metric-label">lift in bookings</span>
+        </div>
+      </article>
+    </section>
+
+    <!-- 04 NOW BUILDING -->
+    <section class="section building" id="building" data-section="building" data-rail="8" aria-labelledby="building-head">
+      <header class="spec-head reveal">
+        <h2 class="spec-id" id="building-head"><span class="sid">04</span> / Now building <span class="status">/ 2 in progress</span></h2>
+        <div class="meter" aria-hidden="true"><span></span></div>
+      </header>
+      <p class="lead reveal">Products where agents do the core work. Shipping next, not shipped yet.</p>
+
+      <article class="card card--wip reveal" aria-labelledby="card-pm">
+        <h3 class="card-title" id="card-pm">Petmood</h3>
+        <p class="wip-line">AI pet-health triage for Vietnam. Photo plus symptoms returns a triage level and the nearest vet.</p>
+        <p class="wip-meta">Flutter · Supabase · Vision + LLM · beta in HCMC</p>
+        <p class="wip-note">Triage, not diagnosis.</p>
+        <div class="wip-foot">
+          <span class="chip">In progress</span>
+          <!-- demo link when beta is live -->
+        </div>
+      </article>
+
+      <article class="card card--wip reveal" aria-labelledby="card-ins">
+        <h3 class="card-title" id="card-ins">Insurance <span class="card-tag">(in design)</span></h3>
+        <p class="wip-line">A standalone insurance app for Vietnam. LLM agents run the core workflow end to end: instant AI claims and one-stop coverage, benchmarked on China's Ping An ecosystem.</p>
+        <p class="wip-meta">Agent-operated · Vietnam-first · Ping An-benchmarked insurtech</p>
+        <div class="wip-foot">
+          <span class="chip">In design</span>
+        </div>
+      </article>
+    </section>
+
+    <!-- 05 HOW I WORK -->
+    <section class="section" id="how" data-section="how" data-rail="10" aria-labelledby="how-head">
+      <header class="spec-head reveal">
+        <h2 class="spec-id" id="how-head"><span class="sid">05</span> / How I Work</h2>
+        <div class="meter" aria-hidden="true"><span></span></div>
+      </header>
+      <div class="how-grid">
+        <div class="comment-block reveal">
+          <p class="comment-mark" aria-hidden="true">//</p>
+          <p class="comment-text">Decide tradeoffs before the sprint, not during it. The hard calls belong in the spec, not in standup.</p>
+        </div>
+        <div class="comment-block reveal">
+          <p class="comment-mark" aria-hidden="true">//</p>
+          <p class="comment-text">Cut scope rather than ship a vague flow. A smaller thing that is fully decided beats a big thing that is half-specified.</p>
+        </div>
+        <div class="comment-block reveal">
+          <p class="comment-mark" aria-hidden="true">+</p>
+          <p class="comment-text">Use AI agents to draft requirements and prototypes so team time goes to the decisions that need a human.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 TOOLKIT -->
+    <section class="section" id="toolkit" data-section="toolkit" data-rail="12" aria-labelledby="tk-head">
+      <header class="spec-head reveal">
+        <h2 class="spec-id" id="tk-head"><span class="sid">06</span> / Toolkit <span class="status">/ 6 Groups</span></h2>
+        <div class="meter" aria-hidden="true"><span></span></div>
+      </header>
+      <dl class="manifest reveal">
+        <div class="manifest-row"><dt>Product</dt><dd>Discovery, PRD/BRD, user stories &amp; AC, scenario matrices</dd></div>
+        <div class="manifest-row"><dt>Delivery</dt><dd>Scrum, backlog refinement, sprint planning, release tracking</dd></div>
+        <div class="manifest-row"><dt>Design</dt><dd>Figma, user flows, wireframes</dd></div>
+        <div class="manifest-row"><dt>Analytics</dt><dd>Amplitude, funnels, product metrics</dd></div>
+        <div class="manifest-row"><dt>Tools</dt><dd>Jira, Linear, Notion, GitHub, Claude, Cursor</dd></div>
+        <div class="manifest-row"><dt>Domains</dt><dd>B2B SaaS, fintech, payments, ecommerce, marketplace, AI workflows</dd></div>
+      </dl>
+    </section>
+
+    <!-- 07 BACKGROUND -->
+    <section class="section" id="background" data-section="background" data-rail="14" aria-labelledby="bg-head">
+      <header class="spec-head reveal">
+        <h2 class="spec-id" id="bg-head"><span class="sid">07</span> / Background</h2>
+        <div class="meter" aria-hidden="true"><span></span></div>
+      </header>
+      <p class="background-note reveal">I started in full-stack development, so I read technical tradeoffs directly. That means specs that account for what engineering will actually hit, and decisions that hold up once the implementation gets real.</p>
+    </section>
+
+    <!-- 08 CONTACT -->
+    <section class="section" id="contact" data-section="contact" data-rail="16" aria-labelledby="contact-head">
+      <header class="spec-head reveal">
+        <h2 class="spec-id" id="contact-head"><span class="sid">08</span> / Contact</h2>
+        <div class="meter" aria-hidden="true"><span></span></div>
+      </header>
+      <p class="closing reveal">Good product work is mostly deciding what not to build.</p>
+      <ul class="contact-links reveal">
+        <li><a href="https://www.linkedin.com/in/tiennguyenthithao/" target="_blank" rel="noopener noreferrer"><span class="link-key">LinkedIn</span><span class="link-val">tiennguyenthithao</span><span class="cursor" aria-hidden="true"></span></a></li>
+        <li><a href="https://github.com/tiennguyentt" target="_blank" rel="noopener noreferrer"><span class="link-key">GitHub</span><span class="link-val">tiennguyentt</span><span class="cursor" aria-hidden="true"></span></a></li>
+        <li><a href="mailto:tiennguyentthao@gmail.com"><span class="link-key">Email</span><span class="link-val">tiennguyentthao@gmail.com</span><span class="cursor" aria-hidden="true"></span></a></li>
+      </ul>
+    </section>
+
+    <footer class="footer">
+      <p class="build-stamp">TN / Product Manager + Product Owner / 2026</p>
+      <ul class="footer-links">
+        <li><a href="https://www.linkedin.com/in/tiennguyenthithao/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://github.com/tiennguyentt" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="mailto:tiennguyentthao@gmail.com">Email</a></li>
+      </ul>
+    </footer>
+
+  </main>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
