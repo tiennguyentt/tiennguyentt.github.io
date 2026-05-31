@@ -47,7 +47,13 @@
 
     var sid = section.getAttribute("data-section");
     navLinks.forEach(function (link) {
-      link.classList.toggle("is-active", link.getAttribute("data-navlink") === sid);
+      var active = link.getAttribute("data-navlink") === sid;
+      link.classList.toggle("is-active", active);
+      if (active) {
+        link.setAttribute("aria-current", "true");
+      } else {
+        link.removeAttribute("aria-current");
+      }
     });
   }
 

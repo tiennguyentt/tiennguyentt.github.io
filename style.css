@@ -503,15 +503,14 @@ button:focus-visible {
   gap: 16px;
 }
 .ship-item {
-  display: grid;
-  grid-template-columns: 18px 1fr;
-  align-items: start;
-  gap: 14px;
+  display: block;
+  position: relative;
+  padding-left: 32px;
   font-size: 15.5px;
   line-height: 1.55;
   color: var(--ink);
 }
-.ship-item .check { margin-top: 3px; }
+.ship-item .check { position: absolute; left: 0; top: 3px; }
 .ship-item b { color: var(--ink); font-weight: 600; }
 .check {
   flex: 0 0 auto;
