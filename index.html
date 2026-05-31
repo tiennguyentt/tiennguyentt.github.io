@@ -33,7 +33,7 @@
   "familyName": "Nguyen",
   "gender": "Female",
   "jobTitle": "Product Manager / Product Owner",
-  "description": "AI-native Product Manager and Product Owner (she/her) in Ho Chi Minh City with 5+ years across B2B fintech, payments, insurance, e-commerce, ERP, and web3. She built a multi-model agent system (Claude and Codex today, model-agnostic by design) that supports her PM workflow: she reviews the output and signs off before engineering sees it. It turns transcripts into a source-traced wiki using the Karpathy LLM Knowledge Base pattern, with truth-hierarchy conflict resolution, automated spec grading, and agent skills and subagents. She also builds her own products with AI agents. AI-native projects she has built: a PM intelligence system (multi-model agent system on the Karpathy LLM Knowledge Base pattern); Recon, an autonomous crypto and AI research pipeline (daily reports, project audits, signal predictions, delivered via Telegram); Petmood, an AI pet-health triage product for Vietnam (beta); and AnDigi, an agent-operated insurance app for Vietnam (in design). She also provides AI agent operations for SMEs.",
+  "description": "AI-native Product Manager and Product Owner (she/her) in Ho Chi Minh City with 5+ years across B2B fintech, payments, insurance, e-commerce, ERP, and web3. She built a multi-model agent system (Claude and Codex today, model-agnostic by design) that supports her PM workflow: she reviews the output and signs off before engineering sees it. It turns transcripts into a source-traced wiki using the Karpathy LLM Knowledge Base pattern, with truth-hierarchy conflict resolution, automated spec grading, and agent skills and subagents. She also builds her own products with AI agents. AI-native projects she has built: a PM intelligence system (multi-model agent system on the Karpathy LLM Knowledge Base pattern); Recon, an autonomous crypto and AI research pipeline (daily reports, project audits, signal predictions, delivered via a dashboard and Telegram); Petmood, an AI pet-health triage product for Vietnam (beta); and AnDigi, an agent-operated insurance app for Vietnam (in design). She also provides AI agent operations for SMEs.",
   "url": "https://tiennguyentt.github.io/",
   "email": "mailto:tiennguyentthao@gmail.com",
   "image": "https://tiennguyentt.github.io/og-image.png",
@@ -81,7 +81,7 @@
   ],
   "subjectOf": [
     { "@type": "CreativeWork", "name": "PM intelligence system", "description": "Multi-model agent system (Claude and Codex, model-agnostic by design) built on the Karpathy LLM Knowledge Base pattern that supports her PM workflow, with her review and sign-off." },
-    { "@type": "CreativeWork", "name": "Recon", "description": "Autonomous crypto and AI research pipeline: daily reports, project audits, signal predictions, Claude Code agents, delivered via Telegram." },
+    { "@type": "CreativeWork", "name": "Recon", "description": "Autonomous crypto and AI research pipeline: daily reports, project audits, signal predictions, Claude Code agents, delivered via a dashboard and Telegram." },
     { "@type": "CreativeWork", "name": "Petmood", "description": "AI pet-health triage product for Vietnam, in beta." },
     { "@type": "CreativeWork", "name": "AnDigi", "description": "Agent-operated insurance app for Vietnam, in design." }
   ],
@@ -224,17 +224,6 @@
             <li class="ship-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><b>7 insurance products in one flow.</b> Designed the multi-product bundling: knockout logic, unified claims, dynamic naming, an edit-policy matrix, and partial-failure edge cases.</li>
             <li class="ship-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><b>B2B single sign-on.</b> Turned ambiguous CTO direction into a structured spec: one login across partners, two user types, adaptive registration, and cross-partner sessions.</li>
           </ul>
-          <figure class="dflow reveal" aria-label="Bundle knockout logic. One batch check runs after claims history. All pass continues to coverage. Partial fail goes to review and revise, then drops the failed products. All fail routes to the declined page.">
-            <p class="dflow__cap"><span class="dflow__tag">Bundle knockout logic</span>One batch check after claims history sets the path for every selected product.</p>
-            <div class="dflow__grid">
-              <div class="dflow__src"><span class="pnode__n">CHECK</span><span class="dflow__src-label">Knockout</span><span class="pnode__sub">Batch, runs once</span></div>
-              <ul class="dflow__branches">
-                <li class="dbranch"><span class="dbranch__cond">All pass</span><span class="dbranch__out">Skip review, continue to coverage and payment</span></li>
-                <li class="dbranch"><span class="dbranch__cond">Partial fail</span><span class="dbranch__out">Review and revise, then drop the failed products and continue</span></li>
-                <li class="dbranch dbranch--stop"><span class="dbranch__cond">All fail</span><span class="dbranch__out">Route to the declined page</span></li>
-              </ul>
-            </div>
-          </figure>
         </article>
 
         <article class="card reveal">
@@ -246,6 +235,14 @@
             <li class="ship-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><b>137% ROI in backtests</b> ($10K to $23.7K in about 2 months). Ran roadmap, backlog, and Scrum for an autonomous on-chain prediction-market fund.</li>
             <li class="ship-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><b>aVault and aLink shipped.</b> Automated USDC strategies, a token-gated terminal for mispricing alerts, and a Telegram trading toolkit.</li>
           </ul>
+          <p class="flow-cap"><span class="flow-tag">Autonomous fund</span>How the fund runs, from my sire-bot build: models score the edge, risk sizing caps exposure, execution paper-trades before going live, every position settles back into the score.</p>
+          <ol class="flowline" aria-label="Fund flow: signals, prediction, risk sizing, execution, settlement">
+            <li><span>Signals and data</span></li>
+            <li><span>Prediction model</span></li>
+            <li><span>Risk sizing</span></li>
+            <li><span>Execution</span></li>
+            <li><span>Settlement and score</span></li>
+          </ol>
         </article>
 
         <article class="card reveal">
@@ -279,7 +276,13 @@
 
       <article class="card card--wip reveal" aria-labelledby="card-rc">
         <h3 class="card-title" id="card-rc">Recon</h3>
-        <p class="wip-line">An autonomous crypto and AI research pipeline. Claude Code agents produce daily reports, project audits, and signal predictions, then send them to Telegram, used for market scanning, project diligence, and signal tracking. Built on the same agent pattern as the PM intelligence system.</p>
+        <p class="wip-line">An autonomous crypto and AI research pipeline. Claude Code agents produce daily reports, project audits, and signal predictions, delivered to a dashboard and Telegram. Used for market scanning, project diligence, and signal tracking. Built on the same agent pattern as my PM intelligence system.</p>
+        <ol class="flowline" aria-label="Recon flow: sources, agents, reports, dashboard and Telegram">
+          <li><span>Sources</span></li>
+          <li><span>Claude Code agents</span></li>
+          <li><span>Reports and scores</span></li>
+          <li><span>Dashboard and Telegram</span></li>
+        </ol>
         <p class="wip-meta">Agentic research and intelligence, operational.</p>
         <div class="wip-foot">
           <span class="chip">Operational</span>
@@ -289,6 +292,12 @@
       <article class="card card--wip reveal" aria-labelledby="card-pm">
         <h3 class="card-title" id="card-pm">Petmood</h3>
         <p class="wip-line">AI pet-health triage for Vietnam. A photo plus symptoms can return a triage level and nearby vet options. Triage, not diagnosis.</p>
+        <ol class="flowline" aria-label="Petmood flow: photo and symptoms, AI triage, triage level, nearby vet">
+          <li><span>Photo and symptoms</span></li>
+          <li><span>AI triage</span></li>
+          <li><span>Triage level</span></li>
+          <li><span>Nearby vet</span></li>
+        </ol>
         <p class="wip-meta">Flutter, Supabase, Vision + LLM. Beta in HCMC.</p>
         <div class="wip-foot">
           <span class="chip">Beta</span>

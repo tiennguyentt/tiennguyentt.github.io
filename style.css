@@ -521,91 +521,49 @@ button:focus-visible {
   }
 }
 
-/* ---------- Decision-flow diagram: bundle knockout logic ---------- */
-.dflow {
-  margin: 20px 0 4px;
-  max-width: 640px;
-  border: 1px solid var(--line-strong);
-  border-radius: 8px;
-  background: var(--surface);
-  padding: 18px;
-}
-.dflow__cap {
-  margin: 0 0 16px;
-  font-size: 13.5px;
+/* ---------- Compact flow line (owned-project pipelines) ---------- */
+.flow-cap {
+  margin: 16px 0 0;
+  font-size: 13px;
   line-height: 1.5;
   color: var(--muted);
 }
-.dflow__tag {
+.flow-cap .flow-tag {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-right: 10px;
+  margin-right: 9px;
 }
-.dflow__grid {
-  display: grid;
-  grid-template-columns: 168px 1fr;
-  gap: 0 26px;
-  align-items: center;
-}
-.dflow__src {
-  background: var(--surface-raised);
-  border: 1px solid var(--accent);
-  border-radius: 8px;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.dflow__src-label {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 14.5px;
-  color: var(--ink);
-}
-.dflow__branches {
+.flowline {
   list-style: none;
-  margin: 0;
+  margin: 12px 0 0;
   padding: 0;
-  display: grid;
-  gap: 11px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 0;
 }
-.dbranch {
-  position: relative;
-  display: grid;
-  grid-template-columns: 108px 1fr;
-  gap: 12px;
-  align-items: baseline;
-  padding-left: 22px;
-}
-.dbranch::before {
+.flowline li { display: inline-flex; align-items: center; }
+.flowline li + li::before {
   content: "\2192";
-  position: absolute;
-  left: 0;
-  top: 0;
   color: var(--accent);
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 13px;
+  margin: 0 9px;
 }
-.dbranch__cond {
+.flowline li span {
   font-family: var(--font-mono);
-  font-size: 12.5px;
-  font-weight: 500;
+  font-size: 12px;
   color: var(--ink);
+  background: var(--surface-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  padding: 6px 11px;
+  line-height: 1.3;
 }
-.dbranch__out {
-  font-size: 13.5px;
-  line-height: 1.45;
-  color: var(--muted);
-}
-.dbranch--stop::before { color: var(--line-aa); }
-.dbranch--stop .dbranch__cond { color: var(--muted); }
-@media (max-width: 768px) {
-  .dflow__grid { grid-template-columns: 1fr; gap: 16px; }
-  .dbranch { grid-template-columns: 1fr; gap: 2px; padding-left: 20px; }
-}
+.flowline li:last-child span { border-color: var(--accent-dim); }
 
 /* ---------- Skills as badge groups ---------- */
 .skills {
