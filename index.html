@@ -32,8 +32,8 @@
   <div class="topbar-inner">
     <a class="wordmark" href="#hero" aria-label="Tien Nguyen, home">TN</a>
     <nav class="topnav" aria-label="Primary">
-      <a href="#work" data-navlink="work">Work<span class="cursor" aria-hidden="true"></span></a>
       <a href="#ai-native" data-navlink="ai-native">AI-Native<span class="cursor" aria-hidden="true"></span></a>
+      <a href="#work" data-navlink="work">Work<span class="cursor" aria-hidden="true"></span></a>
       <a href="#building" data-navlink="building">Building<span class="cursor" aria-hidden="true"></span></a>
       <a href="#stack" data-navlink="stack">Stack<span class="cursor" aria-hidden="true"></span></a>
       <a href="#contact" data-navlink="contact">Contact<span class="cursor" aria-hidden="true"></span></a>
@@ -43,6 +43,7 @@
       <a href="https://www.linkedin.com/in/tiennguyenthithao/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a href="https://github.com/tiennguyentt" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="mailto:tiennguyentthao@gmail.com">Email</a>
+      <a href="Tien-Nguyen-CV.pdf" download>CV</a>
     </div>
   </div>
 </header>
@@ -73,6 +74,7 @@
       </ul>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#work">See selected work<span class="cursor" aria-hidden="true"></span></a>
+        <a class="btn btn-secondary" href="Tien-Nguyen-CV.pdf" download>Download CV<span class="cursor" aria-hidden="true"></span></a>
         <a class="btn btn-secondary" href="#contact">Get in touch<span class="cursor" aria-hidden="true"></span></a>
       </div>
       <figure class="gitdiff" aria-label="A diff. Added: transcript to wiki to schema to spec, truth-hierarchy conflict resolution, automated spec grading. Removed: ad-hoc unspecced direction.">
@@ -90,10 +92,26 @@
       </figure>
     </section>
 
-    <!-- 01 SELECTED WORK -->
-    <section class="section" id="work" data-section="work" data-rail="2" aria-labelledby="work-head">
+    <!-- 01 AI-NATIVE -->
+    <section class="section" id="ai-native" data-section="ai-native" data-rail="2" aria-labelledby="ai-head">
       <header class="spec-head reveal">
-        <h2 class="spec-id" id="work-head"><span class="sid">01</span> / Selected Work <span class="status">/ 4 Entries</span></h2>
+        <h2 class="spec-id" id="ai-head"><span class="sid">01</span> / AI-Native</h2>
+        <div class="meter" aria-hidden="true"><span></span></div>
+      </header>
+      <p class="lead reveal">I rewired how the product function runs, not just my own tasks.</p>
+      <p class="ai-body reveal">I built a PM system on Claude using Karpathy's LLM Knowledge Base pattern. Transcripts auto-compile into a structured wiki, conflicts resolve against a truth hierarchy, and every spec is graded before it reaches engineering. Each correction is fed back, so the bar rises with use. I stay the one who reads the diff and signs off.</p>
+      <ul class="ai-list reveal" aria-label="Method">
+        <li class="ai-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><span class="ai-item-text"><span class="ai-item-key">Transcript to structured wiki.</span> Raw meeting transcripts and notes auto-compile into a living knowledge base, so the spec starts from what was actually said, not from memory.</span></li>
+        <li class="ai-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><span class="ai-item-text"><span class="ai-item-key">Truth-hierarchy conflict resolution.</span> When sources disagree, the system ranks them by evidence and flags the contradiction instead of silently picking one.</span></li>
+        <li class="ai-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><span class="ai-item-text"><span class="ai-item-key">Automated spec grading and health checks.</span> Each requirement is graded for clarity, source coverage, and acceptance criteria before it ships, and compounding corrections raise the bar over time.</span></li>
+        <li class="ai-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><span class="ai-item-text"><span class="ai-item-key">Agent skills and subagents.</span> Purpose-built Claude Code skills and subagents draft BRDs, FRDs, and tickets. I run the same loop to build my own products end to end.</span></li>
+      </ul>
+    </section>
+
+    <!-- 02 SELECTED WORK -->
+    <section class="section" id="work" data-section="work" data-rail="4" aria-labelledby="work-head">
+      <header class="spec-head reveal">
+        <h2 class="spec-id" id="work-head"><span class="sid">02</span> / Selected Work <span class="status">/ 4 Entries</span></h2>
         <div class="meter" aria-hidden="true"><span></span></div>
       </header>
 
@@ -133,22 +151,6 @@
           <li class="ship-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span>Owned resource-management and quality-control ERP modules, focused on integration and operational efficiency.</li>
         </ul>
       </article>
-    </section>
-
-    <!-- 02 AI-NATIVE -->
-    <section class="section" id="ai-native" data-section="ai-native" data-rail="4" aria-labelledby="ai-head">
-      <header class="spec-head reveal">
-        <h2 class="spec-id" id="ai-head"><span class="sid">02</span> / AI-Native</h2>
-        <div class="meter" aria-hidden="true"><span></span></div>
-      </header>
-      <p class="lead reveal">I rewired how the product function runs, not just my own tasks.</p>
-      <p class="ai-body reveal">I built a PM system on Claude using Karpathy's LLM Knowledge Base pattern. Transcripts auto-compile into a structured wiki, conflicts resolve against a truth hierarchy, and every spec is graded before it reaches engineering. Each correction is fed back, so the bar rises with use. I stay the one who reads the diff and signs off.</p>
-      <ul class="ai-list reveal" aria-label="Method">
-        <li class="ai-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><span class="ai-item-text"><span class="ai-item-key">Transcript to structured wiki.</span> Raw meeting transcripts and notes auto-compile into a living knowledge base, so the spec starts from what was actually said, not from memory.</span></li>
-        <li class="ai-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><span class="ai-item-text"><span class="ai-item-key">Truth-hierarchy conflict resolution.</span> When sources disagree, the system ranks them by evidence and flags the contradiction instead of silently picking one.</span></li>
-        <li class="ai-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><span class="ai-item-text"><span class="ai-item-key">Automated spec grading and health checks.</span> Each requirement is graded for clarity, source coverage, and acceptance criteria before it ships, and compounding corrections raise the bar over time.</span></li>
-        <li class="ai-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><span class="ai-item-text"><span class="ai-item-key">Agent skills and subagents.</span> Purpose-built Claude Code skills and subagents draft BRDs, FRDs, and tickets. I run the same loop to build my own products end to end.</span></li>
-      </ul>
     </section>
 
     <!-- 03 NOW BUILDING -->
@@ -220,6 +222,7 @@
         <li><a href="https://www.linkedin.com/in/tiennguyenthithao/" target="_blank" rel="noopener noreferrer"><span class="link-key">LinkedIn</span><span class="link-val">tiennguyenthithao</span><span class="cursor" aria-hidden="true"></span></a></li>
         <li><a href="https://github.com/tiennguyentt" target="_blank" rel="noopener noreferrer"><span class="link-key">GitHub</span><span class="link-val">tiennguyentt</span><span class="cursor" aria-hidden="true"></span></a></li>
         <li><a href="mailto:tiennguyentthao@gmail.com"><span class="link-key">Email</span><span class="link-val">tiennguyentthao@gmail.com</span><span class="cursor" aria-hidden="true"></span></a></li>
+        <li><a href="Tien-Nguyen-CV.pdf" download><span class="link-key">Resume</span><span class="link-val">Download PDF</span><span class="cursor" aria-hidden="true"></span></a></li>
       </ul>
     </section>
 
