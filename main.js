@@ -80,4 +80,27 @@
 
   // Initial state: hero active
   if (sections.length) { setActive(sections[0]); }
+
+  /* ---- Selected Work timeline: progress fill follows the scroll ---- */
+  var tl = document.querySelector("#work .timeline");
+  var tlFill = document.querySelector("#work .timeline__progress");
+  if (tl && tlFill) {
+    if (prefersReduced) {
+      tlFill.style.height = "100%";
+    } else {
+      var ticking = false;
+      var updateTimeline = function () {
+        var r = tl.getBoundingClientRect();
+        var center = window.innerHeight * 0.55;
+        var filled = Math.min(Math.max(center - r.top, 0), r.height);
+        tlFill.style.height = filled + "px";
+        ticking = false;
+      };
+      window.addEventListener("scroll", function () {
+        if (!ticking) { window.requestAnimationFrame(updateTimeline); ticking = true; }
+      }, { passive: true });
+      window.addEventListener("resize", updateTimeline);
+      updateTimeline();
+    }
+  }
 })();

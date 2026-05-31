@@ -450,6 +450,59 @@ button:focus-visible {
   margin-right: 8px;
 }
 
+/* ---------- Selected Work: vertical milestone timeline ---------- */
+#work .timeline { position: relative; }
+#work .timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px; top: 12px; bottom: 12px;
+  width: 2px;
+  background: var(--line-strong);
+}
+#work .timeline__progress {
+  position: absolute;
+  left: 7px; top: 12px;
+  width: 2px; height: 0;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(124, 140, 255, 0.55);
+  transition: height 0.12s linear;
+  z-index: 1;
+}
+#work .card {
+  padding: 26px 0 26px 44px;
+  border-top: none;
+}
+#work .card::before {
+  content: "";
+  counter-increment: none;
+  left: 0; top: 30px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--line-strong);
+  opacity: 1;
+  font-size: 0;
+  z-index: 2;
+  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+#work .card.is-visible::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(124, 140, 255, 0.16), 0 0 12px rgba(124, 140, 255, 0.5);
+}
+.tl-year {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 5px;
+  transition: color 0.35s ease;
+}
+#work .card.is-visible .tl-year { color: var(--accent); }
+@media (prefers-reduced-motion: reduce) {
+  #work .card::before, .tl-year { transition: none; }
+}
+
 /* ---------- Work cards ---------- */
 /* Selected Work + Now building as an indexed document, not boxes */
 #work, #building { counter-reset: entry; }
