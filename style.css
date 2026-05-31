@@ -203,11 +203,9 @@ button:focus-visible {
 
 /* ---------- Sections ---------- */
 .section {
-  padding: 68px 0;
-  border-bottom: 1px solid var(--line-aa);
+  padding: 56px 0;
   scroll-margin-top: 72px;
 }
-.section:last-of-type { border-bottom: none; }
 
 /* spec-block header */
 .spec-head {
