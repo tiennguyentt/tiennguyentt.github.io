@@ -8,8 +8,10 @@
 (function () {
   "use strict";
 
-  /* Mark JS as active so reveal styles can hide content only when we can reveal it. */
-  document.documentElement.classList.add("js");
+  /* Mark JS as ready so reveal styles can hide content only when we can reveal it.
+     Set synchronously as the first statement: if main.js fails to load or errors
+     before this point, .js-ready is never added and all content stays visible. */
+  document.documentElement.classList.add("js-ready");
 
   var prefersReduced = window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
