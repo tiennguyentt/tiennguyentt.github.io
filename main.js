@@ -9,9 +9,10 @@
   "use strict";
 
   /* Mark JS as ready so reveal styles can hide content only when we can reveal it.
-     Set synchronously as the first statement: if main.js fails to load or errors
-     before this point, .js-ready is never added and all content stays visible. */
-  document.documentElement.classList.add("js-ready");
+     Added only after observer setup succeeds: if setup throws, .js-ready is never
+     added (and is removed in the catch), so all .reveal content stays visible. */
+  var root = document.documentElement;
+  root.classList.add("js-ready");
 
   var prefersReduced = window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -21,21 +22,26 @@
   var navLinks = Array.prototype.slice.call(document.querySelectorAll("[data-navlink]"));
 
   /* ---- Reveal-on-scroll (hairline wipe, self-drawing checks) ---- */
-  var reveals = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
-  if (prefersReduced) {
-    reveals.forEach(function (el) { el.classList.add("is-visible"); });
-  } else if ("IntersectionObserver" in window) {
-    var revObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add("is-visible");
-          revObs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
-    reveals.forEach(function (el) { revObs.observe(el); });
-  } else {
-    reveals.forEach(function (el) { el.classList.add("is-visible"); });
+  try {
+    var reveals = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+    if (prefersReduced) {
+      reveals.forEach(function (el) { el.classList.add("is-visible"); });
+    } else if ("IntersectionObserver" in window) {
+      var revObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            revObs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
+      reveals.forEach(function (el) { revObs.observe(el); });
+    } else {
+      reveals.forEach(function (el) { el.classList.add("is-visible"); });
+    }
+  } catch (err) {
+    /* Setup failed: drop js-ready so the CSS fallback keeps .reveal content visible. */
+    root.classList.remove("js-ready");
   }
 
   /* ---- Active section tracking: rail number + nav cursor ---- */
@@ -92,7 +98,7 @@
       var updateTimeline = function () {
         var r = tl.getBoundingClientRect();
         var center = window.innerHeight * 0.55;
-        var filled = Math.min(Math.max(center - r.top, 0), r.height);
+        var filled = Math.min(Math.max(center - r.top, 0), Math.max(r.height - 24, 0));
         tlFill.style.height = filled + "px";
         ticking = false;
       };
