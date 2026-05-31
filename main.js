@@ -110,4 +110,60 @@
     }
   }
 
+  /* ---- Mobile nav: hamburger toggle ----
+     Panel and links already exist in the DOM (one set, no duplicates), so the
+     active-nav IntersectionObserver above keeps working untouched. Here we
+     only handle open/close, focus, and the close triggers. */
+  var navToggle = document.getElementById("navtoggle");
+  var navPanel = document.getElementById("navpanel");
+  if (navToggle && navPanel) {
+    var navOpen = false;
+
+    var openNav = function () {
+      navOpen = true;
+      navPanel.classList.add("is-open");
+      navToggle.setAttribute("aria-expanded", "true");
+      navToggle.setAttribute("aria-label", "Close menu");
+      var first = navPanel.querySelector("a");
+      if (first) { first.focus(); }
+    };
+
+    var closeNav = function (returnFocus) {
+      navOpen = false;
+      navPanel.classList.remove("is-open");
+      navToggle.setAttribute("aria-expanded", "false");
+      navToggle.setAttribute("aria-label", "Open menu");
+      if (returnFocus) { navToggle.focus(); }
+    };
+
+    navToggle.addEventListener("click", function () {
+      if (navOpen) { closeNav(true); } else { openNav(); }
+    });
+
+    /* Close after picking a destination link. */
+    navPanel.addEventListener("click", function (e) {
+      var link = e.target.closest && e.target.closest("a");
+      if (link) { closeNav(false); }
+    });
+
+    /* Escape closes and returns focus to the button. */
+    document.addEventListener("keydown", function (e) {
+      if (navOpen && (e.key === "Escape" || e.key === "Esc")) { closeNav(true); }
+    });
+
+    /* Tap or click outside the panel and button closes the menu. */
+    document.addEventListener("click", function (e) {
+      if (!navOpen) { return; }
+      if (!navPanel.contains(e.target) && !navToggle.contains(e.target)) { closeNav(false); }
+    });
+
+    /* Reset state if the viewport grows past the mobile breakpoint while open. */
+    if (window.matchMedia) {
+      var mq = window.matchMedia("(max-width: 768px)");
+      var onChange = function () { if (!mq.matches && navOpen) { closeNav(false); } };
+      if (mq.addEventListener) { mq.addEventListener("change", onChange); }
+      else if (mq.addListener) { mq.addListener(onChange); }
+    }
+  }
+
 })();
