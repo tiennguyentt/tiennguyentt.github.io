@@ -110,32 +110,4 @@
     }
   }
 
-  /* ---- Selected Work horizontal stepper ---- */
-  var hstep = document.querySelector(".hstep");
-  if (hstep) {
-    var hnodes = Array.prototype.slice.call(hstep.querySelectorAll(".hstep__node"));
-    var hpanels = Array.prototype.slice.call(hstep.querySelectorAll(".hstep__panel"));
-    if (hnodes.length && hnodes.length === hpanels.length) {
-      hstep.classList.add("hstep--ready");
-      var hsel = function (i) {
-        hnodes.forEach(function (n, j) {
-          var on = j === i;
-          n.classList.toggle("is-active", on);
-          n.setAttribute("aria-selected", on ? "true" : "false");
-          n.tabIndex = on ? 0 : -1;
-        });
-        hpanels.forEach(function (p, j) { p.classList.toggle("is-active", j === i); });
-      };
-      hnodes.forEach(function (n, i) {
-        n.addEventListener("click", function () { hsel(i); });
-        n.addEventListener("keydown", function (e) {
-          var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
-          if (!d) { return; }
-          e.preventDefault();
-          var ni = (i + d + hnodes.length) % hnodes.length;
-          hsel(ni); hnodes[ni].focus();
-        });
-      });
-    }
-  }
 })();
