@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tien Nguyen — CV</title>
+<style>
+  :root{
+    --ink:#15171c;
+    --body:#33373f;
+    --meta:#6b7280;
+    --blue:#3b5bdb;
+    --rule:#d9dce2;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  @page{size:A4;margin:10.5mm 13mm;}
+  html{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  body{
+    font-family:-apple-system,"Inter","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--body);
+    font-size:9.5px;
+    line-height:1.36;
+    letter-spacing:.1px;
+  }
+  .name{font-size:25px;font-weight:800;color:var(--ink);letter-spacing:-.3px;line-height:1;}
+  .title{font-size:10px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:1.4px;margin-top:6px;}
+  .contact{font-size:9px;color:var(--meta);margin-top:6px;letter-spacing:.2px;}
+  .rule-top{height:2px;background:var(--ink);margin:8px 0 9px;}
+  .summary{color:var(--body);}
+  .summary b{color:var(--ink);font-weight:700;}
+  .metrics{margin-top:7px;color:var(--meta);}
+  .metrics b{color:var(--blue);font-weight:700;}
+
+  h2.sec{
+    font-size:9.5px;font-weight:700;color:#4b5159;text-transform:uppercase;letter-spacing:1.6px;
+    margin:9px 0 5px;padding-bottom:3px;border-bottom:1px solid var(--rule);
+  }
+  .job{margin-bottom:5.5px;}
+  .job__head{display:flex;justify-content:space-between;align-items:baseline;}
+  .job__co{font-size:11px;font-weight:700;color:var(--ink);}
+  .job__date{font-size:9px;color:var(--meta);white-space:nowrap;padding-left:10px;}
+  .job__role{font-size:9.4px;color:var(--blue);font-weight:600;margin-top:1px;margin-bottom:3px;}
+  ul.pts{list-style:none;}
+  ul.pts li{position:relative;padding-left:13px;margin-bottom:2.5px;}
+  ul.pts li::before{content:"+";position:absolute;left:0;top:0;color:var(--blue);font-weight:700;}
+  ul.pts li b{color:var(--ink);font-weight:700;}
+
+  .build p{margin-bottom:4px;}
+  .build p b{color:var(--ink);font-weight:700;}
+
+  .skills div{margin-bottom:3px;}
+  .skills b{color:var(--ink);font-weight:700;}
+
+  .edu{}
+  .edu__row{display:flex;justify-content:space-between;align-items:baseline;padding:3px 0;border-bottom:1px solid #eceef2;}
+  .edu__row:last-child{border-bottom:none;}
+  .edu__row b{color:var(--ink);font-weight:700;}
+  .edu__yr{color:var(--meta);white-space:nowrap;padding-left:10px;}
+</style>
+</head>
+<body>
+
+  <div class="name">Tien Nguyen</div>
+  <div class="title">AI-Native Product Manager / Product Owner</div>
+  <div class="contact">tiennguyentthao@gmail.com&nbsp; |&nbsp; 0963 351 586&nbsp; |&nbsp; linkedin.com/in/tiennguyenthithao&nbsp; |&nbsp; github.com/tiennguyentt&nbsp; |&nbsp; Ho Chi Minh City</div>
+
+  <div class="rule-top"></div>
+
+  <p class="summary"><b>Not AI-assisted, agent-operated.</b> I built a <b>multi-model agent system</b> (Claude and Codex, model-agnostic) that operates my product work, from research and discovery to graded, source-traced specs it can build from without follow-up questions. As an <b>ex-full-stack engineer</b>, I own the product calls, read the diff, and sign off on every change. <b>5+ years</b> across B2B fintech, payments, insurance, e-commerce, and ERP, from 0-to-1 to enterprise.</p>
+
+  <p class="metrics"><b>Fiserv PCI passed</b> across 3 platforms&nbsp; |&nbsp; <b>7 insurance products</b> bundled&nbsp; |&nbsp; <b>400ms</b> cross-chain settlements&nbsp; |&nbsp; <b>137%</b> backtest ROI&nbsp; |&nbsp; <b>+30%</b> bookings</p>
+
+  <h2 class="sec">Experience</h2>
+
+  <div class="job">
+    <div class="job__head"><span class="job__co">Colonial Surety</span><span class="job__date">Feb 2026 to present</span></div>
+    <div class="job__role">Product Management Engineer · B2B fintech, insurance, payments</div>
+    <ul class="pts">
+      <li><b>Fiserv PCI passed.</b> Drove an emergency Transax to CardPointe gateway migration across 3 production platforms on a hard deadline after the primary gateway shut down.</li>
+      <li><b>7 insurance products.</b> Designed the multi-product bundling flow: knockout logic, unified claims, dynamic naming, an edit-policy matrix (upgrade, cancel, endorsement), and partial-failure edge cases.</li>
+      <li><b>B2B SSO provider.</b> Turned ambiguous CTO direction into a structured BRD defining Colonial as an SSO provider for partners: 2 user types, adaptive registration, cross-partner sessions, redirect-back.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job__head"><span class="job__co">Hoookie JSC</span><span class="job__date">Jun 2023 to Dec 2025</span></div>
+    <div class="job__role">Product Owner · Web3, fintech (outsource)</div>
+    <ul class="pts">
+      <li><b>400ms cross-chain settlements.</b> Led a non-custodial cross-chain wallet for a US client, with KYC/AML and fiat-to-crypto bridging.</li>
+      <li><b>137% ROI in backtests ($10K to $23.7K in ~2 months).</b> Ran roadmap, backlog, and Scrum for an autonomous on-chain prediction-market fund.</li>
+      <li><b>Shipped aVault and aLink.</b> Automated USDC strategies, a token-gated terminal for mispricing alerts, and a Telegram trading toolkit.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job__head"><span class="job__co">Olmo Technology</span><span class="job__date">Apr 2022 to May 2023</span></div>
+    <div class="job__role">Product Owner · social e-commerce, web and app</div>
+    <ul class="pts">
+      <li><b>12-person scrum team.</b> Launched a livestream app in 6 months and an e-commerce platform (booking plus vouchers) in 4.</li>
+      <li><b>30% increase in bookings.</b> Reworked the mobile booking flow and cut the bank-transfer payment task time inside a week.</li>
+      <li><b>Shipped livestream gifting and live-booking.</b> As Junior PO: competitor research, personas, backlog and stories, delivering sprint items 20% faster.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job__head"><span class="job__co">4/10 Fire Protection Trading Service</span><span class="job__date">Jul 2019 to Jan 2022</span></div>
+    <div class="job__role">Front-end Developer, then BA and Associate PM · ERP</div>
+    <ul class="pts">
+      <li><b>Started in code.</b> Built the front-end for the ERP modules for 6 months, the hands-on engineering base behind my full-stack background, before moving into BA and PM.</li>
+      <li>Owned resource-management and quality-control ERP modules, focused on integration and operational efficiency.</li>
+    </ul>
+  </div>
+
+  <h2 class="sec">AI-Native Building</h2>
+  <div class="build">
+    <p><b>PM intelligence system.</b> A multi-model agent system (Claude and Codex, model-agnostic) on the Karpathy LLM Knowledge Base pattern: transcripts compile into a source-traced wiki, conflicts resolve by truth hierarchy, and specs are graded before engineering, with my sign-off.</p>
+    <p><b>Recon.</b> An autonomous research pipeline for crypto and AI: daily reports, project audits, and signal predictions, run by Claude Code agents and delivered to a dashboard and Telegram. Its own scoring engine grades signals and tracks prediction accuracy.</p>
+    <p><b>Petmood.</b> AI pet-health triage for Vietnam: a photo plus symptoms returns a triage level and nearby vet options. Flutter, Supabase, Vision + LLM. Beta in HCMC.</p>
+    <p><b>AnDigi.</b> An agent-operated insurance app for Vietnam where LLM agents run the workflow from quote to AI-assisted claims. Benchmarked on China's Ping An ecosystem. In design.</p>
+    <p><b>AI agent operations for SMEs.</b> Moving a fashion-retail SME to an agent-operated model department by department: marketing and content, customer service, operations and inventory, and back office. Advisory, toward 2027.</p>
+  </div>
+
+  <h2 class="sec">Expert PM Skills</h2>
+  <div class="skills">
+    <div><b>AI-native PM operations:</b> orchestrating an agent system that drafts and grades specs, designing agent skills and subagents for PM work, human sign-off on every diff, AI agent operations for SMEs</div>
+    <div><b>Spec quality and provenance:</b> spec grading for clarity and completeness, source provenance and traceability, conflict resolution by truth hierarchy, pre-handoff health checks</div>
+    <div><b>Discovery and framing:</b> problem and opportunity framing, hypothesis and assumption testing, scoping ambiguous direction into a defined problem</div>
+    <div><b>Requirements:</b> PRD, BRD, SRS, use-case and user-story modeling, acceptance criteria, edge-case and failure-path design</div>
+    <div><b>Roadmapping and delivery:</b> prioritization and tradeoff calls, backlog ownership, Scrum delivery, analytics-informed decisions</div>
+    <div><b>Alignment and leadership:</b> stakeholder and executive alignment, translating ad-hoc CTO direction into buildable specs, cross-functional leadership across engineering, QA, design, and compliance</div>
+    <div><b>Tools:</b> Jira, Notion, Figma, GitHub, GA4, Claude, Codex, Cursor</div>
+  </div>
+
+  <h2 class="sec">Education &amp; Credentials</h2>
+  <div class="edu">
+    <div class="edu__row"><span><b>Anthropic:</b> Claude Code 101, AI Fluency, Agent Skills, Subagents</span><span class="edu__yr">2026</span></div>
+    <div class="edu__row"><span><b>Product School:</b> Launches, Roadmap, Prioritization, Strategy, Discovery, AI Certificate</span><span class="edu__yr">2025</span></div>
+    <div class="edu__row"><span><b>Coderschool:</b> Full Stack Software Developer</span><span class="edu__yr">2019</span></div>
+    <div class="edu__row"><span><b>HCM University of Education:</b> BA, English</span><span class="edu__yr">2014</span></div>
+  </div>
+
+</body>
+</html>
