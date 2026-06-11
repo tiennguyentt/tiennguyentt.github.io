@@ -33,7 +33,7 @@
   "familyName": "Nguyen",
   "gender": "Female",
   "jobTitle": "Product Manager / Product Owner",
-  "description": "AI-native Product Manager and Product Owner (she/her) in Ho Chi Minh City with 5+ years across B2B fintech, payments, insurance, e-commerce, and ERP. She built a multi-model agent system (Claude and Codex today, model-agnostic by design) that supports her PM workflow: she reviews the output and signs off before engineering sees it. It turns transcripts into a source-traced wiki using the Karpathy LLM Knowledge Base pattern, with truth-hierarchy conflict resolution, automated spec grading, and agent skills and subagents. She also builds her own products with AI agents. AI-native projects she has built: a PM intelligence system (multi-model agent system on the Karpathy LLM Knowledge Base pattern); Recon, an autonomous crypto and AI research pipeline (daily reports, project audits, signal predictions, delivered via a dashboard and Telegram); Petmood, an AI pet-health triage product for Vietnam (beta); and AnDigi, an agent-operated insurance app for Vietnam (in design). She also provides AI agent operations for SMEs.",
+  "description": "AI-native Product Manager and Product Owner (she/her) in Ho Chi Minh City with 5+ years across B2B fintech, payments, insurance, e-commerce, and ERP. She built Knowledge Engine, a multi-model agent system (Claude and Codex today, model-agnostic by design) that runs her PM workflow: she reviews the diff and signs off before engineering sees it. It turns transcripts into a source-traced wiki using the Karpathy LLM Knowledge Base pattern, with truth-hierarchy conflict resolution, automated spec grading, and agent skills and subagents. She also builds her own products with AI agents. AI-native projects: Knowledge Engine (live at tienntt-knowledge-engine.streamlit.app); Recon, an autonomous crypto and AI research pipeline (live at tienntt-recon.streamlit.app/run); Petmood, an AI pet-health triage product for Vietnam (beta); and AnDigi, an agent-operated insurance app for Vietnam (in design). She also provides AI agent operations for SMEs.",
   "url": "https://tiennguyentt.github.io/",
   "email": "mailto:tiennguyentthao@gmail.com",
   "image": "https://tiennguyentt.github.io/og-image.png",
@@ -80,8 +80,8 @@
     }
   ],
   "subjectOf": [
-    { "@type": "CreativeWork", "name": "PM intelligence system", "description": "Multi-model agent system (Claude and Codex, model-agnostic by design) built on the Karpathy LLM Knowledge Base pattern that supports her PM workflow, with her review and sign-off." },
-    { "@type": "CreativeWork", "name": "Recon", "description": "Autonomous crypto and AI research pipeline: daily reports, project audits, signal predictions, Claude Code agents, delivered via a dashboard and Telegram. Has its own scoring engine that grades signals and tracks prediction accuracy." },
+    { "@type": "CreativeWork", "name": "Knowledge Engine", "url": "https://tienntt-knowledge-engine.streamlit.app/", "description": "Multi-model agent system (Claude and Codex, model-agnostic by design) built on the Karpathy LLM Knowledge Base pattern that runs her PM workflow: transcripts to source-traced wiki, truth-hierarchy conflict resolution, automated spec grading. She reviews the diff and signs off." },
+    { "@type": "CreativeWork", "name": "Recon", "url": "https://tienntt-recon.streamlit.app/run", "description": "Autonomous crypto and AI research pipeline: daily reports, project audits, signal predictions, Claude Code agents, delivered via a dashboard and Telegram. Has its own scoring engine that grades signals and tracks prediction accuracy." },
     { "@type": "CreativeWork", "name": "Petmood", "description": "AI pet-health triage product for Vietnam, in beta." },
     { "@type": "CreativeWork", "name": "AnDigi", "description": "Agent-operated insurance app for Vietnam, in design." }
   ],
@@ -102,7 +102,7 @@
     "Product analytics (GA4, funnels, conversion)",
     "Full-stack software development",
     "Flutter and Supabase",
-    "PM intelligence system (multi-model agent system, Claude and Codex)",
+    "Knowledge Engine (multi-model agent system, Claude and Codex, live at tienntt-knowledge-engine.streamlit.app)",
     "Recon (autonomous crypto and AI research pipeline)",
     "Petmood (AI pet-health triage)",
     "AnDigi (agent-operated insurance app)"
@@ -274,10 +274,28 @@
     <!-- 03 NOW BUILDING -->
     <section class="section building" id="building" data-section="building" data-rail="6" aria-labelledby="building-head">
       <header class="spec-head reveal">
-        <h2 class="spec-id" id="building-head"><span class="sid">03</span> / AI-native building <span class="status">/ 4 entries</span></h2>
+        <h2 class="spec-id" id="building-head"><span class="sid">03</span> / AI-native building <span class="status">/ 5 entries</span></h2>
         <div class="meter" aria-hidden="true"><span></span></div>
       </header>
       <p class="lead reveal">Systems, products, and operations I build and run.</p>
+
+      <article class="card card--wip reveal" aria-labelledby="card-ke">
+        <h3 class="card-title" id="card-ke">Knowledge Engine</h3>
+        <p class="wip-line">A multi-model agent system built on the Karpathy LLM Knowledge Base pattern that runs my PM workflow. Transcripts compile into a source-traced wiki; truth-hierarchy conflict resolution flags disagreements; automated spec grading checks clarity, coverage, and acceptance criteria before handoff. I read the diff and sign off.</p>
+        <ol class="flowline" aria-label="Knowledge Engine flow: transcript, wiki, conflict check, spec grade, sign-off">
+          <li><span>Transcript</span></li>
+          <li><span>Source-traced wiki</span></li>
+          <li><span>Conflict check</span></li>
+          <li><span>Spec grade</span></li>
+          <li><span>Sign-off</span></li>
+        </ol>
+        <p class="wip-meta">Claude and Codex, model-agnostic by design. Live on Streamlit.</p>
+        <div class="wip-foot">
+          <span class="chip">Live</span>
+          <a href="https://tienntt-knowledge-engine.streamlit.app/" target="_blank" rel="noopener noreferrer">App →</a>
+          <a href="https://github.com/tiennguyentt/knowledge-engine" target="_blank" rel="noopener noreferrer">GitHub →</a>
+        </div>
+      </article>
 
       <article class="card card--wip reveal" aria-labelledby="card-rc">
         <h3 class="card-title" id="card-rc">Recon</h3>
@@ -288,9 +306,11 @@
           <li><span>Reports and scores</span></li>
           <li><span>Dashboard and Telegram</span></li>
         </ol>
-        <p class="wip-meta">Agentic research and intelligence, operational.</p>
+        <p class="wip-meta">Agentic research and intelligence, operational. Live on Streamlit.</p>
         <div class="wip-foot">
-          <span class="chip">Operational</span>
+          <span class="chip">Live</span>
+          <a href="https://tienntt-recon.streamlit.app/run" target="_blank" rel="noopener noreferrer">App →</a>
+          <a href="https://github.com/tiennguyentt/recon" target="_blank" rel="noopener noreferrer">GitHub →</a>
         </div>
       </article>
 
