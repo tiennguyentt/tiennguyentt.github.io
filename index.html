@@ -167,7 +167,7 @@
         <li class="metric"><span class="metric-val">7 yrs</span><span class="metric-q">discovery to production, regulated</span></li>
       </ul>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#ai-native">See live demos</a>
+        <a class="btn btn-primary" href="#demos">See live demos</a>
         <a class="btn btn-secondary" href="Tien-Nguyen-CV.pdf" download>Download resume</a>
       </div>
       <figure class="gitdiff" aria-label="A diff. Added: transcript to wiki to schema to spec, truth-hierarchy conflict resolution, automated spec grading. Removed: ad-hoc unspecced direction.">
@@ -191,7 +191,23 @@
         <h2 class="spec-id" id="ai-head"><span class="sid">01</span> / Built &amp; deployed <span class="status">/ 6 systems, live and in progress</span></h2>
         <div class="meter" aria-hidden="true"><span></span></div>
       </header>
-      <p class="lead reveal">I don&rsquo;t just spec AI &mdash; I build it and put it in production. Each system below runs in the real world, not a slide. Try the demos.</p>
+      <p class="lead reveal"><strong>Knowledge Engine</strong> &mdash; how I turn ambiguous, conflicting input into graded, source-traced specs engineering builds from without a single follow-up. My translation layer between intent and delivery; I read the diff and sign off.</p>
+      <figure class="pipeline reveal" aria-label="Pipeline: transcript, to source-traced wiki, to conflict check by truth hierarchy, to spec grade, to human sign-off">
+        <ol class="pipeline__flow">
+          <li class="pnode"><span class="pnode__n">01</span><span class="pnode__label">Transcript</span><span class="pnode__sub">Raw meetings and notes</span></li>
+          <li class="pnode"><span class="pnode__n">02</span><span class="pnode__label">Wiki</span><span class="pnode__sub">Source-traced, living</span></li>
+          <li class="pnode"><span class="pnode__n">03</span><span class="pnode__label">Conflict check</span><span class="pnode__sub">Truth hierarchy</span></li>
+          <li class="pnode"><span class="pnode__n">04</span><span class="pnode__label">Spec grade</span><span class="pnode__sub">Clarity and coverage</span></li>
+          <li class="pnode pnode--human"><span class="pnode__n">05</span><span class="pnode__label">Sign-off</span><span class="pnode__sub">I read the diff</span></li>
+        </ol>
+        <figcaption class="pipeline__cap">Built on Karpathy's LLM Knowledge Base pattern. Model-agnostic: Claude and Codex today, open models next. Raw transcripts in, a graded source-backed spec out. Corrections become reusable rules the system can check next time.</figcaption>
+      </figure>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary" href="https://tienntt-knowledge-engine.streamlit.app/" target="_blank" rel="noopener noreferrer">View Knowledge Engine demo →</a>
+        <a class="btn btn-secondary" href="https://github.com/tiennguyentt/knowledge-engine" target="_blank" rel="noopener noreferrer">GitHub →</a>
+      </div>
+
+      <p class="lead reveal ke-flag" id="demos">And the products I build and deploy with the same loop &mdash; live in production:</p>
 
       <article class="card card--wip reveal" aria-labelledby="card-rc">
         <h3 class="card-title" id="card-rc">Recon</h3>
@@ -261,27 +277,6 @@
         </div>
       </article>
 
-      <p class="lead reveal ke-flag"><strong>Knowledge Engine</strong> &mdash; how I turn ambiguous, conflicting input into graded, source-traced specs engineering builds from without a single follow-up. My translation layer between intent and delivery; I read the diff and sign off.</p>
-      <figure class="pipeline reveal" aria-label="Pipeline: transcript, to source-traced wiki, to conflict check by truth hierarchy, to spec grade, to human sign-off">
-        <ol class="pipeline__flow">
-          <li class="pnode"><span class="pnode__n">01</span><span class="pnode__label">Transcript</span><span class="pnode__sub">Raw meetings and notes</span></li>
-          <li class="pnode"><span class="pnode__n">02</span><span class="pnode__label">Wiki</span><span class="pnode__sub">Source-traced, living</span></li>
-          <li class="pnode"><span class="pnode__n">03</span><span class="pnode__label">Conflict check</span><span class="pnode__sub">Truth hierarchy</span></li>
-          <li class="pnode"><span class="pnode__n">04</span><span class="pnode__label">Spec grade</span><span class="pnode__sub">Clarity and coverage</span></li>
-          <li class="pnode pnode--human"><span class="pnode__n">05</span><span class="pnode__label">Sign-off</span><span class="pnode__sub">I read the diff</span></li>
-        </ol>
-        <figcaption class="pipeline__cap">Built on Karpathy's LLM Knowledge Base pattern. Model-agnostic: Claude and Codex today, open models next. Raw transcripts in, a graded source-backed spec out. Corrections become reusable rules the system can check next time.</figcaption>
-      </figure>
-      <ul class="ai-list reveal" aria-label="What each stage does">
-        <li class="ai-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><span class="ai-item-text"><span class="ai-item-key">Transcript to structured wiki.</span> Raw meeting transcripts and notes auto-compile into a living knowledge base, so the spec starts from what was actually said, not from memory.</span></li>
-        <li class="ai-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><span class="ai-item-text"><span class="ai-item-key">Truth-hierarchy conflict resolution.</span> When sources disagree, the system ranks them by evidence and flags the contradiction instead of silently picking one.</span></li>
-        <li class="ai-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><span class="ai-item-text"><span class="ai-item-key">Automated spec grading and health checks.</span> Each requirement is graded for clarity, source coverage, and acceptance criteria before it ships.</span></li>
-        <li class="ai-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><span class="ai-item-text"><span class="ai-item-key">Agent skills and subagents.</span> Skills draft BRDs, FRDs, and tickets from the knowledge base. I run the same loop to build my own products end to end.</span></li>
-      </ul>
-      <div class="hero-actions reveal">
-        <a class="btn btn-primary" href="https://tienntt-knowledge-engine.streamlit.app/" target="_blank" rel="noopener noreferrer">View Knowledge Engine demo →</a>
-        <a class="btn btn-secondary" href="https://github.com/tiennguyentt/knowledge-engine" target="_blank" rel="noopener noreferrer">GitHub →</a>
-      </div>
     </section>
 
     <!-- 02 SELECTED WORK -->
