@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -131,7 +131,6 @@
       <nav class="topnav" aria-label="Primary">
         <a href="#ai-native" data-navlink="ai-native">AI-Native<span class="cursor" aria-hidden="true"></span></a>
         <a href="#work" data-navlink="work">Work<span class="cursor" aria-hidden="true"></span></a>
-        <a href="#building" data-navlink="building">Building<span class="cursor" aria-hidden="true"></span></a>
         <a href="#stack" data-navlink="stack">Skills<span class="cursor" aria-hidden="true"></span></a>
         <a href="#credentials" data-navlink="credentials">Creds<span class="cursor" aria-hidden="true"></span></a>
         <a href="#contact" data-navlink="contact">Contact<span class="cursor" aria-hidden="true"></span></a>
@@ -168,7 +167,7 @@
         <li class="metric"><span class="metric-val">7 yrs</span><span class="metric-q">spec to ship, regulated fintech</span></li>
       </ul>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#work">See selected work</a>
+        <a class="btn btn-primary" href="#ai-native">See live demos</a>
         <a class="btn btn-secondary" href="Tien-Nguyen-CV.pdf" download>Download resume</a>
       </div>
       <figure class="gitdiff" aria-label="A diff. Added: transcript to wiki to schema to spec, truth-hierarchy conflict resolution, automated spec grading. Removed: ad-hoc unspecced direction.">
@@ -187,12 +186,82 @@
     </section>
 
     <!-- 01 AI-NATIVE -->
-    <section class="section" id="ai-native" data-section="ai-native" data-rail="2" aria-labelledby="ai-head">
+    <section class="section building" id="ai-native" data-section="ai-native" data-rail="2" aria-labelledby="ai-head">
       <header class="spec-head reveal">
-        <h2 class="spec-id" id="ai-head"><span class="sid">01</span> / AI-Native</h2>
+        <h2 class="spec-id" id="ai-head"><span class="sid">01</span> / AI-Native <span class="status">/ 6 entries, live and in progress</span></h2>
         <div class="meter" aria-hidden="true"><span></span></div>
       </header>
-      <p class="lead reveal">I built the system that runs my PM work. I sign off.</p>
+      <p class="lead reveal">I built a system that runs my PM work, and I build my own products with it. Everything here is live or in progress &mdash; try the demos.</p>
+
+      <article class="card card--wip reveal" aria-labelledby="card-rc">
+        <h3 class="card-title" id="card-rc">Recon</h3>
+        <p class="wip-line">An autonomous AI news and research intelligence pipeline. Claude Code agents sweep sources daily, produce structured reports, and score every signal for relevance, credibility, and predictive weight. A proprietary weighting engine tracks signal accuracy over time — so the system gets sharper the longer it runs.</p>
+        <ol class="flowline" aria-label="Recon flow: sources, Claude Code agents, scoring and weighting, dashboard">
+          <li><span>Sources</span></li>
+          <li><span>Claude Code agents</span></li>
+          <li><span>Score and weight</span></li>
+          <li><span>Dashboard</span></li>
+        </ol>
+        <p class="wip-meta">Agentic research intelligence with scored signal tracking. Live on Streamlit.</p>
+        <div class="wip-foot">
+          <span class="chip">Live</span>
+          <a class="btn btn-primary" href="https://tienntt-recon.streamlit.app/" target="_blank" rel="noopener noreferrer">View demo →</a>
+        </div>
+      </article>
+
+      <article class="card card--wip reveal" aria-labelledby="card-sq">
+        <h3 class="card-title" id="card-sq">Sport Quant</h3>
+        <p class="wip-line">A governed +EV terminal for prediction markets. Quantitative models (Elo + Dixon-Coles ensemble) score the edge; a deterministic risk gate sizes every bet with fractional Kelly and hard caps. The LLM explains the edge in plain language — advisory only, code governs the decision.</p>
+        <ol class="flowline" aria-label="sport-quant pipeline: signals, score, edge, kelly, gate, bet">
+          <li><span>Signals</span></li>
+          <li><span>Score</span></li>
+          <li><span>Edge</span></li>
+          <li><span>Kelly size</span></li>
+          <li><span>Gate</span></li>
+          <li><span>Bet or skip</span></li>
+        </ol>
+        <p class="wip-meta">Elo + Dixon-Coles + DeepSeek v3. Models advise, code governs. Live on Streamlit.</p>
+        <div class="wip-foot">
+          <span class="chip">Live</span>
+          <a class="btn btn-primary" href="https://tienntt-sport-quant.streamlit.app/" target="_blank" rel="noopener noreferrer">View demo →</a>
+          <a class="btn btn-secondary" href="https://github.com/tiennguyentt/sport-quant" target="_blank" rel="noopener noreferrer">GitHub →</a>
+        </div>
+      </article>
+
+      <article class="card card--wip reveal" aria-labelledby="card-pm">
+        <h3 class="card-title" id="card-pm">Petmood</h3>
+        <p class="wip-line">AI pet-health triage for Vietnam. A photo plus symptoms can return a triage level and nearby vet options. Triage, not diagnosis.</p>
+        <ol class="flowline" aria-label="Petmood flow: photo and symptoms, AI triage, triage level, nearby vet">
+          <li><span>Photo and symptoms</span></li>
+          <li><span>AI triage</span></li>
+          <li><span>Triage level</span></li>
+          <li><span>Nearby vet</span></li>
+        </ol>
+        <p class="wip-meta">Flutter, Supabase, Vision + LLM. Beta in HCMC.</p>
+        <div class="wip-foot">
+          <span class="chip">Beta</span>
+        </div>
+      </article>
+
+      <article class="card card--wip reveal" aria-labelledby="card-ad">
+        <h3 class="card-title" id="card-ad">AnDigi</h3>
+        <p class="wip-line">An agent-operated insurance app for Vietnam. LLM agents handle the workflow from quote to AI-assisted claims. Benchmarked on China's Ping An ecosystem.</p>
+        <p class="wip-meta">Agent-operated insurtech, Vietnam-first, in design.</p>
+        <div class="wip-foot">
+          <span class="chip">In design</span>
+        </div>
+      </article>
+
+      <article class="card card--wip reveal" aria-labelledby="card-sme">
+        <h3 class="card-title" id="card-sme">AI agent operations for SMEs</h3>
+        <p class="wip-line">Moving a fashion-retail SME to an agent-operated model, department by department: marketing and content, customer service, operations and inventory, and back office. The team owns the calls.</p>
+        <p class="wip-meta">Agent operations for SMEs, advisory. Rolling out toward 2027.</p>
+        <div class="wip-foot">
+          <span class="chip">Advisory</span>
+        </div>
+      </article>
+
+      <p class="lead reveal ke-flag">The system behind all of it &mdash; <strong>Knowledge Engine</strong>, the agent system that runs my PM work end to end. I read the diff and sign off.</p>
       <figure class="pipeline reveal" aria-label="Pipeline: transcript, to source-traced wiki, to conflict check by truth hierarchy, to spec grade, to human sign-off">
         <ol class="pipeline__flow">
           <li class="pnode"><span class="pnode__n">01</span><span class="pnode__label">Transcript</span><span class="pnode__sub">Raw meetings and notes</span></li>
@@ -275,105 +344,10 @@
       </div>
     </section>
 
-    <!-- 03 NOW BUILDING -->
-    <section class="section building" id="building" data-section="building" data-rail="6" aria-labelledby="building-head">
+    <!-- 03 STACK -->
+    <section class="section" id="stack" data-section="stack" data-rail="6" aria-labelledby="stack-head">
       <header class="spec-head reveal">
-        <h2 class="spec-id" id="building-head"><span class="sid">03</span> / AI-native building <span class="status">/ 6 entries</span></h2>
-        <div class="meter" aria-hidden="true"><span></span></div>
-      </header>
-      <p class="lead reveal">Systems, products, and operations I build and run.</p>
-
-      <article class="card card--wip reveal" aria-labelledby="card-ke">
-        <h3 class="card-title" id="card-ke">Knowledge Engine</h3>
-        <p class="wip-line">A multi-model agent system built on the Karpathy LLM Knowledge Base pattern that runs my PM workflow. Transcripts compile into a source-traced wiki; truth-hierarchy conflict resolution flags disagreements; automated spec grading checks clarity, coverage, and acceptance criteria before handoff. I read the diff and sign off.</p>
-        <ol class="flowline" aria-label="Knowledge Engine flow: transcript, wiki, conflict check, spec grade, sign-off">
-          <li><span>Transcript</span></li>
-          <li><span>Source-traced wiki</span></li>
-          <li><span>Conflict check</span></li>
-          <li><span>Spec grade</span></li>
-          <li><span>Sign-off</span></li>
-        </ol>
-        <p class="wip-meta">Claude and Codex, model-agnostic by design. Live on Streamlit.</p>
-        <div class="wip-foot">
-          <span class="chip">Live</span>
-          <a class="btn btn-primary" href="https://tienntt-knowledge-engine.streamlit.app/" target="_blank" rel="noopener noreferrer">View demo →</a>
-          <a class="btn btn-secondary" href="https://github.com/tiennguyentt/knowledge-engine" target="_blank" rel="noopener noreferrer">GitHub →</a>
-        </div>
-      </article>
-
-      <article class="card card--wip reveal" aria-labelledby="card-rc">
-        <h3 class="card-title" id="card-rc">Recon</h3>
-        <p class="wip-line">An autonomous AI news and research intelligence pipeline. Claude Code agents sweep sources daily, produce structured reports, and score every signal for relevance, credibility, and predictive weight. A proprietary weighting engine tracks signal accuracy over time — so the system gets sharper the longer it runs.</p>
-        <ol class="flowline" aria-label="Recon flow: sources, Claude Code agents, scoring and weighting, dashboard">
-          <li><span>Sources</span></li>
-          <li><span>Claude Code agents</span></li>
-          <li><span>Score and weight</span></li>
-          <li><span>Dashboard</span></li>
-        </ol>
-        <p class="wip-meta">Agentic research intelligence with scored signal tracking. Live on Streamlit.</p>
-        <div class="wip-foot">
-          <span class="chip">Live</span>
-          <a class="btn btn-primary" href="https://tienntt-recon.streamlit.app/" target="_blank" rel="noopener noreferrer">View demo →</a>
-        </div>
-      </article>
-
-      <article class="card card--wip reveal" aria-labelledby="card-sq">
-        <h3 class="card-title" id="card-sq">Sport Quant</h3>
-        <p class="wip-line">A governed +EV terminal for prediction markets. Quantitative models (Elo + Dixon-Coles ensemble) score the edge; a deterministic risk gate sizes every bet with fractional Kelly and hard caps. The LLM explains the edge in plain language — advisory only, code governs the decision.</p>
-        <ol class="flowline" aria-label="sport-quant pipeline: signals, score, edge, kelly, gate, bet">
-          <li><span>Signals</span></li>
-          <li><span>Score</span></li>
-          <li><span>Edge</span></li>
-          <li><span>Kelly size</span></li>
-          <li><span>Gate</span></li>
-          <li><span>Bet or skip</span></li>
-        </ol>
-        <p class="wip-meta">Elo + Dixon-Coles + DeepSeek v3. Models advise, code governs. Live on Streamlit.</p>
-        <div class="wip-foot">
-          <span class="chip">Live</span>
-          <a class="btn btn-primary" href="https://tienntt-sport-quant.streamlit.app/" target="_blank" rel="noopener noreferrer">View demo →</a>
-          <a class="btn btn-secondary" href="https://github.com/tiennguyentt/sport-quant" target="_blank" rel="noopener noreferrer">GitHub →</a>
-        </div>
-      </article>
-
-      <article class="card card--wip reveal" aria-labelledby="card-pm">
-        <h3 class="card-title" id="card-pm">Petmood</h3>
-        <p class="wip-line">AI pet-health triage for Vietnam. A photo plus symptoms can return a triage level and nearby vet options. Triage, not diagnosis.</p>
-        <ol class="flowline" aria-label="Petmood flow: photo and symptoms, AI triage, triage level, nearby vet">
-          <li><span>Photo and symptoms</span></li>
-          <li><span>AI triage</span></li>
-          <li><span>Triage level</span></li>
-          <li><span>Nearby vet</span></li>
-        </ol>
-        <p class="wip-meta">Flutter, Supabase, Vision + LLM. Beta in HCMC.</p>
-        <div class="wip-foot">
-          <span class="chip">Beta</span>
-        </div>
-      </article>
-
-      <article class="card card--wip reveal" aria-labelledby="card-ad">
-        <h3 class="card-title" id="card-ad">AnDigi</h3>
-        <p class="wip-line">An agent-operated insurance app for Vietnam. LLM agents handle the workflow from quote to AI-assisted claims. Benchmarked on China's Ping An ecosystem.</p>
-        <p class="wip-meta">Agent-operated insurtech, Vietnam-first, in design.</p>
-        <div class="wip-foot">
-          <span class="chip">In design</span>
-        </div>
-      </article>
-
-      <article class="card card--wip reveal" aria-labelledby="card-sme">
-        <h3 class="card-title" id="card-sme">AI agent operations for SMEs</h3>
-        <p class="wip-line">Moving a fashion-retail SME to an agent-operated model, department by department: marketing and content, customer service, operations and inventory, and back office. The team owns the calls.</p>
-        <p class="wip-meta">Agent operations for SMEs, advisory. Rolling out toward 2027.</p>
-        <div class="wip-foot">
-          <span class="chip">Advisory</span>
-        </div>
-      </article>
-    </section>
-
-    <!-- 04 STACK -->
-    <section class="section" id="stack" data-section="stack" data-rail="8" aria-labelledby="stack-head">
-      <header class="spec-head reveal">
-        <h2 class="spec-id" id="stack-head"><span class="sid">04</span> / Skills <span class="status">/ 6 Groups</span></h2>
+        <h2 class="spec-id" id="stack-head"><span class="sid">03</span> / Skills <span class="status">/ 6 Groups</span></h2>
         <div class="meter" aria-hidden="true"><span></span></div>
       </header>
       <div class="skills reveal">
@@ -445,10 +419,10 @@
       </div>
     </section>
 
-    <!-- 05 CREDENTIALS -->
-    <section class="section" id="credentials" data-section="credentials" data-rail="10" aria-labelledby="cred-head">
+    <!-- 04 CREDENTIALS -->
+    <section class="section" id="credentials" data-section="credentials" data-rail="8" aria-labelledby="cred-head">
       <header class="spec-head reveal">
-        <h2 class="spec-id" id="cred-head"><span class="sid">05</span> / Credentials</h2>
+        <h2 class="spec-id" id="cred-head"><span class="sid">04</span> / Credentials</h2>
         <div class="meter" aria-hidden="true"><span></span></div>
       </header>
       <ul class="cred-list reveal" aria-label="Credentials">
@@ -459,10 +433,10 @@
       </ul>
     </section>
 
-    <!-- 06 CONTACT -->
-    <section class="section" id="contact" data-section="contact" data-rail="12" aria-labelledby="contact-head">
+    <!-- 05 CONTACT -->
+    <section class="section" id="contact" data-section="contact" data-rail="10" aria-labelledby="contact-head">
       <header class="spec-head reveal">
-        <h2 class="spec-id" id="contact-head"><span class="sid">06</span> / Contact</h2>
+        <h2 class="spec-id" id="contact-head"><span class="sid">05</span> / Contact</h2>
         <div class="meter" aria-hidden="true"><span></span></div>
       </header>
       <p class="closing reveal">Agents do the work. Humans stay accountable.</p>
