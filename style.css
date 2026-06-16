@@ -22,7 +22,7 @@
   --font-body: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  --maxw: 1180px;
+  --maxw: 960px;
   --rail-w: 56px;
   --pad-x: 24px;
 }
@@ -276,7 +276,7 @@ button:focus-visible {
   line-height: 1.06;
   letter-spacing: 0;
   margin: 0 0 28px;
-  max-width: 16ch;
+  max-width: 22ch;
   color: var(--ink);
 }
 .block-cursor {
