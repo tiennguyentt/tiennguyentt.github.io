@@ -192,12 +192,12 @@
         <div class="meter" aria-hidden="true"><span></span></div>
       </header>
       <p class="lead reveal">Deploying a team-level agent-operated PM workflow inside a regulated US insurer.</p>
-      <ol class="flowline reveal" aria-label="Deployment lifecycle: discovery, scope and metrics, controls, human sign-off, adoption and monitor">
-        <li><span>Discovery</span></li>
-        <li><span>Scope and metrics</span></li>
-        <li><span>Controls</span></li>
-        <li><span>Human sign-off</span></li>
-        <li><span>Adoption and monitor</span></li>
+      <ol class="flowline reveal" aria-label="Deployment lifecycle: discover, scope, control, sign off, adopt">
+        <li><span>Discover</span></li>
+        <li><span>Scope</span></li>
+        <li><span>Control</span></li>
+        <li><span>Sign off</span></li>
+        <li><span>Adopt</span></li>
       </ol>
       <article class="card reveal">
         <p class="card-meta"><span class="card-role">Product Management Engineer</span><span class="card-dot" aria-hidden="true">&middot;</span>2026 to present, B2B fintech, insurance, payments</p>
@@ -219,11 +219,11 @@
       <p class="lead reveal">Built Knowledge Engine, an openable demo of the controls I run in delivery. I spec the hard, non-deterministic parts myself.</p>
       <figure class="pipeline reveal" aria-label="Pipeline: transcript, to source-traced wiki, to conflict check by truth hierarchy, to spec grade, to human sign-off">
         <ol class="pipeline__flow">
-          <li class="pnode"><span class="pnode__n">01</span><span class="pnode__label">Transcript</span><span class="pnode__sub">Raw meetings and notes</span></li>
-          <li class="pnode"><span class="pnode__n">02</span><span class="pnode__label">Wiki</span><span class="pnode__sub">Source-traced, living</span></li>
-          <li class="pnode"><span class="pnode__n">03</span><span class="pnode__label">Conflict check</span><span class="pnode__sub">Truth hierarchy</span></li>
-          <li class="pnode"><span class="pnode__n">04</span><span class="pnode__label">Spec grade</span><span class="pnode__sub">Clarity and coverage</span></li>
-          <li class="pnode pnode--human"><span class="pnode__n">05</span><span class="pnode__label">Sign-off</span><span class="pnode__sub">I read the diff</span></li>
+          <li class="pnode"><span class="pnode__n">01</span><span class="pnode__label">Ingest</span><span class="pnode__sub">Raw meetings and notes</span></li>
+          <li class="pnode"><span class="pnode__n">02</span><span class="pnode__label">Trace</span><span class="pnode__sub">To a source-linked wiki</span></li>
+          <li class="pnode"><span class="pnode__n">03</span><span class="pnode__label">Check</span><span class="pnode__sub">Conflicts by truth hierarchy</span></li>
+          <li class="pnode"><span class="pnode__n">04</span><span class="pnode__label">Grade</span><span class="pnode__sub">Clarity and coverage</span></li>
+          <li class="pnode pnode--human"><span class="pnode__n">05</span><span class="pnode__label">Sign off</span><span class="pnode__sub">I read the diff</span></li>
         </ol>
         <figcaption class="pipeline__cap">A standalone artifact; it does not power my other products. Built on Karpathy's LLM Knowledge Base pattern, model-agnostic across Claude and Codex.</figcaption>
       </figure>
@@ -253,11 +253,11 @@
             <li class="ship-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><b>Built Sire.bot, 137% backtest ROI in about 2 months.</b> Defined the inputs, outputs, and evaluation rubric, then scored accuracy against ground truth before release.</li>
           </ul>
           <p class="flow-cap"><span class="flow-tag">Sire.bot</span>Models forecast the edge, an evaluation rubric grades each call, and accuracy is tracked against ground truth before anything ships.</p>
-          <ol class="flowline" aria-label="Sire.bot flow: signals, forecast model, evaluation rubric, accuracy against ground truth">
-            <li><span>Signals and data</span></li>
-            <li><span>Forecast model</span></li>
-            <li><span>Evaluation rubric</span></li>
-            <li><span>Accuracy vs ground truth</span></li>
+          <ol class="flowline" aria-label="Sire.bot flow: gather, forecast, evaluate, score against ground truth">
+            <li><span>Gather</span></li>
+            <li><span>Forecast</span></li>
+            <li><span>Evaluate</span></li>
+            <li><span>Score vs truth</span></li>
           </ol>
         </article>
 
@@ -293,12 +293,12 @@
 
       <article class="card card--wip reveal" aria-labelledby="card-rc">
         <h3 class="card-title" id="card-rc">Recon</h3>
-        <p class="wip-line">Autonomous AI research pipeline. Claude Code agents sweep sources daily and score every signal for relevance, credibility, and predictive weight; a weighting engine sharpens accuracy over time.</p>
-        <ol class="flowline" aria-label="Recon flow: sources, Claude Code agents, scoring and weighting, dashboard">
-          <li><span>Sources</span></li>
-          <li><span>Claude Code agents</span></li>
-          <li><span>Score and weight</span></li>
-          <li><span>Dashboard</span></li>
+        <p class="wip-line">Built an autonomous AI research pipeline. Claude Code agents sweep sources daily and score every signal for relevance, credibility, and predictive weight; a weighting engine sharpens accuracy over time.</p>
+        <ol class="flowline" aria-label="Recon flow: sweep, run agents, score, publish">
+          <li><span>Sweep</span></li>
+          <li><span>Run agents</span></li>
+          <li><span>Score</span></li>
+          <li><span>Publish</span></li>
         </ol>
         <p class="wip-meta">Agentic research intelligence with scored signal tracking. Live on Streamlit.</p>
         <div class="wip-foot">
@@ -309,14 +309,14 @@
 
       <article class="card card--wip reveal" aria-labelledby="card-sq">
         <h3 class="card-title" id="card-sq">Sport Quant</h3>
-        <p class="wip-line">A governed +EV terminal for prediction markets. An Elo and Dixon-Coles ensemble scores the edge; a deterministic gate sizes bets with fractional Kelly and hard caps. Models advise, code governs.</p>
-        <ol class="flowline" aria-label="sport-quant pipeline: signals, score, edge, kelly, gate, bet">
-          <li><span>Signals</span></li>
+        <p class="wip-line">Engineered a governed +EV terminal for prediction markets. An Elo and Dixon-Coles ensemble scores the edge; a deterministic gate sizes bets with fractional Kelly and hard caps. Models advise, code governs.</p>
+        <ol class="flowline" aria-label="sport-quant pipeline: ingest, score, find edge, size, gate, decide">
+          <li><span>Ingest</span></li>
           <li><span>Score</span></li>
-          <li><span>Edge</span></li>
-          <li><span>Kelly size</span></li>
+          <li><span>Find edge</span></li>
+          <li><span>Size</span></li>
           <li><span>Gate</span></li>
-          <li><span>Bet or skip</span></li>
+          <li><span>Decide</span></li>
         </ol>
         <p class="wip-meta">Elo and Dixon-Coles with an LLM explainer. Models advise, code governs. Live on Streamlit.</p>
         <div class="wip-foot">

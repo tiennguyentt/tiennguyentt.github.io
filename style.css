@@ -677,6 +677,9 @@ button:focus-visible {
   transition: color 0.2s ease, opacity 0.2s ease;
 }
 .card:hover::before { color: var(--accent); opacity: 1; }
+/* Colonial is a single standalone flagship card: no list separator line or counter */
+#colonial .card { border-top: none; padding: 0; }
+#colonial .card::before { display: none; }
 .card-title {
   font-family: var(--font-display);
   font-weight: 600;
