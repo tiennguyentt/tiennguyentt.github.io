@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tien Nguyen, ex-engineer PM who built the agent system that runs her PM workflow</title>
-<meta name="description" content="Tien Nguyen, Product Manager and ex-full-stack engineer in Ho Chi Minh City. 5+ years in regulated fintech, payments, e-commerce, and insurance. I built an agent system that runs my PM workflow, turning transcripts into source-backed specs that I review and sign off. Fiserv PCI passed across 3 platforms, 400ms cross-chain settlements, 137% backtest ROI. I build my own products with AI agents.">
+<meta name="description" content="Tien Nguyen, Product Manager and ex-full-stack engineer in Ho Chi Minh City. 5+ years in regulated fintech, payments, e-commerce, and insurance. I built an agent system that runs my PM workflow, turning transcripts into source-backed specs that I review and sign off. Fiserv PCI passed across 3 platforms, 400ms settlements, 137% backtest ROI. I build my own products with AI agents.">
 
 <!-- Open Graph / social card -->
 <meta property="og:title" content="Tien Nguyen, ex-engineer PM who built the agent system that runs her PM workflow">
@@ -62,7 +62,7 @@
       "name": "Product Owner",
       "startDate": "2023",
       "endDate": "2025",
-      "description": "Hoookie JSC, 2023 to 2025. Web3 and fintech outsource studio. Owned a non-custodial cross-chain wallet with 400ms settlements and KYC/AML. Owned an autonomous on-chain prediction-market fund with 137% backtest ROI, built on Bittensor Subnet 44. Shipped aVault and aLink, and a TON Telegram toolkit."
+      "description": "Hoookie JSC, 2023 to 2025. Web3 and fintech client-services agency. Built the requirements for Keeta, a high-throughput US payments network on a DAG ledger backed by Google Cloud Spanner, with 400ms settlements and KYC/AML onboarding controls. Built Sire.bot, a market-intelligence system that forecasts market signals with 137% backtest ROI, scored against ground truth before release."
     },
     {
       "@type": "Occupation",
@@ -97,14 +97,15 @@
     "AI agent operations for SMEs",
     "Payments and PCI compliance",
     "Gateway migrations and payment-parameter matrices",
-    "On-chain fintech (non-custodial cross-chain wallets, KYC/AML, settlement)",
+    "Payments infrastructure (high-throughput settlement, KYC/AML onboarding)",
     "Insurance and B2B product (policy lifecycle, 7-product bundling, claims, B2B SSO)",
     "Product discovery, roadmap, prioritization, and Scrum",
     "Product analytics (GA4, funnels, conversion)",
     "Full-stack software development",
     "Flutter and Supabase",
     "Knowledge Engine (multi-model agent system, Claude and Codex, live at tienntt-knowledge-engine.streamlit.app)",
-    "Recon (autonomous crypto and AI research pipeline)",
+    "Recon (autonomous AI news and research intelligence pipeline)",
+    "Sport Quant (governed +EV prediction-market terminal, Elo + Dixon-Coles, fractional Kelly, live at tienntt-sport-quant.streamlit.app)",
     "Petmood (AI pet-health triage)",
     "AnDigi (agent-operated insurance app)"
   ],
@@ -238,19 +239,18 @@
         <article class="card reveal">
           <p class="tl-year">2023 to 2025</p>
           <h3 class="card-title">Hoookie JSC</h3>
-          <p class="card-meta"><span class="card-role">Product Owner</span><span class="card-dot" aria-hidden="true">·</span>Web3 and fintech, outsource</p>
+          <p class="card-meta"><span class="card-role">Product Owner</span><span class="card-dot" aria-hidden="true">·</span>Web3 and fintech, client-services agency</p>
           <ul class="shipped" aria-label="Highlights">
-            <li class="ship-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><b>400ms cross-chain settlements.</b> Led a non-custodial cross-chain wallet for a US client, with KYC/AML and fiat-to-crypto bridging.</li>
-            <li class="ship-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><b>137% ROI in backtests</b> ($10K to $23.7K in about 2 months). Ran roadmap, backlog, and Scrum for an autonomous on-chain prediction-market fund.</li>
-            <li class="ship-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><b>aVault and aLink shipped.</b> Automated USDC strategies, a token-gated terminal for mispricing alerts, and a Telegram trading toolkit.</li>
+            <li class="ship-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><b>400ms settlements.</b> Built the requirements for Keeta, a high-throughput US payments network on a DAG ledger backed by Google Cloud Spanner: use cases, data flows, and acceptance criteria, with KYC/AML onboarding controls.</li>
+            <li class="ship-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><b>137% backtest ROI in about 2 months.</b> Built Sire.bot, a market-intelligence system that forecasts market signals: defined the model inputs, outputs, and evaluation rubric, then scored prediction accuracy against ground truth before release.</li>
+            <li class="ship-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4"/></svg></span><b>Requirements across clients.</b> Ran discovery and elicitation with international clients in Web3 and fintech, turning vague or conflicting ideas into BRD/SRS, use-case models, and acceptance criteria.</li>
           </ul>
-          <p class="flow-cap"><span class="flow-tag">Autonomous fund</span>How the fund runs, from my sire-bot build: models score the edge, risk sizing caps exposure, execution paper-trades before going live, every position settles back into the score.</p>
-          <ol class="flowline" aria-label="Fund flow: signals, prediction, risk sizing, execution, settlement">
+          <p class="flow-cap"><span class="flow-tag">Sire.bot</span>How Sire.bot scores signals: models forecast the edge, an evaluation rubric grades each call, and prediction accuracy is tracked against ground truth before anything ships.</p>
+          <ol class="flowline" aria-label="Sire.bot flow: signals, forecast model, evaluation rubric, accuracy against ground truth">
             <li><span>Signals and data</span></li>
-            <li><span>Prediction model</span></li>
-            <li><span>Risk sizing</span></li>
-            <li><span>Execution</span></li>
-            <li><span>Settlement and score</span></li>
+            <li><span>Forecast model</span></li>
+            <li><span>Evaluation rubric</span></li>
+            <li><span>Accuracy vs ground truth</span></li>
           </ol>
         </article>
 
