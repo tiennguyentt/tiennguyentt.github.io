@@ -206,6 +206,11 @@ button:focus-visible {
   scroll-margin-top: 72px;
 }
 
+/* The hero "See the deployment work" CTA scrolls straight to the demo CTA in
+   section 02. Offset enough to clear the fixed nav and keep the section context
+   (heading + pipeline) visible above the button. */
+#engine-demo { scroll-margin-top: 220px; }
+
 /* spec-block header */
 .spec-head {
   display: flex;
