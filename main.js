@@ -144,7 +144,7 @@
     try {
       (function () {
         var ctx = heroCanvas.getContext("2d");
-        var CELL = 22;
+        var CELL = 26;
         var cols = 0, rows = 0, cur = [], alpha = [];
         var dpr = Math.min(window.devicePixelRatio || 1, 2);
         var running = false, rafId = null, lastGen = 0;
@@ -156,8 +156,8 @@
           cur = new Array(cols * rows);
           alpha = new Array(cols * rows);
           for (var i = 0; i < cur.length; i++) {
-            cur[i] = Math.random() < 0.12 ? 1 : 0;   // sparse, quiet field
-            alpha[i] = cur[i] ? 0.3 : 0;
+            cur[i] = Math.random() < 0.3 ? 1 : 0;     // dense, lively side field
+            alpha[i] = cur[i] ? 0.6 : 0;
           }
         }
 
@@ -192,9 +192,16 @@
               var i = idx(x, y), n = neighbors(x, y);
               var alive = cur[i] ? (n === 2 || n === 3) : (n === 3);  // B3/S23
               next[i] = alive ? 1 : 0;
-              if (alive) { alpha[i] = 0.32; }
-              else { alpha[i] = Math.max(0, alpha[i] - 0.06); }       // soft decay trail
+              if (alive) { alpha[i] = 0.6; }
+              else { alpha[i] = Math.max(0, alpha[i] - 0.03); }       // soft decay trail
             }
+          }
+          // Inject fresh life each generation so the side fields keep a steady
+          // shimmer instead of collapsing to a small clump.
+          var inject = Math.round(cols * rows * 0.03);
+          for (var k = 0; k < inject; k++) {
+            var ri = Math.floor(Math.random() * next.length);
+            next[ri] = 1; alpha[ri] = 0.6;
           }
           cur = next;
         }
@@ -204,21 +211,27 @@
           ctx.clearRect(0, 0, rect.width, rect.height);
           for (var y = 0; y < rows; y++) {
             for (var x = 0; x < cols; x++) {
+              var px = x * CELL + 1, py = y * CELL + 1, s = CELL - 3;
+              // Faint persistent grid: always reads as a deliberate structure.
+              ctx.fillStyle = "rgba(45, 212, 191, 0.05)";
+              ctx.fillRect(px, py, s, s);
+              // Living automaton drawn brighter on top.
               var a = alpha[idx(x, y)];
-              if (a <= 0.02) { continue; }
-              ctx.fillStyle = "rgba(45, 212, 191, " + (a * 0.6).toFixed(3) + ")";
-              ctx.fillRect(x * CELL + 1, y * CELL + 1, CELL - 3, CELL - 3);
+              if (a > 0.02) {
+                ctx.fillStyle = "rgba(45, 212, 191, " + (a * 0.9).toFixed(3) + ")";
+                ctx.fillRect(px, py, s, s);
+              }
             }
           }
         }
 
         function loop(t) {
-          if (t - lastGen > GEN_MS) { step(); lastGen = t; }
-          draw();
+          // Advance + redraw once per generation only (ambient, cheap).
+          if (t - lastGen > GEN_MS) { step(); draw(); lastGen = t; }
           if (running) { rafId = window.requestAnimationFrame(loop); }
         }
-        function start() { if (!running) { running = true; rafId = window.requestAnimationFrame(loop); } }
-        function stop() { running = false; if (rafId) { window.cancelAnimationFrame(rafId); rafId = null; } }
+        function start() { if (!running) { running = true; heroCanvas.classList.add("is-on"); rafId = window.requestAnimationFrame(loop); } }
+        function stop() { running = false; heroCanvas.classList.remove("is-on"); if (rafId) { window.cancelAnimationFrame(rafId); rafId = null; } }
 
         size();
         var rTick = false;

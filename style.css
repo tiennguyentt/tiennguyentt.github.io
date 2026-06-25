@@ -308,21 +308,25 @@ button:focus-visible {
 .js-ready .reveal.is-visible { opacity: 1; transform: none; }
 
 /* ---------- Hero ---------- */
-.hero { padding-top: 104px; position: relative; overflow: hidden; }
-/* Generative cellular-automaton canvas, low-opacity teal, behind the hero text.
-   Masked to the right so cells never sit under the headline (contrast safety). */
+.hero { padding-top: 104px; }
+/* Generative cellular-automaton: a full-viewport ambient field behind the hero.
+   Fixed + z-index:-1 so it spans the entire width under the content (above the
+   page background, below all text). A centered radial mask clears the reading
+   column so cells shimmer evenly on both sides and top/bottom (framing the
+   content) and never sit under the text. Fades out once you scroll past the hero. */
 .hero-canvas {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  width: 100%;
+  width: 100%;          /* <canvas> is a replaced element: inset:0 alone won't stretch it */
   height: 100%;
-  z-index: 0;
-  opacity: 0.5;
+  z-index: -1;
+  opacity: 0;
   pointer-events: none;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0 42%, #000 100%);
-  mask-image: linear-gradient(90deg, transparent 0 42%, #000 100%);
+  transition: opacity 0.6s ease;
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 24%, transparent 38%, transparent 62%, #000 76%, #000 100%);
+  mask-image: linear-gradient(90deg, #000 0%, #000 24%, transparent 38%, transparent 62%, #000 76%, #000 100%);
 }
-.hero > *:not(.hero-canvas) { position: relative; z-index: 1; }
+.hero-canvas.is-on { opacity: 0.85; }
 .kicker {
   font-family: var(--font-mono);
   font-size: 12.5px;
