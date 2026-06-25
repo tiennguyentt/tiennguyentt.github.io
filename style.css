@@ -102,24 +102,18 @@ button:focus-visible {
 .wordmark {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 15px;
-  letter-spacing: 0.12em;
   color: var(--ink);
 }
-/* Animated logo mark: a terminal tile with a teal block cursor (Lottie-quality, zero library). */
-.wordmark__mark { width: 24px; height: 24px; flex: none; display: block; }
-.wm-tile { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1.5; transition: stroke var(--ease-fast) var(--ease); }
-.wm-bar, .wm-stem { fill: var(--ink); }
+/* Borderless logo mark: a "T" with a teal block cursor (Lottie-quality, zero library). */
+.wordmark__mark { width: 26px; height: 26px; flex: none; display: block; }
+.wm-bar, .wm-stem { fill: var(--ink); transition: fill var(--ease-fast) var(--ease); }
 .wm-cur { fill: var(--accent); }
 @keyframes markIn { from { opacity: 0; transform: scale(0.7); } to { opacity: 1; transform: none; } }
-@keyframes wordmarkIn { from { letter-spacing: 0.4em; opacity: 0; } to { letter-spacing: 0.12em; opacity: 1; } }
 .js-ready .wordmark__mark { animation: markIn 0.5s var(--ease) both; transform-origin: center; }
-.js-ready .wordmark__text { animation: wordmarkIn 0.45s var(--ease) 0.1s both; }
-.wordmark:hover .wm-tile,
-.wordmark:focus-visible .wm-tile { stroke: var(--accent); }
+.wordmark:hover .wm-bar,
+.wordmark:hover .wm-stem,
+.wordmark:focus-visible .wm-bar,
+.wordmark:focus-visible .wm-stem { fill: #fff; }
 .wordmark:hover .wm-cur,
 .wordmark:focus-visible .wm-cur { animation: blink 1.1s steps(1) infinite; }
 .topnav {
