@@ -144,7 +144,7 @@
     try {
       (function () {
         var ctx = heroCanvas.getContext("2d");
-        var CELL = 26;
+        var CELL = 30;
         var cols = 0, rows = 0, cur = [], alpha = [];
         var dpr = Math.min(window.devicePixelRatio || 1, 2);
         var running = false, rafId = null, lastGen = 0;
@@ -156,8 +156,8 @@
           cur = new Array(cols * rows);
           alpha = new Array(cols * rows);
           for (var i = 0; i < cur.length; i++) {
-            cur[i] = Math.random() < 0.3 ? 1 : 0;     // dense, lively side field
-            alpha[i] = cur[i] ? 0.6 : 0;
+            cur[i] = Math.random() < 0.18 ? 1 : 0;    // sparse blueprint field
+            alpha[i] = cur[i] ? 0.5 : 0;
           }
         }
 
@@ -192,16 +192,16 @@
               var i = idx(x, y), n = neighbors(x, y);
               var alive = cur[i] ? (n === 2 || n === 3) : (n === 3);  // B3/S23
               next[i] = alive ? 1 : 0;
-              if (alive) { alpha[i] = 0.6; }
-              else { alpha[i] = Math.max(0, alpha[i] - 0.03); }       // soft decay trail
+              if (alive) { alpha[i] = 0.5; }
+              else { alpha[i] = Math.max(0, alpha[i] - 0.025); }      // soft decay trail
             }
           }
-          // Inject fresh life each generation so the side fields keep a steady
-          // shimmer instead of collapsing to a small clump.
-          var inject = Math.round(cols * rows * 0.03);
+          // Inject a touch of fresh life each generation so the field keeps a
+          // slow, quiet shimmer instead of collapsing.
+          var inject = Math.round(cols * rows * 0.015);
           for (var k = 0; k < inject; k++) {
             var ri = Math.floor(Math.random() * next.length);
-            next[ri] = 1; alpha[ri] = 0.6;
+            next[ri] = 1; alpha[ri] = 0.5;
           }
           cur = next;
         }
@@ -209,17 +209,18 @@
         function draw() {
           var rect = heroCanvas.getBoundingClientRect();
           ctx.clearRect(0, 0, rect.width, rect.height);
+          var TAU = Math.PI * 2;
           for (var y = 0; y < rows; y++) {
             for (var x = 0; x < cols; x++) {
-              var px = x * CELL + 1, py = y * CELL + 1, s = CELL - 3;
-              // Faint persistent grid: always reads as a deliberate structure.
-              ctx.fillStyle = "rgba(45, 212, 191, 0.05)";
-              ctx.fillRect(px, py, s, s);
-              // Living automaton drawn brighter on top.
+              var cx = x * CELL + CELL / 2, cy = y * CELL + CELL / 2;
+              // Faint blueprint dot at every node: reads as a precision grid.
+              ctx.fillStyle = "rgba(45, 212, 191, 0.07)";
+              ctx.beginPath(); ctx.arc(cx, cy, 1, 0, TAU); ctx.fill();
+              // Living automaton: a slightly larger, brighter (still subtle) dot.
               var a = alpha[idx(x, y)];
-              if (a > 0.02) {
-                ctx.fillStyle = "rgba(45, 212, 191, " + (a * 0.9).toFixed(3) + ")";
-                ctx.fillRect(px, py, s, s);
+              if (a > 0.04) {
+                ctx.fillStyle = "rgba(45, 212, 191, " + (a * 0.45).toFixed(3) + ")";
+                ctx.beginPath(); ctx.arc(cx, cy, 1 + a * 1.6, 0, TAU); ctx.fill();
               }
             }
           }
