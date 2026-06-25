@@ -40,7 +40,11 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--bg);
+  /* Ultra-faint static "blueprint paper" dot grid across the whole page (no
+     animation; the living dot-field is reserved for the hero + contact bookend). */
+  background-color: var(--bg);
+  background-image: radial-gradient(rgba(45, 212, 191, 0.035) 0.8px, transparent 0.9px);
+  background-size: 30px 30px;
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 17px;

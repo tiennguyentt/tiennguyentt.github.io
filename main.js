@@ -240,16 +240,27 @@
           if (!rTick) { window.requestAnimationFrame(function () { size(); rTick = false; }); rTick = true; }
         });
 
+        // Run the living field at the hero (entrance) and again at the closing
+        // Contact section (bookend) — paused everywhere between to keep the doc calm.
+        var active = {};
+        var anyActive = function () {
+          for (var k in active) { if (active[k]) { return true; } }
+          return false;
+        };
         if ("IntersectionObserver" in window) {
           var hObs = new IntersectionObserver(function (es) {
-            es.forEach(function (e) { if (e.isIntersecting) { start(); } else { stop(); } });
+            es.forEach(function (e) { active[e.target.id] = e.isIntersecting; });
+            if (anyActive()) { start(); } else { stop(); }
           }, { threshold: 0 });
-          hObs.observe(document.getElementById("hero"));
+          ["hero", "contact"].forEach(function (id) {
+            var el = document.getElementById(id);
+            if (el) { hObs.observe(el); }
+          });
         } else { start(); }
 
         document.addEventListener("visibilitychange", function () {
           if (document.hidden) { stop(); }
-          else if (heroCanvas.getBoundingClientRect().bottom > 0) { start(); }
+          else if (anyActive()) { start(); }
         });
       })();
     } catch (e) { /* canvas optional: never break the page */ }
