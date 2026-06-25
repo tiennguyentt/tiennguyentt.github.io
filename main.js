@@ -214,12 +214,12 @@
             for (var x = 0; x < cols; x++) {
               var cx = x * CELL + CELL / 2, cy = y * CELL + CELL / 2;
               // Faint blueprint dot at every node: reads as a precision grid.
-              ctx.fillStyle = "rgba(45, 212, 191, 0.07)";
+              ctx.fillStyle = "rgba(0, 194, 186, 0.07)";
               ctx.beginPath(); ctx.arc(cx, cy, 1, 0, TAU); ctx.fill();
               // Living automaton: a slightly larger, brighter (still subtle) dot.
               var a = alpha[idx(x, y)];
               if (a > 0.04) {
-                ctx.fillStyle = "rgba(45, 212, 191, " + (a * 0.45).toFixed(3) + ")";
+                ctx.fillStyle = "rgba(0, 194, 186, " + (a * 0.45).toFixed(3) + ")";
                 ctx.beginPath(); ctx.arc(cx, cy, 1 + a * 1.6, 0, TAU); ctx.fill();
               }
             }
