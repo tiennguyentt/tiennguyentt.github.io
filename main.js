@@ -110,6 +110,137 @@
     }
   }
 
+  /* ---- Scroll-scrubbed pipeline: nodes light Ingest -> Sign off with scroll ---- */
+  var pipe = document.querySelector(".pipeline--scrub");
+  if (pipe) {
+    var pnodes = Array.prototype.slice.call(pipe.querySelectorAll(".pnode"));
+    if (prefersReduced) {
+      pnodes.forEach(function (n) { n.classList.add("pnode--lit"); });
+    } else {
+      var pTicking = false;
+      var updatePipe = function () {
+        var r = pipe.getBoundingClientRect();
+        var start = window.innerHeight * 0.85;   // begin lighting as the figure enters
+        var end = window.innerHeight * 0.4;      // fully lit once it sits mid-viewport
+        var p = (start - r.top) / (start - end);
+        p = Math.min(Math.max(p, 0), 1);
+        var lit = Math.round(p * pnodes.length);
+        pnodes.forEach(function (n, i) { n.classList.toggle("pnode--lit", i < lit); });
+        pTicking = false;
+      };
+      window.addEventListener("scroll", function () {
+        if (!pTicking) { window.requestAnimationFrame(updatePipe); pTicking = true; }
+      }, { passive: true });
+      window.addEventListener("resize", updatePipe);
+      updatePipe();
+    }
+  }
+
+  /* ---- Hero canvas: generative cellular automaton (agentic-governance metaphor) ----
+     Coarse grid, slow generations, soft alpha-decay shimmer in the teal accent.
+     Pauses when offscreen or tab hidden. Skipped entirely on reduced-motion. */
+  var heroCanvas = document.getElementById("heroCanvas");
+  if (heroCanvas && !prefersReduced && heroCanvas.getContext) {
+    try {
+      (function () {
+        var ctx = heroCanvas.getContext("2d");
+        var CELL = 22;
+        var cols = 0, rows = 0, cur = [], alpha = [];
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var running = false, rafId = null, lastGen = 0;
+        var GEN_MS = 600;
+
+        function idx(x, y) { return y * cols + x; }
+
+        function seed() {
+          cur = new Array(cols * rows);
+          alpha = new Array(cols * rows);
+          for (var i = 0; i < cur.length; i++) {
+            cur[i] = Math.random() < 0.12 ? 1 : 0;   // sparse, quiet field
+            alpha[i] = cur[i] ? 0.3 : 0;
+          }
+        }
+
+        function size() {
+          var rect = heroCanvas.getBoundingClientRect();
+          if (!rect.width || !rect.height) { return; }
+          dpr = Math.min(window.devicePixelRatio || 1, 2);
+          heroCanvas.width = Math.round(rect.width * dpr);
+          heroCanvas.height = Math.round(rect.height * dpr);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          cols = Math.ceil(rect.width / CELL);
+          rows = Math.ceil(rect.height / CELL);
+          seed();
+        }
+
+        function neighbors(x, y) {
+          var n = 0;
+          for (var dy = -1; dy <= 1; dy++) {
+            for (var dx = -1; dx <= 1; dx++) {
+              if (dx === 0 && dy === 0) { continue; }
+              var nx = x + dx, ny = y + dy;
+              if (nx >= 0 && nx < cols && ny >= 0 && ny < rows && cur[idx(nx, ny)]) { n++; }
+            }
+          }
+          return n;
+        }
+
+        function step() {
+          var next = new Array(cols * rows);
+          for (var y = 0; y < rows; y++) {
+            for (var x = 0; x < cols; x++) {
+              var i = idx(x, y), n = neighbors(x, y);
+              var alive = cur[i] ? (n === 2 || n === 3) : (n === 3);  // B3/S23
+              next[i] = alive ? 1 : 0;
+              if (alive) { alpha[i] = 0.32; }
+              else { alpha[i] = Math.max(0, alpha[i] - 0.06); }       // soft decay trail
+            }
+          }
+          cur = next;
+        }
+
+        function draw() {
+          var rect = heroCanvas.getBoundingClientRect();
+          ctx.clearRect(0, 0, rect.width, rect.height);
+          for (var y = 0; y < rows; y++) {
+            for (var x = 0; x < cols; x++) {
+              var a = alpha[idx(x, y)];
+              if (a <= 0.02) { continue; }
+              ctx.fillStyle = "rgba(45, 212, 191, " + (a * 0.6).toFixed(3) + ")";
+              ctx.fillRect(x * CELL + 1, y * CELL + 1, CELL - 3, CELL - 3);
+            }
+          }
+        }
+
+        function loop(t) {
+          if (t - lastGen > GEN_MS) { step(); lastGen = t; }
+          draw();
+          if (running) { rafId = window.requestAnimationFrame(loop); }
+        }
+        function start() { if (!running) { running = true; rafId = window.requestAnimationFrame(loop); } }
+        function stop() { running = false; if (rafId) { window.cancelAnimationFrame(rafId); rafId = null; } }
+
+        size();
+        var rTick = false;
+        window.addEventListener("resize", function () {
+          if (!rTick) { window.requestAnimationFrame(function () { size(); rTick = false; }); rTick = true; }
+        });
+
+        if ("IntersectionObserver" in window) {
+          var hObs = new IntersectionObserver(function (es) {
+            es.forEach(function (e) { if (e.isIntersecting) { start(); } else { stop(); } });
+          }, { threshold: 0 });
+          hObs.observe(document.getElementById("hero"));
+        } else { start(); }
+
+        document.addEventListener("visibilitychange", function () {
+          if (document.hidden) { stop(); }
+          else if (heroCanvas.getBoundingClientRect().bottom > 0) { start(); }
+        });
+      })();
+    } catch (e) { /* canvas optional: never break the page */ }
+  }
+
   /* ---- Mobile nav: hamburger toggle ----
      Panel and links already exist in the DOM (one set, no duplicates), so the
      active-nav IntersectionObserver above keeps working untouched. Here we

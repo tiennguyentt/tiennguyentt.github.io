@@ -1,6 +1,6 @@
 /* ============================================================
    Spec Engine - Tien Nguyen, Product Manager / Product Owner
-   Dark, cool-graphite interface. One rationed indigo accent.
+   Dark, cool-graphite interface. One rationed Signal Teal accent.
    ============================================================ */
 
 :root {
@@ -9,8 +9,9 @@
   --surface-raised: #161B27;
   --ink: #E7EAF0;
   --muted: #9AA3B2;
-  --accent: #7C8CFF;
-  --accent-dim: #3A3F66;
+  --accent: #2DD4BF;
+  --accent-dim: #134E4A;
+  --glow: 45, 212, 191; /* accent as RGB triplet for rgba() glows */
   --line: #1E2430;
   --line-strong: #2A3140;
   /* Structural divider boundary - clears WCAG 3:1 non-text contrast on --bg and --surface. */
@@ -25,6 +26,12 @@
   --maxw: 960px;
   --rail-w: 56px;
   --pad-x: 24px;
+
+  /* Motion vocabulary (used by new RSI-inspired effects; existing rules keep bare ease) */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-fast: 0.18s;
+  --ease-mid: 0.35s;
+  --ease-slow: 0.6s;
 }
 
 * { box-sizing: border-box; }
@@ -95,6 +102,20 @@ button:focus-visible {
   letter-spacing: 0.12em;
   color: var(--ink);
 }
+/* Wordmark "assemble" on load (Lottie-style, zero library) + teal caret on interaction. */
+@keyframes wordmarkIn { from { letter-spacing: 0.4em; opacity: 0; } to { letter-spacing: 0.12em; opacity: 1; } }
+.js-ready .wordmark { animation: wordmarkIn 0.45s var(--ease) both; }
+.wordmark__caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 3px;
+  background: var(--accent);
+  opacity: 0;
+  vertical-align: -0.12em;
+}
+.wordmark:hover .wordmark__caret,
+.wordmark:focus-visible .wordmark__caret { opacity: 1; animation: blink 1.1s steps(1) infinite; }
 .topnav {
   display: flex;
   gap: 22px;
@@ -145,7 +166,7 @@ button:focus-visible {
   height: 7px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 8px rgba(124, 140, 255, 0.6);
+  box-shadow: 0 0 8px rgba(var(--glow), 0.6);
 }
 .topbar-links a {
   font-family: var(--font-mono);
@@ -157,6 +178,36 @@ button:focus-visible {
 .topbar-links a:hover { color: var(--ink); }
 
 @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+
+/* ---------- Micro-animations (restrained, RSI-inspired) ---------- */
+/* Ellipsis "..." for in-progress affordances. */
+@keyframes dots { 0%, 20% { opacity: 0.2; } 50% { opacity: 1; } 80%, 100% { opacity: 0.2; } }
+.dots { letter-spacing: 0.12em; }
+.dots span { animation: dots 1.4s var(--ease) infinite; }
+.dots span:nth-child(2) { animation-delay: 0.2s; }
+.dots span:nth-child(3) { animation-delay: 0.4s; }
+
+/* Reusable hover/focus tooltip. */
+@keyframes tipIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.has-tip { position: relative; }
+.has-tip__tip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 0;
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+  background: var(--surface-raised);
+  border: 1px solid var(--line-aa);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.has-tip:hover .has-tip__tip,
+.has-tip:focus-within .has-tip__tip { opacity: 1; animation: tipIn var(--ease-fast) var(--ease); }
 
 /* ---------- Layout + rail ---------- */
 .layout {
@@ -195,7 +246,7 @@ button:focus-visible {
 .rail-list li { transition: color 0.25s ease, text-shadow 0.25s ease; }
 .rail-list li.lit {
   color: var(--accent);
-  text-shadow: 0 0 10px rgba(124, 140, 255, 0.5);
+  text-shadow: 0 0 10px rgba(var(--glow), 0.5);
 }
 
 .content { min-width: 0; }
@@ -252,12 +303,26 @@ button:focus-visible {
 .js-ready .reveal {
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity var(--ease-slow) var(--ease), transform var(--ease-slow) var(--ease);
 }
 .js-ready .reveal.is-visible { opacity: 1; transform: none; }
 
 /* ---------- Hero ---------- */
-.hero { padding-top: 104px; }
+.hero { padding-top: 104px; position: relative; overflow: hidden; }
+/* Generative cellular-automaton canvas, low-opacity teal, behind the hero text.
+   Masked to the right so cells never sit under the headline (contrast safety). */
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.5;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0 42%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0 42%, #000 100%);
+}
+.hero > *:not(.hero-canvas) { position: relative; z-index: 1; }
 .kicker {
   font-family: var(--font-mono);
   font-size: 12.5px;
@@ -292,7 +357,7 @@ button:focus-visible {
   background: var(--accent);
   vertical-align: -0.06em;
   animation: blink 1.1s steps(1) infinite;
-  box-shadow: 0 0 14px rgba(124, 140, 255, 0.45);
+  box-shadow: 0 0 14px rgba(var(--glow), 0.45);
 }
 .hero-sub {
   font-size: 19px;
@@ -404,7 +469,7 @@ button:focus-visible {
 }
 .dl .sg { text-align: center; font-weight: 600; }
 .dl .tx { padding-left: 12px; }
-.dl--add { background: rgba(124, 140, 255, 0.06); }
+.dl--add { background: rgba(var(--glow), 0.06); }
 .dl--add .sg { color: var(--accent); }
 .dl--add .tx { color: var(--ink); }
 .dl--del .sg { color: var(--muted); }
@@ -509,9 +574,25 @@ button:focus-visible {
 }
 .pnode--human {
   border-color: var(--accent);
-  background: linear-gradient(180deg, rgba(124, 140, 255, 0.08), var(--surface-raised));
+  background: linear-gradient(180deg, rgba(var(--glow), 0.08), var(--surface-raised));
 }
 .pnode--human .pnode__n { color: var(--accent); }
+
+/* Scroll-scrubbed build-up: nodes light Ingest -> Sign off as the section scrolls.
+   Gated behind .js-ready so no-JS shows all nodes fully (static design). */
+.js-ready .pipeline--scrub .pnode {
+  opacity: 0.28;
+  transform: translateY(8px);
+  transition: opacity var(--ease-mid) var(--ease), transform var(--ease-mid) var(--ease), border-color var(--ease-mid) var(--ease);
+}
+.js-ready .pipeline--scrub .pnode.pnode--lit { opacity: 1; transform: none; }
+.js-ready .pipeline--scrub .pnode + .pnode::before {
+  opacity: 0;
+  transition: opacity var(--ease-mid) var(--ease);
+}
+.js-ready .pipeline--scrub .pnode--lit + .pnode--lit::before,
+.js-ready .pipeline--scrub .pnode--lit::before { opacity: 1; }
+.js-ready .pipeline--scrub .pnode--human.pnode--lit { box-shadow: 0 0 12px rgba(var(--glow), 0.4); }
 .pipeline__cap {
   font-size: 14px;
   line-height: 1.55;
@@ -618,7 +699,7 @@ button:focus-visible {
   left: 7px; top: 12px;
   width: 2px; height: 0;
   background: var(--accent);
-  box-shadow: 0 0 10px rgba(124, 140, 255, 0.55);
+  box-shadow: 0 0 10px rgba(var(--glow), 0.55);
   transition: height 0.12s linear;
   z-index: 1;
 }
@@ -642,7 +723,7 @@ button:focus-visible {
 #work .card.is-visible::before {
   background: var(--accent);
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(124, 140, 255, 0.16), 0 0 12px rgba(124, 140, 255, 0.5);
+  box-shadow: 0 0 0 4px rgba(var(--glow), 0.16), 0 0 12px rgba(var(--glow), 0.5);
 }
 .tl-year {
   font-family: var(--font-mono);
@@ -918,6 +999,11 @@ button:focus-visible {
   .block-cursor { animation: none; }
   .topnav a.is-active .cursor { animation: none; }
   .cursor { transition: none; }
+  /* Scrubbed pipeline: show all stages statically. */
+  .pipeline--scrub .pnode { opacity: 1 !important; transform: none !important; }
+  .pipeline--scrub .pnode + .pnode::before { opacity: 1 !important; }
+  /* Hero canvas is purely decorative motion: drop it entirely. */
+  .hero-canvas { display: none !important; }
   * { animation: none !important; }
 }
 
