@@ -4,3 +4,6 @@
 
 # Local-only session notes (never publish — public Pages repo)
 SESSION-HANDOFF.md
+
+# Local Claude/Cursor worktree scratch — not site content
+.claude/
