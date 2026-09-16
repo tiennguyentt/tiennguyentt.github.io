@@ -8,12 +8,12 @@ const pdfHref = withBase(RESUME_PDF);
 
 <BaseLayout
   title="Resume"
-  description="Tien Nguyen — AI Product Manager. Applied AI Enterprise. R&D for Agentic Ops Platforms."
+  description="Tien Nguyen — AI Product Manager. R&D for agentic operations platforms."
 >
   <section class="page-head section resume-actions">
     <p class="eyebrow">Resume</p>
     <h1>Tien Nguyen</h1>
-    <p class="lead">AI Product Manager · Product Owner · Applied AI Enterprise</p>
+    <p class="lead">AI Product Manager · Product Owner</p>
     <div class="action-row">
       <a class="button" href={pdfHref} data-astro-reload download="Tien-Nguyen-CV.pdf"
         >Download PDF</a
@@ -29,46 +29,41 @@ const pdfHref = withBase(RESUME_PDF);
   </section>
 
   <section class="section resume-sheet" data-pagefind-body>
-    <p class="resume-lead">
-      I lead the R&amp;D team that builds Agentic Ops Platforms for Applied AI Enterprise work.
-      Agents draft the first pass. I check every claim against a source, score the result against
-      known facts, and sign off before anything ships.
-    </p>
     <p class="resume-contact">
+      Ho Chi Minh City ·
       <a href="mailto:tiennguyentthao@gmail.com">tiennguyentthao@gmail.com</a>
+      ·
       <a href="https://www.linkedin.com/in/tiennguyenthithao/">LinkedIn</a>
+      ·
       <a href="https://portfolio-tienntt.vercel.app/">portfolio-tienntt.vercel.app</a>
-      <a href="https://tiennguyentt.github.io/">tiennguyentt.github.io</a>
-      <span>Ho Chi Minh City</span>
+    </p>
+
+    <h2>Summary</h2>
+    <p class="resume-lead">
+      AI product manager who leads R&amp;D for agentic operations platforms. Agents draft the first
+      pass; I check each claim against a source, score output against known facts, and sign off
+      before release.
     </p>
 
     <h2>Experience</h2>
     <article class="resume-job">
-      <div class="resume-job__head">
-        <h3>Green SM (Vingroup)</h3>
-        <span>Now</span>
-      </div>
-      <p class="resume-job__title">R&amp;D lead · Agentic Ops Platforms</p>
+      <h3>Green SM (Vingroup) — R&amp;D Lead, Agentic Ops Platforms</h3>
+      <p class="resume-job__meta">Ho Chi Minh City · 2025–Present</p>
       <ul>
         <li>
-          Lead the R&amp;D team that designs and builds agentic ops platforms. Employer product
-          names and internal architecture stay confidential.
+          Lead the R&amp;D team that designs and builds agentic operations platforms. Employer
+          product names and internal architecture stay confidential.
         </li>
       </ul>
     </article>
 
     <article class="resume-job">
-      <div class="resume-job__head">
-        <h3>Colonial Surety</h3>
-        <span>Prior</span>
-      </div>
-      <p class="resume-job__title">
-        Product Management Engineer · B2B fintech, insurance, payments
-      </p>
+      <h3>Colonial Surety — Product Management Engineer</h3>
+      <p class="resume-job__meta">B2B fintech, insurance, payments · 2024–2025</p>
       <ul>
         <li>
-          Ran a PM workflow with agents. I graded transcripts, linked specs to sources, and blocked
-          any change that lacked my sign-off.
+          Ran a PM workflow with agents: graded transcripts, linked specs to sources, and blocked
+          changes that lacked sign-off.
         </li>
         <li>
           Led an emergency PCI payment cutover from Transax to CardPointe across three live
@@ -83,29 +78,23 @@ const pdfHref = withBase(RESUME_PDF);
     </article>
 
     <article class="resume-job">
-      <div class="resume-job__head">
-        <h3>Hoookie JSC</h3>
-        <span>2023–2025</span>
-      </div>
-      <p class="resume-job__title">Product Owner · Web3 and fintech, on-site with clients</p>
+      <h3>Hoookie JSC — Product Owner</h3>
+      <p class="resume-job__meta">Web3 and fintech · 2023–2025</p>
       <ul>
         <li>
-          Wrote requirements for Keeta, a US payments network aimed at 400 ms settlement. Covered
-          use cases, data flows, and acceptance checks.
+          Wrote requirements for Keeta, a US payments network targeting 400 ms settlement: use
+          cases, data flows, and acceptance checks.
         </li>
         <li>
-          Built Sire.bot. A two-month backtest returned 137%. I scored model output against known
+          Built Sire.bot. A two-month backtest returned 137%. Scored model output against known
           results before release.
         </li>
       </ul>
     </article>
 
     <article class="resume-job">
-      <div class="resume-job__head">
-        <h3>Olmo Technology</h3>
-        <span>2022–2023</span>
-      </div>
-      <p class="resume-job__title">Product Owner · social e-commerce</p>
+      <h3>Olmo Technology — Product Owner</h3>
+      <p class="resume-job__meta">Social e-commerce · 2022–2023</p>
       <ul>
         <li>
           Raised bookings 30% by fixing the mobile booking path and bank-transfer flow. Shipped
@@ -115,11 +104,8 @@ const pdfHref = withBase(RESUME_PDF);
     </article>
 
     <article class="resume-job">
-      <div class="resume-job__head">
-        <h3>4/10 Fire Protection Trading Service</h3>
-        <span>2019–2022</span>
-      </div>
-      <p class="resume-job__title">Front-end developer, then BA and associate PM · ERP</p>
+      <h3>4/10 Fire Protection Trading Service — Front-end Developer, then BA and Associate PM</h3>
+      <p class="resume-job__meta">ERP · 2019–2022</p>
       <ul>
         <li>
           Built ERP modules from code through rollout. Owned resource management and quality
@@ -128,60 +114,42 @@ const pdfHref = withBase(RESUME_PDF);
       </ul>
     </article>
 
-    <div class="resume-bottom">
-      <div>
-        <h2>Public demos</h2>
-        <ul class="resume-demos">
-          <li>
-            <strong>Gelato.</strong>
-            Framework that connects agent tools for company ops. Orchestration, gates, and decision logs.
-            In progress.
-          </li>
-          <li>
-            <strong>Knowledge Engine.</strong>
-            Turns meeting notes into a wiki with sources. Flags conflicts. Grades specs. Needs my sign-off
-            before engineering starts.
-          </li>
-          <li>
-            <strong>Recon.</strong>
-            Daily research sweeps. Scores each source for relevance, credibility, and predictive weight.
-          </li>
-          <li>
-            <strong>Sport Quant.</strong>
-            Betting terminal with hard risk caps. Models advise. Code decides the size.
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h2>Skills</h2>
-        <dl class="resume-skills">
-          <dt>Discovery</dt>
-          <dd>Workshops, scope, stakeholders, competitor research</dd>
-          <dt>Delivery</dt>
-          <dd>Pilots, integrations, production rollout, Scrum</dd>
-          <dt>Requirements</dt>
-          <dd>BRD, SRS, PRD, stories, acceptance checks</dd>
-          <dt>AI controls</dt>
-          <dd>Source links, eval thresholds, human sign-off</dd>
-          <dt>Ops</dt>
-          <dd>Agent workflows, MCP, APIs, model choice</dd>
-        </dl>
+    <h2>Projects</h2>
+    <ul class="resume-demos">
+      <li>
+        <strong>Gelato.</strong> Framework that connects agent tools for company operations: orchestration,
+        gates, and decision logs. In progress.
+      </li>
+      <li>
+        <strong>Knowledge Engine.</strong> Turns meeting notes into a wiki with sources; flags conflicts;
+        grades specs; requires human sign-off before engineering starts.
+      </li>
+      <li>
+        <strong>Recon.</strong> Daily research sweeps that score each source for relevance, credibility,
+        and predictive weight.
+      </li>
+      <li>
+        <strong>Sport Quant.</strong> Betting terminal with hard risk caps. Models advise; code decides
+        the size.
+      </li>
+    </ul>
 
-        <h2>Education</h2>
-        <p class="resume-edu">
-          <span>Anthropic Claude Code and Agent Skills</span><span>2026</span>
-        </p>
-        <p class="resume-edu">
-          <span>Product School AI Product Certification</span><span>2025</span>
-        </p>
-        <p class="resume-edu">
-          <span>CoderSchool Full Stack Developer</span><span>2019</span>
-        </p>
-        <p class="resume-edu">
-          <span>HCMC University of Education, BA English</span><span>2014</span>
-        </p>
-      </div>
-    </div>
+    <h2>Skills</h2>
+    <ul class="resume-skills-list">
+      <li><strong>Discovery:</strong> workshops, scope, stakeholders, competitor research</li>
+      <li><strong>Delivery:</strong> pilots, integrations, production rollout, Scrum</li>
+      <li><strong>Requirements:</strong> BRD, SRS, PRD, stories, acceptance checks</li>
+      <li><strong>AI controls:</strong> source links, eval thresholds, human sign-off</li>
+      <li><strong>Operations:</strong> agent workflows, MCP, APIs, model choice</li>
+    </ul>
+
+    <h2>Education</h2>
+    <ul class="resume-skills-list">
+      <li>Anthropic Claude Code and Agent Skills — 2026</li>
+      <li>Product School AI Product Certification — 2025</li>
+      <li>CoderSchool Full Stack Developer — 2019</li>
+      <li>HCMC University of Education, BA English — 2014</li>
+    </ul>
   </section>
 </BaseLayout>
 
@@ -191,134 +159,67 @@ const pdfHref = withBase(RESUME_PDF);
   }
 
   .resume-sheet {
-    max-width: 44rem;
-  }
-
-  .resume-lead {
-    margin: 0 0 0.85rem;
-    color: var(--color-muted);
-    font-size: 1.05rem;
-    line-height: 1.5;
+    max-width: 40rem;
   }
 
   .resume-contact {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem 1rem;
-    margin: 0 0 1.75rem;
-    padding-bottom: 1rem;
+    margin: 0 0 1.25rem;
+    padding-bottom: 0.85rem;
     border-bottom: var(--hairline);
     color: var(--color-muted);
-    font-size: 0.88rem;
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .resume-lead {
+    margin: 0 0 0.5rem;
+    color: var(--color-text);
+    font-size: 1rem;
+    line-height: 1.5;
   }
 
   .resume-sheet h2 {
-    margin: 1.6rem 0 0.75rem;
-    color: var(--color-muted);
-    font-size: 0.78rem;
-    font-weight: 560;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    margin: 1.5rem 0 0.65rem;
+    color: var(--color-text);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-transform: none;
   }
 
   .resume-job {
-    margin: 0 0 1.15rem;
+    margin: 0 0 1.1rem;
   }
 
-  .resume-job__head {
-    display: flex;
-    justify-content: space-between;
-    gap: 0.75rem;
-    align-items: baseline;
-  }
-
-  .resume-job__head h3 {
+  .resume-job h3 {
     margin: 0;
-    font-size: 1.15rem;
+    font-size: 1.02rem;
+    font-weight: 600;
   }
 
-  .resume-job__head span,
-  .resume-job__title {
+  .resume-job__meta {
+    margin: 0.15rem 0 0.35rem;
     color: var(--color-muted);
     font-size: 0.88rem;
   }
 
-  .resume-job__title {
-    margin: 0.2rem 0 0.4rem;
-  }
-
-  .resume-job ul {
+  .resume-job ul,
+  .resume-demos,
+  .resume-skills-list {
     margin: 0;
     padding-left: 1.1rem;
     color: var(--color-muted);
   }
 
-  .resume-job li {
+  .resume-job li,
+  .resume-demos li,
+  .resume-skills-list li {
     margin: 0.25rem 0;
-  }
-
-  .resume-bottom {
-    display: grid;
-    grid-template-columns: 1.2fr 0.9fr;
-    gap: 1.5rem;
-    align-items: start;
-  }
-
-  .resume-demos {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    color: var(--color-muted);
-  }
-
-  .resume-demos li {
-    margin: 0 0 0.75rem;
-    font-size: 0.95rem;
     line-height: 1.45;
   }
 
-  .resume-demos strong {
+  .resume-demos strong,
+  .resume-skills-list strong {
     color: var(--color-text);
-    margin-right: 0.15rem;
-  }
-
-  .resume-skills {
-    display: grid;
-    grid-template-columns: 7.5rem 1fr;
-    gap: 0.45rem 0.85rem;
-    margin: 0;
-  }
-
-  .resume-skills dt {
-    margin: 0;
-    color: var(--color-muted);
-    font-size: 0.85rem;
-    font-weight: 560;
-  }
-
-  .resume-skills dd {
-    margin: 0;
-    color: var(--color-muted);
-    font-size: 0.92rem;
-  }
-
-  .resume-edu {
-    display: flex;
-    justify-content: space-between;
-    gap: 0.75rem;
-    margin: 0.35rem 0;
-    color: var(--color-muted);
-    font-size: 0.92rem;
-  }
-
-  .resume-edu span:last-child {
-    white-space: nowrap;
-  }
-
-  @media (max-width: 700px) {
-    .resume-bottom,
-    .resume-skills {
-      grid-template-columns: 1fr;
-    }
   }
 </style>
