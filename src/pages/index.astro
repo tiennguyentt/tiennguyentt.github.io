@@ -88,24 +88,24 @@ const personSchema = {
   <section class="section demos-band" aria-label="Use cases">
     <div class="demo-sheet">
       <div class="demo-grid">
-      {
-        demos.map((demo) => (
-          <a
-            class={`demo-card demo-card--${demo.kind}`}
-            href={demo.href}
-            target={demo.external ? '_blank' : undefined}
-            rel={demo.external ? 'noopener noreferrer' : undefined}
-          >
-            <div class="demo-card__visual">
-              <ProductScene kind={demo.kind} />
-            </div>
-            <div class="demo-card__bar">
-              <span>{demo.title}</span>
-              <span>Explore</span>
-            </div>
-          </a>
-        ))
-      }
+        {
+          demos.map((demo) => (
+            <a
+              class={`demo-card demo-card--${demo.kind}`}
+              href={demo.href}
+              target={demo.external ? '_blank' : undefined}
+              rel={demo.external ? 'noopener noreferrer' : undefined}
+            >
+              <div class="demo-card__visual">
+                <ProductScene kind={demo.kind} />
+              </div>
+              <div class="demo-card__bar">
+                <span>{demo.title}</span>
+                <span>Explore</span>
+              </div>
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>
