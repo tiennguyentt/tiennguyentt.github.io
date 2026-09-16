@@ -155,12 +155,12 @@ a:not(.brand, .button, .header-cta, .demo-rail a):hover {
 }
 
 .hero {
-  min-height: calc(100svh - 4.5rem);
+  min-height: min(72svh, 44rem);
   display: grid;
   align-content: center;
   justify-items: center;
   text-align: center;
-  padding-block: clamp(4rem, 12vw, 8rem);
+  padding-block: clamp(3.5rem, 9vw, 6.5rem) clamp(2.5rem, 6vw, 4rem);
 }
 
 .hero .lead {
