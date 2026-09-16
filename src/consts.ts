@@ -8,7 +8,7 @@ export const SITE = {
   rssDescription: 'Notes and case studies from Tien Nguyen.',
   ogImage: '/og-image.png',
   author: 'Tien Nguyen',
-  footerText: 'Tien Nguyen · Agentic ops platforms',
+  footerText: 'Tien Nguyen · Applied AI Enterprise',
 } as const;
 
 export const RESUME_PDF = '/Tien-Nguyen-CV.pdf' as const;
