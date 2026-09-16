@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { RESUME_PDF } from '../../consts';
 import { withBase } from '../../lib/url';
+
+const resumeHref = withBase(RESUME_PDF);
 ---
 
 <BaseLayout
@@ -89,7 +92,16 @@ import { withBase } from '../../lib/url';
       </p>
       <div class="action-row">
         <a class="button" href={withBase('/works/')}>Use cases</a>
-        <a class="text-link" href={withBase('/Tien-Nguyen-CV.pdf')}>Resume PDF</a>
+        <a
+          class="text-link"
+          href={resumeHref}
+          data-astro-reload
+          target="_blank"
+          rel="noopener noreferrer">View resume</a
+        >
+        <a class="text-link" href={resumeHref} data-astro-reload download="Tien-Nguyen-CV.pdf"
+          >Download PDF</a
+        >
       </div>
     </div>
   </section>

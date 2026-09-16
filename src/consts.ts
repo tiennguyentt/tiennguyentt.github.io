@@ -11,6 +11,8 @@ export const SITE = {
   footerText: 'Tien Nguyen · Agentic ops platforms',
 } as const;
 
+export const RESUME_PDF = '/Tien-Nguyen-CV.pdf' as const;
+
 export type SocialIcon = 'github' | 'x' | 'linkedin' | 'rss' | 'email';
 
 export interface SocialLink {
