@@ -1,19 +1,35 @@
-# tiennguyentt.github.io
+# Tien Nguyen — portfolio
 
-Source for my personal site at [tiennguyentt.github.io](https://tiennguyentt.github.io/).
+Personal site for **Tien Nguyen**, AI Product Manager / Product Owner.
 
-Plain static HTML/CSS — no build step. Edit `index.html` / `style.css` and push to `main`; GitHub Pages serves it.
+Built on [Astro Keel](https://github.com/yuhan0/astro-keel) (MIT), restyled light-only for recruiter-facing case studies. Deployed on Vercel.
 
-## Resume (CV)
+## Stack
 
-The CV PDF is generated from its HTML source — **always edit `cv.html`, never the PDF directly.**
+- Astro 7 (static)
+- Content collections for case studies (`src/content/works`)
+- Light theme only (Fraunces + Public Sans, cool paper + teal accent)
+- Host: [portfolio-tienntt.vercel.app](https://portfolio-tienntt.vercel.app)
 
-Regenerate `Tien-Nguyen-CV.pdf` after editing `cv.html`:
+## Local
 
-```sh
-"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
-  --headless=new --disable-gpu --no-pdf-header-footer \
-  --print-to-pdf="Tien-Nguyen-CV.pdf" "file://$(pwd)/cv.html"
+```bash
+npm install
+npm run dev
 ```
 
-Then commit both `cv.html` and `Tien-Nguyen-CV.pdf`.
+```bash
+npm run build
+npm run preview
+```
+
+## Content
+
+- Home / About / Work — primary IA
+- Case studies follow **Before → Decision → Outcome**
+- Resume PDF: `public/Tien-Nguyen-CV.pdf`
+- Live demos linked from Knowledge Engine, Recon, and Sport Quant
+
+## Deploy
+
+Push to the linked GitHub repo; Vercel builds `npm run build` and serves `dist/`. Do not publish unfinished work without explicit approval.
