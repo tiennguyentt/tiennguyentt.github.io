@@ -41,7 +41,7 @@ const demos = [
           title: gelato.data.title,
           description: gelato.data.description,
           href: withBase(`/works/${gelato.id}/`),
-          status: 'Scaffold — building' as const,
+          status: 'In progress' as const,
           external: false,
         },
       ]
@@ -77,24 +77,11 @@ const personSchema = {
   <StructuredData slot="head" schema={personSchema} />
 
   <section class="hero section">
-    <p class="kicker">Product · Agents · HCMC</p>
+    <p class="kicker">Product · AI systems · HCMC</p>
     <h1>Tien Nguyen</h1>
-    <p class="hero-line">
-      Agentic AI for everything you{' '}
-      <span
-        class="hero-cycle"
-        data-words="ship,evaluate,specify,gate"
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        <span class="hero-cycle__track">
-          <span class="hero-cycle__word is-active">ship</span>
-        </span>
-        <span class="hero-cycle__rule" aria-hidden="true"></span>
-      </span>.
-    </p>
+    <p class="hero-line">AI product manager. Models advise. Humans decide.</p>
     <p class="lead">
-      Source-traced specs. Ground-truth evals. Human sign-off on every critical change.
+      Specs stay tied to sources. Evals use ground truth. Critical changes need a human signature.
     </p>
     <div class="action-row" aria-label={t('home.primaryLinks')}>
       <a
@@ -107,94 +94,11 @@ const personSchema = {
     </div>
   </section>
 
-  <script>
-    function initHeroCycle() {
-      const root = document.querySelector<HTMLElement>('.hero-cycle');
-      if (!root || root.dataset.bound === '1') return;
-      root.dataset.bound = '1';
-
-      const words = (root.dataset.words ?? 'ship')
-        .split(',')
-        .map((w) => w.trim())
-        .filter(Boolean);
-      if (words.length < 2) return;
-
-      const track = root.querySelector<HTMLElement>('.hero-cycle__track');
-      if (!track) return;
-
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      let index = 0;
-      let busy = false;
-
-      const measure = (text: string) => {
-        const probe = document.createElement('span');
-        probe.className = 'hero-cycle__word is-active';
-        probe.style.position = 'absolute';
-        probe.style.visibility = 'hidden';
-        probe.style.pointerEvents = 'none';
-        probe.textContent = text;
-        track.appendChild(probe);
-        const width = probe.getBoundingClientRect().width;
-        probe.remove();
-        return width;
-      };
-
-      const setWidth = (text: string) => {
-        track.style.width = `${measure(text)}px`;
-      };
-
-      setWidth(words[0]);
-
-      const swap = () => {
-        if (busy) return;
-        busy = true;
-        const next = (index + 1) % words.length;
-        const current = track.querySelector<HTMLElement>('.hero-cycle__word.is-active');
-        if (!current) {
-          busy = false;
-          return;
-        }
-
-        if (reduceMotion) {
-          current.textContent = words[next];
-          setWidth(words[next]);
-          index = next;
-          busy = false;
-          return;
-        }
-
-        const incoming = document.createElement('span');
-        incoming.className = 'hero-cycle__word is-enter';
-        incoming.textContent = words[next];
-        track.appendChild(incoming);
-        setWidth(words[next]);
-
-        requestAnimationFrame(() => {
-          current.classList.remove('is-active');
-          current.classList.add('is-exit');
-          incoming.classList.remove('is-enter');
-          incoming.classList.add('is-active');
-        });
-
-        window.setTimeout(() => {
-          current.remove();
-          index = next;
-          busy = false;
-        }, 520);
-      };
-
-      window.setInterval(swap, 2600);
-    }
-
-    initHeroCycle();
-    document.addEventListener('astro:page-load', initHeroCycle);
-  </script>
-
-  <section class="section demos-band" aria-label="Demo use cases">
-    <p class="kicker">Use cases</p>
-    <h2>Demos and placeholders</h2>
+  <section class="section demos-band" aria-label="Selected work">
+    <p class="kicker">Work</p>
+    <h2>Systems you can open today</h2>
     <p class="lead narrow demos-intro">
-      Live systems first. Gelato platforms sit as scaffold until builds ship.
+      Knowledge Engine, Sport Quant, and Recon are live. Gelato is still under construction.
     </p>
 
     <div class="demo-grid">
@@ -224,18 +128,18 @@ const personSchema = {
 
   <section class="section method-band" aria-label="Method">
     <p class="kicker">Method</p>
-    <h2>Gate what models cannot own.</h2>
+    <h2>Keep models out of final decisions.</h2>
     <p class="lead narrow">
-      Scope the non-deterministic parts. Trace every claim to a source. Score against ground truth
-      before autonomy.
+      Isolate the uncertain steps. Trace every claim to a source. Score results against ground truth
+      before you grant autonomy.
     </p>
   </section>
 
   <section class="section contact-band" aria-labelledby="contact-head">
     <p class="kicker">Contact</p>
-    <h2 id="contact-head">AI-native PM roles</h2>
+    <h2 id="contact-head">Open to AI product roles</h2>
     <p class="lead narrow">
-      Green SM platform ops. Personal demos public. Colonial delivery on the resume only.
+      Based in Ho Chi Minh City. Day job is Green SM platform ops. Colonial delivery is resume-only.
     </p>
     <div class="action-row">
       <a class="button" href="mailto:tiennguyentthao@gmail.com">Email</a>

@@ -1,17 +1,17 @@
 ---
-title: 'Gelato — Agentic Ops platforms'
-description: 'Scaffold — building. Control plane + six verticals (Core, SDLC, Nexus, Simulation, DS/ML, Marketplace). Specs in place; live demos when builds ship. Branded Gelato only.'
+title: 'Gelato platforms'
+description: 'In progress. Control plane plus six verticals (Core, SDLC, Nexus, Simulation, DS/ML, Marketplace). Specs exist. Live demos arrive when builds ship.'
 tech:
-  - Scaffold
-  - Building
-  - Agentic Ops
+  - In progress
+  - Control plane
+  - Agent ops
 order: 4
 publishDate: 2026-09-01
 ---
 
 ## Status
 
-**Scaffold — building.** Architecture and contracts exist. Live platform demos update when real builds ship. Not an employer product tour.
+In progress. Architecture and contracts exist. Live demos appear when builds ship. This is personal product work, not an employer tour.
 
 ## Suite
 
@@ -19,7 +19,7 @@ publishDate: 2026-09-01
 | --- | ------------------------------ |
 | 00  | Control plane                  |
 | 01  | Core (gateway / embed / graph) |
-| 02  | Agentic SDLC & testing         |
+| 02  | SDLC and testing               |
 | 03  | Nexus                          |
 | 04  | Simulation                     |
 | 05  | DS/ML                          |
@@ -27,4 +27,4 @@ publishDate: 2026-09-01
 
 ## One-liner
 
-Advisory-first agent ops: models advise; decision logs and humans decide.
+Models advise. Decision logs and humans decide.
