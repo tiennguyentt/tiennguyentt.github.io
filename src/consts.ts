@@ -3,7 +3,8 @@ import type { UIKey } from './i18n/en';
 export const SITE = {
   locale: 'en',
   title: 'Tien Nguyen',
-  description: 'Tien Nguyen, R&D Lead PO for agentic operations platforms in Ho Chi Minh City.',
+  description:
+    'Tien Nguyen, R&D Lead and Product Owner for agentic operations platforms in Ho Chi Minh City.',
   rssDescription: 'Notes and case studies from Tien Nguyen.',
   ogImage: '/og-image.png',
   author: 'Tien Nguyen',
