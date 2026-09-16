@@ -36,7 +36,13 @@ const works = (await getCollection('works')).sort((a, b) => {
                 {formatDate(work.data.publishDate, 'short')}
               </time>
               <span>{work.data.tech.slice(0, 3).join(' · ')}</span>
-              {work.data.link ? <span>Live demo</span> : <span>No public demo</span>}
+              {work.data.link ? (
+                <span>Live demo</span>
+              ) : work.id.startsWith('gelato') ? (
+                <span>Scaffold — building</span>
+              ) : (
+                <span>Resume only</span>
+              )}
             </p>
             <h2>
               <a href={withBase(`/works/${work.id}/`)}>{work.data.title}</a>

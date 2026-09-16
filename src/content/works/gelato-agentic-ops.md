@@ -15,15 +15,15 @@ publishDate: 2026-09-01
 
 ## Suite
 
-| | Platform |
-| --- | --- |
-| 00 | Control plane |
-| 01 | Core (gateway / embed / graph) |
-| 02 | Agentic SDLC & testing |
-| 03 | Nexus |
-| 04 | Simulation |
-| 05 | DS/ML |
-| 06 | Intelligent Marketplace |
+|     | Platform                       |
+| --- | ------------------------------ |
+| 00  | Control plane                  |
+| 01  | Core (gateway / embed / graph) |
+| 02  | Agentic SDLC & testing         |
+| 03  | Nexus                          |
+| 04  | Simulation                     |
+| 05  | DS/ML                          |
+| 06  | Intelligent Marketplace        |
 
 ## One-liner
 
