@@ -13,7 +13,6 @@ const works = (await getCollection('works')).sort((a, b) => {
 });
 
 const useCases = works.filter((w) => w.data.link || w.id.startsWith('gelato'));
-const resumeItems = works.filter((w) => !w.data.link && !w.id.startsWith('gelato'));
 ---
 
 <BaseLayout
@@ -24,8 +23,8 @@ const resumeItems = works.filter((w) => !w.data.link && !w.id.startsWith('gelato
     <p class="eyebrow">Work</p>
     <h1>Use cases</h1>
     <p class="lead">
-      Live demos you can open. Gelato is still under construction. Employer delivery stays on the
-      resume timeline below.
+      Live demos you can open. Gelato is still under construction. Employer work is on the resume,
+      not in this list.
     </p>
   </section>
 
@@ -50,31 +49,4 @@ const resumeItems = works.filter((w) => !w.data.link && !w.id.startsWith('gelato
       }
     </div>
   </section>
-
-  {
-    resumeItems.length > 0 && (
-      <section class="section resume-band" aria-labelledby="resume-timeline">
-        <p class="kicker">Resume</p>
-        <h2 id="resume-timeline">Resume timeline</h2>
-        <p class="lead narrow">Same facts as the PDF. No public demo. No employer internals.</p>
-        <div class="work-list">
-          {resumeItems.map((work) => (
-            <article class="work-card work-card--list">
-              <p class="entry-meta">
-                <time datetime={work.data.publishDate.toISOString()}>
-                  {formatDate(work.data.publishDate, 'short')}
-                </time>
-                <span>{work.data.tech.slice(0, 3).join(' · ')}</span>
-                <span>Resume</span>
-              </p>
-              <h2>
-                <a href={withBase(`/works/${work.id}/`)}>{work.data.title}</a>
-              </h2>
-              <p>{work.data.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-    )
-  }
 </BaseLayout>
