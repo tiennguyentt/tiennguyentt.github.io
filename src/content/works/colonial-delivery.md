@@ -37,4 +37,4 @@ The method matches how I run agentic work later: make the non-deterministic part
 
 - How the payment-parameter matrix was structured for migration risk.
 - Where product ownership sat relative to compliance evidence.
-- How this delivery work informs the later agentic deployment (same org, higher automation ambition, same audit instincts).
+- How this delivery work informs later governed / agentic product work: same audit instincts, higher automation ambition — without publishing employer platform internals.
