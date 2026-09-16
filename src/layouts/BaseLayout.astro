@@ -8,6 +8,7 @@ import { SITE, NAV_ITEMS } from '../consts';
 import { locale, navLabel, t } from '../i18n';
 import CodeCopy from '../components/CodeCopy.astro';
 import SocialLinks from '../components/SocialLinks.astro';
+import BrandLogo from '../components/BrandLogo.astro';
 
 interface Props {
   title?: string;
@@ -74,8 +75,8 @@ const isActive = (href: string) => {
   <body>
     <header class="site-header">
       <a class="brand" href={withBase('/')} aria-label={t('nav.brandHome', { site: siteName })}>
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span>{siteName}</span>
+        <BrandLogo />
+        <span class="visually-hidden">{siteName}</span>
       </a>
       <nav class="site-nav" aria-label={t('nav.label')}>
         {

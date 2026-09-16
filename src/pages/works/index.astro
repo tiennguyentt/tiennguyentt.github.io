@@ -11,38 +11,35 @@ const works = (await getCollection('works')).sort((a, b) => {
   if (orderA !== orderB) return orderA - orderB;
   return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
 });
+
+const useCases = works.filter((w) => w.data.link || w.id.startsWith('gelato'));
+const resumeItems = works.filter((w) => !w.data.link && !w.id.startsWith('gelato'));
 ---
 
 <BaseLayout
   title="Work"
-  description={`Proof of applied AI for enterprise: Knowledge Engine, Sport Quant, Recon. Gelato in progress. ${SITE.title}.`}
+  description={`Use cases: Knowledge Engine, Sport Quant, Recon. Gelato in progress. ${SITE.title}.`}
 >
   <section class="page-head section">
     <p class="eyebrow">Work</p>
-    <h1>Case studies and live demos</h1>
+    <h1>Use cases</h1>
     <p class="lead">
-      Open Knowledge Engine, Sport Quant, and Recon. Gelato is still under construction. Colonial
-      Surety stays on the resume. Employer internals stay off this site.
+      Live demos you can open. Gelato is still under construction. Employer delivery stays on the
+      resume timeline below.
     </p>
   </section>
 
-  <section class="section" aria-label="Case study list">
+  <section class="section" aria-label="Use cases">
     <div class="work-list">
       {
-        works.map((work) => (
+        useCases.map((work) => (
           <article class="work-card work-card--list">
             <p class="entry-meta">
               <time datetime={work.data.publishDate.toISOString()}>
                 {formatDate(work.data.publishDate, 'short')}
               </time>
               <span>{work.data.tech.slice(0, 3).join(' · ')}</span>
-              {work.data.link ? (
-                <span>Live demo</span>
-              ) : work.id.startsWith('gelato') ? (
-                <span>In progress</span>
-              ) : (
-                <span>Resume only</span>
-              )}
+              {work.data.link ? <span>Live demo</span> : <span>In progress</span>}
             </p>
             <h2>
               <a href={withBase(`/works/${work.id}/`)}>{work.data.title}</a>
@@ -53,4 +50,31 @@ const works = (await getCollection('works')).sort((a, b) => {
       }
     </div>
   </section>
+
+  {
+    resumeItems.length > 0 && (
+      <section class="section resume-band" aria-labelledby="resume-timeline">
+        <p class="kicker">Resume</p>
+        <h2 id="resume-timeline">Resume timeline</h2>
+        <p class="lead narrow">Same facts as the PDF. No public demo. No employer internals.</p>
+        <div class="work-list">
+          {resumeItems.map((work) => (
+            <article class="work-card work-card--list">
+              <p class="entry-meta">
+                <time datetime={work.data.publishDate.toISOString()}>
+                  {formatDate(work.data.publishDate, 'short')}
+                </time>
+                <span>{work.data.tech.slice(0, 3).join(' · ')}</span>
+                <span>Resume</span>
+              </p>
+              <h2>
+                <a href={withBase(`/works/${work.id}/`)}>{work.data.title}</a>
+              </h2>
+              <p>{work.data.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    )
+  }
 </BaseLayout>

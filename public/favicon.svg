@@ -1,6 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <rect width="32" height="32" rx="7" fill="#F7F8FA"/>
-  <rect x="8" y="10" width="10" height="2.4" rx="0.4" fill="#1C2430"/>
-  <rect x="11.8" y="10" width="2.4" height="11.5" rx="0.4" fill="#1C2430"/>
-  <rect x="20.4" y="11.5" width="3.2" height="9" rx="0.6" fill="#2F6F78"/>
+  <rect width="32" height="32" rx="7" fill="#FFFFFF"/>
+  <text
+    x="5"
+    y="21"
+    fill="#171717"
+    font-family="system-ui, sans-serif"
+    font-size="11"
+    font-weight="700"
+    letter-spacing="-0.06em"
+  >tt</text>
+  <rect x="5" y="24" width="14" height="1.5" fill="#E31937"/>
 </svg>
