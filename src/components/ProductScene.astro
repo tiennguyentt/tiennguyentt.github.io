@@ -58,7 +58,7 @@ const { kind } = Astro.props;
 {
   kind === 'gelato' && (
     <div class="scene scene--voice">
-      <div class="scene-orb" />
+      <div class="scene-orb" data-gelato-orb />
     </div>
   )
 }
@@ -175,18 +175,24 @@ const { kind } = Astro.props;
   .scene--voice {
     display: grid;
     place-items: center;
+    padding: 0 1.2rem 3.4rem;
     background: #f4f4f2;
   }
 
   .scene-orb {
-    width: 8.5rem;
-    height: 8.5rem;
+    width: min(58%, 11rem);
+    aspect-ratio: 1;
     border-radius: 50%;
+    overflow: hidden;
     background:
       radial-gradient(circle at 35% 30%, #ffffff 0%, transparent 32%),
       radial-gradient(circle at 60% 70%, #2a1a3a 0%, #0b0b12 55%, #000 100%);
-    box-shadow: inset 0 0 2rem #5a3a8a66;
-    animation: scene-orb 8s linear infinite;
+  }
+
+  .scene-orb canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   @keyframes scene-pulse {
@@ -199,16 +205,32 @@ const { kind } = Astro.props;
     }
   }
 
-  @keyframes scene-orb {
-    to {
-      filter: hue-rotate(25deg);
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .scene-dot,
-    .scene-orb {
+    .scene-dot {
       animation: none;
     }
   }
 </style>
+
+<script>
+  import { mountGelatoOrb } from '../lib/gelato-orb';
+
+  let stop: (() => void) | undefined;
+
+  const start = () => {
+    stop?.();
+    stop = undefined;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const host = document.querySelector<HTMLElement>('[data-gelato-orb]');
+    if (!host) return;
+    try {
+      stop = mountGelatoOrb(host);
+    } catch {
+      stop = undefined;
+    }
+  };
+
+  start();
+  document.addEventListener('astro:page-load', start);
+  document.addEventListener('astro:before-swap', () => stop?.());
+</script>
