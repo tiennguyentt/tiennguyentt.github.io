@@ -1,18 +1,33 @@
 ---
-/** Control-plane route ledger for the Gelato bento card. */
+/** Route ledger for the Gelato bento card — functional labels only. */
 const routes = [
-  { id: 'hub-core', path: '00 → core', state: 'open', detail: 'Gateway open.' },
-  { id: 'core-nexus', path: 'core → nexus', state: 'online', detail: 'Graph online.' },
-  { id: 'nexus-dsml', path: 'nexus → dsml', state: 'synced', detail: 'Memory synced.' },
-  { id: 'dsml-sim', path: 'dsml → sim', state: 'running', detail: 'Scenario 12 runs.' },
-  { id: 'sim-mkt', path: 'sim → mkt', state: 'draft', detail: 'Listing draft ready.' },
-  { id: 'sdlc-sim', path: 'sdlc → sim', state: 'pass', detail: 'Three tests pass.' },
+  { id: 'hub-gateway', path: 'route → gateway', state: 'open', detail: 'Gateway open.' },
+  { id: 'gateway-memory', path: 'gateway → memory', state: 'linked', detail: 'Sources linked.' },
+  { id: 'memory-models', path: 'memory → models', state: 'synced', detail: 'Context synced.' },
+  {
+    id: 'models-scenarios',
+    path: 'models → scenarios',
+    state: 'running',
+    detail: 'Scenario batch runs.',
+  },
+  {
+    id: 'scenarios-outputs',
+    path: 'scenarios → outputs',
+    state: 'draft',
+    detail: 'Handoff draft ready.',
+  },
+  {
+    id: 'pipeline-scenarios',
+    path: 'delivery → scenarios',
+    state: 'pass',
+    detail: 'Three checks pass.',
+  },
 ] as const;
 ---
 
 <div class="scene scene--plane" data-live="plane" aria-hidden="true">
   <header class="plane-head">
-    <p class="plane-kicker">Control plane</p>
+    <p class="plane-kicker">Route ledger</p>
     <span class="plane-badge">live</span>
   </header>
 
