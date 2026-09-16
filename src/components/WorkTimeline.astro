@@ -1,0 +1,74 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { withBase } from '../lib/url';
+import { formatDate } from '../i18n';
+
+interface Props {
+  works: CollectionEntry<'works'>[];
+}
+
+const { works } = Astro.props;
+---
+
+<ol class="work-timeline" data-work-timeline>
+  {
+    works.map((work, index) => {
+      const href = work.data.link ?? withBase(`/works/${work.id}/`);
+      const external = Boolean(work.data.link);
+      const status = work.data.link ? 'Live demo' : 'In progress';
+
+      return (
+        <li class="work-timeline__item" style={`--i:${index}`}>
+          <div class="work-timeline__rail" aria-hidden="true">
+            <time class="work-timeline__date" datetime={work.data.publishDate.toISOString()}>
+              {formatDate(work.data.publishDate, 'short')}
+            </time>
+            <span class="work-timeline__dot" />
+          </div>
+
+          <article class="work-timeline__panel">
+            <div class="work-timeline__meta">
+              <time
+                class="work-timeline__date-mobile"
+                datetime={work.data.publishDate.toISOString()}
+              >
+                {formatDate(work.data.publishDate, 'short')}
+              </time>
+              <span>{work.data.tech.slice(0, 3).join(' · ')}</span>
+              <span class={`work-timeline__status${work.data.link ? '' : ' is-building'}`}>
+                {status}
+              </span>
+            </div>
+            <h2>
+              <a
+                href={href}
+                target={external ? '_blank' : undefined}
+                rel={external ? 'noopener noreferrer' : undefined}
+              >
+                {work.data.title}
+              </a>
+            </h2>
+            <p>{work.data.description}</p>
+          </article>
+        </li>
+      );
+    })
+  }
+</ol>
+
+<script>
+  import { mountWorkTimeline } from '../lib/work-timeline';
+
+  let stopTimeline: (() => void) | undefined;
+
+  const start = () => {
+    stopTimeline?.();
+    stopTimeline = undefined;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    stopTimeline = mountWorkTimeline(document, reduced);
+  };
+
+  start();
+  document.addEventListener('astro:page-load', start);
+  document.addEventListener('astro:before-swap', () => stopTimeline?.());
+</script>
