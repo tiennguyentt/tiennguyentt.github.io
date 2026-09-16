@@ -1,4 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
   <rect width="32" height="32" fill="#FFFFFF"/>
-  <path fill="#171717" d="M10 8h12v2.4h-4.8V24h-2.4V10.4H10z"/>
+  <text
+    x="4"
+    y="21"
+    fill="#171717"
+    font-family="system-ui, sans-serif"
+    font-size="11"
+    font-weight="700"
+    letter-spacing="-0.08em"
+  >tt</text>
 </svg>
