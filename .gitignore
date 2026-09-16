@@ -7,3 +7,7 @@ SESSION-HANDOFF.md
 
 # Local Claude/Cursor worktree scratch — not site content
 .claude/
+
+# Vercel CLI local link (project/org IDs) — do not commit
+.vercel/
+

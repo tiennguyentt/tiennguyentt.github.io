@@ -1,0 +1,6 @@
+.gstack/
+.claude/
+SESSION-HANDOFF.md
+.git/
+*.log
+.DS_Store
