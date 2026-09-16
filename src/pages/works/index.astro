@@ -1,52 +1,28 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { withBase } from '../../lib/url';
+import WorkTimeline from '../../components/WorkTimeline.astro';
 import { SITE } from '../../consts';
-import { formatDate } from '../../i18n';
 
-const works = (await getCollection('works')).sort((a, b) => {
-  const orderA = a.data.order ?? Number.MAX_SAFE_INTEGER;
-  const orderB = b.data.order ?? Number.MAX_SAFE_INTEGER;
-  if (orderA !== orderB) return orderA - orderB;
-  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
-});
-
-const useCases = works.filter((w) => w.data.link || w.id.startsWith('gelato'));
+const useCases = (await getCollection('works'))
+  .filter((work) => work.data.link || work.id.startsWith('gelato'))
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 ---
 
 <BaseLayout
   title="Work"
-  description={`Use cases: Knowledge Engine, Sport Quant, Recon. Gelato in progress. ${SITE.title}.`}
+  description={`Use cases: Gelato, Knowledge Engine, Recon, Sport Quant. ${SITE.title}.`}
 >
   <section class="page-head section">
     <p class="eyebrow">Work</p>
     <h1>Use cases</h1>
     <p class="lead">
-      Live demos you can open. Gelato is still under construction. Employer work is on the resume,
-      not in this list.
+      Newest first. Live demos you can open. Gelato is still under construction. Employer work stays
+      on the resume, not in this list.
     </p>
   </section>
 
   <section class="section" aria-label="Use cases">
-    <div class="work-list">
-      {
-        useCases.map((work) => (
-          <article class="work-card work-card--list">
-            <p class="entry-meta">
-              <time datetime={work.data.publishDate.toISOString()}>
-                {formatDate(work.data.publishDate, 'short')}
-              </time>
-              <span>{work.data.tech.slice(0, 3).join(' · ')}</span>
-              {work.data.link ? <span>Live demo</span> : <span>In progress</span>}
-            </p>
-            <h2>
-              <a href={withBase(`/works/${work.id}/`)}>{work.data.title}</a>
-            </h2>
-            <p>{work.data.description}</p>
-          </article>
-        ))
-      }
-    </div>
+    <WorkTimeline works={useCases} />
   </section>
 </BaseLayout>
