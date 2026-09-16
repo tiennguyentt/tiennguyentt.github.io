@@ -4,11 +4,11 @@ export const SITE = {
   locale: 'en',
   title: 'Tien Nguyen',
   description:
-    'AI product manager in Ho Chi Minh City. Live demos: Knowledge Engine, Recon, Sport Quant. Gelato in progress. Employer work (Green SM, Colonial) stays on the resume.',
+    'Applied AI for enterprise. Tien Nguyen designs and leads AI platforms that turn complex workflows into governed operations. AI product manager and product owner in Ho Chi Minh City.',
   rssDescription: 'Notes and case studies from Tien Nguyen.',
   ogImage: '/og-image.png',
   author: 'Tien Nguyen',
-  footerText: 'Tien Nguyen · AI Product Manager / Product Owner',
+  footerText: 'Tien Nguyen · Applied AI for enterprise',
 } as const;
 
 export type SocialIcon = 'github' | 'x' | 'linkedin' | 'rss' | 'email';
