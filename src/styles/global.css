@@ -46,9 +46,7 @@ html {
 body {
   min-width: 320px;
   margin: 0;
-  background:
-    radial-gradient(120% 80% at 50% -10%, #f3f3f3 0%, #ffffff 55%),
-    #ffffff;
+  background: radial-gradient(120% 80% at 50% -10%, #f3f3f3 0%, #ffffff 55%), #ffffff;
 }
 
 ::selection {
@@ -308,45 +306,120 @@ h3 {
 .demos-band h2,
 .method-band h2,
 .contact-band h2 {
-  max-width: 12ch;
+  max-width: 14ch;
 }
 
-.demo-rail {
-  list-style: none;
-  margin: 2.5rem 0 0;
-  padding: 0;
+.demos-intro {
+  margin-top: -0.35rem;
+  margin-bottom: 2.25rem;
+}
+
+.demo-grid {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
 }
 
-.demo-rail li + li {
-  border-top: var(--hairline);
-}
-
-.demo-rail a {
+.demo-card {
   display: grid;
-  gap: 0.55rem;
-  padding-block: 1.6rem;
+  grid-template-rows: 11.5rem auto;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+  background: var(--color-bg);
   background-image: none !important;
-  transition: opacity 200ms var(--ease-out);
+  color: inherit;
+  transition:
+    transform 220ms var(--ease-out),
+    border-color 220ms var(--ease-out);
 }
 
-.demo-rail a:hover {
-  opacity: 0.55;
+.demo-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--color-ink) 22%, white);
+  color: inherit;
+  opacity: 1;
 }
 
-.demo-title {
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-  font-weight: 560;
-  letter-spacing: -0.035em;
-  line-height: 1.05;
+.demo-card__visual {
+  display: grid;
+  place-items: center;
+  background: #d8e0e7;
 }
 
-.demo-desc {
-  max-width: 40rem;
+.demo-card--sage .demo-card__visual {
+  background: #d2ddd5;
+}
+
+.demo-card--stone .demo-card__visual {
+  background: #e2e0db;
+}
+
+.demo-card--ink .demo-card__visual {
+  background: #dde3e8;
+}
+
+.demo-card__badge {
+  display: grid;
+  place-items: center;
+  width: 5.5rem;
+  height: 5.5rem;
+  background: #f7f7f5;
+  clip-path: polygon(
+    50% 0%,
+    66% 10%,
+    90% 10%,
+    90% 34%,
+    100% 50%,
+    90% 66%,
+    90% 90%,
+    66% 90%,
+    50% 100%,
+    34% 90%,
+    10% 90%,
+    10% 66%,
+    0% 50%,
+    10% 34%,
+    10% 10%,
+    34% 10%
+  );
+}
+
+.demo-card__body {
+  display: grid;
+  gap: 0.45rem;
+  padding: 1.15rem 1.2rem 1.3rem;
+}
+
+.demo-card__status {
+  margin: 0;
   color: var(--color-muted);
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.demo-card__body h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.demo-card__body p:last-child {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
   letter-spacing: -0.01em;
+}
+
+@media (max-width: 760px) {
+  .demo-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .method-band .lead,
