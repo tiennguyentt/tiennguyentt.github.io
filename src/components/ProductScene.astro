@@ -34,9 +34,6 @@ const { kind } = Astro.props;
   kind === 'sport' && (
     <div class="scene scene--build" data-live="build" aria-hidden="true">
       <div class="scene-chrome">
-        <span />
-        <span />
-        <span />
         sport-quant
         <i class="scene-progress">
           <b />
@@ -204,6 +201,7 @@ const { kind } = Astro.props;
     max-width: 88%;
     margin: 0;
     padding: 0.55rem 0.75rem;
+    border: 1px solid #e8e8e8;
     border-radius: 1rem;
     font-size: 0.78rem;
     line-height: 1.35;
@@ -251,7 +249,11 @@ const { kind } = Astro.props;
     width: 0.55rem;
     height: 0.55rem;
     border-radius: 50%;
-    background: #1a7f4b;
+    background: #bdbdbd;
+  }
+
+  .scene-checks li:first-child::before {
+    background: #171717;
   }
 
   .scene-status {
@@ -281,7 +283,7 @@ const { kind } = Astro.props;
     width: 0.32rem;
     height: 0.32rem;
     border-radius: 50%;
-    background: #c45c4a;
+    background: #e31937;
     animation: scene-pulse 1.2s ease-in-out infinite;
   }
 
@@ -316,8 +318,8 @@ const { kind } = Astro.props;
     display: flex;
     flex-direction: column;
     padding: 0;
-    background: #171717;
-    color: #d7d7d4;
+    background: #f4f4f2;
+    color: #2a2a2a;
     font-family: var(--font-mono);
   }
 
@@ -326,20 +328,9 @@ const { kind } = Astro.props;
     align-items: center;
     gap: 0.35rem;
     padding: 0.65rem 0.85rem;
-    color: #8a8a86;
+    color: #6a6a6a;
     font-size: 0.68rem;
-    border-bottom: 1px solid #2a2a2a;
-  }
-
-  .scene-chrome span {
-    width: 0.45rem;
-    height: 0.45rem;
-    border-radius: 50%;
-    background: #3a3a3a;
-  }
-
-  .scene-chrome span:first-child {
-    background: #c45c4a;
+    border-bottom: 1px solid #e8e8e8;
   }
 
   .scene-progress {
@@ -349,14 +340,14 @@ const { kind } = Astro.props;
     height: 0.28rem;
     margin-left: auto;
     border-radius: 99px;
-    background: #2a2a2a;
+    background: #e8e8e8;
   }
 
   .scene-progress > b {
     display: block;
     width: 42%;
     height: 100%;
-    background: #d7d7d4;
+    background: #171717;
     animation: scene-progress 2.6s ease-in-out infinite;
   }
 
@@ -386,23 +377,23 @@ const { kind } = Astro.props;
   }
 
   .scene-tag--ok {
-    color: #8fd19e;
+    color: #6a6a6a;
   }
 
   .scene-tag--run {
-    color: #9ecbff;
+    color: #e31937;
   }
 
   .c-dim {
-    color: #6e6e6a;
+    color: #6a6a6a;
   }
 
   .c-key {
-    color: #9ecbff;
+    color: #2a2a2a;
   }
 
   .c-ok {
-    color: #8fd19e;
+    color: #2a2a2a;
   }
 
   .is-enter {

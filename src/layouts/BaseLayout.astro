@@ -74,20 +74,22 @@ const isActive = (href: string) => {
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href={withBase('/')} aria-label={t('nav.brandHome', { site: siteName })}>
-        <BrandLogo />
-        <span class="visually-hidden">{siteName}</span>
-      </a>
-      <nav class="site-nav" aria-label={t('nav.label')}>
-        {
-          NAV_ITEMS.map((item) => (
-            <a href={withBase(item.href)} aria-current={isActive(item.href) ? 'page' : undefined}>
-              {navLabel(item)}
-            </a>
-          ))
-        }
-      </nav>
-      <a class="header-cta" href={withBase(RESUME_PAGE)}>Resume</a>
+      <div class="site-header__inner">
+        <a class="brand" href={withBase('/')} aria-label={t('nav.brandHome', { site: siteName })}>
+          <BrandLogo />
+          <span class="visually-hidden">{siteName}</span>
+        </a>
+        <nav class="site-nav" aria-label={t('nav.label')}>
+          {
+            NAV_ITEMS.map((item) => (
+              <a href={withBase(item.href)} aria-current={isActive(item.href) ? 'page' : undefined}>
+                {navLabel(item)}
+              </a>
+            ))
+          }
+        </nav>
+        <a class="header-cta" href={withBase(RESUME_PAGE)}>Resume</a>
+      </div>
     </header>
 
     <main>

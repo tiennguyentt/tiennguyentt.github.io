@@ -23,6 +23,8 @@
   --page-pad: clamp(1.25rem, 4vw, 2.5rem);
   --baseline: 1.5rem;
   --hairline: 1px solid var(--color-line);
+  --demo-card-radius: 1.35rem;
+  --demo-stroke: 1px solid var(--color-line);
   --focus-ring: 0 0 0 3px color-mix(in srgb, var(--color-ink) 16%, transparent);
   --radius-control: 4px;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -79,7 +81,6 @@ a:not(.brand, .button, .header-cta, .demo-card, .demo-rail a):hover {
   outline-offset: 3px;
 }
 
-.site-header,
 .site-footer,
 .section {
   width: min(var(--content-width), calc(100% - var(--page-pad) * 2));
@@ -90,18 +91,25 @@ a:not(.brand, .button, .header-cta, .demo-card, .demo-rail a):hover {
   position: sticky;
   top: 0;
   z-index: 100;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 1rem;
+  width: 100%;
   padding-block: 1.1rem;
   background: color-mix(in srgb, var(--color-bg) 88%, transparent);
   backdrop-filter: blur(16px);
 }
 
+.site-header__inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  width: min(var(--content-width), calc(100% - var(--page-pad) * 2));
+  margin-inline: auto;
+}
+
 .brand {
   display: inline-flex;
   align-items: center;
+  justify-self: start;
   color: var(--color-text);
 }
 
@@ -111,15 +119,16 @@ a:not(.brand, .button, .header-cta, .demo-card, .demo-rail a):hover {
 
 .brand-logo {
   display: block;
-  width: 5.4rem;
-  height: 1.15rem;
+  width: 6.2rem;
+  height: 1.25rem;
+  overflow: visible;
 }
 
 .brand-logo__word {
   fill: currentColor;
   font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 650;
+  font-size: 17px;
+  font-weight: 700;
   letter-spacing: -0.07em;
 }
 
@@ -138,6 +147,7 @@ a:not(.brand, .button, .header-cta, .demo-card, .demo-rail a):hover {
 .site-nav {
   display: flex;
   justify-content: center;
+  justify-self: center;
   gap: clamp(1rem, 3vw, 2rem);
 }
 
@@ -158,6 +168,7 @@ a:not(.brand, .button, .header-cta, .demo-card, .demo-rail a):hover {
 .header-cta {
   display: inline-flex;
   align-items: center;
+  justify-self: end;
   min-height: 2rem;
   color: var(--color-text);
   font-size: 0.88rem;
@@ -175,12 +186,12 @@ a:not(.brand, .button, .header-cta, .demo-card, .demo-rail a):hover {
 }
 
 .hero {
-  min-height: min(68svh, 40rem);
+  min-height: min(50svh, 30rem);
   display: grid;
   align-content: center;
   justify-items: center;
   text-align: center;
-  padding-block: clamp(4.5rem, 11vw, 8rem) clamp(2rem, 4vw, 3rem);
+  padding-block: clamp(3rem, 8vw, 5.5rem) clamp(1.75rem, 3.5vw, 2.5rem);
 }
 
 .hero .lead {
@@ -225,7 +236,7 @@ a:not(.brand, .button, .header-cta, .demo-card, .demo-rail a):hover {
 .hero h1 {
   max-width: 22ch;
   margin-bottom: 1.1rem;
-  font-size: clamp(3.2rem, 8.5vw, 5.6rem);
+  font-size: clamp(2.75rem, 7vw, 4.75rem);
   line-height: 0.98;
 }
 
@@ -408,7 +419,7 @@ h3 {
   flex-direction: column;
   overflow: hidden;
   border: 0;
-  border-radius: 1.35rem;
+  border-radius: var(--demo-card-radius);
   background: #f4f4f2;
   background-image: none !important;
   color: inherit;
@@ -423,10 +434,6 @@ h3 {
 
 .demo-card--gelato {
   grid-column: 1 / -1;
-}
-
-.demo-card--sport {
-  color: #f4f4f2;
 }
 
 .demo-card__visual {
@@ -452,10 +459,6 @@ h3 {
   font-size: 0.92rem;
   font-weight: 560;
   letter-spacing: -0.02em;
-}
-
-.demo-card--sport .demo-card__bar {
-  color: #f2f2ef;
 }
 
 .demo-card__bar span:last-child {
@@ -1073,7 +1076,7 @@ pre code {
 }
 
 @media (max-width: 760px) {
-  .site-header {
+  .site-header__inner {
     grid-template-columns: 1fr auto;
   }
 
@@ -1086,7 +1089,9 @@ pre code {
   .site-nav {
     grid-column: 1 / -1;
     grid-row: 2;
+    width: 100%;
     justify-content: flex-start;
+    justify-self: stretch;
     overflow-x: auto;
   }
 
