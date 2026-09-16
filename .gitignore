@@ -1,9 +1,29 @@
-.gstack/
+# build output
+dist/
+.output/
+
+# dependencies
+node_modules/
+
+# generated types
+.astro/
+
+# environment variables
+.env
+.env.production
+
+# macOS
 .DS_Store
-*.log
 
-# Local-only session notes (never publish — public Pages repo)
-SESSION-HANDOFF.md
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Local Claude/Cursor worktree scratch — not site content
+# lychee's link-check cache, written when the workflow's command is run locally
+.lycheecache
+
+# editor / agent local state
+.codex/
 .claude/
