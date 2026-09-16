@@ -1,4 +1,6 @@
 ---
+import GelatoControlPlane from './GelatoControlPlane.astro';
+
 interface Props {
   kind: 'knowledge' | 'sport' | 'recon' | 'gelato';
 }
@@ -166,13 +168,7 @@ const { kind } = Astro.props;
   )
 }
 
-{
-  kind === 'gelato' && (
-    <div class="scene scene--voice">
-      <div class="scene-orb" data-gelato-orb />
-    </div>
-  )
-}
+{kind === 'gelato' && <GelatoControlPlane />}
 
 <style>
   .scene {
@@ -413,32 +409,6 @@ const { kind } = Astro.props;
     animation: scene-enter 480ms ease both;
   }
 
-  .scene--voice {
-    display: grid;
-    place-items: center;
-    padding: 0 1.2rem 3.4rem;
-    background: #f4f4f2;
-  }
-
-  .scene-orb {
-    width: min(58%, 13rem);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    overflow: hidden;
-    background:
-      radial-gradient(circle at 28% 22%, rgba(255, 255, 255, 0.95) 0%, transparent 34%),
-      radial-gradient(circle at 50% 50%, #0a0a0c 0%, #050508 68%, #020203 100%);
-    box-shadow:
-      0 0.35rem 1.6rem rgba(23, 23, 23, 0.08),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-  }
-
-  .scene-orb canvas {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-
   @keyframes scene-pulse {
     0%,
     100% {
@@ -480,33 +450,18 @@ const { kind } = Astro.props;
 </style>
 
 <script>
-  import { mountGelatoOrb } from '../lib/gelato-orb';
   import { mountLiveScenes } from '../lib/live-scenes';
 
-  let stopOrb: (() => void) | undefined;
   let stopScenes: (() => void) | undefined;
 
   const start = () => {
-    stopOrb?.();
     stopScenes?.();
-    stopOrb = undefined;
     stopScenes = undefined;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     stopScenes = mountLiveScenes(document, reduced);
-    if (reduced) return;
-    const host = document.querySelector<HTMLElement>('[data-gelato-orb]');
-    if (!host) return;
-    try {
-      stopOrb = mountGelatoOrb(host);
-    } catch {
-      stopOrb = undefined;
-    }
   };
 
   start();
   document.addEventListener('astro:page-load', start);
-  document.addEventListener('astro:before-swap', () => {
-    stopOrb?.();
-    stopScenes?.();
-  });
+  document.addEventListener('astro:before-swap', () => stopScenes?.());
 </script>

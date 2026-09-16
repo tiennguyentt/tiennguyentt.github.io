@@ -1,4 +1,4 @@
-export type LiveKind = 'chat' | 'build' | 'bot';
+export type LiveKind = 'chat' | 'build' | 'bot' | 'plane';
 
 export function mountLiveScenes(root: ParentNode, reduced: boolean): () => void {
   const stops: Array<() => void> = [];
@@ -17,6 +17,9 @@ export function mountLiveScenes(root: ParentNode, reduced: boolean): () => void 
       case 'bot':
         stops.push(mountBot(host, reduced));
         break;
+      case 'plane':
+        stops.push(mountPlane(host, reduced));
+        break;
       default: {
         const _never: never = kind;
         void _never;
@@ -34,6 +37,7 @@ function parseLiveKind(value: string | undefined): LiveKind | null {
     case 'chat':
     case 'build':
     case 'bot':
+    case 'plane':
       return value;
     default:
       return null;
@@ -139,6 +143,41 @@ function mountBot(host: HTMLElement, reduced: boolean): () => void {
     index = (index + 1) % frames.length;
     frames[index].classList.add('is-active');
   }, 3800);
+
+  return () => window.clearInterval(timer);
+}
+
+function mountPlane(host: HTMLElement, reduced: boolean): () => void {
+  const status = host.querySelector<HTMLElement>('.scene-live');
+  const frames = [...host.querySelectorAll<HTMLElement>('.scene-script [data-frame]')];
+  const nodes = [...host.querySelectorAll<HTMLElement>('.plane-node')];
+  if (!status || frames.length === 0) return () => {};
+
+  let index = 0;
+
+  const paint = (frameIndex: number, animate: boolean) => {
+    const frame = frames[frameIndex];
+    const nodeId = frame.dataset.frame;
+    status.textContent = frame.textContent ?? '';
+    if (animate) status.classList.add('is-enter');
+    else status.classList.remove('is-enter');
+
+    for (const node of nodes) {
+      node.classList.toggle('is-active', node.dataset.node === nodeId);
+    }
+    for (const link of host.querySelectorAll<SVGLineElement>('.plane-link')) {
+      link.style.stroke = link.dataset.link === nodeId ? '#e31937' : '#c8c8c4';
+    }
+  };
+
+  paint(0, false);
+  if (reduced) return () => {};
+
+  const timer = window.setInterval(() => {
+    index = (index + 1) % frames.length;
+    paint(index, true);
+    window.setTimeout(() => status.classList.remove('is-enter'), 480);
+  }, 2800);
 
   return () => window.clearInterval(timer);
 }

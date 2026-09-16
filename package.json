@@ -26,13 +26,11 @@
     "@fontsource/public-sans": "^5.3.0",
     "astro": "^7.3.1",
     "mdast-util-to-string": "^4.0.0",
-    "reading-time": "^1.5.0",
-    "three": "^0.186.0"
+    "reading-time": "^1.5.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "@fontsource/fraunces": "^5.3.0",
-    "@types/three": "^0.186.0",
     "pagefind": "^1.5.2",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
