@@ -1,4 +1,6 @@
 ---
+import GelatoControlPlane from './GelatoControlPlane.astro';
+
 interface Props {
   kind: 'knowledge' | 'sport' | 'recon' | 'gelato';
 }
@@ -8,60 +10,165 @@ const { kind } = Astro.props;
 
 {
   kind === 'knowledge' && (
-    <div class="scene scene--chat">
-      <p class="scene-bubble scene-bubble--in">Trace every claim to a source.</p>
-      <p class="scene-bubble scene-bubble--out">Conflicts resolved. Spec graded.</p>
-      <p class="scene-bubble scene-bubble--in">Human sign-off before engineering.</p>
+    <div class="scene scene--chat" data-live="chat" aria-hidden="true">
+      <div class="scene-live">
+        <p class="scene-bubble scene-bubble--in">Trace every claim to a source.</p>
+        <p class="scene-bubble scene-bubble--out">Conflicts resolved. Spec graded.</p>
+        <p class="scene-bubble scene-bubble--in">Human sign-off before engineering.</p>
+      </div>
+      <div class="scene-script" hidden>
+        <p class="scene-bubble scene-bubble--in">Trace every claim to a source.</p>
+        <p class="scene-bubble scene-bubble--out">Conflicts resolved. Spec graded.</p>
+        <p class="scene-bubble scene-bubble--in">Human sign-off before engineering.</p>
+        <p class="scene-bubble scene-bubble--out">Transcript in. Wiki linked to sources.</p>
+        <p class="scene-bubble scene-bubble--in">Two notes disagree. The recording wins.</p>
+        <p class="scene-bubble scene-bubble--out">Spec graded 8 of 10.</p>
+        <p class="scene-bubble scene-bubble--in">Diff signed. Engineering can start.</p>
+        <p class="scene-bubble scene-bubble--out">Agents draft. I sign the handoff.</p>
+      </div>
     </div>
   )
 }
 
 {
   kind === 'sport' && (
-    <div class="scene scene--build" aria-hidden="true">
+    <div class="scene scene--build" data-live="build" aria-hidden="true">
       <div class="scene-chrome">
         <span />
         <span />
         <span />
         sport-quant
+        <i class="scene-progress">
+          <b />
+        </i>
       </div>
-      <pre class="scene-code">
-        <span class="c-dim"># size the edge</span>
+      <pre class="scene-code scene-live">
+        <span class="scene-row">
+          <span class="c-dim">|</span> ingest markets and fixtures
+          <span class="scene-tag scene-tag--ok">[done]</span>
+        </span>
+        <span class="scene-row">
+          <span class="c-dim">|</span> score elo and dixon-coles
+          <span class="scene-tag scene-tag--run">[running]</span>
+        </span>
+        <span class="c-dim">Thought for 1.4s</span>
+        <span>
+          <span class="c-ok">◆</span> size the edge
+        </span>
         <span>
           <span class="c-key">edge</span> = elo - market
         </span>
         <span>
           <span class="c-key">size</span> = kelly(edge) * 0.25
         </span>
-        <span>
-          <span class="c-warn">if</span> size &gt; 0.01: size = 0.01
-        </span>
-        <span class="c-ok">code.decide(size)</span>
       </pre>
+      <div class="scene-script" hidden>
+        <div data-frame>
+          <span class="scene-row">
+            <span class="c-dim">|</span> ingest markets and fixtures
+            <span class="scene-tag scene-tag--ok">[done]</span>
+          </span>
+          <span class="scene-row">
+            <span class="c-dim">|</span> score elo and dixon-coles
+            <span class="scene-tag scene-tag--run">[running]</span>
+          </span>
+          <span class="c-dim">Thought for 1.4s</span>
+          <span>
+            <span class="c-ok">◆</span> size the edge
+          </span>
+          <span>
+            <span class="c-key">edge</span> = elo - market
+          </span>
+          <span>
+            <span class="c-key">size</span> = kelly(edge) * 0.25
+          </span>
+        </div>
+        <div data-frame>
+          <span class="scene-row">
+            <span class="c-dim">|</span> gate 1% hard cap
+            <span class="scene-tag scene-tag--ok">[done]</span>
+          </span>
+          <span class="scene-row">
+            <span class="c-dim">|</span> decide in code
+            <span class="scene-tag scene-tag--run">[running]</span>
+          </span>
+          <span class="c-dim">Thought for 0.9s</span>
+          <span>
+            <span class="c-ok">◆</span> code.decide(size)
+          </span>
+          <span>models advise</span>
+          <span class="c-ok">code governs</span>
+        </div>
+        <div data-frame>
+          <span class="scene-row">
+            <span class="c-dim">|</span> read market price
+            <span class="scene-tag scene-tag--ok">[done]</span>
+          </span>
+          <span class="scene-row">
+            <span class="c-dim">|</span> apply fractional kelly
+            <span class="scene-tag scene-tag--ok">[done]</span>
+          </span>
+          <span class="c-dim">Thought for 2.1s</span>
+          <span>
+            <span class="c-ok">◆</span> cap exposure
+          </span>
+          <span>
+            <span class="c-key">size</span> = min(size, 0.01)
+          </span>
+          <span class="scene-row">
+            <span class="c-ok">code.decide(size)</span>
+            <span class="scene-tag scene-tag--ok">[done]</span>
+          </span>
+        </div>
+      </div>
     </div>
   )
 }
 
 {
   kind === 'recon' && (
-    <div class="scene scene--bot">
-      <p class="scene-bubble scene-bubble--out">Score relevance, credibility, weight.</p>
-      <p class="scene-meta">Daily sweep · 3 scores · outcomes feed the weights</p>
-      <p class="scene-status">
-        <span class="scene-dot" />
-        Scoring
-      </p>
+    <div class="scene scene--bot" data-live="bot" aria-hidden="true">
+      <div class="scene-frame is-active">
+        <p class="scene-kicker">Created routine · Daily sweep</p>
+        <ul class="scene-checks">
+          <li>Relevance scored</li>
+          <li>Credibility scored</li>
+          <li>Predictive weight updated</li>
+        </ul>
+        <p class="scene-status">
+          <span class="scene-think">
+            <>
+              <i />
+              <i />
+              <i />
+            </>
+          </span>
+          Thinking
+        </p>
+      </div>
+      <div class="scene-frame">
+        <p class="scene-bubble scene-bubble--out">Score relevance, credibility, weight.</p>
+        <p class="scene-meta">Daily sweep. Three scores. Outcomes feed the weights.</p>
+        <p class="scene-status">
+          <span class="scene-dot" />
+          Scoring
+        </p>
+      </div>
+      <div class="scene-frame">
+        <p class="scene-kicker">Flagged · source weight dropped</p>
+        <p class="scene-bubble scene-bubble--in">
+          Report drafted. Nine signals matched. Two need review.
+        </p>
+        <p class="scene-status">
+          <span class="scene-dot" />
+          Scoring
+        </p>
+      </div>
     </div>
   )
 }
 
-{
-  kind === 'gelato' && (
-    <div class="scene scene--voice">
-      <div class="scene-orb" data-gelato-orb />
-    </div>
-  )
-}
+{kind === 'gelato' && <GelatoControlPlane />}
 
 <style>
   .scene {
@@ -76,6 +183,21 @@ const { kind } = Astro.props;
     flex-direction: column;
     gap: 0.55rem;
     background: #f4f4f2;
+  }
+
+  .scene--bot {
+    position: relative;
+    padding: 0;
+  }
+
+  .scene-live {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.55rem;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
   }
 
   .scene-bubble {
@@ -94,10 +216,42 @@ const { kind } = Astro.props;
     background: #ecece8;
   }
 
-  .scene-meta {
+  .scene-meta,
+  .scene-kicker {
     margin: 0.15rem 0 0;
     color: #6a6a6a;
     font-size: 0.72rem;
+  }
+
+  .scene-kicker {
+    font-weight: 550;
+    letter-spacing: -0.01em;
+  }
+
+  .scene-checks {
+    margin: 0.35rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .scene-checks li {
+    position: relative;
+    margin: 0.28rem 0;
+    padding-left: 1.1rem;
+    color: #2a2a2a;
+    font-size: 0.78rem;
+    line-height: 1.4;
+  }
+
+  .scene-checks li::before {
+    content: '';
+    position: absolute;
+    top: 0.38rem;
+    left: 0;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: #1a7f4b;
   }
 
   .scene-status {
@@ -117,7 +271,50 @@ const { kind } = Astro.props;
     animation: scene-pulse 1.8s ease-in-out infinite;
   }
 
+  .scene-think {
+    display: inline-flex;
+    gap: 0.16rem;
+    align-items: center;
+  }
+
+  .scene-think i {
+    width: 0.32rem;
+    height: 0.32rem;
+    border-radius: 50%;
+    background: #c45c4a;
+    animation: scene-pulse 1.2s ease-in-out infinite;
+  }
+
+  .scene-think i:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+
+  .scene-think i:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  .scene-frame {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 1.15rem 1.2rem 3.4rem;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 480ms ease,
+      visibility 480ms ease;
+  }
+
+  .scene-frame.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
   .scene--build {
+    display: flex;
+    flex-direction: column;
     padding: 0;
     background: #171717;
     color: #d7d7d4;
@@ -145,15 +342,55 @@ const { kind } = Astro.props;
     background: #c45c4a;
   }
 
+  .scene-progress {
+    display: block;
+    overflow: hidden;
+    width: 3.4rem;
+    height: 0.28rem;
+    margin-left: auto;
+    border-radius: 99px;
+    background: #2a2a2a;
+  }
+
+  .scene-progress > b {
+    display: block;
+    width: 42%;
+    height: 100%;
+    background: #d7d7d4;
+    animation: scene-progress 2.6s ease-in-out infinite;
+  }
+
   .scene--build pre,
   .scene-code {
     display: grid;
     gap: 0.2rem;
+    flex: 1;
+    min-height: 0;
     margin: 0;
-    padding: 0.9rem 1rem;
+    padding: 0.9rem 1rem 3.2rem;
+    overflow: hidden;
     font-size: 0.72rem;
     line-height: 1.55;
     white-space: pre-wrap;
+  }
+
+  .scene-row {
+    display: flex;
+    gap: 0.4rem;
+    align-items: baseline;
+  }
+
+  .scene-tag {
+    margin-left: auto;
+    font-size: 0.62rem;
+  }
+
+  .scene-tag--ok {
+    color: #8fd19e;
+  }
+
+  .scene-tag--run {
+    color: #9ecbff;
   }
 
   .c-dim {
@@ -164,35 +401,12 @@ const { kind } = Astro.props;
     color: #9ecbff;
   }
 
-  .c-warn {
-    color: #e8b86d;
-  }
-
   .c-ok {
     color: #8fd19e;
   }
 
-  .scene--voice {
-    display: grid;
-    place-items: center;
-    padding: 0 1.2rem 3.4rem;
-    background: #f4f4f2;
-  }
-
-  .scene-orb {
-    width: min(58%, 11rem);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    overflow: hidden;
-    background:
-      radial-gradient(circle at 35% 30%, #ffffff 0%, transparent 32%),
-      radial-gradient(circle at 60% 70%, #2a1a3a 0%, #0b0b12 55%, #000 100%);
-  }
-
-  .scene-orb canvas {
-    display: block;
-    width: 100%;
-    height: 100%;
+  .is-enter {
+    animation: scene-enter 480ms ease both;
   }
 
   @keyframes scene-pulse {
@@ -205,32 +419,49 @@ const { kind } = Astro.props;
     }
   }
 
+  @keyframes scene-enter {
+    from {
+      opacity: 0;
+      transform: translateY(0.45rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes scene-progress {
+    0% {
+      transform: translateX(-110%);
+    }
+    100% {
+      transform: translateX(280%);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .scene-dot {
+    .scene-dot,
+    .scene-think i,
+    .scene-progress > b,
+    .is-enter {
       animation: none;
     }
   }
 </style>
 
 <script>
-  import { mountGelatoOrb } from '../lib/gelato-orb';
+  import { mountLiveScenes } from '../lib/live-scenes';
 
-  let stop: (() => void) | undefined;
+  let stopScenes: (() => void) | undefined;
 
   const start = () => {
-    stop?.();
-    stop = undefined;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const host = document.querySelector<HTMLElement>('[data-gelato-orb]');
-    if (!host) return;
-    try {
-      stop = mountGelatoOrb(host);
-    } catch {
-      stop = undefined;
-    }
+    stopScenes?.();
+    stopScenes = undefined;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    stopScenes = mountLiveScenes(document, reduced);
   };
 
   start();
   document.addEventListener('astro:page-load', start);
-  document.addEventListener('astro:before-swap', () => stop?.());
+  document.addEventListener('astro:before-swap', () => stopScenes?.());
 </script>

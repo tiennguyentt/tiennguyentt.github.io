@@ -192,6 +192,16 @@ a:not(.brand, .button, .header-cta, .demo-card, .demo-rail a):hover {
   justify-content: center;
 }
 
+.hero .action-row .button:not(.button--ghost) {
+  min-width: 11.5rem;
+  padding-inline: 2.15rem;
+}
+
+.hero .action-row .button--ghost {
+  min-width: 7.25rem;
+  padding-inline: 1.35rem;
+}
+
 .hero > * {
   animation: rise 800ms var(--ease-out) both;
 }
