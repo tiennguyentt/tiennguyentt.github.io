@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <title>Tien Nguyen — Resume</title>
+    <link rel="stylesheet" href="./outfit-local.css" />
     <style>
       @page {
         size: A4;
-        margin: 10mm 11mm;
+        margin: 12mm 14mm;
       }
 
       * {
@@ -19,49 +20,49 @@
         padding: 0;
         background: #ffffff;
         color: #171717;
-        font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-        font-size: 8.75pt;
-        line-height: 1.32;
+        font-family: Outfit, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+        font-size: 9.5pt;
+        line-height: 1.38;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
 
       main {
-        max-width: 188mm;
+        max-width: 182mm;
         margin: 0 auto;
       }
 
       h1 {
-        margin: 0 0 0.15rem;
-        font-size: 20pt;
+        margin: 0 0 0.2rem;
+        font-size: 22pt;
         font-weight: 600;
         letter-spacing: -0.04em;
-        line-height: 1;
+        line-height: 1.05;
       }
 
       .role {
-        margin: 0 0 0.35rem;
-        font-size: 9.5pt;
-        font-weight: 520;
+        margin: 0 0 0.45rem;
+        font-size: 10.5pt;
+        font-weight: 500;
         letter-spacing: -0.02em;
       }
 
       .lead {
-        margin: 0 0 0.4rem;
-        color: #5c5c5c;
-        font-size: 8.5pt;
-        max-width: 46rem;
+        margin: 0 0 0.55rem;
+        color: #4a4a4a;
+        font-size: 9.25pt;
+        max-width: 42rem;
       }
 
       .contact {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.15rem 0.7rem;
-        margin: 0 0 0.55rem;
-        padding-bottom: 0.45rem;
-        border-bottom: 1px solid #e8e8e8;
+        gap: 0.2rem 0.85rem;
+        margin: 0 0 0.7rem;
+        padding-bottom: 0.55rem;
+        border-bottom: 1px solid #e4e4e4;
         color: #5c5c5c;
-        font-size: 7.75pt;
+        font-size: 8.25pt;
       }
 
       .contact a {
@@ -70,16 +71,16 @@
       }
 
       h2 {
-        margin: 0.55rem 0 0.28rem;
+        margin: 0.75rem 0 0.35rem;
         color: #5c5c5c;
-        font-size: 7.25pt;
-        font-weight: 560;
+        font-size: 7.5pt;
+        font-weight: 600;
         letter-spacing: 0.1em;
         text-transform: uppercase;
       }
 
       .job {
-        margin: 0 0 0.38rem;
+        margin: 0 0 0.5rem;
       }
 
       .job-head {
@@ -91,90 +92,93 @@
 
       .job h3 {
         margin: 0;
-        font-size: 9.25pt;
+        font-size: 10pt;
         font-weight: 600;
         letter-spacing: -0.02em;
       }
 
       .when {
         color: #5c5c5c;
-        font-size: 7.5pt;
+        font-size: 8pt;
         white-space: nowrap;
       }
 
       .title {
-        margin: 0.05rem 0 0.15rem;
+        margin: 0.08rem 0 0.18rem;
         color: #5c5c5c;
-        font-size: 7.75pt;
+        font-size: 8.5pt;
       }
 
       ul {
         margin: 0;
-        padding-left: 0.95rem;
+        padding-left: 1rem;
       }
 
       li {
-        margin: 0.05rem 0;
+        margin: 0.1rem 0;
+        color: #2a2a2a;
       }
 
-      .grid {
+      .bottom {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.2rem 0.9rem;
+        grid-template-columns: 1.2fr 0.9fr;
+        gap: 1.1rem;
+        align-items: start;
+        margin-top: 0.15rem;
       }
 
-      .item {
+      .demos {
         margin: 0;
+        padding: 0;
+        list-style: none;
       }
 
-      .item strong {
-        display: inline;
-        font-size: 8.25pt;
+      .demos li {
+        margin: 0 0 0.4rem;
+        padding: 0;
+        color: #2a2a2a;
+      }
+
+      .demos strong {
         font-weight: 600;
       }
 
-      .item span {
-        color: #5c5c5c;
-        font-size: 7.75pt;
+      .demos span {
+        color: #4a4a4a;
       }
 
       .skills {
         display: grid;
-        grid-template-columns: 5.6rem 1fr;
-        gap: 0.12rem 0.55rem;
+        grid-template-columns: 5.8rem 1fr;
+        gap: 0.2rem 0.55rem;
         margin: 0;
       }
 
       .skills dt {
         margin: 0;
         color: #5c5c5c;
-        font-size: 7.5pt;
-        font-weight: 560;
+        font-size: 8pt;
+        font-weight: 600;
       }
 
       .skills dd {
         margin: 0;
-        font-size: 7.75pt;
+        font-size: 8.5pt;
+        color: #2a2a2a;
       }
 
       .edu {
-        margin: 0.08rem 0;
+        margin: 0.15rem 0;
         display: flex;
         justify-content: space-between;
         gap: 0.5rem;
-        font-size: 7.75pt;
+        font-size: 8.5pt;
+        color: #2a2a2a;
       }
 
       .edu span:last-child {
         color: #5c5c5c;
         white-space: nowrap;
-      }
-
-      .two-col {
-        display: grid;
-        grid-template-columns: 1.15fr 0.85fr;
-        gap: 0.75rem;
-        align-items: start;
       }
     </style>
   </head>
@@ -184,8 +188,8 @@
       <p class="role">AI Product Manager and Product Owner · Ho Chi Minh City</p>
       <p class="lead">
         I lead the R&amp;D team that builds Agentic Ops Platforms for Applied AI Enterprise work.
-        Agents draft. I link every claim to a source, check results against known facts, and sign
-        off before anything ships.
+        Agents draft the first pass. I check every claim against a source, score the result against
+        known facts, and sign off before anything ships.
       </p>
       <p class="contact">
         <a href="mailto:tiennguyentthao@gmail.com">tiennguyentthao@gmail.com</a>
@@ -205,7 +209,7 @@
         <ul>
           <li>
             Lead the R&amp;D team that designs and builds agentic ops platforms. Employer product
-            names and internal architecture stay off this page.
+            names and internal architecture stay confidential.
           </li>
         </ul>
       </article>
@@ -279,38 +283,38 @@
         </ul>
       </article>
 
-      <div class="two-col">
+      <div class="bottom">
         <div>
           <h2>Public demos</h2>
-          <div class="grid">
-            <p class="item">
+          <ul class="demos">
+            <li>
               <strong>Gelato.</strong>
               <span>
                 Framework that connects agent tools for company ops. Orchestration, gates, and
                 decision logs. In progress.
               </span>
-            </p>
-            <p class="item">
+            </li>
+            <li>
               <strong>Knowledge Engine.</strong>
               <span>
                 Turns meeting notes into a wiki with sources. Flags conflicts. Grades specs. Needs
                 my sign-off before engineering starts.
               </span>
-            </p>
-            <p class="item">
+            </li>
+            <li>
               <strong>Recon.</strong>
               <span>
                 Daily research sweeps. Scores each source for relevance, credibility, and predictive
                 weight.
               </span>
-            </p>
-            <p class="item">
+            </li>
+            <li>
               <strong>Sport Quant.</strong>
               <span>
                 Betting terminal with hard risk caps. Models advise. Code decides the size.
               </span>
-            </p>
-          </div>
+            </li>
+          </ul>
         </div>
         <div>
           <h2>Skills</h2>

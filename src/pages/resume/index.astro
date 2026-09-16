@@ -31,8 +31,8 @@ const pdfHref = withBase(RESUME_PDF);
   <section class="section resume-sheet" data-pagefind-body>
     <p class="resume-lead">
       I lead the R&amp;D team that builds Agentic Ops Platforms for Applied AI Enterprise work.
-      Agents draft. I link every claim to a source, check results against known facts, and sign off
-      before anything ships.
+      Agents draft the first pass. I check every claim against a source, score the result against
+      known facts, and sign off before anything ships.
     </p>
     <p class="resume-contact">
       <a href="mailto:tiennguyentthao@gmail.com">tiennguyentthao@gmail.com</a>
@@ -52,7 +52,7 @@ const pdfHref = withBase(RESUME_PDF);
       <ul>
         <li>
           Lead the R&amp;D team that designs and builds agentic ops platforms. Employer product
-          names and internal architecture stay off this page.
+          names and internal architecture stay confidential.
         </li>
       </ul>
     </article>
@@ -128,55 +128,60 @@ const pdfHref = withBase(RESUME_PDF);
       </ul>
     </article>
 
-    <h2>Public demos</h2>
-    <div class="resume-grid">
-      <p>
-        <strong>Gelato.</strong>
-        Framework that connects agent tools for company ops. Orchestration, gates, and decision
-        logs. In progress.
-      </p>
-      <p>
-        <strong>Knowledge Engine.</strong>
-        Turns meeting notes into a wiki with sources. Flags conflicts. Grades specs. Needs my
-        sign-off before engineering starts.
-      </p>
-      <p>
-        <strong>Recon.</strong>
-        Daily research sweeps. Scores each source for relevance, credibility, and predictive weight.
-      </p>
-      <p>
-        <strong>Sport Quant.</strong>
-        Betting terminal with hard risk caps. Models advise. Code decides the size.
-      </p>
+    <div class="resume-bottom">
+      <div>
+        <h2>Public demos</h2>
+        <ul class="resume-demos">
+          <li>
+            <strong>Gelato.</strong>
+            Framework that connects agent tools for company ops. Orchestration, gates, and decision logs.
+            In progress.
+          </li>
+          <li>
+            <strong>Knowledge Engine.</strong>
+            Turns meeting notes into a wiki with sources. Flags conflicts. Grades specs. Needs my sign-off
+            before engineering starts.
+          </li>
+          <li>
+            <strong>Recon.</strong>
+            Daily research sweeps. Scores each source for relevance, credibility, and predictive weight.
+          </li>
+          <li>
+            <strong>Sport Quant.</strong>
+            Betting terminal with hard risk caps. Models advise. Code decides the size.
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2>Skills</h2>
+        <dl class="resume-skills">
+          <dt>Discovery</dt>
+          <dd>Workshops, scope, stakeholders, competitor research</dd>
+          <dt>Delivery</dt>
+          <dd>Pilots, integrations, production rollout, Scrum</dd>
+          <dt>Requirements</dt>
+          <dd>BRD, SRS, PRD, stories, acceptance checks</dd>
+          <dt>AI controls</dt>
+          <dd>Source links, eval thresholds, human sign-off</dd>
+          <dt>Ops</dt>
+          <dd>Agent workflows, MCP, APIs, model choice</dd>
+        </dl>
+
+        <h2>Education</h2>
+        <p class="resume-edu">
+          <span>Anthropic Claude Code and Agent Skills</span><span>2026</span>
+        </p>
+        <p class="resume-edu">
+          <span>Product School AI Product Certification</span><span>2025</span>
+        </p>
+        <p class="resume-edu">
+          <span>CoderSchool Full Stack Developer</span><span>2019</span>
+        </p>
+        <p class="resume-edu">
+          <span>HCMC University of Education, BA English</span><span>2014</span>
+        </p>
+      </div>
     </div>
-
-    <h2>Skills</h2>
-    <dl class="resume-skills">
-      <dt>Discovery</dt>
-      <dd>Workshops, scope, stakeholders, competitor research</dd>
-      <dt>Delivery</dt>
-      <dd>Pilots, integrations, production rollout, Scrum</dd>
-      <dt>Requirements</dt>
-      <dd>BRD, SRS, PRD, stories, acceptance checks</dd>
-      <dt>AI controls</dt>
-      <dd>Source links, eval thresholds, human sign-off</dd>
-      <dt>Ops</dt>
-      <dd>Agent workflows, MCP, APIs, model choice</dd>
-    </dl>
-
-    <h2>Education</h2>
-    <p class="resume-edu">
-      <span>Anthropic Claude Code and Agent Skills</span><span>2026</span>
-    </p>
-    <p class="resume-edu">
-      <span>Product School AI Product Certification</span><span>2025</span>
-    </p>
-    <p class="resume-edu">
-      <span>CoderSchool Full Stack Developer</span><span>2019</span>
-    </p>
-    <p class="resume-edu">
-      <span>HCMC University of Education, BA English</span><span>2014</span>
-    </p>
   </section>
 </BaseLayout>
 
@@ -252,23 +257,29 @@ const pdfHref = withBase(RESUME_PDF);
     margin: 0.25rem 0;
   }
 
-  .resume-grid {
+  .resume-bottom {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.85rem 1.25rem;
+    grid-template-columns: 1.2fr 0.9fr;
+    gap: 1.5rem;
+    align-items: start;
   }
 
-  .resume-grid p {
+  .resume-demos {
     margin: 0;
+    padding: 0;
+    list-style: none;
     color: var(--color-muted);
-    font-size: 0.92rem;
+  }
+
+  .resume-demos li {
+    margin: 0 0 0.75rem;
+    font-size: 0.95rem;
     line-height: 1.45;
   }
 
-  .resume-grid strong {
-    display: inline;
-    margin-right: 0.15rem;
+  .resume-demos strong {
     color: var(--color-text);
+    margin-right: 0.15rem;
   }
 
   .resume-skills {
@@ -305,7 +316,7 @@ const pdfHref = withBase(RESUME_PDF);
   }
 
   @media (max-width: 700px) {
-    .resume-grid,
+    .resume-bottom,
     .resume-skills {
       grid-template-columns: 1fr;
     }
