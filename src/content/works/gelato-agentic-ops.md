@@ -1,6 +1,6 @@
 ---
 title: 'Gelato'
-description: 'In progress. Personal R&D on governed agentic ops — orchestration, gates, and decision logs.'
+description: 'In progress. Personal R&D on governed agentic ops: orchestration, gates, and decision logs.'
 tech:
   - Agent orchestration
   - Route gates

@@ -11,18 +11,18 @@ const useCases = (await getCollection('works'))
 
 <BaseLayout
   title="Work"
-  description={`Use cases: Gelato, Knowledge Engine, Recon, Sport Quant. ${SITE.title}.`}
+  description={`Selected work: Gelato, Knowledge Engine, Recon, Sport Quant. ${SITE.title}.`}
 >
   <section class="page-head section">
     <p class="eyebrow">Work</p>
-    <h1>Use cases</h1>
+    <h1>Selected work</h1>
     <p class="lead">
       Newest first. Live demos you can open. Gelato is still under construction. Employer work stays
       on the resume, not in this list.
     </p>
   </section>
 
-  <section class="section" aria-label="Use cases">
+  <section class="section" aria-label="Selected work">
     <WorkTimeline works={useCases} />
   </section>
 </BaseLayout>

@@ -1,6 +1,6 @@
 ---
 title: 'Knowledge Engine'
-description: 'Public operating model for agent-run PM work: transcripts become a source-traced wiki, conflicts resolve by truth hierarchy, specs get graded, humans sign the diff.'
+description: 'Meeting transcripts become a source-linked wiki. Conflicts resolve by truth hierarchy. Specs get graded. Humans sign the diff.'
 tech:
   - Multi-model agents
   - Karpathy KB pattern

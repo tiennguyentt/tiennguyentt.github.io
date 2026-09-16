@@ -1,6 +1,6 @@
 ---
 title: 'Recon'
-description: 'Autonomous research intelligence pipeline: daily agent sweeps, structured reports, and a weighting engine that scores relevance, credibility, and predictive weight over time.'
+description: 'Daily agent research sweeps with structured reports. Scores relevance, credibility, and predictive weight over time.'
 tech:
   - Claude Code agents
   - Signal scoring

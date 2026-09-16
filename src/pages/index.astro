@@ -49,7 +49,7 @@ const personSchema = {
   givenName: 'Tien',
   familyName: 'Nguyen',
   gender: 'Female',
-  jobTitle: 'AI Product Manager',
+  jobTitle: 'R&D Lead PO',
   description: SITE.description,
   url: new URL(withBase('/'), site).href,
   email: 'mailto:tiennguyentthao@gmail.com',
@@ -70,9 +70,9 @@ const personSchema = {
   <StructuredData slot="head" schema={personSchema} />
 
   <section class="hero section">
-    <p class="kicker">Tien Nguyen · AI Product Manager · HCMC</p>
+    <p class="kicker">Tien Nguyen · R&amp;D Lead PO · HCMC</p>
     <h1>Applied AI Enterprise.</h1>
-    <p class="lead">I lead the R&amp;D team that builds Agentic Ops Platforms.</p>
+    <p class="lead">I lead R&amp;D as product owner for agentic operations platforms.</p>
     <div class="action-row" aria-label={t('home.primaryLinks')}>
       {
         gelato && (
@@ -81,11 +81,11 @@ const personSchema = {
           </a>
         )
       }
-      <a class="button button--ghost" href={withBase('/works/')}>Use cases</a>
+      <a class="button button--ghost" href={withBase('/works/')}>View work</a>
     </div>
   </section>
 
-  <section class="section demos-band" aria-label="Use cases">
+  <section class="section demos-band" aria-label="Selected work">
     <div class="demo-sheet">
       <div class="demo-grid">
         {
@@ -101,7 +101,7 @@ const personSchema = {
               </div>
               <div class="demo-card__bar">
                 <span>{demo.title}</span>
-                <span>Explore</span>
+                <span>Open</span>
               </div>
             </a>
           ))
@@ -111,8 +111,8 @@ const personSchema = {
   </section>
 
   <section class="section contact-band" aria-labelledby="contact-head">
-    <p class="kicker">Get started</p>
-    <h2 id="contact-head">Talk to Tien</h2>
+    <p class="kicker">Contact</p>
+    <h2 id="contact-head">Reach Tien</h2>
     <div class="action-row">
       <a class="button" href="mailto:tiennguyentthao@gmail.com">Email</a>
       <a class="button button--ghost" href="https://www.linkedin.com/in/tiennguyenthithao/"

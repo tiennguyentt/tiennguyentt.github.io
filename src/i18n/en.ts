@@ -116,13 +116,13 @@ export const en = {
   'notFound.title': 'Page not found',
   'notFound.description': 'The page you were looking for does not exist.',
   'notFound.eyebrow': '404 — Not found',
-  'notFound.heading': 'This page drifted off course.',
+  'notFound.heading': 'This page is missing.',
   'notFound.lead':
-    'The address may have moved, or it never existed. The keel lines below lead back to steady water.',
-  'notFound.linksLabel': 'Recovery links',
+    'The address may have moved, or it never existed. Use the links below to continue.',
+  'notFound.linksLabel': 'Continue here',
   'notFound.home': 'Back home',
   'notFound.blog': 'Read the blog',
-  'notFound.works': 'Browse works',
+  'notFound.works': 'Browse work',
 };
 
 /** The shape every dictionary must implement. */

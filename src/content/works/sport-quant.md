@@ -1,6 +1,6 @@
 ---
 title: 'Sport Quant'
-description: 'Governed +EV terminal for prediction markets. Elo + Dixon-Coles score the edge; fractional Kelly and hard caps decide size. Models advise, code governs.'
+description: 'Governed +EV terminal for prediction markets. Elo and Dixon-Coles score the edge. Fractional Kelly and hard caps set size. Models advise; code governs.'
 tech:
   - Elo / Dixon-Coles
   - Fractional Kelly
