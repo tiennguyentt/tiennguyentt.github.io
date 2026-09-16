@@ -46,7 +46,9 @@ html {
 body {
   min-width: 320px;
   margin: 0;
-  background: var(--color-bg);
+  background:
+    radial-gradient(120% 80% at 50% -10%, #f3f3f3 0%, #ffffff 55%),
+    #ffffff;
 }
 
 ::selection {
@@ -158,8 +160,17 @@ a:not(.brand, .button, .header-cta, .demo-rail a):hover {
   min-height: calc(100svh - 4.5rem);
   display: grid;
   align-content: center;
-  justify-items: start;
+  justify-items: center;
+  text-align: center;
   padding-block: clamp(4rem, 12vw, 8rem);
+}
+
+.hero .lead {
+  margin-inline: auto;
+}
+
+.hero .action-row {
+  justify-content: center;
 }
 
 .hero > * {
