@@ -33,7 +33,7 @@ The system runs agent skills and subagents against that loop so the operating mo
 
 - Live demo: [tienntt-knowledge-engine.streamlit.app](https://tienntt-knowledge-engine.streamlit.app/)
 - A repeatable PM workflow that turns conflicting discovery into BRD/SRS-quality acceptance criteria with source links.
-- The same pattern informs the GSM / Gelato deployment work: advisory surfaces, evidence references, and human accountability before production.
+- The same pattern informs Gelato and other governed agent workflows: advisory surfaces, evidence references, and human accountability before production.
 
 **Number to remember:** five gated stages from raw transcript to human-signed engineering handoff.
 
