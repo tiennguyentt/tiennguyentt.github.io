@@ -148,114 +148,33 @@ function mountBot(host: HTMLElement, reduced: boolean): () => void {
 }
 
 function mountPlane(host: HTMLElement, reduced: boolean): () => void {
-  const status = host.querySelector<HTMLElement>('.scene-live');
-  const signal = host.querySelector<SVGCircleElement>('.plane-signal');
-  const hub = host.querySelector<SVGCircleElement>('.plane-hub');
+  const detail = host.querySelector<HTMLElement>('.scene-live');
+  const rows = [...host.querySelectorAll<HTMLElement>('.plane-row')];
   const frames = [...host.querySelectorAll<HTMLElement>('.scene-script [data-frame]')];
-  const nodes = [...host.querySelectorAll<HTMLElement>('.plane-node')];
-  const links = [...host.querySelectorAll<SVGLineElement>('.plane-spoke, .plane-peer')];
-  if (!status || !signal || frames.length === 0) return () => {};
+  if (!detail || rows.length === 0 || frames.length === 0) return () => {};
 
   let frameIndex = 0;
-  let progress = 0;
-  let raf = 0;
-  let stopped = false;
-  let inView = true;
-  let last = performance.now();
-
-  const linkForFrame = (index: number) => {
-    const linkId = frames[index]?.dataset.frame ?? '';
-    return links.find((link) => link.dataset.link === linkId) ?? null;
-  };
 
   const paint = (index: number, animate: boolean) => {
     const frame = frames[index];
-    const linkId = frame?.dataset.frame ?? '';
-    status.textContent = frame?.textContent ?? '';
-    if (animate) status.classList.add('is-enter');
-    else status.classList.remove('is-enter');
+    const routeId = frame?.dataset.frame ?? '';
+    detail.textContent = frame?.textContent ?? '';
+    if (animate) detail.classList.add('is-enter');
+    else detail.classList.remove('is-enter');
 
-    const activeLink = links.find((link) => link.dataset.link === linkId);
-    const from = activeLink?.dataset.from ?? '';
-    const to = activeLink?.dataset.to ?? '';
-
-    for (const node of nodes) {
-      const nodeId = node.dataset.node ?? '';
-      node.classList.toggle('is-active', nodeId === from || nodeId === to);
+    for (const row of rows) {
+      row.classList.toggle('is-active', row.dataset.route === routeId);
     }
-    for (const link of links) {
-      link.classList.toggle('is-live', link.dataset.link === linkId);
-    }
-    hub?.classList.toggle('is-active', from === 'hub' || to === 'hub');
-  };
-
-  const moveSignal = (link: SVGLineElement, t: number) => {
-    const x1 = Number(link.getAttribute('x1'));
-    const y1 = Number(link.getAttribute('y1'));
-    const x2 = Number(link.getAttribute('x2'));
-    const y2 = Number(link.getAttribute('y2'));
-    signal.setAttribute('cx', String(x1 + (x2 - x1) * t));
-    signal.setAttribute('cy', String(y1 + (y2 - y1) * t));
   };
 
   paint(0, false);
-  const first = linkForFrame(0);
-  if (first) moveSignal(first, 0);
-
   if (reduced) return () => {};
 
-  const tick = (now: number) => {
-    if (stopped || !inView) {
-      raf = 0;
-      return;
-    }
+  const timer = window.setInterval(() => {
+    frameIndex = (frameIndex + 1) % frames.length;
+    paint(frameIndex, true);
+    window.setTimeout(() => detail.classList.remove('is-enter'), 480);
+  }, 3200);
 
-    const dt = Math.min((now - last) / 1000, 0.05);
-    last = now;
-    progress += dt * 0.42;
-
-    if (progress >= 1) {
-      progress = 0;
-      frameIndex = (frameIndex + 1) % frames.length;
-      paint(frameIndex, true);
-      window.setTimeout(() => status.classList.remove('is-enter'), 480);
-    }
-
-    const link = linkForFrame(frameIndex);
-    if (link) moveSignal(link, progress);
-
-    raf = window.requestAnimationFrame(tick);
-  };
-
-  const viewObserver = new IntersectionObserver((entries) => {
-    const next = Boolean(entries[0]?.isIntersecting);
-    if (next && !inView) {
-      inView = true;
-      last = performance.now();
-      raf = window.requestAnimationFrame(tick);
-      return;
-    }
-    inView = next;
-  });
-  viewObserver.observe(host);
-
-  const onVisibility = () => {
-    if (document.hidden) {
-      inView = false;
-      return;
-    }
-    if (!inView) return;
-    last = performance.now();
-    if (!raf) raf = window.requestAnimationFrame(tick);
-  };
-  document.addEventListener('visibilitychange', onVisibility);
-
-  raf = window.requestAnimationFrame(tick);
-
-  return () => {
-    stopped = true;
-    window.cancelAnimationFrame(raf);
-    document.removeEventListener('visibilitychange', onVisibility);
-    viewObserver.disconnect();
-  };
+  return () => window.clearInterval(timer);
 }

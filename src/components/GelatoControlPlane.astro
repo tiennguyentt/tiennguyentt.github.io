@@ -1,123 +1,41 @@
 ---
-/** Animated control-plane mock for the Gelato bento card. */
-const nodes = [
-  { id: 'core', label: 'Core', x: 160, y: 26 },
-  { id: 'sdlc', label: 'SDLC', x: 48, y: 58 },
-  { id: 'nexus', label: 'Nexus', x: 272, y: 58 },
-  { id: 'sim', label: 'Sim', x: 48, y: 122 },
-  { id: 'dsml', label: 'DS/ML', x: 272, y: 122 },
-  { id: 'mkt', label: 'Mkt', x: 160, y: 154 },
-] as const;
-
-type NodeId = (typeof nodes)[number]['id'];
-
-const hub = { id: 'hub' as const, x: 160, y: 90 };
-
-const pos = (id: NodeId | 'hub') => {
-  if (id === 'hub') return hub;
-  return nodes.find((node) => node.id === id)!;
-};
-
-const spokeLinks = nodes.map((node) => ({
-  id: `hub-${node.id}`,
-  from: 'hub' as const,
-  to: node.id,
-}));
-
-const peerLinks: Array<{ id: string; from: NodeId; to: NodeId }> = [
-  { id: 'core-nexus', from: 'core', to: 'nexus' },
-  { id: 'core-sdlc', from: 'core', to: 'sdlc' },
-  { id: 'core-dsml', from: 'core', to: 'dsml' },
-  { id: 'nexus-sdlc', from: 'nexus', to: 'sdlc' },
-  { id: 'nexus-dsml', from: 'nexus', to: 'dsml' },
-  { id: 'sdlc-sim', from: 'sdlc', to: 'sim' },
-  { id: 'dsml-sim', from: 'dsml', to: 'sim' },
-  { id: 'sim-mkt', from: 'sim', to: 'mkt' },
-  { id: 'dsml-mkt', from: 'dsml', to: 'mkt' },
-];
-
-const frames = [
-  { id: 'hub-core', text: '00 → Core. Gateway open.' },
-  { id: 'core-nexus', text: 'Core → Nexus. Graph online.' },
-  { id: 'nexus-dsml', text: 'Nexus → DS/ML. Memory synced.' },
-  { id: 'dsml-sim', text: 'DS/ML → Sim. Scenario 12 runs.' },
-  { id: 'sim-mkt', text: 'Sim → Mkt. Listing draft.' },
-  { id: 'sdlc-sim', text: 'SDLC → Sim. Three tests pass.' },
-  { id: 'core-sdlc', text: 'Core → SDLC. Build queued.' },
-  { id: 'nexus-sdlc', text: 'Nexus → SDLC. Spec linked.' },
+/** Control-plane route ledger for the Gelato bento card. */
+const routes = [
+  { id: 'hub-core', path: '00 → core', state: 'open', detail: 'Gateway open.' },
+  { id: 'core-nexus', path: 'core → nexus', state: 'online', detail: 'Graph online.' },
+  { id: 'nexus-dsml', path: 'nexus → dsml', state: 'synced', detail: 'Memory synced.' },
+  { id: 'dsml-sim', path: 'dsml → sim', state: 'running', detail: 'Scenario 12 runs.' },
+  { id: 'sim-mkt', path: 'sim → mkt', state: 'draft', detail: 'Listing draft ready.' },
+  { id: 'sdlc-sim', path: 'sdlc → sim', state: 'pass', detail: 'Three tests pass.' },
 ] as const;
 ---
 
 <div class="scene scene--plane" data-live="plane" aria-hidden="true">
-  <div class="plane-chrome">
-    <span></span>
-    <span></span>
-    <span></span>
-    gelato · control plane
+  <header class="plane-head">
+    <p class="plane-kicker">Control plane</p>
+    <span class="plane-badge">live</span>
+  </header>
+
+  <div class="plane-body">
+    <ol class="plane-routes">
+      {
+        routes.map((route) => (
+          <li class="plane-row" data-route={route.id}>
+            <span class="plane-path">{route.path}</span>
+            <span class="plane-state">{route.state}</span>
+            <span class="plane-track" aria-hidden="true">
+              <i />
+            </span>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="plane-detail scene-live">{routes[0].detail}</p>
   </div>
 
-  <svg class="plane-svg" viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-    {
-      peerLinks.map((link) => {
-        const from = pos(link.from);
-        const to = pos(link.to);
-        return (
-          <line
-            class="plane-peer"
-            x1={from.x}
-            y1={from.y}
-            x2={to.x}
-            y2={to.y}
-            data-link={link.id}
-            data-from={link.from}
-            data-to={link.to}
-          />
-        );
-      })
-    }
-
-    {
-      spokeLinks.map((link) => {
-        const from = pos(link.from);
-        const to = pos(link.to);
-        return (
-          <line
-            class="plane-spoke"
-            x1={from.x}
-            y1={from.y}
-            x2={to.x}
-            y2={to.y}
-            data-link={link.id}
-            data-from={link.from}
-            data-to={link.to}
-          />
-        );
-      })
-    }
-
-    <circle class="plane-hub" cx={hub.x} cy={hub.y} r="22"></circle>
-    <text class="plane-hub-label" x={hub.x} y={hub.y + 4} text-anchor="middle"> 00 </text>
-
-    {
-      nodes.map((node) => (
-        <g class="plane-node" data-node={node.id}>
-          <circle class="plane-node__ring" cx={node.x} cy={node.y} r="18" />
-          <circle class="plane-node__dot" cx={node.x} cy={node.y} r="14" />
-          <text class="plane-node__label" x={node.x} y={node.y + 3.5} text-anchor="middle">
-            {node.label}
-          </text>
-        </g>
-      ))
-    }
-
-    <circle class="plane-pulse" cx={hub.x} cy={hub.y} r="22"></circle>
-    <circle class="plane-signal" cx={hub.x} cy={hub.y} r="2.8"></circle>
-  </svg>
-
-  <p class="plane-status scene-live">{frames[0].text}</p>
-
   <div class="scene-script" hidden>
-    {frames.map((frame) => <span data-frame={frame.id}>{frame.text}</span>)}
+    {routes.map((route) => <span data-frame={route.id}>{route.detail}</span>)}
   </div>
 </div>
 
@@ -125,175 +43,174 @@ const frames = [
   .scene--plane {
     display: flex;
     flex-direction: column;
-    padding: 0;
+    gap: 0.85rem;
+    padding: 1.15rem 1.2rem 3.35rem;
     background: #f4f4f2;
   }
 
-  .plane-chrome {
+  .plane-head {
     display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.65rem 0.85rem;
-    color: #6a6a6a;
-    font-size: 0.68rem;
-    letter-spacing: -0.01em;
-    border-bottom: 1px solid #e4e4e0;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
   }
 
-  .plane-chrome span {
-    width: 0.45rem;
-    height: 0.45rem;
-    border-radius: 50%;
-    background: #d0d0cc;
-  }
-
-  .plane-chrome span:first-child {
-    background: #171717;
-  }
-
-  .plane-svg {
-    display: block;
-    width: 100%;
-    flex: 1;
-    min-height: 9.5rem;
-    padding: 0.35rem 0.5rem 0;
-  }
-
-  .plane-spoke,
-  .plane-peer {
-    stroke-width: 1.4;
-    stroke-dasharray: 5 7;
-    animation: plane-flow 2.4s linear infinite;
-  }
-
-  .plane-spoke {
-    stroke: #c8c8c4;
-  }
-
-  .plane-peer {
-    stroke: #d4d4d0;
-    stroke-width: 1.1;
-    animation-duration: 3.1s;
-  }
-
-  .plane-spoke.is-live,
-  .plane-peer.is-live {
-    stroke: #171717;
-    stroke-width: 1.6;
-  }
-
-  .plane-hub {
-    fill: #171717;
-    transition: filter 280ms ease;
-  }
-
-  .plane-hub.is-active {
-    filter: drop-shadow(0 0 6px rgba(23, 23, 23, 0.22));
-  }
-
-  .plane-hub-label {
-    fill: #ffffff;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 600;
-  }
-
-  .plane-node__ring {
-    fill: none;
-    stroke: #171717;
-    stroke-width: 2;
-    opacity: 0;
-    transform-box: fill-box;
-    transform-origin: center;
-    transition: opacity 280ms ease;
-  }
-
-  .plane-node__dot {
-    fill: #ffffff;
-    stroke: #d8d8d4;
-    stroke-width: 1.2;
-    transition: stroke 280ms ease;
-  }
-
-  .plane-node__label {
-    fill: #171717;
-    font-family: var(--font-body);
-    font-size: 9px;
+  .plane-kicker {
+    margin: 0;
+    color: #2a2a2a;
+    font-size: 0.78rem;
     font-weight: 560;
     letter-spacing: -0.02em;
   }
 
-  .plane-node.is-active .plane-node__ring {
-    opacity: 1;
-    animation: plane-node-pulse 1.8s ease-in-out infinite;
+  .plane-badge {
+    color: #6a6a6a;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
-  .plane-node.is-active .plane-node__dot {
-    stroke: #171717;
+  .plane-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 1rem;
+    flex: 1;
+    min-height: 0;
+    align-items: stretch;
   }
 
-  .plane-pulse {
-    fill: none;
-    stroke: #171717;
-    stroke-width: 1;
-    opacity: 0;
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: plane-hub-pulse 2.8s ease-out infinite;
-  }
-
-  .plane-signal {
-    fill: #171717;
-    opacity: 0.92;
-  }
-
-  .plane-status {
+  .plane-routes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
     margin: 0;
-    padding: 0.65rem 0.95rem 3.35rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .plane-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.55rem;
+    align-items: center;
+    padding: 0.5rem 0.65rem;
+    border-radius: 0.65rem;
+    background: transparent;
+    transition:
+      background 280ms ease,
+      box-shadow 280ms ease;
+  }
+
+  .plane-row.is-active {
+    background: #fff;
+    box-shadow: 0 1px 0 rgba(23, 23, 23, 0.04);
+  }
+
+  .plane-path {
     color: #5c5c5c;
     font-family: var(--font-mono);
     font-size: 0.68rem;
-    line-height: 1.45;
-    white-space: nowrap;
+    letter-spacing: -0.01em;
+    transition: color 280ms ease;
+  }
+
+  .plane-row.is-active .plane-path {
+    color: #171717;
+  }
+
+  .plane-state {
+    color: #9a9a96;
+    font-size: 0.62rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    transition: color 280ms ease;
+  }
+
+  .plane-row.is-active .plane-state {
+    color: #171717;
+  }
+
+  .plane-track {
+    grid-column: 1 / -1;
+    display: block;
     overflow: hidden;
-    text-overflow: ellipsis;
+    height: 0.16rem;
+    border-radius: 99px;
+    background: #e8e8e4;
+    opacity: 0;
+    transition: opacity 280ms ease;
   }
 
-  @keyframes plane-flow {
-    to {
-      stroke-dashoffset: -24;
-    }
+  .plane-row.is-active .plane-track {
+    opacity: 1;
   }
 
-  @keyframes plane-node-pulse {
-    0%,
-    100% {
-      transform: scale(1);
-      opacity: 0.85;
-    }
-    50% {
-      transform: scale(1.08);
-      opacity: 1;
-    }
+  .plane-track i {
+    display: block;
+    width: 38%;
+    height: 100%;
+    border-radius: inherit;
+    background: #171717;
+    animation: plane-track 2.4s ease-in-out infinite;
   }
 
-  @keyframes plane-hub-pulse {
-    0% {
-      transform: scale(1);
-      opacity: 0.35;
-    }
-    100% {
-      transform: scale(1.55);
+  .plane-detail {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0.85rem 0.95rem;
+    min-height: 4.5rem;
+    border-radius: 0.85rem;
+    background: #fff;
+    color: #171717;
+    font-size: clamp(1rem, 1.6vw, 1.18rem);
+    font-weight: 520;
+    letter-spacing: -0.03em;
+    line-height: 1.25;
+  }
+
+  .plane-detail.is-enter {
+    animation: plane-enter 480ms ease both;
+  }
+
+  @keyframes plane-enter {
+    from {
       opacity: 0;
+      transform: translateY(0.35rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes plane-track {
+    0% {
+      transform: translateX(-120%);
+    }
+    100% {
+      transform: translateX(320%);
+    }
+  }
+
+  @media (max-width: 760px) {
+    .plane-body {
+      grid-template-columns: 1fr;
+    }
+
+    .plane-detail {
+      min-height: 0;
+      padding: 0.75rem 0.85rem;
+      font-size: 0.95rem;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .plane-spoke,
-    .plane-peer,
-    .plane-pulse,
-    .plane-node.is-active .plane-node__ring {
+    .plane-track i {
       animation: none;
+      width: 100%;
     }
   }
 </style>
