@@ -1,6 +1,6 @@
 ---
 title: 'Colonial Surety delivery'
-description: 'Past insurtech / B2B fintech delivery (resume-backed): agent-operated PM controls, emergency PCI gateway cutover, seven-product bundling, and B2B SSO scoping. No public demo.'
+description: 'Colonial Surety. Insurtech and B2B fintech delivery on the resume: PM controls, PCI gateway cutover, seven-product bundling, B2B SSO scoping.'
 tech:
   - Insurance
   - Payments
