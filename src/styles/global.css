@@ -404,7 +404,8 @@ h3 {
 
 .demo-card {
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border: 0;
   border-radius: 1.35rem;
@@ -421,7 +422,7 @@ h3 {
 }
 
 .demo-card--gelato {
-  grid-column: 2 / 4;
+  grid-column: 1 / -1;
 }
 
 .demo-card--sport {
@@ -429,7 +430,15 @@ h3 {
 }
 
 .demo-card__visual {
+  flex: 1;
   min-height: 16.5rem;
+  max-height: 16.5rem;
+  overflow: hidden;
+}
+
+.demo-card--gelato .demo-card__visual {
+  max-height: none;
+  min-height: 17.5rem;
 }
 
 .demo-card__bar {
