@@ -3,16 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <title>Tien Nguyen — Resume</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;560;600;700&display=swap"
-      rel="stylesheet"
-    />
     <style>
       @page {
         size: A4;
-        margin: 14mm 14mm 14mm 14mm;
+        margin: 10mm 11mm;
       }
 
       * {
@@ -25,59 +19,49 @@
         padding: 0;
         background: #ffffff;
         color: #171717;
-        font-family: Outfit, system-ui, sans-serif;
-        font-size: 10.25pt;
-        line-height: 1.4;
+        font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        font-size: 8.75pt;
+        line-height: 1.32;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
 
       main {
-        max-width: 180mm;
+        max-width: 188mm;
         margin: 0 auto;
       }
 
-      .kicker {
-        margin: 0 0 0.35rem;
-        color: #5c5c5c;
-        font-size: 8pt;
-        font-weight: 500;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-      }
-
       h1 {
-        margin: 0 0 0.35rem;
-        font-size: 26pt;
+        margin: 0 0 0.15rem;
+        font-size: 20pt;
         font-weight: 600;
-        letter-spacing: -0.045em;
+        letter-spacing: -0.04em;
         line-height: 1;
       }
 
       .role {
-        margin: 0 0 0.55rem;
-        color: #171717;
-        font-size: 11.5pt;
+        margin: 0 0 0.35rem;
+        font-size: 9.5pt;
         font-weight: 520;
         letter-spacing: -0.02em;
       }
 
       .lead {
-        margin: 0 0 0.7rem;
+        margin: 0 0 0.4rem;
         color: #5c5c5c;
-        font-size: 9.75pt;
-        max-width: 42rem;
+        font-size: 8.5pt;
+        max-width: 46rem;
       }
 
       .contact {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.25rem 0.85rem;
-        margin: 0 0 1.1rem;
-        padding-bottom: 0.85rem;
+        gap: 0.15rem 0.7rem;
+        margin: 0 0 0.55rem;
+        padding-bottom: 0.45rem;
         border-bottom: 1px solid #e8e8e8;
         color: #5c5c5c;
-        font-size: 8.5pt;
+        font-size: 7.75pt;
       }
 
       .contact a {
@@ -86,119 +70,128 @@
       }
 
       h2 {
-        margin: 1rem 0 0.45rem;
+        margin: 0.55rem 0 0.28rem;
         color: #5c5c5c;
-        font-size: 8pt;
+        font-size: 7.25pt;
         font-weight: 560;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
       }
 
       .job {
-        margin: 0 0 0.7rem;
+        margin: 0 0 0.38rem;
       }
 
       .job-head {
         display: flex;
         justify-content: space-between;
-        gap: 0.75rem;
+        gap: 0.5rem;
         align-items: baseline;
       }
 
       .job h3 {
         margin: 0;
-        font-size: 11pt;
+        font-size: 9.25pt;
         font-weight: 600;
         letter-spacing: -0.02em;
       }
 
       .when {
         color: #5c5c5c;
-        font-size: 8.5pt;
+        font-size: 7.5pt;
         white-space: nowrap;
       }
 
       .title {
-        margin: 0.1rem 0 0.3rem;
+        margin: 0.05rem 0 0.15rem;
         color: #5c5c5c;
-        font-size: 9pt;
+        font-size: 7.75pt;
       }
 
       ul {
         margin: 0;
-        padding-left: 1.05rem;
+        padding-left: 0.95rem;
       }
 
       li {
-        margin: 0.12rem 0;
+        margin: 0.05rem 0;
       }
 
       .grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 0.35rem 1.25rem;
+        gap: 0.2rem 0.9rem;
+      }
+
+      .item {
+        margin: 0;
       }
 
       .item strong {
-        display: block;
-        font-size: 9.75pt;
+        display: inline;
+        font-size: 8.25pt;
         font-weight: 600;
-        letter-spacing: -0.015em;
       }
 
       .item span {
         color: #5c5c5c;
-        font-size: 8.75pt;
+        font-size: 7.75pt;
       }
 
       .skills {
         display: grid;
-        grid-template-columns: 7.5rem 1fr;
-        gap: 0.25rem 0.75rem;
+        grid-template-columns: 5.6rem 1fr;
+        gap: 0.12rem 0.55rem;
         margin: 0;
       }
 
       .skills dt {
         margin: 0;
         color: #5c5c5c;
-        font-size: 8.5pt;
+        font-size: 7.5pt;
         font-weight: 560;
       }
 
       .skills dd {
         margin: 0;
-        font-size: 8.75pt;
+        font-size: 7.75pt;
       }
 
       .edu {
-        margin: 0.15rem 0;
+        margin: 0.08rem 0;
         display: flex;
         justify-content: space-between;
-        gap: 0.75rem;
-        font-size: 8.75pt;
+        gap: 0.5rem;
+        font-size: 7.75pt;
       }
 
       .edu span:last-child {
         color: #5c5c5c;
         white-space: nowrap;
       }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 0.75rem;
+        align-items: start;
+      }
     </style>
   </head>
   <body>
     <main>
-      <p class="kicker">Resume</p>
       <h1>Tien Nguyen</h1>
-      <p class="role">AI Product Manager · Product Owner · Applied AI Enterprise</p>
+      <p class="role">AI Product Manager and Product Owner · Ho Chi Minh City</p>
       <p class="lead">
-        I lead the R&amp;D team that builds Agentic Ops Platforms. Source-traced specs, evaluation
-        against ground truth, and human approval on critical changes.
+        I lead the R&amp;D team that builds Agentic Ops Platforms for Applied AI Enterprise work.
+        Agents draft. I link every claim to a source, check results against known facts, and sign
+        off before anything ships.
       </p>
       <p class="contact">
         <a href="mailto:tiennguyentthao@gmail.com">tiennguyentthao@gmail.com</a>
         <a href="https://www.linkedin.com/in/tiennguyenthithao/">LinkedIn</a>
-        <a href="https://tiennguyentt.github.io/">tiennguyentt.github.io</a>
         <a href="https://portfolio-tienntt.vercel.app/">portfolio-tienntt.vercel.app</a>
-        <span>Ho Chi Minh City</span>
+        <a href="https://tiennguyentt.github.io/">tiennguyentt.github.io</a>
       </p>
 
       <h2>Experience</h2>
@@ -208,11 +201,11 @@
           <h3>Green SM (Vingroup)</h3>
           <span class="when">Now</span>
         </div>
-        <p class="title">R&amp;D · Agentic Ops Platforms</p>
+        <p class="title">R&amp;D lead · Agentic Ops Platforms</p>
         <ul>
           <li>
-            Lead the R&amp;D team building agentic ops platforms. Title and dates on request.
-            Internals stay confidential.
+            Lead the R&amp;D team that designs and builds agentic ops platforms. Employer product
+            names and internal architecture stay off this page.
           </li>
         </ul>
       </article>
@@ -225,20 +218,17 @@
         <p class="title">Product Management Engineer · B2B fintech, insurance, payments</p>
         <ul>
           <li>
-            Owned controls on the agent-operated PM workflow: transcripts graded for traceability,
-            specs linked to source, no diff without sign-off.
+            Ran a PM workflow with agents. I graded transcripts, linked specs to sources, and
+            blocked any change that lacked my sign-off.
           </li>
           <li>
-            Ran emergency PCI gateway cutover (Transax → CardPointe) across three production
+            Led an emergency PCI payment cutover from Transax to CardPointe across three live
             platforms.
           </li>
           <li>
-            Designed seven insurance products in one flow: knockout rules, unified claims, edit
-            policy matrix, partial-failure cases.
-          </li>
-          <li>
-            Scoped B2B SSO into a structured BRD: two user types, adaptive registration,
-            cross-partner sessions.
+            Designed seven insurance products in one flow, including knockout rules, shared claims,
+            and partial-failure cases. Wrote the B2B SSO brief for two user types and partner
+            sessions.
           </li>
         </ul>
       </article>
@@ -246,21 +236,17 @@
       <article class="job">
         <div class="job-head">
           <h3>Hoookie JSC</h3>
-          <span class="when">2023 – 2025</span>
+          <span class="when">2023–2025</span>
         </div>
-        <p class="title">Product Owner · Web3, fintech · forward-deployed client services</p>
+        <p class="title">Product Owner · Web3 and fintech, on-site with clients</p>
         <ul>
           <li>
-            Defined requirements for Keeta (US payments network targeting 400 ms): use cases, data
-            flows, acceptance criteria.
+            Wrote requirements for Keeta, a US payments network aimed at 400 ms settlement. Covered
+            use cases, data flows, and acceptance checks.
           </li>
           <li>
-            Built Sire.bot with 137% cumulative return in a two-month backtest; scored predictions
-            against ground truth before release.
-          </li>
-          <li>
-            Forward-deployed discovery for US and international clients from Vietnam: BRDs, SRS,
-            acceptance criteria before handoff.
+            Built Sire.bot. A two-month backtest returned 137%. I scored model output against known
+            results before release.
           </li>
         </ul>
       </article>
@@ -268,13 +254,13 @@
       <article class="job">
         <div class="job-head">
           <h3>Olmo Technology</h3>
-          <span class="when">2022 – 2023</span>
+          <span class="when">2022–2023</span>
         </div>
         <p class="title">Product Owner · social e-commerce</p>
         <ul>
-          <li>+30% bookings after reworking mobile booking and bank-transfer flow.</li>
           <li>
-            Shipped livestream commerce end to end: chat, marketplace, community feed, gifting.
+            Raised bookings 30% by fixing the mobile booking path and bank-transfer flow. Shipped
+            livestream commerce with chat, marketplace, and gifting.
           </li>
         </ul>
       </article>
@@ -282,64 +268,72 @@
       <article class="job">
         <div class="job-head">
           <h3>4/10 Fire Protection Trading Service</h3>
-          <span class="when">2019 – 2022</span>
+          <span class="when">2019–2022</span>
         </div>
-        <p class="title">Front-end Developer → BA / Associate PM · ERP</p>
+        <p class="title">Front-end developer, then BA and associate PM · ERP</p>
         <ul>
           <li>
-            Built ERP modules from code to rollout; owned resource-management and quality-control
-            paths.
+            Built ERP modules from code through rollout. Owned resource management and quality
+            control.
           </li>
         </ul>
       </article>
 
-      <h2>Public systems</h2>
-      <div class="grid">
-        <p class="item">
-          <strong>Gelato</strong>
-          <span>Agentic ops route ledger: orchestration, gates, decision logs. In progress.</span>
-        </p>
-        <p class="item">
-          <strong>Knowledge Engine</strong>
-          <span>Source-traced wiki, conflict resolution, graded specs, human sign-off.</span>
-        </p>
-        <p class="item">
-          <strong>Recon</strong>
-          <span>Daily agent sweeps with relevance, credibility, and predictive weight.</span>
-        </p>
-        <p class="item">
-          <strong>Sport Quant</strong>
-          <span>Governed +EV terminal: Elo / Dixon-Coles, fractional Kelly, hard caps.</span>
-        </p>
+      <div class="two-col">
+        <div>
+          <h2>Public demos</h2>
+          <div class="grid">
+            <p class="item">
+              <strong>Gelato.</strong>
+              <span>
+                Framework that connects agent tools for company ops. Orchestration, gates, and
+                decision logs. In progress.
+              </span>
+            </p>
+            <p class="item">
+              <strong>Knowledge Engine.</strong>
+              <span>
+                Turns meeting notes into a wiki with sources. Flags conflicts. Grades specs. Needs
+                my sign-off before engineering starts.
+              </span>
+            </p>
+            <p class="item">
+              <strong>Recon.</strong>
+              <span>
+                Daily research sweeps. Scores each source for relevance, credibility, and predictive
+                weight.
+              </span>
+            </p>
+            <p class="item">
+              <strong>Sport Quant.</strong>
+              <span>
+                Betting terminal with hard risk caps. Models advise. Code decides the size.
+              </span>
+            </p>
+          </div>
+        </div>
+        <div>
+          <h2>Skills</h2>
+          <dl class="skills">
+            <dt>Discovery</dt>
+            <dd>Workshops, scope, stakeholders, competitor research</dd>
+            <dt>Delivery</dt>
+            <dd>Pilots, integrations, production rollout, Scrum</dd>
+            <dt>Requirements</dt>
+            <dd>BRD, SRS, PRD, stories, acceptance checks</dd>
+            <dt>AI controls</dt>
+            <dd>Source links, eval thresholds, human sign-off</dd>
+            <dt>Ops</dt>
+            <dd>Agent workflows, MCP, APIs, model choice</dd>
+          </dl>
+
+          <h2>Education</h2>
+          <p class="edu"><span>Anthropic Claude Code and Agent Skills</span><span>2026</span></p>
+          <p class="edu"><span>Product School AI Product Certification</span><span>2025</span></p>
+          <p class="edu"><span>CoderSchool Full Stack Developer</span><span>2019</span></p>
+          <p class="edu"><span>HCMC University of Education, BA English</span><span>2014</span></p>
+        </div>
       </div>
-
-      <h2>Skills</h2>
-      <dl class="skills">
-        <dt>Discovery</dt>
-        <dd>Onsite workshops, scope, stakeholder mapping, competitor and domain research</dd>
-        <dt>Delivery</dt>
-        <dd>Pilot design, integration, production rollout, adoption tracking, Scrum</dd>
-        <dt>Requirements</dt>
-        <dd>BRD / SRS / PRD, stories, acceptance criteria, failure paths</dd>
-        <dt>AI controls</dt>
-        <dd>Context engineering, evaluation thresholds, source tracing, human gates</dd>
-        <dt>Ops</dt>
-        <dd>Agent workflows, MCP, APIs and data flows, model selection</dd>
-      </dl>
-
-      <h2>Education</h2>
-      <p class="edu">
-        <span>Anthropic: Claude Code 101, AI Fluency, Agent Skills, Subagents</span
-        ><span>2026</span>
-      </p>
-      <p class="edu">
-        <span
-          >Product School: Launches, Roadmap, Prioritization, Strategy, Discovery, AI Product</span
-        >
-        <span>2025</span>
-      </p>
-      <p class="edu"><span>CoderSchool: Full Stack Software Developer</span><span>2019</span></p>
-      <p class="edu"><span>HCMC University of Education: BA in English</span><span>2014</span></p>
     </main>
   </body>
 </html>
