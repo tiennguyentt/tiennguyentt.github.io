@@ -79,9 +79,22 @@ const personSchema = {
   <section class="hero section">
     <p class="kicker">Product · Agents · HCMC</p>
     <h1>Tien Nguyen</h1>
+    <p class="hero-line">
+      Agentic AI for everything you
+      <span
+        class="hero-cycle"
+        data-words="ship,evaluate,specify,gate"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <span class="hero-cycle__track">
+          <span class="hero-cycle__word is-active">ship</span>
+        </span>
+        <span class="hero-cycle__rule" aria-hidden="true"></span>
+      </span>.
+    </p>
     <p class="lead">
-      Agentic AI from discovery to production. Source-traced specs. Ground-truth evals. Human
-      sign-off on every critical change.
+      Source-traced specs. Ground-truth evals. Human sign-off on every critical change.
     </p>
     <div class="action-row" aria-label={t('home.primaryLinks')}>
       <a
@@ -93,6 +106,89 @@ const personSchema = {
       <a class="text-link" href={withBase('/works/')}>Work</a>
     </div>
   </section>
+
+  <script>
+    function initHeroCycle() {
+      const root = document.querySelector<HTMLElement>('.hero-cycle');
+      if (!root || root.dataset.bound === '1') return;
+      root.dataset.bound = '1';
+
+      const words = (root.dataset.words ?? 'ship')
+        .split(',')
+        .map((w) => w.trim())
+        .filter(Boolean);
+      if (words.length < 2) return;
+
+      const track = root.querySelector<HTMLElement>('.hero-cycle__track');
+      if (!track) return;
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let index = 0;
+      let busy = false;
+
+      const measure = (text: string) => {
+        const probe = document.createElement('span');
+        probe.className = 'hero-cycle__word is-active';
+        probe.style.position = 'absolute';
+        probe.style.visibility = 'hidden';
+        probe.style.pointerEvents = 'none';
+        probe.textContent = text;
+        track.appendChild(probe);
+        const width = probe.getBoundingClientRect().width;
+        probe.remove();
+        return width;
+      };
+
+      const setWidth = (text: string) => {
+        track.style.width = `${measure(text)}px`;
+      };
+
+      setWidth(words[0]);
+
+      const swap = () => {
+        if (busy) return;
+        busy = true;
+        const next = (index + 1) % words.length;
+        const current = track.querySelector<HTMLElement>('.hero-cycle__word.is-active');
+        if (!current) {
+          busy = false;
+          return;
+        }
+
+        if (reduceMotion) {
+          current.textContent = words[next];
+          setWidth(words[next]);
+          index = next;
+          busy = false;
+          return;
+        }
+
+        const incoming = document.createElement('span');
+        incoming.className = 'hero-cycle__word is-enter';
+        incoming.textContent = words[next];
+        track.appendChild(incoming);
+        setWidth(words[next]);
+
+        requestAnimationFrame(() => {
+          current.classList.remove('is-active');
+          current.classList.add('is-exit');
+          incoming.classList.remove('is-enter');
+          incoming.classList.add('is-active');
+        });
+
+        window.setTimeout(() => {
+          current.remove();
+          index = next;
+          busy = false;
+        }, 520);
+      };
+
+      window.setInterval(swap, 2600);
+    }
+
+    initHeroCycle();
+    document.addEventListener('astro:page-load', initHeroCycle);
+  </script>
 
   <section class="section demos-band" aria-label="Demo use cases">
     <p class="kicker">Use cases</p>

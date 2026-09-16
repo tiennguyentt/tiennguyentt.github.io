@@ -187,6 +187,92 @@ a:not(.brand, .button, .header-cta, .demo-rail a):hover {
   animation-delay: 170ms;
 }
 
+.hero > :nth-child(5) {
+  animation-delay: 220ms;
+}
+
+.hero-line {
+  margin: 0 auto 1.1rem;
+  max-width: 28rem;
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3.4vw, 2rem);
+  font-weight: 520;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+.hero-cycle {
+  display: inline-grid;
+  justify-items: start;
+  vertical-align: baseline;
+  color: var(--color-text);
+}
+
+.hero-cycle__track {
+  position: relative;
+  display: inline-block;
+  height: 1.2em;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: width 420ms var(--ease-out);
+}
+
+.hero-cycle__word {
+  display: inline-block;
+  white-space: nowrap;
+  will-change: transform, opacity, filter;
+  transition:
+    opacity 480ms var(--ease-out),
+    transform 480ms var(--ease-out),
+    filter 480ms var(--ease-out);
+}
+
+.hero-cycle__word.is-active {
+  position: relative;
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+.hero-cycle__word.is-enter {
+  position: absolute;
+  inset: 0 auto 0 0;
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(18%);
+}
+
+.hero-cycle__word.is-exit {
+  position: absolute;
+  inset: 0 auto 0 0;
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-14%);
+}
+
+.hero-cycle__rule {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  margin-top: 0.12em;
+  background: color-mix(in srgb, var(--color-text) 28%, transparent);
+  transform-origin: left center;
+  animation: rule-draw 900ms var(--ease-out) 280ms both;
+}
+
+@keyframes rule-draw {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
 .kicker,
 .eyebrow {
   margin: 0 0 1.1rem;
