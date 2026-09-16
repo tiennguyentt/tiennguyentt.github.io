@@ -1,6 +1,6 @@
 ---
 title: 'Gelato platforms'
-description: 'In progress. Control plane plus six verticals (Core, SDLC, Nexus, Simulation, DS/ML, Marketplace). Specs exist. Live demos arrive when builds ship.'
+description: 'In progress.'
 tech:
   - In progress
   - Control plane
