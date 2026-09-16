@@ -1,40 +1,31 @@
 ---
 title: 'Colonial Surety delivery'
-description: 'Regulated B2B insurance and payments delivery: 7-product bundling, B2B SSO, and a PCI-aware emergency gateway migration with a five-developer team.'
+description: 'Past insurtech / B2B fintech delivery (resume-backed): agent-operated PM controls, emergency PCI gateway cutover, seven-product bundling, and B2B SSO scoping. No public demo.'
 tech:
   - Insurance
   - Payments
   - PCI
   - B2B SSO
-  - Scrum
+  - Product ownership
 order: 3
 publishDate: 2026-02-01
 ---
 
-## Before
+## Context
 
-Colonial Surety’s product surface spans surety, insurance bundling, partner access, and payment rails. Delivery pressure is high; compliance is non-negotiable. An emergency gateway migration had to pass Fiserv PCI scrutiny across multiple platforms without stalling the broader roadmap.
+**Colonial Surety** — prior role as Product Management Engineer (B2B fintech, insurance, payments). Insurtech delivery; **no public demo**. Facts below stay within the resume.
 
-## Decision
+## What shipped (resume)
 
-As Product Management Engineer in a ~20-developer org, I owned scoping, sequencing, and the engineering handoff for several high-risk tracks:
+1. **Agent-operated PM workflow controls** — transcripts graded for traceability, specs linked to source, no diff without sign-off; integration points and team rollout inside a regulated US insurer.
+2. **Emergency PCI payments migration** — Transax → CardPointe cutover across **3 production platforms** after the primary gateway shut down; scoped impact and verified each platform before go-live.
+3. **Seven insurance products in one flow** — bundling logic: knockout rules, unified claims, edit-policy matrix, and partial-failure cases.
+4. **B2B SSO provider scoping** — turned ambiguous CTO direction into a structured BRD: two user types, adaptive registration, and cross-partner sessions.
 
-1. **Seven-product insurance bundling** — capability design that let partners compose products without exploding operational edge cases.
-2. **B2B SSO provider** — partner and enterprise access with clear ownership of identity boundaries.
-3. **Payment gateway migration** — a small team (~5 developers) executing a parameter matrix migration that had to satisfy PCI controls across three platforms.
+## Outcome (resume numbers)
 
-The method matches how I run agentic work later: make the non-deterministic parts explicit, keep an accountable human on every change that matters, and do not ship “almost compliant.”
+- PCI emergency gateway migration across 3 platforms.
+- Seven-product bundling model designed into one flow.
+- B2B SSO captured as a buildable BRD before engineering.
 
-## Outcome
-
-- Shipped the 7-product bundling capability into the live product set.
-- Delivered B2B SSO for partner and enterprise access.
-- Completed the gateway migration that passed Fiserv PCI compliance across 3 platforms.
-
-**Number to remember:** PCI-passing gateway migration with a five-developer team across three platforms.
-
-## What interviewers can dig into
-
-- How the payment-parameter matrix was structured for migration risk.
-- Where product ownership sat relative to compliance evidence.
-- How this delivery work informs later governed / agentic product work: same audit instincts, higher automation ambition — without publishing employer platform internals.
+**Not on this site:** live Colonial demos, internal architecture, or details beyond the resume.
