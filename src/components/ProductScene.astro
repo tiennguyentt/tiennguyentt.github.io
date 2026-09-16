@@ -426,11 +426,8 @@ const { kind } = Astro.props;
     border-radius: 50%;
     overflow: hidden;
     background:
-      radial-gradient(circle at 32% 28%, #ffffff 0%, transparent 28%),
-      radial-gradient(circle at 58% 62%, #3a1d4d 0%, #0b0b12 52%, #000 100%);
-    background-size: 140% 140%;
-    box-shadow: inset 0 0 2.4rem rgba(90, 40, 120, 0.28);
-    animation: orb-idle 18s linear infinite;
+      radial-gradient(circle at 38% 32%, #ffffff 0%, transparent 42%),
+      radial-gradient(circle at 62% 68%, #ecece8 0%, #f4f4f2 72%);
   }
 
   .scene-orb canvas {
@@ -469,23 +466,10 @@ const { kind } = Astro.props;
     }
   }
 
-  @keyframes orb-idle {
-    0% {
-      background-position: 28% 22%;
-    }
-    50% {
-      background-position: 68% 64%;
-    }
-    100% {
-      background-position: 28% 22%;
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
     .scene-dot,
     .scene-think i,
     .scene-progress > b,
-    .scene-orb,
     .is-enter {
       animation: none;
     }
