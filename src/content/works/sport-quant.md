@@ -8,7 +8,7 @@ tech:
   - Streamlit
 link: https://tienntt-sport-quant.streamlit.app/
 repo: https://github.com/tiennguyentt/sport-quant
-order: 5
+order: 2
 publishDate: 2025-09-01
 ---
 

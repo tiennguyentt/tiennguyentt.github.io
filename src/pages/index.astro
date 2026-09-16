@@ -6,12 +6,13 @@ import { withBase } from '../lib/url';
 import { SITE } from '../consts';
 import { formatDate, t } from '../i18n';
 
-const works = (await getCollection('works'))
-  .sort((a, b) => {
-    const byOrder = (a.data.order ?? 999) - (b.data.order ?? 999);
-    return byOrder || b.data.publishDate.getTime() - a.data.publishDate.getTime();
-  })
-  .slice(0, 3);
+const works = (await getCollection('works')).sort((a, b) => {
+  const byOrder = (a.data.order ?? 999) - (b.data.order ?? 999);
+  return byOrder || b.data.publishDate.getTime() - a.data.publishDate.getTime();
+});
+
+const demos = works.filter((w) => w.data.link).slice(0, 3);
+const featured = works.slice(0, 3);
 
 const site = Astro.site ?? new URL(Astro.url.origin);
 const personSchema = {
@@ -45,12 +46,36 @@ const personSchema = {
     <p class="eyebrow">AI Product Manager · Product Owner · Ho Chi Minh City</p>
     <h1>Tien Nguyen</h1>
     <p class="lead">
-      I design and lead enterprise agentic platforms — governed workflows from observe through
-      verify and learn. Advisory-first. Human sign-off before anything reaches engineering.
+      I lead agentic AI from ambiguous discovery to governed production — source-traced specs,
+      evals against ground truth, human sign-off on every critical diff. Inspect the public demos;
+      employer platforms stay on the resume.
     </p>
     <div class="action-row" aria-label={t('home.primaryLinks')}>
-      <a class="button" href={withBase('/works/')}>View case studies</a>
-      <a class="text-link" href={withBase('/Tien-Nguyen-CV.pdf')}>Download resume</a>
+      <a class="button" href="https://tienntt-knowledge-engine.streamlit.app/" target="_blank" rel="noopener noreferrer"
+        >Open Knowledge Engine</a
+      >
+      <a class="text-link" href={withBase('/works/')}>All case studies</a>
+    </div>
+  </section>
+
+  <section class="section split-overview" aria-label="What you can inspect">
+    <div>
+      <p class="eyebrow">Live demos</p>
+      <h2>Use cases HR and interviewers can open today.</h2>
+    </div>
+    <div class="feature-list">
+      {
+        demos.map((work) => (
+          <article>
+            <h3>
+              <a href={work.data.link} target="_blank" rel="noopener noreferrer">
+                {work.data.title}
+              </a>
+            </h3>
+            <p>{work.data.description}</p>
+          </article>
+        ))
+      }
     </div>
   </section>
 
@@ -70,15 +95,15 @@ const personSchema = {
       <article>
         <h3>Source-traced specs</h3>
         <p>
-          Transcripts and notes become a wiki with truth hierarchy, conflict checks, and graded
-          handoffs — then a human signs the diff.
+          Transcripts become a wiki with truth hierarchy, conflict checks, and graded handoffs —
+          then a human signs the diff.
         </p>
       </article>
       <article>
-        <h3>Adoption, not just launch</h3>
+        <h3>Evals before autonomy</h3>
         <p>
-          Rollouts in regulated fintech and insurance stay owned through discovery, control, and
-          team uptake — not a one-time demo.
+          Score outputs against ground truth. Advisory first; autonomy only after decision-log and
+          evaluation proof — the Gelato pattern.
         </p>
       </article>
     </div>
@@ -87,38 +112,32 @@ const personSchema = {
   <section class="section index-feed" aria-labelledby="latest-works">
     <div class="section-heading">
       <p class="eyebrow">Selected work</p>
-      <h2 id="latest-works">Case studies built for interview depth.</h2>
+      <h2 id="latest-works">Demos first. Resume proof second.</h2>
       <a class="text-link" href={withBase('/works/')}>All work</a>
     </div>
 
-    {
-      works.length > 0 ? (
-        <div class="highlight-grid">
-          {works.map((work) => (
-            <article class="highlight-card">
-              <div>
-                <p class="meta">{formatDate(work.data.publishDate, 'short')}</p>
-                <h3>
-                  <a href={withBase(`/works/${work.id}/`)}>{work.data.title}</a>
-                </h3>
-                <p>{work.data.description}</p>
-                {work.data.tech.length > 0 && (
-                  <ul class="tag-list" aria-label={`Stack for ${work.data.title}`}>
-                    {work.data.tech.slice(0, 4).map((tech) => (
-                      <li>{tech}</li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            </article>
-          ))}
-        </div>
-      ) : (
-        <div class="empty-state compact">
-          <p>Case studies are loading into this collection.</p>
-        </div>
-      )
-    }
+    <div class="highlight-grid">
+      {
+        featured.map((work) => (
+          <article class="highlight-card">
+            <div>
+              <p class="meta">{formatDate(work.data.publishDate, 'short')}</p>
+              <h3>
+                <a href={withBase(`/works/${work.id}/`)}>{work.data.title}</a>
+              </h3>
+              <p>{work.data.description}</p>
+              {work.data.tech.length > 0 && (
+                <ul class="tag-list" aria-label={`Stack for ${work.data.title}`}>
+                  {work.data.tech.slice(0, 4).map((tech) => (
+                    <li>{tech}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
   </section>
 
   <section class="section split-overview contact-band" aria-labelledby="contact-head">
@@ -128,9 +147,9 @@ const personSchema = {
     </div>
     <div class="prose-stack">
       <p>
-        Building Gelato and other governed agent demos in public. Day job: platform ops across
-        Green SM (Vingroup) ecosystems. Prior Colonial Surety insurtech delivery stays on the
-        resume — no employer demo. Based in Ho Chi Minh City.
+        Current: platform ops at Green SM (Vingroup), connecting ecosystems (food, driver, and
+        related surfaces) — employer internals stay confidential. Public attention layer: Gelato +
+        live demos. Prior Colonial Surety insurtech delivery is resume-backed only.
       </p>
       <div class="action-row">
         <a class="button" href="mailto:tiennguyentthao@gmail.com">Email Tien</a>

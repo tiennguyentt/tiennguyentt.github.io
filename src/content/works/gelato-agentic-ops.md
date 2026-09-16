@@ -7,7 +7,7 @@ tech:
   - Decision logs
   - Policy gates
   - Claude / Codex
-order: 1
+order: 4
 publishDate: 2026-09-01
 ---
 

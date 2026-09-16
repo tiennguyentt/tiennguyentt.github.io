@@ -7,7 +7,7 @@ tech:
   - PCI
   - B2B SSO
   - Product ownership
-order: 3
+order: 5
 publishDate: 2026-02-01
 ---
 

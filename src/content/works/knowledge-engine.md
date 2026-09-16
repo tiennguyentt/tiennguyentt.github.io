@@ -7,7 +7,7 @@ tech:
   - Spec grading
   - Streamlit
 link: https://tienntt-knowledge-engine.streamlit.app/
-order: 2
+order: 1
 publishDate: 2026-06-15
 ---
 

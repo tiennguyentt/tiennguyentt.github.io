@@ -4,7 +4,7 @@ export const SITE = {
   locale: 'en',
   title: 'Tien Nguyen',
   description:
-    'AI Product Manager and Product Owner. Designs and leads enterprise agentic platforms — governed workflows from observe through verify and learn. Ho Chi Minh City.',
+    'AI-native Product Manager / Product Owner. Public demos: Knowledge Engine, Recon, Sport Quant, Gelato. Employer work (Green SM, Colonial) stays resume-safe. Ho Chi Minh City.',
   rssDescription: 'Notes and case studies from Tien Nguyen.',
   ogImage: '/og-image.png',
   author: 'Tien Nguyen',

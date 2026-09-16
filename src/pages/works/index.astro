@@ -15,14 +15,14 @@ const works = (await getCollection('works')).sort((a, b) => {
 
 <BaseLayout
   title="Work"
-  description={`Selected case studies — agentic platforms, regulated delivery, and governed demos. ${SITE.title}.`}
+  description={`Live demos first (Knowledge Engine, Sport Quant, Recon), then Gelato narrative, then resume-backed Colonial delivery. ${SITE.title}.`}
 >
   <section class="page-head section">
     <p class="eyebrow">Work</p>
-    <h1>Case studies for recruiter and hiring-manager depth.</h1>
+    <h1>Demo use cases that get interview attention.</h1>
     <p class="lead">
-      Gelato and personal systems can be inspected. Colonial Surety is prior insurtech delivery,
-      resume-backed only — no public demo. Employer-confidential platforms stay off this site.
+      Open the Streamlit links. Gelato is the personal Agentic Ops story (UI demo later). Colonial
+      is prior insurtech proof from the resume — no employer demo, no Green SM internals.
     </p>
   </section>
 
@@ -36,6 +36,7 @@ const works = (await getCollection('works')).sort((a, b) => {
                 {formatDate(work.data.publishDate, 'short')}
               </time>
               <span>{work.data.tech.slice(0, 3).join(' · ')}</span>
+              {work.data.link ? <span>Live demo</span> : <span>No public demo</span>}
             </p>
             <h2>
               <a href={withBase(`/works/${work.id}/`)}>{work.data.title}</a>
