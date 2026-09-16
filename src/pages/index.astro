@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StructuredData from '../components/StructuredData.astro';
-import DemoGlyph from '../components/DemoGlyph.astro';
+import ProductScene from '../components/ProductScene.astro';
 import { getCollection } from 'astro:content';
 import { withBase } from '../lib/url';
 import { SITE } from '../consts';
@@ -15,13 +15,6 @@ const works = (await getCollection('works')).sort((a, b) => {
 const live = works.filter((w) => w.data.link);
 const gelato = works.find((w) => w.id.startsWith('gelato'));
 
-const homeBlurbs: Record<string, string> = {
-  knowledge: 'Transcripts become source-traced specs. Humans sign every handoff.',
-  sport: 'Prediction-market terminal with hard risk caps. Models advise. Code decides size.',
-  recon: 'Daily research sweeps scored for relevance, credibility, and predictive weight.',
-  gelato: 'Control plane plus six verticals. Specs are ready. Live demos come next.',
-};
-
 const demos = [
   ...live.map((work) => {
     const kind = work.id.includes('knowledge')
@@ -29,14 +22,10 @@ const demos = [
       : work.id.includes('sport')
         ? ('sport' as const)
         : ('recon' as const);
-    const tone = kind === 'knowledge' ? 'mist' : kind === 'sport' ? 'sage' : 'stone';
     return {
       kind,
-      tone,
       title: work.data.title,
-      description: homeBlurbs[kind] ?? work.data.description,
       href: work.data.link!,
-      status: 'Live' as const,
       external: true,
     };
   }),
@@ -44,11 +33,8 @@ const demos = [
     ? [
         {
           kind: 'gelato' as const,
-          tone: 'ink' as const,
-          title: gelato.data.title,
-          description: homeBlurbs.gelato,
+          title: 'Gelato',
           href: withBase(`/works/${gelato.id}/`),
-          status: 'In progress' as const,
           external: false,
         },
       ]
@@ -84,11 +70,10 @@ const personSchema = {
   <StructuredData slot="head" schema={personSchema} />
 
   <section class="hero section">
-    <p class="kicker">AI Product Manager · Product Owner · HCMC</p>
-    <h1>Tien Nguyen</h1>
-    <p class="hero-line">Applied AI for enterprise</p>
+    <p class="kicker">Tien Nguyen · AI Product Manager · HCMC</p>
+    <h1>Applied AI for enterprise.</h1>
     <p class="lead">
-      I design and lead AI platforms that turn complex workflows into governed operations.
+      I design and lead platforms that turn complex workflows into governed operations.
     </p>
     <div class="action-row" aria-label={t('home.primaryLinks')}>
       <a
@@ -97,35 +82,26 @@ const personSchema = {
         target="_blank"
         rel="noopener noreferrer">Knowledge Engine</a
       >
-      <a class="text-link" href={withBase('/works/')}>Work</a>
+      <a class="button button--ghost" href={withBase('/works/')}>Use cases</a>
     </div>
   </section>
 
-  <section class="section demos-band" aria-label="Selected work">
-    <p class="kicker">Work</p>
-    <h2>Live systems</h2>
-    <p class="lead narrow demos-intro">
-      Open these demos. Gelato is the wider platform still under construction.
-    </p>
-
+  <section class="section demos-band" aria-label="Use cases">
     <div class="demo-grid">
       {
         demos.map((demo) => (
           <a
-            class={`demo-card demo-card--${demo.tone}`}
+            class={`demo-card demo-card--${demo.kind}`}
             href={demo.href}
             target={demo.external ? '_blank' : undefined}
             rel={demo.external ? 'noopener noreferrer' : undefined}
           >
-            <div class="demo-card__visual" aria-hidden="true">
-              <span class="demo-card__badge">
-                <DemoGlyph kind={demo.kind} />
-              </span>
+            <div class="demo-card__visual">
+              <ProductScene kind={demo.kind} />
             </div>
-            <div class="demo-card__body">
-              <p class="demo-card__status">{demo.status}</p>
-              <h3>{demo.title}</h3>
-              <p>{demo.description}</p>
+            <div class="demo-card__bar">
+              <span>{demo.title}</span>
+              <span>Explore</span>
             </div>
           </a>
         ))
@@ -134,32 +110,28 @@ const personSchema = {
   </section>
 
   <section class="section method-band" aria-label="Method">
-    <p class="kicker">Method</p>
-    <h2>How the platform runs</h2>
-    <p class="op-loop" aria-label="Operating loop">
-      Observe → Detect → Explain → Recommend → Approve → Execute → Verify → Learn
-    </p>
-    <p class="lead narrow">
-      I connect product strategy, system design, and delivery across knowledge, orchestration,
-      evaluation, and governance. Models advise inside the loop. Humans approve before anyone
-      executes.
-    </p>
-    <p class="lead narrow method-scope">
-      Day to day: RAG, ReAct agents, multi-agent orchestration, human-in-the-loop workflows,
-      persistent memory, runtime controls, and evidence-based verification.
-    </p>
+    <div class="method-copy">
+      <p class="kicker">Method</p>
+      <h2>How the platform runs</h2>
+      <p class="op-loop" aria-label="Operating loop">
+        Observe → Detect → Explain → Recommend → Approve → Execute → Verify → Learn
+      </p>
+      <p class="lead">Models advise inside the loop. Humans approve before anyone executes.</p>
+    </div>
   </section>
 
   <section class="section contact-band" aria-labelledby="contact-head">
-    <p class="kicker">Contact</p>
+    <p class="kicker">Get started</p>
     <h2 id="contact-head">Open to AI product roles</h2>
-    <p class="lead narrow">
-      Seven years in B2B fintech, payments, transportation, and enterprise systems, from first build
-      to high-scale operations. Based in Ho Chi Minh City.
+    <p class="lead">
+      Seven years in B2B fintech, payments, transportation, and enterprise systems. Ho Chi Minh
+      City.
     </p>
     <div class="action-row">
       <a class="button" href="mailto:tiennguyentthao@gmail.com">Email</a>
-      <a class="text-link" href="https://www.linkedin.com/in/tiennguyenthithao/">LinkedIn</a>
+      <a class="button button--ghost" href="https://www.linkedin.com/in/tiennguyenthithao/"
+        >LinkedIn</a
+      >
     </div>
   </section>
 </BaseLayout>
