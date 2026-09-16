@@ -4,7 +4,7 @@ import '@fontsource-variable/jetbrains-mono/wght.css';
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 import { withBase } from '../lib/url';
-import { NAV_ITEMS, RESUME_PDF, SITE } from '../consts';
+import { NAV_ITEMS, RESUME_PAGE, SITE } from '../consts';
 import { locale, navLabel, t } from '../i18n';
 import CodeCopy from '../components/CodeCopy.astro';
 import SocialLinks from '../components/SocialLinks.astro';
@@ -87,13 +87,7 @@ const isActive = (href: string) => {
           ))
         }
       </nav>
-      <a
-        class="header-cta"
-        href={withBase(RESUME_PDF)}
-        data-astro-reload
-        target="_blank"
-        rel="noopener noreferrer">Resume</a
-      >
+      <a class="header-cta" href={withBase(RESUME_PAGE)}>Resume</a>
     </header>
 
     <main>

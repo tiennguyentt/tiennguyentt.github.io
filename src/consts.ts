@@ -12,6 +12,7 @@ export const SITE = {
 } as const;
 
 export const RESUME_PDF = '/Tien-Nguyen-CV.pdf' as const;
+export const RESUME_PAGE = '/resume/' as const;
 
 export type SocialIcon = 'github' | 'x' | 'linkedin' | 'rss' | 'email';
 

@@ -27,3 +27,8 @@ pnpm-debug.log*
 # editor / agent local state
 .codex/
 .claude/
+
+# resume print tooling
+scripts/resume/.chrome-profile/
+scripts/resume/Tien-Nguyen-CV.pdf
+
