@@ -223,7 +223,7 @@ a:not(.brand, .button, .header-cta, .demo-card, .demo-rail a):hover {
 }
 
 .hero h1 {
-  max-width: 12ch;
+  max-width: 22ch;
   margin-bottom: 1.1rem;
   font-size: clamp(3.2rem, 8.5vw, 5.6rem);
   line-height: 0.98;
