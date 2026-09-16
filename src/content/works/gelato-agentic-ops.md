@@ -1,32 +1,30 @@
 ---
 title: 'Gelato — Agentic Ops platforms'
-description: 'Personal agentic platform suite (control plane + six verticals). Specs exist; live platform demos land when builds are real — branded Gelato, never employer systems.'
+description: 'Scaffold — building. Control plane + six verticals (Core, SDLC, Nexus, Simulation, DS/ML, Marketplace). Specs in place; live demos when builds ship. Branded Gelato only.'
 tech:
+  - Scaffold
+  - Building
   - Agentic Ops
-  - Control plane
-  - Six verticals
 order: 4
 publishDate: 2026-09-01
 ---
 
-## What it is
+## Status
 
-**Gelato** is the public name for Tien’s agentic platform work: an advisory-first control plane plus six verticals from the architecture set.
+**Scaffold — building.** Architecture and contracts exist. Live platform demos update when real builds ship. Not an employer product tour.
+
+## Suite
 
 | | Platform |
 | --- | --- |
-| 00 | Control plane (OmniAgent, policy, decision log, Temporal, gateway) |
-| 01 | Core — embedding, model gateway, knowledge graph |
+| 00 | Control plane |
+| 01 | Core (gateway / embed / graph) |
 | 02 | Agentic SDLC & testing |
-| 03 | Nexus — analytics + knowledge discovery |
-| 04 | Simulation — replay + R2 gates |
-| 05 | DS/ML — features, registry, gated promotion |
-| 06 | Intelligent Marketplace — fleet ops as supply/demand |
+| 03 | Nexus |
+| 04 | Simulation |
+| 05 | DS/ML |
+| 06 | Intelligent Marketplace |
 
-## Demo status
+## One-liner
 
-**Brief for now.** Detailed case pages and live platform demos update when the real builds are ready. Until then: architecture direction only — no employer branding, no fake “live” claims.
-
-## Interview one-liner
-
-Advisory-first agent ops: models advise, decision logs and humans decide; autonomy graduates only with evidence.
+Advisory-first agent ops: models advise; decision logs and humans decide.
