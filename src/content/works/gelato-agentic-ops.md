@@ -1,43 +1,32 @@
 ---
-title: 'Gelato — Agentic Ops Platform'
-description: 'Personal advisory-first control plane for a coding-agent fleet — observe run signals, recommend with evidence, and graduate autonomy only after decision-log proof.'
+title: 'Gelato — Agentic Ops platforms'
+description: 'Personal agentic platform suite (control plane + six verticals). Specs exist; live platform demos land when builds are real — branded Gelato, never employer systems.'
 tech:
   - Agentic Ops
-  - Temporal
-  - Decision logs
-  - Policy gates
-  - Claude / Codex
+  - Control plane
+  - Six verticals
 order: 4
 publishDate: 2026-09-01
 ---
 
-## Before
+## What it is
 
-Running a fleet of coding agents (Claude Code, Codex CLI, and local routes) without a control plane turns into untracked burn, unclear ownership, and actions that cannot be audited. Free-form assistants skip evidence, blur who approved what, and treat the model host as the system of record.
+**Gelato** is the public name for Tien’s agentic platform work: an advisory-first control plane plus six verticals from the architecture set.
 
-I needed a platform I could own end to end — and show as a public product direction — where recommendations stay evidence-bound and autonomy is earned, not assumed.
+| | Platform |
+| --- | --- |
+| 00 | Control plane (OmniAgent, policy, decision log, Temporal, gateway) |
+| 01 | Core — embedding, model gateway, knowledge graph |
+| 02 | Agentic SDLC & testing |
+| 03 | Nexus — analytics + knowledge discovery |
+| 04 | Simulation — replay + R2 gates |
+| 05 | DS/ML — features, registry, gated promotion |
+| 06 | Intelligent Marketplace — fleet ops as supply/demand |
 
-## Decision
+## Demo status
 
-I designed **Gelato** as an advisory-first Agentic Ops control plane for a single-owner coding-agent substrate:
+**Brief for now.** Detailed case pages and live platform demos update when the real builds are ready. Until then: architecture direction only — no employer branding, no fake “live” claims.
 
-1. **Unify the interface, not the storage.** Hosts, git, issue trackers, and knowledge stores keep their sources of truth. Gelato consumes events through governed contracts.
-2. **Deterministic spine first.** Event pipelines, typed tools, rules-as-data, decision logs, and Temporal workflows form the control plane. AI sits on top as reasoning and summarization — never as the authority for fleet-impacting actions.
-3. **Autonomy ladder.** Everything starts as a recommendation to a human sponsor. Autonomous execution requires evidence quality, blast-radius limits, simulation-backed evaluation, and explicit approval.
-4. **Fail closed on data classification.** Routing refuses missing classification. Private context never reaches providers or stores that are not authorized.
+## Interview one-liner
 
-Operator surfaces stay thin and evidence-derived: chat, dash, and approve journeys that cannot invent requirements the contracts do not already carry.
-
-## Outcome
-
-- A documented architecture spanning control plane, core AI services, agentic SDLC, knowledge, simulation, DS/ML, and marketplace verticals — with contracts that make advisory → autonomy graduation auditable.
-- Integration points defined so product, engineering, and agents share one decision log for matches and non-matches alike.
-- Public framing stays on Gelato as a personal/demo platform. Employer-confidential work stays off this page.
-
-**Number to remember:** advisory-first by default — zero fleet-impacting autonomous actions until decision-log completeness and evaluation gates pass.
-
-## What interviewers can dig into
-
-- How R0–R3 autonomy rungs map to Temporal workflows and human approval gates.
-- Why model hosts are clients of the control plane, never the control plane.
-- How operator console prototypes (chat, dash, approve) stay evidence-derived without inventing requirements in UI code.
+Advisory-first agent ops: models advise, decision logs and humans decide; autonomy graduates only with evidence.
