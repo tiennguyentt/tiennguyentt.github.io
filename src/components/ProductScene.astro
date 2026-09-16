@@ -203,9 +203,10 @@ const { kind } = Astro.props;
     padding: 0.55rem 0.75rem;
     border: 1px solid #e8e8e8;
     border-radius: 1rem;
-    font-size: 0.78rem;
-    line-height: 1.35;
-    color: #2a2a2a;
+    font-size: var(--demo-body-size);
+    font-weight: var(--demo-body-weight);
+    line-height: 1.4;
+    color: var(--demo-ink);
     background: #fff;
   }
 
@@ -217,13 +218,15 @@ const { kind } = Astro.props;
   .scene-meta,
   .scene-kicker {
     margin: 0.15rem 0 0;
-    color: #6a6a6a;
-    font-size: 0.72rem;
+    color: var(--demo-muted);
+    font-size: var(--demo-meta-size);
+    font-weight: var(--demo-meta-weight);
+    letter-spacing: -0.01em;
+    line-height: 1.35;
   }
 
   .scene-kicker {
-    font-weight: 550;
-    letter-spacing: -0.01em;
+    color: var(--demo-ink);
   }
 
   .scene-checks {
@@ -236,24 +239,25 @@ const { kind } = Astro.props;
     position: relative;
     margin: 0.28rem 0;
     padding-left: 1.1rem;
-    color: #2a2a2a;
-    font-size: 0.78rem;
+    color: var(--demo-ink);
+    font-size: var(--demo-body-size);
+    font-weight: var(--demo-body-weight);
     line-height: 1.4;
   }
 
   .scene-checks li::before {
     content: '';
     position: absolute;
-    top: 0.38rem;
+    top: 0.4rem;
     left: 0;
-    width: 0.55rem;
-    height: 0.55rem;
+    width: 0.5rem;
+    height: 0.5rem;
     border-radius: 50%;
     background: #bdbdbd;
   }
 
   .scene-checks li:first-child::before {
-    background: #171717;
+    background: var(--demo-ink);
   }
 
   .scene-status {
@@ -261,8 +265,10 @@ const { kind } = Astro.props;
     align-items: center;
     gap: 0.4rem;
     margin-top: auto;
-    color: #6a6a6a;
-    font-size: 0.75rem;
+    color: var(--demo-muted);
+    font-size: var(--demo-meta-size);
+    font-weight: var(--demo-meta-weight);
+    line-height: 1.35;
   }
 
   .scene-dot {
@@ -319,7 +325,7 @@ const { kind } = Astro.props;
     flex-direction: column;
     padding: 0;
     background: #f4f4f2;
-    color: #2a2a2a;
+    color: var(--demo-ink);
     font-family: var(--font-mono);
   }
 
@@ -328,8 +334,9 @@ const { kind } = Astro.props;
     align-items: center;
     gap: 0.35rem;
     padding: 0.65rem 0.85rem;
-    color: #6a6a6a;
-    font-size: 0.68rem;
+    color: var(--demo-muted);
+    font-size: var(--demo-meta-size);
+    font-weight: var(--demo-meta-weight);
     border-bottom: 1px solid #e8e8e8;
   }
 
@@ -347,7 +354,7 @@ const { kind } = Astro.props;
     display: block;
     width: 42%;
     height: 100%;
-    background: #171717;
+    background: var(--demo-ink);
     animation: scene-progress 2.6s ease-in-out infinite;
   }
 
@@ -360,8 +367,9 @@ const { kind } = Astro.props;
     margin: 0;
     padding: 0.9rem 1rem;
     overflow: hidden;
-    font-size: 0.72rem;
-    line-height: 1.55;
+    font-size: var(--demo-body-size);
+    font-weight: var(--demo-body-weight);
+    line-height: 1.5;
     white-space: pre-wrap;
   }
 
@@ -373,27 +381,29 @@ const { kind } = Astro.props;
 
   .scene-tag {
     margin-left: auto;
-    font-size: 0.62rem;
+    font-size: var(--demo-meta-size);
+    font-weight: var(--demo-meta-weight);
   }
 
   .scene-tag--ok {
-    color: #6a6a6a;
+    color: var(--demo-muted);
   }
 
   .scene-tag--run {
-    color: #e31937;
+    color: var(--color-accent);
   }
 
   .c-dim {
-    color: #6a6a6a;
+    color: var(--demo-muted);
   }
 
   .c-key {
-    color: #2a2a2a;
+    color: var(--demo-ink);
+    font-weight: var(--demo-meta-weight);
   }
 
   .c-ok {
-    color: #2a2a2a;
+    color: var(--demo-ink);
   }
 
   .is-enter {

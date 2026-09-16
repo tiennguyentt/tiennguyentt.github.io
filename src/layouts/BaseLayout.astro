@@ -42,7 +42,8 @@ const isActive = (href: string) => {
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#FFFFFF" />
     <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
-    <link rel="icon" href={withBase('/favicon.ico')} />
+    <link rel="icon" href={withBase('/favicon.ico')} sizes="any" />
+    <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
     <link rel="canonical" href={canonicalURL} />
     <link rel="sitemap" href={withBase('/sitemap-index.xml')} />
     <link rel="alternate" type="application/rss+xml" title={siteName} href={withBase('/rss.xml')} />
