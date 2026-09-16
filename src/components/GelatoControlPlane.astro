@@ -1,56 +1,132 @@
 ---
-/** Route ledger for the Gelato bento card — functional labels only. */
-const routes = [
-  { id: 'hub-gateway', path: 'route → gateway', state: 'open', detail: 'Gateway open.' },
-  { id: 'gateway-memory', path: 'gateway → memory', state: 'linked', detail: 'Sources linked.' },
-  { id: 'memory-models', path: 'memory → models', state: 'synced', detail: 'Context synced.' },
+/** Gelato ecosystem map — functional platform names only (NDA-safe). */
+const platforms = [
+  { id: 'gateway', label: 'Gateway', x: 72, y: 28 },
+  { id: 'memory', label: 'Memory', x: 188, y: 22 },
+  { id: 'models', label: 'Models', x: 304, y: 28 },
+  { id: 'delivery', label: 'Delivery', x: 72, y: 148 },
+  { id: 'scenarios', label: 'Scenarios', x: 188, y: 156 },
+  { id: 'outputs', label: 'Outputs', x: 304, y: 148 },
+] as const;
+
+const hub = { id: 'ops', label: 'Ops', x: 188, y: 90 };
+
+type PlatformId = (typeof platforms)[number]['id'];
+
+const pos = (id: PlatformId | 'ops') => {
+  if (id === 'ops') return hub;
+  return platforms.find((p) => p.id === id)!;
+};
+
+/** Sparse links: hub spokes + a few peer edges. Not a full mesh. */
+const links: Array<{ id: string; from: PlatformId | 'ops'; to: PlatformId | 'ops' }> = [
+  { id: 'ops-gateway', from: 'ops', to: 'gateway' },
+  { id: 'ops-memory', from: 'ops', to: 'memory' },
+  { id: 'ops-models', from: 'ops', to: 'models' },
+  { id: 'ops-delivery', from: 'ops', to: 'delivery' },
+  { id: 'ops-scenarios', from: 'ops', to: 'scenarios' },
+  { id: 'ops-outputs', from: 'ops', to: 'outputs' },
+  { id: 'gateway-memory', from: 'gateway', to: 'memory' },
+  { id: 'memory-models', from: 'memory', to: 'models' },
+  { id: 'delivery-scenarios', from: 'delivery', to: 'scenarios' },
+  { id: 'scenarios-outputs', from: 'scenarios', to: 'outputs' },
+  { id: 'models-scenarios', from: 'models', to: 'scenarios' },
+];
+
+const frames = [
+  {
+    id: 'ops-gateway',
+    text: 'Ops binds Gateway. One entry for every agent path.',
+  },
+  {
+    id: 'gateway-memory',
+    text: 'Gateway ↔ Memory. Specs and sources stay linked.',
+  },
+  {
+    id: 'memory-models',
+    text: 'Memory ↔ Models. Context feeds inference with gates.',
+  },
   {
     id: 'models-scenarios',
-    path: 'models → scenarios',
-    state: 'running',
-    detail: 'Scenario batch runs.',
+    text: 'Models ↔ Scenarios. Batch runs before production.',
+  },
+  {
+    id: 'delivery-scenarios',
+    text: 'Delivery ↔ Scenarios. Build and test share one loop.',
   },
   {
     id: 'scenarios-outputs',
-    path: 'scenarios → outputs',
-    state: 'draft',
-    detail: 'Handoff draft ready.',
+    text: 'Scenarios ↔ Outputs. Humans get the handoff draft.',
   },
   {
-    id: 'pipeline-scenarios',
-    path: 'delivery → scenarios',
-    state: 'pass',
-    detail: 'Three checks pass.',
+    id: 'ops-outputs',
+    text: 'Six platforms. One framework SMEs can adapt.',
   },
 ] as const;
 ---
 
 <div class="scene scene--plane" data-live="plane" aria-hidden="true">
   <header class="plane-head">
-    <p class="plane-kicker">Route ledger</p>
+    <div>
+      <p class="plane-kicker">Agentic ops framework</p>
+      <p class="plane-sub">Platforms connect. Ecosystems adapt.</p>
+    </div>
     <span class="plane-badge">live</span>
   </header>
 
   <div class="plane-body">
-    <ol class="plane-routes">
+    <svg class="plane-map" viewBox="0 0 376 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       {
-        routes.map((route) => (
-          <li class="plane-row" data-route={route.id}>
-            <span class="plane-path">{route.path}</span>
-            <span class="plane-state">{route.state}</span>
-            <span class="plane-track" aria-hidden="true">
-              <i />
-            </span>
-          </li>
+        links.map((link) => {
+          const from = pos(link.from);
+          const to = pos(link.to);
+          return (
+            <line
+              class="plane-link"
+              x1={from.x}
+              y1={from.y}
+              x2={to.x}
+              y2={to.y}
+              data-link={link.id}
+              data-from={link.from}
+              data-to={link.to}
+            />
+          );
+        })
+      }
+
+      <g class="plane-hub" data-node="ops">
+        <circle class="plane-hub__ring" cx={hub.x} cy={hub.y} r="26" />
+        <circle class="plane-hub__dot" cx={hub.x} cy={hub.y} r="20" />
+        <text class="plane-hub__label" x={hub.x} y={hub.y + 4} text-anchor="middle">{hub.label}</text>
+      </g>
+
+      {
+        platforms.map((node) => (
+          <g class="plane-node" data-node={node.id}>
+            <rect
+              class="plane-node__chip"
+              x={node.x - 42}
+              y={node.y - 14}
+              width="84"
+              height="28"
+              rx="8"
+            />
+            <text class="plane-node__label" x={node.x} y={node.y + 4} text-anchor="middle">
+              {node.label}
+            </text>
+          </g>
         ))
       }
-    </ol>
 
-    <p class="plane-detail scene-live">{routes[0].detail}</p>
+      <circle class="plane-signal" cx={hub.x} cy={hub.y} r="3" />
+    </svg>
+
+    <p class="plane-detail scene-live">{frames[0].text}</p>
   </div>
 
   <div class="scene-script" hidden>
-    {routes.map((route) => <span data-frame={route.id}>{route.detail}</span>)}
+    {frames.map((frame) => <span data-frame={frame.id}>{frame.text}</span>)}
   </div>
 </div>
 
@@ -58,24 +134,31 @@ const routes = [
   .scene--plane {
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
-    padding: 1.15rem 1.2rem 3.35rem;
+    gap: 0.55rem;
+    padding: 1.05rem 1.15rem 3.25rem;
     background: #f4f4f2;
   }
 
   .plane-head {
     display: flex;
-    align-items: baseline;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 0.75rem;
   }
 
   .plane-kicker {
     margin: 0;
-    color: #2a2a2a;
+    color: #171717;
     font-size: 0.78rem;
     font-weight: 560;
     letter-spacing: -0.02em;
+  }
+
+  .plane-sub {
+    margin: 0.15rem 0 0;
+    color: #6a6a6a;
+    font-size: 0.7rem;
+    letter-spacing: -0.01em;
   }
 
   .plane-badge {
@@ -88,87 +171,89 @@ const routes = [
 
   .plane-body {
     display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    gap: 1rem;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.9fr);
+    gap: 0.85rem;
     flex: 1;
     min-height: 0;
     align-items: stretch;
   }
 
-  .plane-routes {
-    display: flex;
-    flex-direction: column;
-    gap: 0.28rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .plane-row {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0.55rem;
-    align-items: center;
-    padding: 0.45rem 0.6rem;
-    border-radius: 0.55rem;
-    background: transparent;
-    transition:
-      background 280ms ease,
-      box-shadow 280ms ease;
-  }
-
-  .plane-row.is-active {
-    background: #fff;
-    box-shadow: 0 1px 0 rgba(23, 23, 23, 0.04);
-  }
-
-  .plane-path {
-    color: #5c5c5c;
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: -0.01em;
-    transition: color 280ms ease;
-  }
-
-  .plane-row.is-active .plane-path {
-    color: #171717;
-  }
-
-  .plane-state {
-    color: #9a9a96;
-    font-size: 0.62rem;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    transition: color 280ms ease;
-  }
-
-  .plane-row.is-active .plane-state {
-    color: #171717;
-  }
-
-  .plane-track {
-    grid-column: 1 / -1;
+  .plane-map {
     display: block;
-    overflow: hidden;
-    height: 0.16rem;
-    border-radius: 99px;
-    background: #e8e8e4;
-    opacity: 0;
-    transition: opacity 280ms ease;
-  }
-
-  .plane-row.is-active .plane-track {
-    opacity: 1;
-  }
-
-  .plane-track i {
-    display: block;
-    width: 38%;
+    width: 100%;
     height: 100%;
-    border-radius: inherit;
-    background: #171717;
-    animation: plane-track 2.4s ease-in-out infinite;
+    min-height: 10.5rem;
+  }
+
+  .plane-link {
+    stroke: #d8d8d4;
+    stroke-width: 1.2;
+    transition:
+      stroke 280ms ease,
+      stroke-width 280ms ease;
+  }
+
+  .plane-link.is-live {
+    stroke: #171717;
+    stroke-width: 1.8;
+  }
+
+  .plane-hub__ring {
+    fill: none;
+    stroke: #171717;
+    stroke-width: 1.2;
+    opacity: 0.2;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .plane-hub__dot {
+    fill: #171717;
+  }
+
+  .plane-hub__label {
+    fill: #ffffff;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .plane-hub.is-active .plane-hub__ring {
+    opacity: 0.55;
+    animation: plane-hub-breathe 2.2s ease-in-out infinite;
+  }
+
+  .plane-node__chip {
+    fill: #ffffff;
+    stroke: #d8d8d4;
+    stroke-width: 1.2;
+    transition:
+      stroke 280ms ease,
+      fill 280ms ease;
+  }
+
+  .plane-node__label {
+    fill: #5c5c5c;
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 560;
+    letter-spacing: -0.02em;
+    transition: fill 280ms ease;
+  }
+
+  .plane-node.is-active .plane-node__chip {
+    stroke: #171717;
+    fill: #ffffff;
+  }
+
+  .plane-node.is-active .plane-node__label {
+    fill: #171717;
+  }
+
+  .plane-signal {
+    fill: #171717;
+    opacity: 0.9;
   }
 
   .plane-detail {
@@ -176,14 +261,13 @@ const routes = [
     align-items: center;
     margin: 0;
     padding: 0.85rem 0.95rem;
-    min-height: 4.5rem;
     border-radius: 0.85rem;
     background: #fff;
     color: #171717;
-    font-size: clamp(1rem, 1.6vw, 1.18rem);
+    font-size: clamp(0.92rem, 1.5vw, 1.08rem);
     font-weight: 520;
     letter-spacing: -0.03em;
-    line-height: 1.25;
+    line-height: 1.3;
   }
 
   .plane-detail.is-enter {
@@ -193,7 +277,7 @@ const routes = [
   @keyframes plane-enter {
     from {
       opacity: 0;
-      transform: translateY(0.35rem);
+      transform: translateY(0.3rem);
     }
     to {
       opacity: 1;
@@ -201,12 +285,15 @@ const routes = [
     }
   }
 
-  @keyframes plane-track {
-    0% {
-      transform: translateX(-120%);
-    }
+  @keyframes plane-hub-breathe {
+    0%,
     100% {
-      transform: translateX(320%);
+      transform: scale(1);
+      opacity: 0.45;
+    }
+    50% {
+      transform: scale(1.08);
+      opacity: 0.75;
     }
   }
 
@@ -217,15 +304,13 @@ const routes = [
 
     .plane-detail {
       min-height: 0;
-      padding: 0.75rem 0.85rem;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .plane-track i {
+    .plane-hub.is-active .plane-hub__ring {
       animation: none;
-      width: 100%;
     }
   }
 </style>
