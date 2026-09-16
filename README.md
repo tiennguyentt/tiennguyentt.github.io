@@ -4,10 +4,10 @@ Personal portfolio site (static HTML/CSS/JS — no build step).
 
 ## Hosting
 
-- **Primary (in progress):** [Vercel](https://vercel.com) — push to `main` deploys production once the Git project is linked; preview deploys on PRs.
+- **Primary (in progress):** [Vercel](https://vercel.com) project **`personal`** (slug; display name Personal) — home for this portfolio and later personal apps. Push to `main` deploys production once the GitHub integration is linked; preview deploys on PRs.
 - **Legacy:** [GitHub Pages](https://tiennguyentt.github.io/) still serves this repo until cutover.
 
-Custom domain is deferred until the agentic demos are further along. Until then, use the `*.vercel.app` URL from the Vercel project.
+Custom domain is deferred until the agentic demos are further along. Until then, use the `*.vercel.app` URL from the `personal` project.
 
 Local preview:
 
