@@ -135,12 +135,10 @@ a:not(.brand, .button, .header-cta, .demo-rail a):hover {
 @keyframes brand-word {
   from {
     opacity: 0;
-    transform: translateY(3px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
