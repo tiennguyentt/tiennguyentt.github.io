@@ -30,12 +30,14 @@ const pdfHref = withBase(RESUME_PDF);
 
   <section class="section resume-sheet" data-pagefind-body>
     <p class="resume-lead">
-      I lead the R&amp;D team that builds Agentic Ops Platforms. Source-traced specs, evaluation
-      against ground truth, and human approval on critical changes.
+      I lead the R&amp;D team that builds Agentic Ops Platforms for Applied AI Enterprise work.
+      Agents draft the first pass. I check every claim against a source, score the result against
+      known facts, and sign off before anything ships.
     </p>
     <p class="resume-contact">
       <a href="mailto:tiennguyentthao@gmail.com">tiennguyentthao@gmail.com</a>
       <a href="https://www.linkedin.com/in/tiennguyenthithao/">LinkedIn</a>
+      <a href="https://portfolio-tienntt.vercel.app/">portfolio-tienntt.vercel.app</a>
       <a href="https://tiennguyentt.github.io/">tiennguyentt.github.io</a>
       <span>Ho Chi Minh City</span>
     </p>
@@ -46,11 +48,11 @@ const pdfHref = withBase(RESUME_PDF);
         <h3>Green SM (Vingroup)</h3>
         <span>Now</span>
       </div>
-      <p class="resume-job__title">R&amp;D · Agentic Ops Platforms</p>
+      <p class="resume-job__title">R&amp;D lead · Agentic Ops Platforms</p>
       <ul>
         <li>
-          Lead the R&amp;D team building agentic ops platforms. Title and dates on request.
-          Internals stay confidential.
+          Lead the R&amp;D team that designs and builds agentic ops platforms. Employer product
+          names and internal architecture stay confidential.
         </li>
       </ul>
     </article>
@@ -65,19 +67,16 @@ const pdfHref = withBase(RESUME_PDF);
       </p>
       <ul>
         <li>
-          Owned controls on the agent-operated PM workflow: transcripts graded for traceability,
-          specs linked to source, no diff without sign-off.
+          Ran a PM workflow with agents. I graded transcripts, linked specs to sources, and blocked
+          any change that lacked my sign-off.
         </li>
         <li>
-          Ran emergency PCI gateway cutover (Transax → CardPointe) across three production
+          Led an emergency PCI payment cutover from Transax to CardPointe across three live
           platforms.
         </li>
         <li>
-          Designed seven insurance products in one flow: knockout rules, unified claims, edit policy
-          matrix, partial-failure cases.
-        </li>
-        <li>
-          Scoped B2B SSO into a structured BRD: two user types, adaptive registration, cross-partner
+          Designed seven insurance products in one flow, including knockout rules, shared claims,
+          and partial-failure cases. Wrote the B2B SSO brief for two user types and partner
           sessions.
         </li>
       </ul>
@@ -86,23 +85,17 @@ const pdfHref = withBase(RESUME_PDF);
     <article class="resume-job">
       <div class="resume-job__head">
         <h3>Hoookie JSC</h3>
-        <span>2023 – 2025</span>
+        <span>2023–2025</span>
       </div>
-      <p class="resume-job__title">
-        Product Owner · Web3, fintech · forward-deployed client services
-      </p>
+      <p class="resume-job__title">Product Owner · Web3 and fintech, on-site with clients</p>
       <ul>
         <li>
-          Defined requirements for Keeta (US payments network targeting 400 ms): use cases, data
-          flows, acceptance criteria.
+          Wrote requirements for Keeta, a US payments network aimed at 400 ms settlement. Covered
+          use cases, data flows, and acceptance checks.
         </li>
         <li>
-          Built Sire.bot with 137% cumulative return in a two-month backtest; scored predictions
-          against ground truth before release.
-        </li>
-        <li>
-          Forward-deployed discovery for US and international clients from Vietnam: BRDs, SRS,
-          acceptance criteria before handoff.
+          Built Sire.bot. A two-month backtest returned 137%. I scored model output against known
+          results before release.
         </li>
       </ul>
     </article>
@@ -110,77 +103,85 @@ const pdfHref = withBase(RESUME_PDF);
     <article class="resume-job">
       <div class="resume-job__head">
         <h3>Olmo Technology</h3>
-        <span>2022 – 2023</span>
+        <span>2022–2023</span>
       </div>
       <p class="resume-job__title">Product Owner · social e-commerce</p>
       <ul>
-        <li>+30% bookings after reworking mobile booking and bank-transfer flow.</li>
-        <li>Shipped livestream commerce end to end: chat, marketplace, community feed, gifting.</li>
+        <li>
+          Raised bookings 30% by fixing the mobile booking path and bank-transfer flow. Shipped
+          livestream commerce with chat, marketplace, and gifting.
+        </li>
       </ul>
     </article>
 
     <article class="resume-job">
       <div class="resume-job__head">
         <h3>4/10 Fire Protection Trading Service</h3>
-        <span>2019 – 2022</span>
+        <span>2019–2022</span>
       </div>
-      <p class="resume-job__title">Front-end Developer → BA / Associate PM · ERP</p>
+      <p class="resume-job__title">Front-end developer, then BA and associate PM · ERP</p>
       <ul>
         <li>
-          Built ERP modules from code to rollout; owned resource-management and quality-control
-          paths.
+          Built ERP modules from code through rollout. Owned resource management and quality
+          control.
         </li>
       </ul>
     </article>
 
-    <h2>Public systems</h2>
-    <div class="resume-grid">
-      <p>
-        <strong>Gelato</strong>
-        Agentic ops route ledger: orchestration, gates, decision logs. In progress.
-      </p>
-      <p>
-        <strong>Knowledge Engine</strong>
-        Source-traced wiki, conflict resolution, graded specs, human sign-off.
-      </p>
-      <p>
-        <strong>Recon</strong>
-        Daily agent sweeps with relevance, credibility, and predictive weight.
-      </p>
-      <p>
-        <strong>Sport Quant</strong>
-        Governed +EV terminal: Elo / Dixon-Coles, fractional Kelly, hard caps.
-      </p>
+    <div class="resume-bottom">
+      <div>
+        <h2>Public demos</h2>
+        <ul class="resume-demos">
+          <li>
+            <strong>Gelato.</strong>
+            Framework that connects agent tools for company ops. Orchestration, gates, and decision logs.
+            In progress.
+          </li>
+          <li>
+            <strong>Knowledge Engine.</strong>
+            Turns meeting notes into a wiki with sources. Flags conflicts. Grades specs. Needs my sign-off
+            before engineering starts.
+          </li>
+          <li>
+            <strong>Recon.</strong>
+            Daily research sweeps. Scores each source for relevance, credibility, and predictive weight.
+          </li>
+          <li>
+            <strong>Sport Quant.</strong>
+            Betting terminal with hard risk caps. Models advise. Code decides the size.
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2>Skills</h2>
+        <dl class="resume-skills">
+          <dt>Discovery</dt>
+          <dd>Workshops, scope, stakeholders, competitor research</dd>
+          <dt>Delivery</dt>
+          <dd>Pilots, integrations, production rollout, Scrum</dd>
+          <dt>Requirements</dt>
+          <dd>BRD, SRS, PRD, stories, acceptance checks</dd>
+          <dt>AI controls</dt>
+          <dd>Source links, eval thresholds, human sign-off</dd>
+          <dt>Ops</dt>
+          <dd>Agent workflows, MCP, APIs, model choice</dd>
+        </dl>
+
+        <h2>Education</h2>
+        <p class="resume-edu">
+          <span>Anthropic Claude Code and Agent Skills</span><span>2026</span>
+        </p>
+        <p class="resume-edu">
+          <span>Product School AI Product Certification</span><span>2025</span>
+        </p>
+        <p class="resume-edu">
+          <span>CoderSchool Full Stack Developer</span><span>2019</span>
+        </p>
+        <p class="resume-edu">
+          <span>HCMC University of Education, BA English</span><span>2014</span>
+        </p>
+      </div>
     </div>
-
-    <h2>Skills</h2>
-    <dl class="resume-skills">
-      <dt>Discovery</dt>
-      <dd>Onsite workshops, scope, stakeholder mapping, competitor and domain research</dd>
-      <dt>Delivery</dt>
-      <dd>Pilot design, integration, production rollout, adoption tracking, Scrum</dd>
-      <dt>Requirements</dt>
-      <dd>BRD / SRS / PRD, stories, acceptance criteria, failure paths</dd>
-      <dt>AI controls</dt>
-      <dd>Context engineering, evaluation thresholds, source tracing, human gates</dd>
-      <dt>Ops</dt>
-      <dd>Agent workflows, MCP, APIs and data flows, model selection</dd>
-    </dl>
-
-    <h2>Education</h2>
-    <p class="resume-edu">
-      <span>Anthropic: Claude Code 101, AI Fluency, Agent Skills, Subagents</span><span>2026</span>
-    </p>
-    <p class="resume-edu">
-      <span>Product School: Launches, Roadmap, Prioritization, Strategy, Discovery, AI Product</span
-      ><span>2025</span>
-    </p>
-    <p class="resume-edu">
-      <span>CoderSchool: Full Stack Software Developer</span><span>2019</span>
-    </p>
-    <p class="resume-edu">
-      <span>HCMC University of Education: BA in English</span><span>2014</span>
-    </p>
   </section>
 </BaseLayout>
 
@@ -256,23 +257,29 @@ const pdfHref = withBase(RESUME_PDF);
     margin: 0.25rem 0;
   }
 
-  .resume-grid {
+  .resume-bottom {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.85rem 1.25rem;
+    grid-template-columns: 1.2fr 0.9fr;
+    gap: 1.5rem;
+    align-items: start;
   }
 
-  .resume-grid p {
+  .resume-demos {
     margin: 0;
+    padding: 0;
+    list-style: none;
     color: var(--color-muted);
-    font-size: 0.92rem;
+  }
+
+  .resume-demos li {
+    margin: 0 0 0.75rem;
+    font-size: 0.95rem;
     line-height: 1.45;
   }
 
-  .resume-grid strong {
-    display: block;
-    margin-bottom: 0.15rem;
+  .resume-demos strong {
     color: var(--color-text);
+    margin-right: 0.15rem;
   }
 
   .resume-skills {
@@ -309,7 +316,7 @@ const pdfHref = withBase(RESUME_PDF);
   }
 
   @media (max-width: 700px) {
-    .resume-grid,
+    .resume-bottom,
     .resume-skills {
       grid-template-columns: 1fr;
     }

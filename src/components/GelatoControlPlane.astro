@@ -96,9 +96,11 @@ const frames = [
       }
 
       <g class="plane-hub" data-node="ops">
-        <circle class="plane-hub__ring" cx={hub.x} cy={hub.y} r="26" />
-        <circle class="plane-hub__dot" cx={hub.x} cy={hub.y} r="20" />
-        <text class="plane-hub__label" x={hub.x} y={hub.y + 4} text-anchor="middle">{hub.label}</text>
+        <circle class="plane-hub__ring" cx={hub.x} cy={hub.y} r="26"></circle>
+        <circle class="plane-hub__dot" cx={hub.x} cy={hub.y} r="20"></circle>
+        <text class="plane-hub__label" x={hub.x} y={hub.y + 4} text-anchor="middle"
+          >{hub.label}</text
+        >
       </g>
 
       {
@@ -119,7 +121,7 @@ const frames = [
         ))
       }
 
-      <circle class="plane-signal" cx={hub.x} cy={hub.y} r="3" />
+      <circle class="plane-signal" cx={hub.x} cy={hub.y} r="3"></circle>
     </svg>
 
     <p class="plane-detail scene-live">{frames[0].text}</p>
