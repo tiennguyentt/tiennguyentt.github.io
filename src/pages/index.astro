@@ -15,6 +15,13 @@ const works = (await getCollection('works')).sort((a, b) => {
 const live = works.filter((w) => w.data.link);
 const gelato = works.find((w) => w.id.startsWith('gelato'));
 
+const homeBlurbs: Record<string, string> = {
+  knowledge: 'Transcripts become source-traced specs. Humans sign every handoff.',
+  sport: 'Prediction-market terminal with hard risk caps. Models advise. Code decides size.',
+  recon: 'Daily research sweeps scored for relevance, credibility, and predictive weight.',
+  gelato: 'Control plane plus six verticals. Specs are ready. Live demos come next.',
+};
+
 const demos = [
   ...live.map((work) => {
     const kind = work.id.includes('knowledge')
@@ -27,7 +34,7 @@ const demos = [
       kind,
       tone,
       title: work.data.title,
-      description: work.data.description,
+      description: homeBlurbs[kind] ?? work.data.description,
       href: work.data.link!,
       status: 'Live' as const,
       external: true,
@@ -39,7 +46,7 @@ const demos = [
           kind: 'gelato' as const,
           tone: 'ink' as const,
           title: gelato.data.title,
-          description: gelato.data.description,
+          description: homeBlurbs.gelato,
           href: withBase(`/works/${gelato.id}/`),
           status: 'In progress' as const,
           external: false,
@@ -81,7 +88,7 @@ const personSchema = {
     <h1>Tien Nguyen</h1>
     <p class="hero-line">Applied AI for enterprise</p>
     <p class="lead">
-      I design and lead AI platforms that turn complex workflows into governed, reliable operations.
+      I design and lead AI platforms that turn complex workflows into governed operations.
     </p>
     <div class="action-row" aria-label={t('home.primaryLinks')}>
       <a
@@ -96,10 +103,9 @@ const personSchema = {
 
   <section class="section demos-band" aria-label="Selected work">
     <p class="kicker">Work</p>
-    <h2>Proof you can open</h2>
+    <h2>Live systems</h2>
     <p class="lead narrow demos-intro">
-      Live demos of knowledge, evaluation, and research loops. Gelato is the broader platform still
-      under construction.
+      Open these demos. Gelato is the wider platform still under construction.
     </p>
 
     <div class="demo-grid">
@@ -129,15 +135,18 @@ const personSchema = {
 
   <section class="section method-band" aria-label="Method">
     <p class="kicker">Method</p>
-    <h2>A controlled operating loop</h2>
+    <h2>How the platform runs</h2>
+    <p class="op-loop" aria-label="Operating loop">
+      Observe → Detect → Explain → Recommend → Approve → Execute → Verify → Learn
+    </p>
     <p class="lead narrow">
-      Observe, detect, explain, recommend, approve, execute, verify, learn. I connect product
-      strategy, system design, and delivery across knowledge, orchestration, evaluation, and
-      governance. Models advise inside the loop. Humans approve before execute.
+      I connect product strategy, system design, and delivery across knowledge, orchestration,
+      evaluation, and governance. Models advise inside the loop. Humans approve before anyone
+      executes.
     </p>
     <p class="lead narrow method-scope">
-      The work covers RAG, ReAct agents, multi-agent orchestration, human-in-the-loop workflows,
-      SDLCs for AI systems, persistent memory, runtime controls, and evidence-based verification.
+      Day to day: RAG, ReAct agents, multi-agent orchestration, human-in-the-loop workflows,
+      persistent memory, runtime controls, and evidence-based verification.
     </p>
   </section>
 
@@ -145,8 +154,8 @@ const personSchema = {
     <p class="kicker">Contact</p>
     <h2 id="contact-head">Open to AI product roles</h2>
     <p class="lead narrow">
-      Seven years building B2B fintech, payments, transportation, and enterprise systems from 0-to-1
-      through high-scale operations. Based in Ho Chi Minh City.
+      Seven years in B2B fintech, payments, transportation, and enterprise systems, from first build
+      to high-scale operations. Based in Ho Chi Minh City.
     </p>
     <div class="action-row">
       <a class="button" href="mailto:tiennguyentthao@gmail.com">Email</a>

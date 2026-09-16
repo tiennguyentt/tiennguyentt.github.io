@@ -188,14 +188,14 @@ a:not(.brand, .button, .header-cta, .demo-rail a):hover {
 }
 
 .hero-line {
-  margin: 0 auto 1.1rem;
-  max-width: 28rem;
+  margin: 0 auto 1rem;
+  max-width: 36rem;
   color: var(--color-text);
   font-family: var(--font-display);
-  font-size: clamp(1.35rem, 3.4vw, 2rem);
-  font-weight: 520;
-  letter-spacing: -0.03em;
-  line-height: 1.25;
+  font-size: clamp(1.55rem, 3.8vw, 2.35rem);
+  font-weight: 540;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
 }
 
 .kicker,
@@ -233,35 +233,35 @@ h3 {
 }
 
 h1 {
-  margin: 0 0 1.35rem;
-  font-size: clamp(3.75rem, 11vw, 7.5rem);
+  margin: 0 0 0.85rem;
+  font-size: clamp(3rem, 9vw, 5.75rem);
   font-weight: 580;
 }
 
 h2 {
   margin: 0 0 1.1rem;
-  font-size: clamp(2.4rem, 6vw, 4.25rem);
+  font-size: clamp(2rem, 5vw, 3.35rem);
 }
 
 h3 {
   margin: 0 0 0.5rem;
-  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
   letter-spacing: -0.03em;
   line-height: 1.15;
 }
 
 .lead {
-  max-width: 34rem;
+  max-width: 32rem;
   margin: 0;
   color: var(--color-muted);
-  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
   font-weight: 400;
-  line-height: 1.55;
+  line-height: 1.5;
   letter-spacing: -0.015em;
 }
 
 .lead.narrow {
-  max-width: 30rem;
+  max-width: 36rem;
 }
 
 .action-row {
@@ -317,12 +317,23 @@ h3 {
 .demos-band h2,
 .method-band h2,
 .contact-band h2 {
-  max-width: 14ch;
+  max-width: 22ch;
 }
 
 .demos-intro {
   margin-top: -0.35rem;
   margin-bottom: 2.25rem;
+}
+
+.op-loop {
+  max-width: 42rem;
+  margin: 0 0 1.15rem;
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 520;
+  letter-spacing: -0.02em;
+  line-height: 1.45;
 }
 
 .demo-grid {
@@ -422,8 +433,8 @@ h3 {
 .demo-card__body p:last-child {
   margin: 0;
   color: var(--color-muted);
-  font-size: 0.92rem;
-  line-height: 1.45;
+  font-size: 0.9rem;
+  line-height: 1.4;
   letter-spacing: -0.01em;
 }
 
