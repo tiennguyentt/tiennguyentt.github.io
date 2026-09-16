@@ -9,7 +9,43 @@ const nodes = [
   { id: 'mkt', label: 'Mkt', x: 160, y: 154 },
 ] as const;
 
-const hub = { x: 160, y: 90 };
+type NodeId = (typeof nodes)[number]['id'];
+
+const hub = { id: 'hub' as const, x: 160, y: 90 };
+
+const pos = (id: NodeId | 'hub') => {
+  if (id === 'hub') return hub;
+  return nodes.find((node) => node.id === id)!;
+};
+
+const spokeLinks = nodes.map((node) => ({
+  id: `hub-${node.id}`,
+  from: 'hub' as const,
+  to: node.id,
+}));
+
+const peerLinks: Array<{ id: string; from: NodeId; to: NodeId }> = [
+  { id: 'core-nexus', from: 'core', to: 'nexus' },
+  { id: 'core-sdlc', from: 'core', to: 'sdlc' },
+  { id: 'core-dsml', from: 'core', to: 'dsml' },
+  { id: 'nexus-sdlc', from: 'nexus', to: 'sdlc' },
+  { id: 'nexus-dsml', from: 'nexus', to: 'dsml' },
+  { id: 'sdlc-sim', from: 'sdlc', to: 'sim' },
+  { id: 'dsml-sim', from: 'dsml', to: 'sim' },
+  { id: 'sim-mkt', from: 'sim', to: 'mkt' },
+  { id: 'dsml-mkt', from: 'dsml', to: 'mkt' },
+];
+
+const frames = [
+  { id: 'hub-core', text: '00 → Core. Gateway open.' },
+  { id: 'core-nexus', text: 'Core → Nexus. Graph online.' },
+  { id: 'nexus-dsml', text: 'Nexus → DS/ML. Memory synced.' },
+  { id: 'dsml-sim', text: 'DS/ML → Sim. Scenario 12 runs.' },
+  { id: 'sim-mkt', text: 'Sim → Mkt. Listing draft.' },
+  { id: 'sdlc-sim', text: 'SDLC → Sim. Three tests pass.' },
+  { id: 'core-sdlc', text: 'Core → SDLC. Build queued.' },
+  { id: 'nexus-sdlc', text: 'Nexus → SDLC. Spec linked.' },
+] as const;
 ---
 
 <div class="scene scene--plane" data-live="plane" aria-hidden="true">
@@ -22,16 +58,41 @@ const hub = { x: 160, y: 90 };
 
   <svg class="plane-svg" viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg">
     {
-      nodes.map((node) => (
-        <line
-          class="plane-link"
-          x1={hub.x}
-          y1={hub.y}
-          x2={node.x}
-          y2={node.y}
-          data-link={node.id}
-        />
-      ))
+      peerLinks.map((link) => {
+        const from = pos(link.from);
+        const to = pos(link.to);
+        return (
+          <line
+            class="plane-peer"
+            x1={from.x}
+            y1={from.y}
+            x2={to.x}
+            y2={to.y}
+            data-link={link.id}
+            data-from={link.from}
+            data-to={link.to}
+          />
+        );
+      })
+    }
+
+    {
+      spokeLinks.map((link) => {
+        const from = pos(link.from);
+        const to = pos(link.to);
+        return (
+          <line
+            class="plane-spoke"
+            x1={from.x}
+            y1={from.y}
+            x2={to.x}
+            y2={to.y}
+            data-link={link.id}
+            data-from={link.from}
+            data-to={link.to}
+          />
+        );
+      })
     }
 
     <circle class="plane-hub" cx={hub.x} cy={hub.y} r="22"></circle>
@@ -50,17 +111,13 @@ const hub = { x: 160, y: 90 };
     }
 
     <circle class="plane-pulse" cx={hub.x} cy={hub.y} r="22"></circle>
+    <circle class="plane-signal" cx={hub.x} cy={hub.y} r="2.8"></circle>
   </svg>
 
-  <p class="plane-status scene-live">Route · Core gateway · gate open</p>
+  <p class="plane-status scene-live">{frames[0].text}</p>
 
   <div class="scene-script" hidden>
-    <span data-frame="core">Route · Core gateway · gate open</span>
-    <span data-frame="sdlc">Route · SDLC tests · 3 agents queued</span>
-    <span data-frame="nexus">Route · Nexus graph · memory synced</span>
-    <span data-frame="sim">Route · Simulation · scenario 12 running</span>
-    <span data-frame="dsml">Route · DS/ML · eval pass 0.94</span>
-    <span data-frame="mkt">Route · Marketplace · listing draft</span>
+    {frames.map((frame) => <span data-frame={frame.id}>{frame.text}</span>)}
   </div>
 </div>
 
@@ -91,7 +148,7 @@ const hub = { x: 160, y: 90 };
   }
 
   .plane-chrome span:first-child {
-    background: #e31937;
+    background: #171717;
   }
 
   .plane-svg {
@@ -102,39 +159,36 @@ const hub = { x: 160, y: 90 };
     padding: 0.35rem 0.5rem 0;
   }
 
-  .plane-link {
-    stroke: #c8c8c4;
+  .plane-spoke,
+  .plane-peer {
     stroke-width: 1.4;
     stroke-dasharray: 5 7;
     animation: plane-flow 2.4s linear infinite;
   }
 
-  .plane-link[data-link='core'] {
-    animation-delay: 0s;
+  .plane-spoke {
+    stroke: #c8c8c4;
   }
 
-  .plane-link[data-link='sdlc'] {
-    animation-delay: 0.35s;
+  .plane-peer {
+    stroke: #d4d4d0;
+    stroke-width: 1.1;
+    animation-duration: 3.1s;
   }
 
-  .plane-link[data-link='nexus'] {
-    animation-delay: 0.7s;
-  }
-
-  .plane-link[data-link='sim'] {
-    animation-delay: 1.05s;
-  }
-
-  .plane-link[data-link='dsml'] {
-    animation-delay: 1.4s;
-  }
-
-  .plane-link[data-link='mkt'] {
-    animation-delay: 1.75s;
+  .plane-spoke.is-live,
+  .plane-peer.is-live {
+    stroke: #171717;
+    stroke-width: 1.6;
   }
 
   .plane-hub {
     fill: #171717;
+    transition: filter 280ms ease;
+  }
+
+  .plane-hub.is-active {
+    filter: drop-shadow(0 0 6px rgba(23, 23, 23, 0.22));
   }
 
   .plane-hub-label {
@@ -146,7 +200,7 @@ const hub = { x: 160, y: 90 };
 
   .plane-node__ring {
     fill: none;
-    stroke: #e31937;
+    stroke: #171717;
     stroke-width: 2;
     opacity: 0;
     transform-box: fill-box;
@@ -158,6 +212,7 @@ const hub = { x: 160, y: 90 };
     fill: #ffffff;
     stroke: #d8d8d4;
     stroke-width: 1.2;
+    transition: stroke 280ms ease;
   }
 
   .plane-node__label {
@@ -174,17 +229,22 @@ const hub = { x: 160, y: 90 };
   }
 
   .plane-node.is-active .plane-node__dot {
-    stroke: #e31937;
+    stroke: #171717;
   }
 
   .plane-pulse {
     fill: none;
-    stroke: #e31937;
+    stroke: #171717;
     stroke-width: 1;
     opacity: 0;
     transform-box: fill-box;
     transform-origin: center;
     animation: plane-hub-pulse 2.8s ease-out infinite;
+  }
+
+  .plane-signal {
+    fill: #171717;
+    opacity: 0.92;
   }
 
   .plane-status {
@@ -220,7 +280,7 @@ const hub = { x: 160, y: 90 };
   @keyframes plane-hub-pulse {
     0% {
       transform: scale(1);
-      opacity: 0.45;
+      opacity: 0.35;
     }
     100% {
       transform: scale(1.55);
@@ -229,7 +289,8 @@ const hub = { x: 160, y: 90 };
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .plane-link,
+    .plane-spoke,
+    .plane-peer,
     .plane-pulse,
     .plane-node.is-active .plane-node__ring {
       animation: none;
