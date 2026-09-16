@@ -1,8 +1,26 @@
 # tiennguyentt.github.io
 
-Source for my personal site at [tiennguyentt.github.io](https://tiennguyentt.github.io/).
+Personal portfolio site (static HTML/CSS/JS — no build step).
 
-Plain static HTML/CSS — no build step. Edit `index.html` / `style.css` and push to `main`; GitHub Pages serves it.
+## Hosting
+
+- **Primary:** [Vercel](https://vercel.com) project **`portfolio`** — https://portfolio-tienntt.vercel.app  
+  Linked to this GitHub repo; push to `main` deploys production; other branches get preview URLs.
+- **Legacy:** [GitHub Pages](https://tiennguyentt.github.io/) still serves this repo until cutover.
+
+Custom domain is deferred until the agentic demos are further along.
+
+Local preview:
+
+```sh
+python3 -m http.server 8000
+```
+
+Or with the Vercel CLI after linking:
+
+```sh
+npx vercel
+```
 
 ## Resume (CV)
 
