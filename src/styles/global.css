@@ -438,6 +438,11 @@ h3 {
   margin-top: 0.25rem;
 }
 
+.method-scope {
+  margin-top: 1rem;
+  color: var(--color-muted);
+}
+
 .split-overview,
 .prose-grid {
   display: grid;
