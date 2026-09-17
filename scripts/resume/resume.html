@@ -6,16 +6,16 @@
     <!--
       ATS contract (do not break):
       - single column only (no CSS grid/flex for content columns)
-      - system fonts (Arial/Helvetica)
-      - real selectable text
+      - embedded Outfit (same as portfolio); real selectable text
       - standard section names: Summary, Experience, Skills, Projects, Education
       - dates as Mon YYYY-Mon YYYY or YYYY-YYYY or YYYY-Present (never Now/Prior/Recent)
       - contact as plain text near top
     -->
+    <link rel="stylesheet" href="./outfit-local.css" />
     <style>
       @page {
         size: A4;
-        margin: 10mm 12mm;
+        margin: 10.5mm 12.5mm;
       }
 
       * {
@@ -28,38 +28,38 @@
         padding: 0;
         background: #ffffff;
         color: #171717;
-        font-family: Arial, Helvetica, 'Segoe UI', sans-serif;
-        font-size: 9pt;
-        line-height: 1.28;
+        font-family: Outfit, Arial, Helvetica, sans-serif;
+        font-size: 9.2pt;
+        line-height: 1.31;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
 
       main {
-        max-width: 186mm;
+        max-width: 183mm;
         margin: 0 auto;
       }
 
       h1 {
-        margin: 0 0 0.08rem;
-        font-size: 16pt;
+        margin: 0 0 0.1rem;
+        font-size: 16.5pt;
         font-weight: 700;
         letter-spacing: -0.02em;
-        line-height: 1.08;
+        line-height: 1.1;
       }
 
       .role {
-        margin: 0 0 0.22rem;
-        font-size: 10pt;
-        font-weight: 400;
+        margin: 0 0 0.28rem;
+        font-size: 10.25pt;
+        font-weight: 500;
       }
 
       .contact {
-        margin: 0 0 0.35rem;
-        padding: 0 0 0.3rem;
+        margin: 0 0 0.42rem;
+        padding: 0 0 0.35rem;
         border-bottom: 1px solid #cccccc;
         color: #333333;
-        font-size: 8pt;
+        font-size: 8.5pt;
       }
 
       .contact a {
@@ -68,50 +68,50 @@
       }
 
       .summary {
-        margin: 0 0 0.22rem;
+        margin: 0 0 0.28rem;
         color: #222222;
-        font-size: 8.5pt;
+        font-size: 9pt;
       }
 
       h2 {
-        margin: 0.38rem 0 0.16rem;
+        margin: 0.42rem 0 0.2rem;
         color: #171717;
-        font-size: 10pt;
+        font-size: 10.25pt;
         font-weight: 700;
         letter-spacing: 0;
         text-transform: none;
       }
 
       .job {
-        margin: 0 0 0.26rem;
+        margin: 0 0 0.32rem;
       }
 
       .job h3 {
         margin: 0;
-        font-size: 9pt;
+        font-size: 9.5pt;
         font-weight: 700;
       }
 
       .meta {
-        margin: 0.01rem 0 0.06rem;
+        margin: 0.05rem 0 0.1rem;
         color: #333333;
-        font-size: 8pt;
+        font-size: 8.5pt;
       }
 
       ul {
         margin: 0;
-        padding-left: 1rem;
+        padding-left: 1.1rem;
       }
 
       li {
-        margin: 0.02rem 0;
+        margin: 0.08rem 0;
         color: #222222;
-        font-size: 8.5pt;
+        font-size: 9pt;
       }
 
       .block p {
-        margin: 0 0 0.1rem;
-        font-size: 8.5pt;
+        margin: 0 0 0.14rem;
+        font-size: 9pt;
         color: #222222;
       }
 
