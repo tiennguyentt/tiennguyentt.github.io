@@ -6,11 +6,14 @@ import { withBase } from '../../lib/url';
 const pdfHref = withBase(RESUME_PDF);
 ---
 
-<BaseLayout title="Resume" description="Tien Nguyen — R&D Lead PO. Agentic operations platforms.">
+<BaseLayout
+  title="Resume"
+  description="Tien Nguyen — AI Product Manager / Lead AI Technical Product Owner. Enterprise agentic operations."
+>
   <section class="page-head section resume-actions">
     <p class="eyebrow">Resume</p>
     <h1>Tien Nguyen</h1>
-    <p class="lead">R&amp;D Lead PO</p>
+    <p class="lead">AI Product Manager / Lead AI Technical Product Owner</p>
     <div class="action-row">
       <a class="button" href={pdfHref} data-astro-reload download="Tien-Nguyen-CV.pdf"
         >Download PDF</a
@@ -32,111 +35,139 @@ const pdfHref = withBase(RESUME_PDF);
       ·
       <a href="https://www.linkedin.com/in/tiennguyenthithao/">LinkedIn</a>
       ·
-      <a href="https://portfolio-tienntt.vercel.app/">portfolio-tienntt.vercel.app</a>
+      <a href="https://tiennguyentt.github.io/">tiennguyentt.github.io</a>
     </p>
 
     <h2>Summary</h2>
     <p class="resume-lead">
-      R&amp;D Lead PO for agentic operations platforms. Agents draft the first pass. I check each
-      claim against a source, score output against known facts, and sign off before release.
+      AI Product Manager and Lead AI Technical Product Owner for enterprise agentic operations. I
+      design and lead platforms that turn complex workflows into governed business operations across
+      AI, knowledge, orchestration, evaluation, and governance. Operating loop: Observe, Detect,
+      Explain, Recommend, Approve, Execute, Verify, Learn. Stack includes RAG, ReAct agents,
+      multi-agent orchestration, human-in-the-loop controls, runtime checks, and evidence-based
+      verification. Seven years shipping B2B fintech, payments, transportation, and enterprise
+      systems from 0-to-1 through high-scale operations.
     </p>
 
     <h2>Experience</h2>
     <article class="resume-job">
-      <h3>Green SM (Vingroup) — R&amp;D Lead PO</h3>
-      <p class="resume-job__meta">Agentic Ops Platforms · Ho Chi Minh City · 2025–Present</p>
+      <h3>GSM - Green SM — Technical PO | Agent Orchestration &amp; Harness Engineering</h3>
+      <p class="resume-job__meta">Agentic Ops Platform · Applied AI · Full-time · Jul 2026–Present</p>
       <ul>
         <li>
-          Lead R&amp;D as product owner for agentic operations platforms. Employer product names and
-          internal architecture stay confidential.
+          Lead technical product ownership for an enterprise Agentic Ops Platform that ships AI
+          agent workflows under governance. Employer product names and internal architecture stay
+          confidential.
+        </li>
+        <li>
+          Own the platform operating loop across knowledge, orchestration, evaluation, and
+          governance: Observe, Detect, Explain, Recommend, Approve, Execute, Verify, Learn.
+        </li>
+        <li>
+          Specify multi-agent orchestration, human-in-the-loop approval gates, runtime controls, and
+          evidence checks so agents draft work and humans sign off before release.
         </li>
       </ul>
     </article>
 
     <article class="resume-job">
-      <h3>Colonial Surety — Product Management Engineer</h3>
-      <p class="resume-job__meta">B2B fintech, insurance, payments · 2024–2025</p>
+      <h3>Colonial Surety Company — PE</h3>
+      <p class="resume-job__meta">B2B fintech, insurance, payments · Contract · Feb 2026–Jul 2026</p>
       <ul>
         <li>
-          Ran a PM workflow with agents: graded transcripts, linked specs to sources, and blocked
-          changes that lacked sign-off.
+          Ran an agent-operated PM workflow: graded transcripts for traceability, linked specs to
+          sources, and blocked changes that lacked sign-off inside a regulated US insurer.
         </li>
         <li>
           Led an emergency PCI payment cutover from Transax to CardPointe across three live
-          platforms.
+          platforms after the primary gateway shut down.
         </li>
         <li>
-          Designed seven insurance products in one flow, including knockout rules, shared claims,
-          and partial-failure cases. Wrote the B2B SSO brief for two user types and partner
-          sessions.
+          Designed seven insurance products in one flow (knockout rules, shared claims,
+          partial-failure cases). Wrote the B2B SSO BRD for two user types and partner sessions.
         </li>
       </ul>
     </article>
 
     <article class="resume-job">
-      <h3>Hoookie JSC — Product Owner</h3>
-      <p class="resume-job__meta">Web3 and fintech · 2023–2025</p>
+      <h3>Hoookie — PM</h3>
+      <p class="resume-job__meta">Web3 and fintech · Full-time · Vietnam · 2023–2026</p>
       <ul>
         <li>
-          Wrote requirements for Keeta, a US payments network targeting 400 ms settlement: use
-          cases, data flows, and acceptance checks.
+          Led requirements for a US payments network targeting 400 ms cross-chain settlement,
+          including a non-custodial wallet with KYC/AML and fiat-to-crypto bridging.
         </li>
         <li>
-          Built Sire.bot. A two-month backtest returned 137%. Scored model output against known
-          results before release.
+          Owned roadmap, backlog, and Scrum for an autonomous on-chain prediction-market fund. A
+          two-month backtest returned 137% ($10K to $23.7K) with model scoring before release.
+        </li>
+        <li>
+          Shipped aVault and aLink (USDC strategies, token-gated mispricing terminal, Telegram
+          toolkit). Built the fund loop: score edge, cap risk, paper-trade, then settle scores.
         </li>
       </ul>
     </article>
 
     <article class="resume-job">
-      <h3>Olmo Technology — Product Owner</h3>
-      <p class="resume-job__meta">Social e-commerce · 2022–2023</p>
+      <h3>Olmo Technology — PO</h3>
+      <p class="resume-job__meta">Social e-commerce · Full-time · 2022–2023</p>
       <ul>
         <li>
-          Raised bookings 30% by fixing the mobile booking path and bank-transfer flow. Shipped
-          livestream commerce with chat, marketplace, and gifting.
+          Raised bookings 30% by reworking mobile booking and cutting payment time. Shipped
+          livestream gifting and live-booking.
+        </li>
+        <li>
+          Led a 12-person Scrum team that launched a livestream app in 6 months and an e-commerce
+          platform in 4 months. Personas, backlog, and stories raised sprint delivery speed 20%.
         </li>
       </ul>
     </article>
 
     <article class="resume-job">
-      <h3>4/10 Fire Protection Trading Service — Front-end Developer, then BA and Associate PM</h3>
-      <p class="resume-job__meta">ERP · 2019–2022</p>
+      <h3>4/10 Fire Protection Trading Service — APM</h3>
+      <p class="resume-job__meta">ERP · Full-time · 2019–2022</p>
       <ul>
         <li>
-          Built ERP modules from code through rollout. Owned resource management and quality
-          control.
+          Built front-end ERP modules for 6 months, then moved from full-stack engineering into BA
+          and Associate Product Manager ownership of resource management and quality control.
         </li>
       </ul>
     </article>
+
+    <h2>Skills</h2>
+    <ul class="resume-skills-list">
+      <li>
+        <strong>AI systems:</strong> RAG, ReAct agents, multi-agent orchestration, persistent
+        memory, runtime controls
+      </li>
+      <li>
+        <strong>Governance:</strong> human-in-the-loop, evaluation thresholds, evidence checks,
+        decision logs
+      </li>
+      <li>
+        <strong>Product:</strong> roadmap, backlog, Scrum, BRD, SRS, PRD, acceptance checks,
+        stakeholder workshops
+      </li>
+      <li>
+        <strong>Domains:</strong> B2B fintech, insurance, payments, enterprise operations
+      </li>
+      <li><strong>Delivery:</strong> pilots, integrations, production rollout, PCI cutovers</li>
+    </ul>
 
     <h2>Projects</h2>
     <ul class="resume-demos">
       <li>
-        <strong>Gelato.</strong> Framework that connects agent tools for company operations: orchestration,
-        gates, and decision logs. In progress.
+        <strong>Gelato.</strong> Agent-tool framework for company operations: orchestration, gates,
+        decision logs. In progress.
       </li>
       <li>
-        <strong>Knowledge Engine.</strong> Turns meeting notes into a wiki with sources, flags conflicts,
-        and grades specs. Requires human sign-off before engineering starts.
+        <strong>Knowledge Engine.</strong> Meeting notes to sourced wiki; conflict flags; graded
+        specs; human sign-off before engineering.
       </li>
       <li>
-        <strong>Recon.</strong> Daily research sweeps that score each source for relevance, credibility,
-        and predictive weight.
+        <strong>Recon.</strong> Daily research sweeps scored for relevance, credibility, and
+        predictive weight.
       </li>
-      <li>
-        <strong>Sport Quant.</strong> Betting terminal with hard risk caps. Models advise; code sets the
-        size.
-      </li>
-    </ul>
-
-    <h2>Skills</h2>
-    <ul class="resume-skills-list">
-      <li><strong>Discovery:</strong> workshops, scope, stakeholders, competitor research</li>
-      <li><strong>Delivery:</strong> pilots, integrations, production rollout, Scrum</li>
-      <li><strong>Requirements:</strong> BRD, SRS, PRD, stories, acceptance checks</li>
-      <li><strong>AI controls:</strong> source links, eval thresholds, human sign-off</li>
-      <li><strong>Operations:</strong> agent workflows, MCP, APIs, model choice</li>
     </ul>
 
     <h2>Education</h2>
