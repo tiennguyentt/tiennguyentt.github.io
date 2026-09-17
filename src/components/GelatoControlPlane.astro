@@ -40,23 +40,23 @@ const frames = [
   },
   {
     id: 'gateway-memory',
-    text: 'Gateway ↔ Memory. Specs and sources stay linked.',
+    text: 'Gateway to Memory. Specs and sources stay linked.',
   },
   {
     id: 'memory-models',
-    text: 'Memory ↔ Models. Context feeds inference with gates.',
+    text: 'Memory to Models. Context feeds inference with gates.',
   },
   {
     id: 'models-scenarios',
-    text: 'Models ↔ Scenarios. Batch runs before production.',
+    text: 'Models to Scenarios. Batch runs before production.',
   },
   {
     id: 'delivery-scenarios',
-    text: 'Delivery ↔ Scenarios. Build and test share one loop.',
+    text: 'Delivery to Scenarios. Build and test share one loop.',
   },
   {
     id: 'scenarios-outputs',
-    text: 'Scenarios ↔ Outputs. Humans get the handoff draft.',
+    text: 'Scenarios to Outputs. Humans get the handoff draft.',
   },
   {
     id: 'ops-outputs',
@@ -69,7 +69,7 @@ const frames = [
   <header class="plane-head">
     <div>
       <p class="plane-kicker">Agentic ops framework</p>
-      <p class="plane-sub">Platforms connect. Ecosystems adapt.</p>
+      <p class="plane-sub">Six platforms share one ops loop.</p>
     </div>
     <span class="plane-badge">live</span>
   </header>
@@ -194,19 +194,17 @@ const frames = [
   .plane-link {
     stroke: #e8e8e8;
     stroke-width: 1.2;
-    transition:
-      stroke 280ms ease,
-      stroke-width 280ms ease;
+    transition: stroke 280ms ease;
   }
 
   .plane-link.is-live {
-    stroke: #171717;
-    stroke-width: 1.8;
+    stroke: var(--color-accent);
+    stroke-width: 1.2;
   }
 
   .plane-hub__ring {
     fill: none;
-    stroke: #171717;
+    stroke: var(--demo-ink);
     stroke-width: 1.2;
     opacity: 0.2;
     transform-box: fill-box;
@@ -214,7 +212,7 @@ const frames = [
   }
 
   .plane-hub__dot {
-    fill: #171717;
+    fill: var(--demo-ink);
   }
 
   .plane-hub__label {
@@ -227,6 +225,7 @@ const frames = [
 
   .plane-hub.is-active .plane-hub__ring {
     opacity: 0.55;
+    stroke: var(--color-accent);
     animation: plane-hub-breathe 2.2s ease-in-out infinite;
   }
 
@@ -234,9 +233,7 @@ const frames = [
     fill: #ffffff;
     stroke: #e8e8e8;
     stroke-width: 1.2;
-    transition:
-      stroke 280ms ease,
-      fill 280ms ease;
+    transition: stroke 280ms ease;
   }
 
   .plane-node__label {
@@ -249,18 +246,17 @@ const frames = [
   }
 
   .plane-node.is-active .plane-node__chip {
-    stroke: var(--demo-ink);
+    stroke: var(--color-accent);
     fill: #ffffff;
   }
 
   .plane-node.is-active .plane-node__label {
     fill: var(--demo-ink);
-    font-weight: 600;
   }
 
   .plane-signal {
-    fill: var(--demo-ink);
-    opacity: 0.9;
+    fill: var(--color-accent);
+    opacity: 0.95;
   }
 
   .plane-detail {
