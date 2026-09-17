@@ -96,9 +96,9 @@ const frames = [
       }
 
       <g class="plane-hub" data-node="ops">
-        <circle class="plane-hub__ring" cx={hub.x} cy={hub.y} r="26"></circle>
-        <circle class="plane-hub__dot" cx={hub.x} cy={hub.y} r="20"></circle>
-        <text class="plane-hub__label" x={hub.x} y={hub.y + 4} text-anchor="middle"
+        <circle class="plane-hub__ring" cx={hub.x} cy={hub.y} r="22"></circle>
+        <circle class="plane-hub__dot" cx={hub.x} cy={hub.y} r="16"></circle>
+        <text class="plane-hub__label" x={hub.x} y={hub.y + 3.5} text-anchor="middle"
           >{hub.label}</text
         >
       </g>
@@ -108,20 +108,20 @@ const frames = [
           <g class="plane-node" data-node={node.id}>
             <rect
               class="plane-node__chip"
-              x={node.x - 42}
-              y={node.y - 14}
-              width="84"
-              height="28"
-              rx="8"
+              x={node.x - 40}
+              y={node.y - 12}
+              width="80"
+              height="24"
+              rx="6"
             />
-            <text class="plane-node__label" x={node.x} y={node.y + 4} text-anchor="middle">
+            <text class="plane-node__label" x={node.x} y={node.y + 3.5} text-anchor="middle">
               {node.label}
             </text>
           </g>
         ))
       }
 
-      <circle class="plane-signal" cx={hub.x} cy={hub.y} r="3"></circle>
+      <circle class="plane-signal" cx={hub.x} cy={hub.y} r="2"></circle>
     </svg>
 
     <p class="plane-detail scene-live">{frames[0].text}</p>
@@ -133,6 +133,11 @@ const frames = [
 </div>
 
 <style>
+  /*
+    Gelato sits inside a demo card whose bar already owns title (0.875rem / 600).
+    Inside the scene: meta for kicker, body for live copy, SVG labels at meta optical size.
+    Never bump stroke or font-weight on .is-active — color only, or active reads “larger”.
+  */
   .scene--plane {
     display: flex;
     flex-direction: column;
@@ -151,10 +156,10 @@ const frames = [
   .plane-kicker {
     margin: 0;
     color: var(--demo-ink);
-    font-size: var(--demo-body-size);
-    font-weight: var(--demo-title-weight);
-    letter-spacing: -0.02em;
-    line-height: 1.3;
+    font-size: var(--demo-meta-size);
+    font-weight: var(--demo-meta-weight);
+    letter-spacing: -0.01em;
+    line-height: 1.35;
   }
 
   .plane-sub {
@@ -193,22 +198,19 @@ const frames = [
 
   .plane-link {
     stroke: #e8e8e8;
-    stroke-width: 1.2;
+    stroke-width: 1;
     transition: stroke 280ms ease;
   }
 
   .plane-link.is-live {
     stroke: var(--color-accent);
-    stroke-width: 1.2;
   }
 
   .plane-hub__ring {
     fill: none;
     stroke: var(--demo-ink);
-    stroke-width: 1.2;
+    stroke-width: 1;
     opacity: 0.2;
-    transform-box: fill-box;
-    transform-origin: center;
   }
 
   .plane-hub__dot {
@@ -218,13 +220,12 @@ const frames = [
   .plane-hub__label {
     fill: #ffffff;
     font-family: var(--font-body);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
   }
 
   .plane-hub.is-active .plane-hub__ring {
-    opacity: 0.55;
     stroke: var(--color-accent);
     animation: plane-hub-breathe 2.2s ease-in-out infinite;
   }
@@ -232,22 +233,21 @@ const frames = [
   .plane-node__chip {
     fill: #ffffff;
     stroke: #e8e8e8;
-    stroke-width: 1.2;
+    stroke-width: 1;
     transition: stroke 280ms ease;
   }
 
   .plane-node__label {
     fill: var(--demo-muted);
     font-family: var(--font-body);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 500;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     transition: fill 280ms ease;
   }
 
   .plane-node.is-active .plane-node__chip {
     stroke: var(--color-accent);
-    fill: #ffffff;
   }
 
   .plane-node.is-active .plane-node__label {
@@ -256,21 +256,21 @@ const frames = [
 
   .plane-signal {
     fill: var(--color-accent);
-    opacity: 0.95;
+    opacity: 0.9;
   }
 
   .plane-detail {
     display: flex;
     align-items: center;
     margin: 0;
-    padding: 0.85rem 0.95rem;
+    padding: 0.65rem 0.75rem;
     border: 1px solid #e8e8e8;
-    border-radius: 1rem;
+    border-radius: 0.85rem;
     background: #fff;
     color: var(--demo-ink);
     font-size: var(--demo-body-size);
     font-weight: var(--demo-body-weight);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     line-height: 1.4;
   }
 
@@ -292,12 +292,10 @@ const frames = [
   @keyframes plane-hub-breathe {
     0%,
     100% {
-      transform: scale(1);
-      opacity: 0.45;
+      opacity: 0.25;
     }
     50% {
-      transform: scale(1.08);
-      opacity: 0.75;
+      opacity: 0.55;
     }
   }
 
@@ -314,6 +312,7 @@ const frames = [
   @media (prefers-reduced-motion: reduce) {
     .plane-hub.is-active .plane-hub__ring {
       animation: none;
+      opacity: 0.4;
     }
   }
 </style>
