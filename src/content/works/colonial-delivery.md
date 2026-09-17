@@ -13,7 +13,7 @@ publishDate: 2026-02-01
 
 ## Context
 
-**Colonial Surety** — prior role as Product Management Engineer (B2B fintech, insurance, payments). Insurtech delivery; **no public demo**. Facts below stay within the resume.
+**Colonial Surety** — prior role as PE (B2B fintech, insurance, payments). Insurtech delivery; **no public demo**. Facts below stay within the resume.
 
 ## What shipped (resume)
 
