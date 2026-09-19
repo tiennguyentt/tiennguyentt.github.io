@@ -4,7 +4,7 @@ import StructuredData from '../components/StructuredData.astro';
 import ProductScene from '../components/ProductScene.astro';
 import { getCollection } from 'astro:content';
 import { withBase } from '../lib/url';
-import { SITE } from '../consts';
+import { RESUME_PAGE, SITE } from '../consts';
 import { t } from '../i18n';
 
 const works = (await getCollection('works')).sort((a, b) => {
@@ -49,10 +49,11 @@ const personSchema = {
   givenName: 'Tien',
   familyName: 'Nguyen',
   gender: 'Female',
-  jobTitle: 'R&D Lead PO',
+  jobTitle: 'AI Product Manager / Lead AI Technical Product Owner',
   description: SITE.description,
   url: new URL(withBase('/'), site).href,
   email: 'mailto:tiennguyentthao@gmail.com',
+  telephone: '+84 963 351 586',
   sameAs: [
     'https://www.linkedin.com/in/tiennguyenthithao/',
     'https://github.com/tiennguyentt',
@@ -69,20 +70,32 @@ const personSchema = {
 <BaseLayout description={SITE.description}>
   <StructuredData slot="head" schema={personSchema} />
 
-  <section class="hero section">
-    <p class="kicker">Tien Nguyen · R&amp;D Lead PO · HCMC</p>
-    <h1>Applied AI Enterprise.</h1>
-    <p class="lead">I lead R&amp;D as product owner for agentic operations platforms.</p>
+  <section class="hero hero--role section">
+    <p class="kicker">Tien Nguyen · Applied AI Enterprise · Agentic Ops</p>
+    <h1>AI Product Manager / Lead AI Technical Product Owner</h1>
+    <p class="lead">
+      I own the product for agentic ops at GSM: AI proposes; people approve before anything
+      executes. Observe → Learn.
+    </p>
     <div class="action-row" aria-label={t('home.primaryLinks')}>
-      {
-        gelato && (
-          <a class="button" href={withBase(`/works/${gelato.id}/`)}>
-            Gelato
-          </a>
-        )
-      }
-      <a class="button button--ghost" href={withBase('/works/')}>View work</a>
+      <a class="button" href={withBase('/works/')}>View case studies</a>
+      <a class="button button--ghost" href="mailto:tiennguyentthao@gmail.com">Email</a>
+      <a class="text-link" href="https://www.linkedin.com/in/tiennguyenthithao/">LinkedIn</a>
     </div>
+    <dl class="proof-row" aria-label="Selected outcomes">
+      <div>
+        <dt>+30% bookings</dt>
+        <dd>Reworked mobile booking and cut payment time</dd>
+      </div>
+      <div>
+        <dt>PCI cutover</dt>
+        <dd>Transax to CardPointe across three live platforms</dd>
+      </div>
+      <div>
+        <dt>137% backtest</dt>
+        <dd>Two-month fund backtest, $10K to $23.7K</dd>
+      </div>
+    </dl>
   </section>
 
   <section class="section demos-band" aria-label="Selected work">
@@ -113,11 +126,13 @@ const personSchema = {
   <section class="section contact-band" aria-labelledby="contact-head">
     <p class="kicker">Contact</p>
     <h2 id="contact-head">Reach Tien</h2>
+    <p class="lead">AI Product Manager / Lead AI Technical Product Owner</p>
     <div class="action-row">
       <a class="button" href="mailto:tiennguyentthao@gmail.com">Email</a>
       <a class="button button--ghost" href="https://www.linkedin.com/in/tiennguyenthithao/"
         >LinkedIn</a
       >
+      <a class="text-link" href={withBase(RESUME_PAGE)}>View resume</a>
     </div>
   </section>
 </BaseLayout>
