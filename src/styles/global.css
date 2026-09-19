@@ -191,12 +191,12 @@ a:not(.brand, .button, .header-cta, .demo-card, .demo-rail a):hover {
 }
 
 .hero {
-  min-height: min(56svh, 34rem);
+  min-height: min(42svh, 26rem);
   display: grid;
   align-content: center;
   justify-items: center;
   text-align: center;
-  padding-block: clamp(3.25rem, 9vw, 6rem) clamp(1.25rem, 3vw, 2rem);
+  padding-block: clamp(2.25rem, 6vw, 4rem) clamp(1.1rem, 2.5vw, 1.75rem);
 }
 
 .hero .lead {
@@ -206,6 +206,7 @@ a:not(.brand, .button, .header-cta, .demo-card, .demo-rail a):hover {
 
 .hero .action-row {
   justify-content: center;
+  margin-top: 1.5rem;
 }
 
 .hero .action-row .button:not(.button--ghost) {
@@ -232,6 +233,37 @@ a:not(.brand, .button, .header-cta, .demo-card, .demo-rail a):hover {
 
 .hero > :nth-child(4) {
   animation-delay: 170ms;
+}
+
+.hero > :nth-child(5) {
+  animation-delay: 220ms;
+}
+
+.proof-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+  width: min(42rem, 100%);
+  margin: 1.75rem 0 0;
+  padding-top: 1.25rem;
+  border-top: var(--hairline);
+  text-align: center;
+}
+
+.proof-row dt {
+  margin: 0 0 0.28rem;
+  color: var(--color-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.proof-row dd {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
 }
 
 .hero .kicker {
@@ -1105,6 +1137,12 @@ pre code {
 }
 
 @media (max-width: 760px) {
+  .proof-row {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    width: min(22rem, 100%);
+  }
+
   .site-header__inner {
     grid-template-columns: 1fr auto;
   }

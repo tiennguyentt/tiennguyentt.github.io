@@ -4,7 +4,7 @@ import StructuredData from '../components/StructuredData.astro';
 import ProductScene from '../components/ProductScene.astro';
 import { getCollection } from 'astro:content';
 import { withBase } from '../lib/url';
-import { SITE } from '../consts';
+import { RESUME_PAGE, SITE } from '../consts';
 import { t } from '../i18n';
 
 const works = (await getCollection('works')).sort((a, b) => {
@@ -49,10 +49,11 @@ const personSchema = {
   givenName: 'Tien',
   familyName: 'Nguyen',
   gender: 'Female',
-  jobTitle: 'R&D Lead PO',
+  jobTitle: 'AI Product Manager / Lead AI TPO',
   description: SITE.description,
   url: new URL(withBase('/'), site).href,
   email: 'mailto:tiennguyentthao@gmail.com',
+  telephone: '+84 963 351 586',
   sameAs: [
     'https://www.linkedin.com/in/tiennguyenthithao/',
     'https://github.com/tiennguyentt',
@@ -70,19 +71,27 @@ const personSchema = {
   <StructuredData slot="head" schema={personSchema} />
 
   <section class="hero section">
-    <p class="kicker">Tien Nguyen · R&amp;D Lead PO · HCMC</p>
+    <p class="kicker">Tien Nguyen · AI Product Manager / Lead AI TPO · HCMC</p>
     <h1>Applied AI Enterprise.</h1>
-    <p class="lead">I lead R&amp;D as product owner for agentic operations platforms.</p>
+    <p class="lead">I lead product for agentic operations platforms.</p>
     <div class="action-row" aria-label={t('home.primaryLinks')}>
-      {
-        gelato && (
-          <a class="button" href={withBase(`/works/${gelato.id}/`)}>
-            Gelato
-          </a>
-        )
-      }
-      <a class="button button--ghost" href={withBase('/works/')}>View work</a>
+      <a class="button" href={withBase('/works/')}>View case studies</a>
+      <a class="button button--ghost" href={withBase(RESUME_PAGE)}>View resume</a>
     </div>
+    <dl class="proof-row" aria-label="Selected outcomes">
+      <div>
+        <dt>+30% bookings</dt>
+        <dd>Reworked mobile booking and cut payment time</dd>
+      </div>
+      <div>
+        <dt>PCI cutover</dt>
+        <dd>Emergency Transax to CardPointe across three live platforms</dd>
+      </div>
+      <div>
+        <dt>Agentic ops loop</dt>
+        <dd>Observe, detect, explain, recommend, approve, execute, verify, learn</dd>
+      </div>
+    </dl>
   </section>
 
   <section class="section demos-band" aria-label="Selected work">
