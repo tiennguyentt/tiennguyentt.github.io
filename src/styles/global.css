@@ -279,6 +279,22 @@ a:not(.brand, .button, .header-cta, .demo-card, .demo-rail a):hover {
   line-height: 0.96;
 }
 
+.hero--role {
+  min-height: 0;
+}
+
+.hero--role h1 {
+  max-width: 22rem;
+  margin-bottom: 0.85rem;
+  font-size: clamp(1.85rem, 4.4vw, 2.75rem);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.hero--role .lead {
+  max-width: 36rem;
+}
+
 .kicker,
 .eyebrow {
   margin: 0 0 1.1rem;
