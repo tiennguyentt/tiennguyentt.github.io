@@ -1,6 +1,6 @@
 ---
 title: 'Recon'
-description: 'Daily agent research sweeps with structured reports. Scores relevance, credibility, and predictive weight over time.'
+description: 'Daily research reports that score each item for relevance, source credibility, and predictive weight.'
 tech:
   - Claude Code agents
   - Signal scoring
@@ -13,22 +13,20 @@ publishDate: 2025-11-01
 
 ## Before
 
-Manual research sweeps do not scale when you need continuous market and domain signal. Unscored LLM summaries also do not scale — they look complete while accuracy drifts.
+I wanted a daily research report that showed why each item was included. A summary without sources or scores made it hard to review the result later.
 
 ## Decision
 
-I built **Recon**, an autonomous AI news and research intelligence pipeline:
+I built **Recon** to collect and score research items each day:
 
 1. **Sweep** sources on a daily cadence with Claude Code agents.
 2. **Produce** structured reports instead of free-form dumps.
 3. **Score** every signal for relevance, credibility, and predictive weight.
-4. **Adjust** signal importance through a proprietary weighting engine as outcomes arrive.
+4. **Update** weights when later outcomes provide more evidence.
 
-Models gather and explain; the scoring layer keeps the system honest over time.
+The report keeps each item's source and scores visible for review.
 
 ## Outcome
 
 - Live demo: [tienntt-recon.streamlit.app](https://tienntt-recon.streamlit.app/)
-- A research ops loop that treats signal quality as a tracked product, not a one-off brief.
-
-**Number to remember:** every signal carries three scores — relevance, credibility, predictive weight — and those scores update as outcomes land.
+- Each report shows the item's relevance, source credibility, and predictive weight.

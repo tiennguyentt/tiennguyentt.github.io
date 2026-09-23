@@ -6,7 +6,7 @@
     <!--
       ATS contract (do not break):
       - single column only (no CSS grid/flex for content columns)
-      - embedded Outfit (same as portfolio); real selectable text
+      - embedded font and real selectable text
       - standard section names: Summary, Experience, Skills, Projects, Education
       - dates as Mon YYYY-Mon YYYY or YYYY-YYYY or YYYY-Present (never Now/Prior/Recent)
       - contact as plain text near top
@@ -26,8 +26,8 @@
       body {
         margin: 0;
         padding: 0;
-        background: #ffffff;
-        color: #171717;
+        background: #fffdf8;
+        color: #0b1117;
         font-family: Outfit, Arial, Helvetica, sans-serif;
         font-size: 9.2pt;
         line-height: 1.31;
@@ -57,25 +57,25 @@
       .contact {
         margin: 0 0 0.42rem;
         padding: 0 0 0.35rem;
-        border-bottom: 1px solid #cccccc;
-        color: #333333;
+        border-bottom: 1px solid #b8bec1;
+        color: #2d3841;
         font-size: 8.5pt;
       }
 
       .contact a {
-        color: #171717;
+        color: #0b1117;
         text-decoration: none;
       }
 
       .summary {
         margin: 0 0 0.28rem;
-        color: #222222;
+        color: #1b252e;
         font-size: 9pt;
       }
 
       h2 {
         margin: 0.42rem 0 0.2rem;
-        color: #171717;
+        color: #0b1117;
         font-size: 10.25pt;
         font-weight: 700;
         letter-spacing: 0;
@@ -94,7 +94,7 @@
 
       .meta {
         margin: 0.05rem 0 0.1rem;
-        color: #333333;
+        color: #2d3841;
         font-size: 8.5pt;
       }
 
@@ -105,14 +105,14 @@
 
       li {
         margin: 0.08rem 0;
-        color: #222222;
+        color: #1b252e;
         font-size: 9pt;
       }
 
       .block p {
         margin: 0 0 0.14rem;
         font-size: 9pt;
-        color: #222222;
+        color: #1b252e;
       }
 
       .block strong {
@@ -123,7 +123,7 @@
   <body>
     <main>
       <h1>Tien Nguyen</h1>
-      <p class="role">AI Product Manager / Lead AI Technical Product Owner</p>
+      <p class="role">Product Manager | Payments, consumer products, and applied AI</p>
       <p class="contact">
         Ho Chi Minh City ·
         <a href="mailto:tiennguyentthao@gmail.com">tiennguyentthao@gmail.com</a>
@@ -139,19 +139,17 @@
 
       <h2>Summary</h2>
       <p class="summary">
-        AI Product Manager and Lead AI Technical Product Owner for enterprise agentic operations. I
-        design and lead platforms that turn complex workflows into governed business operations
-        across AI, knowledge, orchestration, evaluation, and governance. Operating loop: Observe,
-        Detect, Explain, Recommend, Approve, Execute, Verify, Learn. Stack includes RAG, ReAct
-        agents, multi-agent orchestration, human-in-the-loop controls, runtime checks, and
-        evidence-based verification. Seven years shipping B2B fintech, payments, transportation, and
-        enterprise systems from 0-to-1 through high-scale operations.
+        Product manager and technical product owner with seven years across fintech, payments,
+        insurance, consumer products, and enterprise operations. At Colonial Surety, I led a PCI
+        payment gateway cutover across three live platforms. At Olmo, changes to mobile booking and
+        payment flows raised bookings 30%. At Green SM, I own requirements for agentic operations,
+        including ReAct agents, orchestration, and human approval before execution.
       </p>
 
       <h2>Experience</h2>
 
       <article class="job">
-        <h3>GSM - Green SM - Technical PO | Agent Orchestration &amp; Harness Engineering</h3>
+        <h3>Green SM - Technical Product Owner, Agent Orchestration &amp; Harness Engineering</h3>
         <p class="meta">Agentic Ops Platform · Applied AI · Full-time · Jul 2026-Present</p>
         <ul>
           <li>
@@ -160,9 +158,9 @@
             policy checks and human approval.
           </li>
           <li>
-            Spec shared AI platform services used across products: model gateway with fail-closed
-            data classification, RAG/embeddings, and knowledge-graph tools with an auditable
-            decision log.
+            Specify shared AI services and agent patterns, including a model gateway with
+            fail-closed data classification, RAG and embeddings, ReAct agents, multi-agent
+            orchestration, knowledge-graph tools, and auditable decision logs.
           </li>
           <li>
             Define agent release and ops loops: agentic SDLC with gated remediation,
@@ -173,12 +171,12 @@
       </article>
 
       <article class="job">
-        <h3>Colonial Surety Company - PE</h3>
+        <h3>Colonial Surety Company - Product Engineering</h3>
         <p class="meta">B2B fintech, insurance, payments · Contract · Feb 2026-Jul 2026</p>
         <ul>
           <li>
-            Ran an agent-operated PM workflow: graded transcripts for traceability, linked specs to
-            sources, and blocked changes that lacked sign-off inside a regulated US insurer.
+            Traced requirements to source transcripts and required sign-off on changes in a
+            regulated US insurer.
           </li>
           <li>
             Led an emergency PCI payment cutover from Transax to CardPointe across three live
@@ -192,7 +190,7 @@
       </article>
 
       <article class="job">
-        <h3>Hoookie - PM</h3>
+        <h3>Hoookie - Product Manager</h3>
         <p class="meta">Web3 and fintech · Full-time · Vietnam · 2023-2026</p>
         <ul>
           <li>
@@ -211,7 +209,7 @@
       </article>
 
       <article class="job">
-        <h3>Olmo Technology - PO</h3>
+        <h3>Olmo Technology - Product Owner</h3>
         <p class="meta">Social e-commerce · Full-time · 2022-2023</p>
         <ul>
           <li>
@@ -226,7 +224,7 @@
       </article>
 
       <article class="job">
-        <h3>4/10 Fire Protection Trading Service - APM</h3>
+        <h3>4/10 Fire Protection Trading Service - Associate Product Manager</h3>
         <p class="meta">ERP · Full-time · 2019-2022</p>
         <ul>
           <li>

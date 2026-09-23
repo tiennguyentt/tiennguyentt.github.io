@@ -1,6 +1,6 @@
 ---
 title: 'Colonial Surety delivery'
-description: 'Colonial Surety. Insurtech and B2B fintech delivery on the resume: PM controls, PCI gateway cutover, seven-product bundling, B2B SSO scoping.'
+description: 'Product Engineering at Colonial Surety: PCI gateway cutover, insurance product rules, and B2B single sign-on requirements.'
 tech:
   - Insurance
   - Payments
@@ -13,19 +13,15 @@ publishDate: 2026-02-01
 
 ## Context
 
-**Colonial Surety** — prior role as PE (B2B fintech, insurance, payments). Insurtech delivery; **no public demo**. Facts below stay within the resume.
+I worked in Product Engineering at Colonial Surety, across insurance and payments. There is no public demo of this employer work.
 
-## What shipped (resume)
+## Work on the resume
 
-1. **Agent-operated PM workflow controls** — transcripts graded for traceability, specs linked to source, no diff without sign-off; integration points and team rollout inside a regulated US insurer.
-2. **Emergency PCI payments migration** — Transax → CardPointe cutover across **3 production platforms** after the primary gateway shut down; scoped impact and verified each platform before go-live.
-3. **Seven insurance products in one flow** — bundling logic: knockout rules, unified claims, edit-policy matrix, and partial-failure cases.
-4. **B2B SSO provider scoping** — turned ambiguous CTO direction into a structured BRD: two user types, adaptive registration, and cross-partner sessions.
+1. Led a PCI payment gateway cutover from Transax to CardPointe across three live platforms after the previous gateway shut down.
+2. Designed one application flow for seven insurance products, including eligibility rules, shared claims, and partial-failure cases.
+3. Wrote B2B single sign-on requirements for two user types and partner sessions.
+4. Traced requirements to source transcripts and required sign-off on changes.
 
-## Outcome (resume numbers)
+## What is public
 
-- PCI emergency gateway migration across 3 platforms.
-- Seven-product bundling model designed into one flow.
-- B2B SSO captured as a buildable BRD before engineering.
-
-**Not on this site:** live Colonial demos, internal architecture, or details beyond the resume.
+This page repeats resume-level facts. It does not include internal architecture or a live Colonial demo.

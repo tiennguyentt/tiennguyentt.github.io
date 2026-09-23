@@ -2,22 +2,23 @@
 :root[data-theme='light'],
 :root[data-theme='dark'] {
   color-scheme: light;
-  /* Precision studio: white field, near-black ink, signal red used rarely. */
-  --color-bg: #ffffff;
-  --color-surface: #f5f5f5;
-  --color-text: #171717;
-  --color-muted: #5c5c5c;
-  --color-line: #e8e8e8;
-  --color-line-strong: #bdbdbd;
-  --color-soft: #f0f0f0;
-  --color-accent: #e31937;
-  --color-accent-hover: #b9142c;
+  /* Personal portfolio adaptation of the warm ivory, obsidian, and amber system. */
+  --color-bg: #f5f2ea;
+  --color-surface: #fffdf8;
+  --color-text: #0b1117;
+  --color-muted: #59636b;
+  --color-line: rgb(11 17 23 / 10%);
+  --color-line-strong: rgb(11 17 23 / 22%);
+  --color-soft: #eee9df;
+  --color-accent: #a94e08;
+  --color-accent-hover: #bd6109;
+  --color-signal: #f2a623;
   --color-accent-soft: color-mix(in srgb, var(--color-accent) 12%, white);
   --color-on-accent: #ffffff;
-  --color-ink: #000000;
-  --color-paper: #f4f4f2;
-  --font-display: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
-  --font-body: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
+  --color-ink: #0b1117;
+  --color-paper: #faf8f3;
+  --font-display: 'Inter Variable', Inter, system-ui, sans-serif;
+  --font-body: 'Inter Variable', Inter, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
   --content-width: 1120px;
   --prose-width: 40rem;
@@ -33,10 +34,10 @@
   --demo-title-weight: 600;
   --demo-body-weight: 450;
   --demo-meta-weight: 500;
-  --demo-ink: #171717;
-  --demo-muted: #5c5c5c;
-  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--color-ink) 16%, transparent);
-  --radius-control: 4px;
+  --demo-ink: var(--color-text);
+  --demo-muted: var(--color-muted);
+  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--color-accent) 28%, transparent);
+  --radius-control: 12px;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -58,7 +59,7 @@ html {
 body {
   min-width: 320px;
   margin: 0;
-  background: radial-gradient(120% 80% at 50% -10%, #f3f3f3 0%, #ffffff 55%), #ffffff;
+  background: var(--color-bg);
 }
 
 ::selection {
@@ -87,7 +88,7 @@ a:not(.brand, .button, .header-cta, .demo-card, .demo-rail a):hover {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-ink);
+  outline: 2px solid var(--color-accent-hover);
   outline-offset: 3px;
 }
 
@@ -284,7 +285,7 @@ a:not(.brand, .button, .header-cta, .demo-card, .demo-rail a):hover {
 }
 
 .hero--role h1 {
-  max-width: 22rem;
+  max-width: 42rem;
   margin-bottom: 0.85rem;
   font-size: clamp(1.85rem, 4.4vw, 2.75rem);
   letter-spacing: -0.04em;
@@ -376,9 +377,9 @@ h3 {
   justify-content: center;
   padding: 0.7rem 1.35rem;
   border: 1px solid transparent;
-  border-radius: 999px;
-  background: var(--color-ink);
-  color: var(--color-on-accent);
+  border-radius: var(--radius-control);
+  background: var(--color-signal);
+  color: var(--color-ink);
   font-weight: 600;
   letter-spacing: -0.01em;
   background-image: none !important;
@@ -388,18 +389,18 @@ h3 {
 }
 
 .button:hover {
-  background: var(--color-accent);
-  color: var(--color-on-accent);
+  background: #d77b0d;
+  color: var(--color-ink);
 }
 
 .button--ghost {
-  background: #f4f4f2;
+  background: var(--color-surface);
   border-color: transparent;
   color: var(--color-text);
 }
 
 .button--ghost:hover {
-  background: #ecece8;
+  background: var(--color-soft);
   color: var(--color-text);
 }
 
@@ -462,6 +463,14 @@ h3 {
   padding-top: 0;
 }
 
+.demos-intro {
+  margin-bottom: 1.5rem;
+}
+
+.demos-intro h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+}
+
 .demo-sheet {
   border: var(--demo-stroke);
   border-radius: var(--demo-card-radius);
@@ -490,7 +499,7 @@ h3 {
 }
 
 .demo-card:hover {
-  background: #ecece8;
+  background: var(--color-soft);
   color: inherit;
   opacity: 1;
 }
@@ -528,7 +537,7 @@ h3 {
 }
 
 .demo-card:hover .demo-card__bar {
-  background: #ecece8;
+  background: var(--color-soft);
 }
 
 .demo-card__bar span:last-child {

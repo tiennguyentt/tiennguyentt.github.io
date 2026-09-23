@@ -1,6 +1,6 @@
 ---
 title: 'Knowledge Engine'
-description: 'Meeting transcripts become a source-linked wiki. Conflicts resolve by truth hierarchy. Specs get graded. Humans sign the diff.'
+description: 'Turns meeting notes into a source-linked wiki and checks requirements against the source before human sign-off.'
 tech:
   - Multi-model agents
   - Karpathy KB pattern
@@ -13,30 +13,28 @@ publishDate: 2026-06-15
 
 ## Before
 
-Product work in regulated and multi-stakeholder environments dies in the gap between meetings and engineering. Notes conflict. Specs drift. Agents that “help write requirements” often invent certainty without sources.
+Meeting notes can conflict, and requirements can lose their source by the time engineering receives them. An AI-written spec can sound certain even when the notes are not.
 
-I needed a workflow I could run myself — and show publicly — where every claim stays tied to evidence and every handoff has a human gate.
+I wanted a workflow I could use myself and demonstrate publicly, with source links for each claim and my review before handoff.
 
 ## Decision
 
-I built **Knowledge Engine**, a multi-model agent system (Claude and Codex today, model-agnostic by design) on the Karpathy LLM Knowledge Base pattern:
+I built **Knowledge Engine** with Claude and Codex, following the Karpathy LLM Knowledge Base pattern:
 
 1. **Ingest** raw meetings and notes.
 2. **Trace** into a source-linked wiki.
 3. **Check** conflicts using an explicit source truth hierarchy.
 4. **Grade** specs for clarity and coverage before they leave the PM desk.
-5. **Sign off** — I review the diff; engineering only sees what I approve.
+5. **Sign off.** I review the changes before the spec goes to engineering.
 
-The system runs agent skills and subagents against that loop so the operating model is inspectable, not theatrical.
+Agent skills and subagents handle the steps. Source links and the reviewed changes show what they did.
 
 ## Outcome
 
 - Live demo: [tienntt-knowledge-engine.streamlit.app](https://tienntt-knowledge-engine.streamlit.app/)
-- A repeatable PM workflow that turns conflicting discovery into BRD/SRS-quality acceptance criteria with source links.
-- The same pattern informs Gelato and other governed agent workflows: advisory surfaces, evidence references, and human accountability before production.
-
-**Number to remember:** five gated stages from raw transcript to human-signed engineering handoff.
+- Requirements and acceptance criteria retain links to the meeting notes they came from.
+- I use the same source checks and approval step in my other agent projects.
 
 ## Demo
 
-Open the Streamlit app and walk the pipeline. Ask how conflict resolution chooses between sources, and what “graded” means before a spec is allowed to ship.
+The Streamlit app shows how a transcript becomes a wiki entry and a reviewed spec.

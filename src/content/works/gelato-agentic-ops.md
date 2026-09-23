@@ -1,6 +1,6 @@
 ---
 title: 'Gelato'
-description: 'In progress. Personal R&D on governed agentic ops: orchestration, gates, and decision logs.'
+description: 'In-progress personal project for routing agents, recording decisions, and requiring approval before execution.'
 tech:
   - Agent orchestration
   - Route gates
@@ -11,11 +11,11 @@ publishDate: 2026-09-01
 
 ## Status
 
-In progress. Personal product research, not an employer tour. Live demos ship when builds are ready.
+This is personal research, separate from employer work. There is no public demo yet.
 
 ## Layers
 
-Each layer is named for what it does, not an internal product codename.
+The current design separates routing, model access, test scenarios, and review:
 
 | Layer         | Function                                           |
 | ------------- | -------------------------------------------------- |
@@ -27,6 +27,4 @@ Each layer is named for what it does, not an internal product codename.
 | Models        | Inference and training hooks with human sign-off   |
 | Outputs       | Drafts, listings, handoffs to humans               |
 
-## One-liner
-
-Models advise. Decision logs and humans decide.
+Execution stays behind recorded checks and human approval.

@@ -4,11 +4,11 @@ export const SITE = {
   locale: 'en',
   title: 'Tien Nguyen',
   description:
-    'Tien Nguyen, AI Product Manager / Lead AI Technical Product Owner for agentic operations platforms in Ho Chi Minh City.',
+    'Tien Nguyen is a product manager and technical product owner working across payments, consumer products, and agentic operations in Ho Chi Minh City.',
   rssDescription: 'Notes and case studies from Tien Nguyen.',
   ogImage: '/og-image.png',
   author: 'Tien Nguyen',
-  footerText: 'Tien Nguyen · Applied AI Enterprise',
+  footerText: 'Tien Nguyen · Product management and applied AI',
 } as const;
 
 export const RESUME_PDF = '/Tien-Nguyen-CV.pdf' as const;

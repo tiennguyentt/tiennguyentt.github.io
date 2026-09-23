@@ -1,6 +1,6 @@
 ---
 title: 'Sport Quant'
-description: 'Governed +EV terminal for prediction markets. Elo and Dixon-Coles score the edge. Fractional Kelly and hard caps set size. Models advise; code governs.'
+description: 'Prediction-market research tool using Elo and Dixon-Coles estimates, fractional Kelly sizing, and a 1% exposure cap.'
 tech:
   - Elo / Dixon-Coles
   - Fractional Kelly
@@ -14,23 +14,21 @@ publishDate: 2025-09-01
 
 ## Before
 
-Prediction-market tooling often lets an LLM narrate an edge and then quietly becomes the decision maker. That fails the same way ungoverned agent ops fail: no deterministic gate, no hard caps, no separation between advice and action.
+I wanted to test whether match models found a price difference worth examining. The language model could explain a result, but it should not set the size of a position.
 
 ## Decision
 
-I engineered **Sport Quant** as a governed +EV terminal:
+I built **Sport Quant** with separate scoring, sizing, and risk checks:
 
 1. **Ingest** market and match data.
 2. **Score** with an Elo + Dixon-Coles ensemble.
 3. **Find edge** relative to market prices.
 4. **Size** with fractional Kelly.
 5. **Gate** with deterministic risk rules and a 1% hard cap.
-6. **Decide** in code — the LLM explains; it does not authorize the bet.
+6. **Apply the rule in code.** The language model explains the calculation but cannot override the cap.
 
 ## Outcome
 
 - Live demo: [tienntt-sport-quant.streamlit.app](https://tienntt-sport-quant.streamlit.app/)
 - Source: [github.com/tiennguyentt/sport-quant](https://github.com/tiennguyentt/sport-quant)
-- A concrete instance of the product principle I use on enterprise agent platforms: **models advise, code decides.**
-
-**Number to remember:** 1% hard cap on sized exposure, enforced outside the model.
+- The 1% exposure cap is checked in code, outside the language model.
