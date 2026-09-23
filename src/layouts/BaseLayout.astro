@@ -81,7 +81,11 @@ const isActive = (href: string) => {
           <BrandLogo />
           <span class="visually-hidden">{siteName}</span>
         </a>
-        <nav class="site-nav" aria-label={t('nav.label')}>
+        <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
+          <span class="nav-toggle__icon" aria-hidden="true"></span>
+          Menu
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label={t('nav.label')}>
           {
             NAV_ITEMS.map((item) => (
               <a href={withBase(item.href)} aria-current={isActive(item.href) ? 'page' : undefined}>
@@ -89,8 +93,17 @@ const isActive = (href: string) => {
               </a>
             ))
           }
+          <a
+            class="site-nav__resume"
+            href={withBase(RESUME_PAGE)}
+            aria-current={isActive(RESUME_PAGE) ? 'page' : undefined}>Resume</a
+          >
         </nav>
-        <a class="header-cta" href={withBase(RESUME_PAGE)}>Resume</a>
+        <a
+          class="header-cta"
+          href={withBase(RESUME_PAGE)}
+          aria-current={isActive(RESUME_PAGE) ? 'page' : undefined}>Resume</a
+        >
       </div>
     </header>
 
@@ -109,5 +122,38 @@ const isActive = (href: string) => {
     </footer>
 
     <CodeCopy />
+    <script>
+      const closeMenu = (restoreFocus = false) => {
+        const header = document.querySelector<HTMLElement>('.site-header');
+        const toggle = header?.querySelector<HTMLButtonElement>('.nav-toggle');
+        if (!header || !toggle || toggle.getAttribute('aria-expanded') !== 'true') return;
+        toggle.setAttribute('aria-expanded', 'false');
+        header.classList.remove('site-header--menu-open');
+        if (restoreFocus) toggle.focus();
+      };
+
+      document.addEventListener('click', (event) => {
+        const target = event.target;
+        if (!(target instanceof Element)) return;
+        const toggle = target.closest<HTMLButtonElement>('.nav-toggle');
+        if (toggle) {
+          const expanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!expanded));
+          toggle.closest('.site-header')?.classList.toggle('site-header--menu-open', !expanded);
+          return;
+        }
+        if (target.closest('.site-nav a') || !target.closest('.site-header')) closeMenu();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMenu(true);
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 760) closeMenu();
+      });
+
+      document.addEventListener('astro:after-swap', () => closeMenu());
+    </script>
   </body>
 </html>
