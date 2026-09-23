@@ -6,9 +6,8 @@ import satori from 'satori';
 import sharp from 'sharp';
 import { SITE } from '../../../consts';
 
-// Build-time generated Open Graph images for every blog post and work entry,
-// rendered in the theme's light palette (see global.css tokens). The static
-// `public/og.jpg` remains the site-wide fallback for all other pages.
+// Build-time generated Open Graph images for the site, blog posts, and work entries,
+// rendered in the portfolio palette (see global.css tokens).
 
 interface OgProps {
   title: string;
@@ -20,6 +19,15 @@ export const getStaticPaths = (async () => {
   const blog = await getCollection('blog', ({ data }) => !data.draft);
   const works = await getCollection('works');
   return [
+    {
+      params: { collection: 'site', slug: 'portfolio' },
+      props: {
+        title: 'Product work, from requirements to release.',
+        description:
+          'Tien Nguyen works across payments, consumer products, and agentic operations.',
+        kind: 'Portfolio',
+      } satisfies OgProps,
+    },
     ...blog.map((entry) => ({
       params: { collection: 'blog', slug: entry.id },
       props: {
@@ -39,14 +47,15 @@ export const getStaticPaths = (async () => {
   ];
 }) satisfies GetStaticPaths;
 
-// Satori has no oklch() support, so these are hex equivalents of the
-// light-theme tokens in global.css.
+// Keep these values aligned with the light-theme tokens in global.css.
 const COLOR = {
-  bg: '#fcfcfa',
-  text: '#252831',
-  muted: '#697080',
-  line: '#dbd8d0',
-  accent: '#a8492c',
+  bg: '#f5f2ea',
+  surface: '#fffdf8',
+  text: '#0b1117',
+  muted: '#59636b',
+  line: '#dce0db',
+  accent: '#a94e08',
+  signal: '#f2a623',
 };
 
 const require = createRequire(import.meta.url);
@@ -58,9 +67,9 @@ const font = (pkgPath: string) => readFile(require.resolve(pkgPath));
 // render them as tofu in every share image. Post titles in a non-Latin script
 // hit the same limit: install a face that covers them (e.g.
 // `@fontsource/noto-sans-jp`) and point the paths below at it.
-const [fraunces, publicSans] = await Promise.all([
-  font('@fontsource/fraunces/files/fraunces-latin-600-normal.woff'),
-  font('@fontsource/public-sans/files/public-sans-latin-400-normal.woff'),
+const [interRegular, interSemibold] = await Promise.all([
+  font('@fontsource/inter/files/inter-latin-400-normal.woff'),
+  font('@fontsource/inter/files/inter-latin-600-normal.woff'),
 ]);
 
 const truncate = (text: string, max: number) =>
@@ -79,7 +88,7 @@ export const GET: APIRoute<OgProps> = async ({ props }) => {
           display: 'flex',
           backgroundColor: COLOR.bg,
           padding: 40,
-          fontFamily: 'Public Sans',
+          fontFamily: 'Inter',
         },
         children: {
           type: 'div',
@@ -90,6 +99,8 @@ export const GET: APIRoute<OgProps> = async ({ props }) => {
               flexDirection: 'column',
               justifyContent: 'space-between',
               border: `1px solid ${COLOR.line}`,
+              borderRadius: 24,
+              backgroundColor: COLOR.surface,
               padding: '52px 60px',
             },
             children: [
@@ -104,7 +115,8 @@ export const GET: APIRoute<OgProps> = async ({ props }) => {
                         style: {
                           width: 22,
                           height: 22,
-                          backgroundColor: COLOR.accent,
+                          backgroundColor: COLOR.signal,
+                          borderRadius: 4,
                         },
                       },
                     },
@@ -112,8 +124,8 @@ export const GET: APIRoute<OgProps> = async ({ props }) => {
                       type: 'div',
                       props: {
                         style: {
-                          fontFamily: 'Fraunces',
                           fontSize: 30,
+                          fontWeight: 600,
                           color: COLOR.text,
                         },
                         children: SITE.title,
@@ -136,8 +148,8 @@ export const GET: APIRoute<OgProps> = async ({ props }) => {
                           gap: 14,
                           marginBottom: 28,
                           color: COLOR.accent,
-                          fontFamily: 'Fraunces',
                           fontSize: 24,
+                          fontWeight: 600,
                           textTransform: 'uppercase',
                           letterSpacing: 4,
                         },
@@ -160,8 +172,8 @@ export const GET: APIRoute<OgProps> = async ({ props }) => {
                       type: 'div',
                       props: {
                         style: {
-                          fontFamily: 'Fraunces',
                           fontSize: title.length > 55 ? 54 : 64,
+                          fontWeight: 600,
                           lineHeight: 1.15,
                           color: COLOR.text,
                         },
@@ -191,8 +203,8 @@ export const GET: APIRoute<OgProps> = async ({ props }) => {
       width: 1200,
       height: 630,
       fonts: [
-        { name: 'Fraunces', data: fraunces, weight: 600, style: 'normal' },
-        { name: 'Public Sans', data: publicSans, weight: 400, style: 'normal' },
+        { name: 'Inter', data: interRegular, weight: 400, style: 'normal' },
+        { name: 'Inter', data: interSemibold, weight: 600, style: 'normal' },
       ],
     },
   );

@@ -1,191 +1,162 @@
 ---
-/** Gelato ecosystem map — functional platform names only (NDA-safe). */
-const platforms = [
+/** Public conceptual map of personal research, not an employer architecture. */
+const layers = [
   { id: 'gateway', label: 'Gateway', x: 72, y: 28 },
-  { id: 'memory', label: 'Memory', x: 188, y: 22 },
+  { id: 'memory', label: 'Memory', x: 188, y: 28 },
   { id: 'models', label: 'Models', x: 304, y: 28 },
-  { id: 'delivery', label: 'Delivery', x: 72, y: 148 },
-  { id: 'scenarios', label: 'Scenarios', x: 188, y: 156 },
-  { id: 'outputs', label: 'Outputs', x: 304, y: 148 },
+  { id: 'delivery', label: 'Delivery', x: 72, y: 172 },
+  { id: 'scenarios', label: 'Scenarios', x: 188, y: 172 },
+  { id: 'outputs', label: 'Outputs', x: 304, y: 172 },
 ] as const;
 
-const hub = { id: 'ops', label: 'Ops', x: 188, y: 90 };
+const hub = { x: 188, y: 100 };
+const nodeHalfWidth = 54;
+const nodeHalfHeight = 22;
 
-type PlatformId = (typeof platforms)[number]['id'];
+const linkBetween = (layer: (typeof layers)[number]) => {
+  const dx = layer.x - hub.x;
+  const dy = layer.y - hub.y;
+  const edgeRatio = Math.min(
+    dx === 0 ? Infinity : nodeHalfWidth / Math.abs(dx),
+    dy === 0 ? Infinity : nodeHalfHeight / Math.abs(dy),
+  );
 
-const pos = (id: PlatformId | 'ops') => {
-  if (id === 'ops') return hub;
-  return platforms.find((p) => p.id === id)!;
+  return {
+    x1: hub.x + dx * edgeRatio,
+    y1: hub.y + dy * edgeRatio,
+    x2: layer.x - dx * edgeRatio,
+    y2: layer.y - dy * edgeRatio,
+  };
 };
-
-/** Sparse links: hub spokes + a few peer edges. Not a full mesh. */
-const links: Array<{ id: string; from: PlatformId | 'ops'; to: PlatformId | 'ops' }> = [
-  { id: 'ops-gateway', from: 'ops', to: 'gateway' },
-  { id: 'ops-memory', from: 'ops', to: 'memory' },
-  { id: 'ops-models', from: 'ops', to: 'models' },
-  { id: 'ops-delivery', from: 'ops', to: 'delivery' },
-  { id: 'ops-scenarios', from: 'ops', to: 'scenarios' },
-  { id: 'ops-outputs', from: 'ops', to: 'outputs' },
-  { id: 'gateway-memory', from: 'gateway', to: 'memory' },
-  { id: 'memory-models', from: 'memory', to: 'models' },
-  { id: 'delivery-scenarios', from: 'delivery', to: 'scenarios' },
-  { id: 'scenarios-outputs', from: 'scenarios', to: 'outputs' },
-  { id: 'models-scenarios', from: 'models', to: 'scenarios' },
-];
-
-const frames = [
-  {
-    id: 'ops-gateway',
-    text: 'Ops binds Gateway. One entry for every agent path.',
-  },
-  {
-    id: 'gateway-memory',
-    text: 'Gateway to Memory. Specs and sources stay linked.',
-  },
-  {
-    id: 'memory-models',
-    text: 'Memory to Models. Context feeds inference with gates.',
-  },
-  {
-    id: 'models-scenarios',
-    text: 'Models to Scenarios. Batch runs before production.',
-  },
-  {
-    id: 'delivery-scenarios',
-    text: 'Delivery to Scenarios. Build and test share one loop.',
-  },
-  {
-    id: 'scenarios-outputs',
-    text: 'Scenarios to Outputs. Humans get the handoff draft.',
-  },
-  {
-    id: 'ops-outputs',
-    text: 'Shared ops loop across agent platforms.',
-  },
-] as const;
 ---
 
-<div class="scene scene--plane" data-live="plane" aria-hidden="true">
+<div class="scene scene--plane">
   <header class="plane-head">
     <div>
-      <p class="plane-kicker">Agentic ops framework</p>
-      <p class="plane-sub">Shared ops loop across agent platforms.</p>
+      <p class="plane-kicker">Personal research</p>
+      <p class="plane-sub">Agentic operations, with recorded checks and approval.</p>
     </div>
-    <span class="plane-badge">live</span>
+    <span class="plane-badge">In progress</span>
   </header>
 
   <div class="plane-body">
-    <svg class="plane-map" viewBox="0 0 376 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      class="plane-map"
+      viewBox="0 0 376 200"
+      role="img"
+      aria-label="Conceptual map: Ops connects Gateway, Memory, Models, Delivery, Scenarios, and Outputs."
+      xmlns="http://www.w3.org/2000/svg"
+    >
       {
-        links.map((link) => {
-          const from = pos(link.from);
-          const to = pos(link.to);
+        layers.map((layer) => {
+          const link = linkBetween(layer);
           return (
             <line
-              class="plane-link"
-              x1={from.x}
-              y1={from.y}
-              x2={to.x}
-              y2={to.y}
-              data-link={link.id}
-              data-from={link.from}
-              data-to={link.to}
+              class:list={['plane-link', { 'plane-link--selected': layer.id === 'gateway' }]}
+              x1={link.x1}
+              y1={link.y1}
+              x2={link.x2}
+              y2={link.y2}
             />
           );
         })
       }
 
-      <g class="plane-hub" data-node="ops">
-        <circle class="plane-hub__ring" cx={hub.x} cy={hub.y} r="22"></circle>
-        <circle class="plane-hub__dot" cx={hub.x} cy={hub.y} r="16"></circle>
-        <text class="plane-hub__label" x={hub.x} y={hub.y + 3.5} text-anchor="middle"
-          >{hub.label}</text
-        >
+      <g class="plane-hub">
+        <rect x={hub.x - 54} y={hub.y - 22} width="108" height="44" rx="12"></rect>
+        <text class="plane-hub__type" x={hub.x} y={hub.y - 3} text-anchor="middle">Control</text>
+        <text class="plane-hub__label" x={hub.x} y={hub.y + 13} text-anchor="middle">Ops</text>
       </g>
 
       {
-        platforms.map((node) => (
-          <g class="plane-node" data-node={node.id}>
-            <rect
-              class="plane-node__chip"
-              x={node.x - 40}
-              y={node.y - 12}
-              width="80"
-              height="24"
-              rx="6"
-            />
-            <text class="plane-node__label" x={node.x} y={node.y + 3.5} text-anchor="middle">
-              {node.label}
+        layers.map((layer) => (
+          <g class:list={['plane-node', { 'plane-node--selected': layer.id === 'gateway' }]}>
+            <rect x={layer.x - 54} y={layer.y - 22} width="108" height="44" rx="12" />
+            <text class="plane-node__type" x={layer.x} y={layer.y - 3} text-anchor="middle">
+              Layer
+            </text>
+            <text class="plane-node__label" x={layer.x} y={layer.y + 13} text-anchor="middle">
+              {layer.label}
             </text>
           </g>
         ))
       }
-
-      <circle class="plane-signal" cx={hub.x} cy={hub.y} r="2"></circle>
     </svg>
 
-    <p class="plane-detail scene-live">{frames[0].text}</p>
-  </div>
+    <ol class="plane-list" aria-label="Conceptual layers">
+      <li><span>Control</span>Ops</li>
+      {
+        layers.map((layer) => (
+          <li>
+            <span>Layer</span>
+            {layer.label}
+          </li>
+        ))
+      }
+    </ol>
 
-  <div class="scene-script" hidden>
-    {frames.map((frame) => <span data-frame={frame.id}>{frame.text}</span>)}
+    <p class="plane-detail">
+      Ops connects six layers. This is a design in progress, with checks and human approval before
+      execution.
+    </p>
   </div>
 </div>
 
 <style>
-  /*
-    Gelato sits inside a demo card whose bar already owns title (0.875rem / 600).
-    Inside the scene: meta for kicker, body for live copy, SVG labels at meta optical size.
-    Never bump stroke or font-weight on .is-active — color only, or active reads “larger”.
-  */
   .scene--plane {
     display: flex;
+    height: 100%;
+    min-height: 20rem;
     flex-direction: column;
-    gap: 0.55rem;
-    padding: 1.05rem 1.15rem;
-    background: #f4f4f2;
+    gap: 1.5rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    background: var(--color-paper);
   }
 
   .plane-head {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 0.75rem;
+    gap: 1rem;
   }
 
   .plane-kicker {
     margin: 0;
-    color: var(--demo-ink);
-    font-size: var(--demo-meta-size);
-    font-weight: var(--demo-meta-weight);
-    letter-spacing: -0.01em;
+    color: var(--color-text);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     line-height: 1.35;
+    text-transform: uppercase;
   }
 
   .plane-sub {
-    margin: 0.15rem 0 0;
-    color: var(--demo-muted);
-    font-size: var(--demo-meta-size);
-    font-weight: var(--demo-meta-weight);
-    letter-spacing: -0.01em;
-    line-height: 1.35;
+    max-width: 32rem;
+    margin: 0.4rem 0 0;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    line-height: 1.45;
   }
 
   .plane-badge {
-    color: var(--demo-muted);
-    font-family: var(--font-mono);
-    font-size: var(--demo-meta-size);
-    font-weight: var(--demo-meta-weight);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    display: inline-flex;
+    min-height: 1.875rem;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 0.35rem 0.75rem;
+    border-radius: 0.5rem;
+    color: var(--color-accent);
+    background: rgb(242 166 35 / 8%);
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
   }
 
   .plane-body {
     display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.9fr);
-    gap: 0.85rem;
     flex: 1;
-    min-height: 0;
+    grid-template-columns: minmax(0, 1.5fr) minmax(13rem, 0.8fr);
+    gap: 1.5rem;
     align-items: stretch;
   }
 
@@ -193,126 +164,139 @@ const frames = [
     display: block;
     width: 100%;
     height: 100%;
-    min-height: 10.5rem;
+    min-height: 13rem;
+    overflow: visible;
   }
 
   .plane-link {
-    stroke: #e8e8e8;
+    stroke: var(--color-line-strong);
     stroke-width: 1;
-    transition: stroke 280ms ease;
   }
 
-  .plane-link.is-live {
-    stroke: var(--color-accent);
+  .plane-link--selected {
+    stroke: var(--color-accent-hover);
   }
 
-  .plane-hub__ring {
-    fill: none;
-    stroke: var(--demo-ink);
-    stroke-width: 1;
-    opacity: 0.2;
+  .plane-hub rect {
+    fill: var(--color-ink);
   }
 
-  .plane-hub__dot {
-    fill: var(--demo-ink);
-  }
-
+  .plane-hub__type,
   .plane-hub__label {
-    fill: #ffffff;
+    fill: var(--color-surface);
     font-family: var(--font-body);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: -0.01em;
   }
 
-  .plane-hub.is-active .plane-hub__ring {
-    stroke: var(--color-accent);
-    animation: plane-hub-breathe 2.2s ease-in-out infinite;
+  .plane-hub__type,
+  .plane-node__type {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
-  .plane-node__chip {
-    fill: #ffffff;
-    stroke: #e8e8e8;
-    stroke-width: 1;
-    transition: stroke 280ms ease;
+  .plane-hub__type {
+    opacity: 0.72;
   }
 
+  .plane-hub__label,
   .plane-node__label {
-    fill: var(--demo-muted);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .plane-node rect {
+    fill: var(--color-surface);
+    stroke: var(--color-line);
+    stroke-width: 1;
+  }
+
+  .plane-node__type,
+  .plane-node__label {
+    fill: var(--color-text);
     font-family: var(--font-body);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    transition: fill 280ms ease;
   }
 
-  .plane-node.is-active .plane-node__chip {
-    stroke: var(--color-accent);
+  .plane-node__type {
+    fill: var(--color-muted);
   }
 
-  .plane-node.is-active .plane-node__label {
-    fill: var(--demo-ink);
+  .plane-node--selected rect {
+    fill: #fef6e7;
+    stroke: var(--color-accent-hover);
   }
 
-  .plane-signal {
-    fill: var(--color-accent);
-    opacity: 0.9;
+  .plane-list {
+    display: none;
   }
 
   .plane-detail {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     margin: 0;
-    padding: 0.65rem 0.75rem;
-    border: 1px solid #e8e8e8;
-    border-radius: 0.85rem;
-    background: #fff;
-    color: var(--demo-ink);
-    font-size: var(--demo-body-size);
-    font-weight: var(--demo-body-weight);
-    letter-spacing: -0.01em;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    color: var(--color-surface);
+    background: var(--color-ink);
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-weight: 500;
     line-height: 1.4;
   }
 
-  .plane-detail.is-enter {
-    animation: plane-enter 480ms ease both;
-  }
-
-  @keyframes plane-enter {
-    from {
-      opacity: 0;
-      transform: translateY(0.3rem);
-    }
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
-
-  @keyframes plane-hub-breathe {
-    0%,
-    100% {
-      opacity: 0.25;
-    }
-    50% {
-      opacity: 0.55;
-    }
-  }
-
   @media (max-width: 760px) {
+    .scene--plane {
+      min-height: 0;
+    }
+
+    .plane-head {
+      flex-wrap: wrap;
+    }
+
     .plane-body {
       grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .plane-map {
+      display: none;
+    }
+
+    .plane-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.5rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .plane-list li {
+      display: grid;
+      min-height: 3rem;
+      gap: 0.1rem;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--color-line);
+      border-radius: 0.75rem;
+      background: var(--color-surface);
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .plane-list span {
+      color: var(--color-muted);
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
     }
 
     .plane-detail {
-      min-height: 0;
+      padding: 1rem;
     }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .plane-hub.is-active .plane-hub__ring {
-      animation: none;
-      opacity: 0.4;
+  @media (max-width: 599px) {
+    .plane-list {
+      grid-template-columns: 1fr;
     }
   }
 </style>

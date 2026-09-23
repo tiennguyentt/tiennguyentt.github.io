@@ -10,157 +10,48 @@ const { kind } = Astro.props;
 
 {
   kind === 'knowledge' && (
-    <div class="scene scene--chat" data-live="chat" aria-hidden="true">
-      <div class="scene-live">
-        <p class="scene-bubble scene-bubble--in">Trace every claim to a source.</p>
-        <p class="scene-bubble scene-bubble--out">Conflicts resolved. Spec graded.</p>
-        <p class="scene-bubble scene-bubble--in">Human sign-off before engineering.</p>
-      </div>
-      <div class="scene-script" hidden>
-        <p class="scene-bubble scene-bubble--in">Trace every claim to a source.</p>
-        <p class="scene-bubble scene-bubble--out">Conflicts resolved. Spec graded.</p>
-        <p class="scene-bubble scene-bubble--in">Human sign-off before engineering.</p>
-        <p class="scene-bubble scene-bubble--out">Transcript in. Wiki linked to sources.</p>
-        <p class="scene-bubble scene-bubble--in">Two notes disagree. The recording wins.</p>
-        <p class="scene-bubble scene-bubble--out">Spec graded 8 of 10.</p>
-        <p class="scene-bubble scene-bubble--in">Diff signed. Engineering can start.</p>
-        <p class="scene-bubble scene-bubble--out">Spec graded. Diff signed before engineering.</p>
-      </div>
+    <div class="scene scene--knowledge" aria-hidden="true">
+      <p class="scene-kicker">Source-linked requirements</p>
+      <p class="scene-lead">From meeting notes to a reviewed spec</p>
+      <ol class="scene-flow">
+        <li>
+          <span>01</span>Meeting transcript
+        </li>
+        <li>
+          <span>02</span>Wiki linked to sources
+        </li>
+        <li>
+          <span>03</span>Human sign-off
+        </li>
+      </ol>
     </div>
   )
 }
 
 {
   kind === 'sport' && (
-    <div class="scene scene--build" data-live="build" aria-hidden="true">
-      <div class="scene-chrome">
-        sport-quant
-        <i class="scene-progress">
-          <b />
-        </i>
-      </div>
-      <pre class="scene-code scene-live">
-        <span class="scene-row">
-          <span class="c-dim">|</span> ingest markets and fixtures
-          <span class="scene-tag scene-tag--ok">[done]</span>
-        </span>
-        <span class="scene-row">
-          <span class="c-dim">|</span> score elo and dixon-coles
-          <span class="scene-tag scene-tag--run">[running]</span>
-        </span>
-        <span class="c-dim">Thought for 1.4s</span>
-        <span>
-          <span class="c-ok">◆</span> size the edge
-        </span>
-        <span>
-          <span class="c-key">edge</span> = elo - market
-        </span>
-        <span>
-          <span class="c-key">size</span> = kelly(edge) * 0.25
-        </span>
-      </pre>
-      <div class="scene-script" hidden>
-        <div data-frame>
-          <span class="scene-row">
-            <span class="c-dim">|</span> ingest markets and fixtures
-            <span class="scene-tag scene-tag--ok">[done]</span>
-          </span>
-          <span class="scene-row">
-            <span class="c-dim">|</span> score elo and dixon-coles
-            <span class="scene-tag scene-tag--run">[running]</span>
-          </span>
-          <span class="c-dim">Thought for 1.4s</span>
-          <span>
-            <span class="c-ok">◆</span> size the edge
-          </span>
-          <span>
-            <span class="c-key">edge</span> = elo - market
-          </span>
-          <span>
-            <span class="c-key">size</span> = kelly(edge) * 0.25
-          </span>
-        </div>
-        <div data-frame>
-          <span class="scene-row">
-            <span class="c-dim">|</span> gate 1% hard cap
-            <span class="scene-tag scene-tag--ok">[done]</span>
-          </span>
-          <span class="scene-row">
-            <span class="c-dim">|</span> decide in code
-            <span class="scene-tag scene-tag--run">[running]</span>
-          </span>
-          <span class="c-dim">Thought for 0.9s</span>
-          <span>
-            <span class="c-ok">◆</span> code.decide(size)
-          </span>
-          <span>models advise</span>
-          <span class="c-ok">code governs</span>
-        </div>
-        <div data-frame>
-          <span class="scene-row">
-            <span class="c-dim">|</span> read market price
-            <span class="scene-tag scene-tag--ok">[done]</span>
-          </span>
-          <span class="scene-row">
-            <span class="c-dim">|</span> apply fractional kelly
-            <span class="scene-tag scene-tag--ok">[done]</span>
-          </span>
-          <span class="c-dim">Thought for 2.1s</span>
-          <span>
-            <span class="c-ok">◆</span> cap exposure
-          </span>
-          <span>
-            <span class="c-key">size</span> = min(size, 0.01)
-          </span>
-          <span class="scene-row">
-            <span class="c-ok">code.decide(size)</span>
-            <span class="scene-tag scene-tag--ok">[done]</span>
-          </span>
-        </div>
-      </div>
+    <div class="scene scene--sport" aria-hidden="true">
+      <p class="scene-kicker">Prediction-market research</p>
+      <p class="scene-measure">
+        1% <span>exposure cap</span>
+      </p>
+      <p class="scene-note">
+        Elo and Dixon-Coles estimates. Fractional Kelly sizing. The cap runs in code.
+      </p>
     </div>
   )
 }
 
 {
   kind === 'recon' && (
-    <div class="scene scene--bot" data-live="bot" aria-hidden="true">
-      <div class="scene-frame is-active">
-        <p class="scene-kicker">Created routine · Daily sweep</p>
-        <ul class="scene-checks">
-          <li>Relevance scored</li>
-          <li>Credibility scored</li>
-          <li>Predictive weight updated</li>
-        </ul>
-        <p class="scene-status">
-          <span class="scene-think">
-            <>
-              <i />
-              <i />
-              <i />
-            </>
-          </span>
-          Thinking
-        </p>
-      </div>
-      <div class="scene-frame">
-        <p class="scene-bubble scene-bubble--out">Score relevance, credibility, weight.</p>
-        <p class="scene-meta">Daily sweep. Three scores. Outcomes feed the weights.</p>
-        <p class="scene-status">
-          <span class="scene-dot" />
-          Scoring
-        </p>
-      </div>
-      <div class="scene-frame">
-        <p class="scene-kicker">Flagged · source weight dropped</p>
-        <p class="scene-bubble scene-bubble--in">
-          Report drafted. Nine signals matched. Two need review.
-        </p>
-        <p class="scene-status">
-          <span class="scene-dot" />
-          Scoring
-        </p>
-      </div>
+    <div class="scene scene--recon" aria-hidden="true">
+      <p class="scene-kicker">Daily research report</p>
+      <p class="scene-lead">Each item gets three checks</p>
+      <ul class="scene-checks">
+        <li>Relevance</li>
+        <li>Source credibility</li>
+        <li>Predictive weight</li>
+      </ul>
     </div>
   )
 }
@@ -169,300 +60,113 @@ const { kind } = Astro.props;
 
 <style>
   .scene {
-    height: 100%;
-    min-height: 13.5rem;
-    padding: 1.15rem 1.2rem;
-  }
-
-  .scene--chat,
-  .scene--bot {
     display: flex;
+    min-height: 11rem;
+    height: 100%;
     flex-direction: column;
-    gap: 0.55rem;
+    gap: 0.75rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    color: var(--color-text);
     background: var(--color-paper);
   }
 
-  .scene--bot {
-    position: relative;
-    padding: 0;
+  .scene--knowledge {
+    background: var(--color-ink);
+    color: var(--color-surface);
   }
 
-  .scene-live {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    gap: 0.55rem;
-    flex: 1;
-    min-height: 0;
-    overflow: hidden;
+  .scene--sport {
+    background: var(--color-surface);
   }
 
-  .scene-bubble {
-    max-width: 88%;
+  .scene--recon {
+    background: var(--color-paper);
+  }
+
+  .scene-kicker {
     margin: 0;
-    padding: 0.55rem 0.75rem;
-    border: 1px solid var(--color-line);
-    border-radius: 1rem;
-    font-size: var(--demo-body-size);
-    font-weight: var(--demo-body-weight);
-    line-height: 1.4;
-    color: var(--demo-ink);
-    background: #fff;
-  }
-
-  .scene-bubble--out {
-    align-self: flex-end;
-    background: var(--color-soft);
-  }
-
-  .scene-meta,
-  .scene-kicker {
-    margin: 0.15rem 0 0;
-    color: var(--demo-muted);
-    font-size: var(--demo-meta-size);
-    font-weight: var(--demo-meta-weight);
-    letter-spacing: -0.01em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     line-height: 1.35;
+    text-transform: uppercase;
+    opacity: 0.72;
   }
 
-  .scene-kicker {
-    color: var(--demo-ink);
+  .scene-lead {
+    max-width: 20ch;
+    margin: 0;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.12;
   }
 
+  .scene-flow,
   .scene-checks {
-    margin: 0.35rem 0 0;
+    display: grid;
+    gap: 0;
+    margin: auto 0 0;
     padding: 0;
     list-style: none;
   }
 
+  .scene-flow li,
   .scene-checks li {
-    position: relative;
-    margin: 0.28rem 0;
-    padding-left: 1.1rem;
-    color: var(--demo-ink);
-    font-size: var(--demo-body-size);
-    font-weight: var(--demo-body-weight);
-    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 2.75rem;
+    border-top: 1px solid currentColor;
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+
+  .scene-flow li {
+    border-color: var(--line-glass-control);
+  }
+
+  .scene-flow span {
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+  }
+
+  .scene-checks li {
+    border-color: var(--color-line);
   }
 
   .scene-checks li::before {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: var(--color-signal);
     content: '';
-    position: absolute;
-    top: 0.4rem;
-    left: 0;
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    background: var(--color-line-strong);
   }
 
-  .scene-checks li:first-child::before {
-    background: var(--demo-ink);
-  }
-
-  .scene-status {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin-top: auto;
-    color: var(--demo-muted);
-    font-size: var(--demo-meta-size);
-    font-weight: var(--demo-meta-weight);
-    line-height: 1.35;
-  }
-
-  .scene-dot {
-    width: 0.55rem;
-    height: 0.55rem;
-    border-radius: 50%;
-    background: var(--color-signal);
-    animation: scene-pulse 1.8s ease-in-out infinite;
-  }
-
-  .scene-think {
-    display: inline-flex;
-    gap: 0.16rem;
-    align-items: center;
-  }
-
-  .scene-think i {
-    width: 0.32rem;
-    height: 0.32rem;
-    border-radius: 50%;
-    background: var(--color-signal);
-    animation: scene-pulse 1.2s ease-in-out infinite;
-  }
-
-  .scene-think i:nth-child(2) {
-    animation-delay: 0.15s;
-  }
-
-  .scene-think i:nth-child(3) {
-    animation-delay: 0.3s;
-  }
-
-  .scene-frame {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-    padding: 1.15rem 1.2rem;
-    opacity: 0;
-    visibility: hidden;
-    transition:
-      opacity 480ms ease,
-      visibility 480ms ease;
-  }
-
-  .scene-frame.is-active {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .scene--build {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    background: var(--color-paper);
-    color: var(--demo-ink);
-    font-family: var(--font-mono);
-  }
-
-  .scene-chrome {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.65rem 0.85rem;
-    color: var(--demo-muted);
-    font-size: var(--demo-meta-size);
-    font-weight: var(--demo-meta-weight);
-    border-bottom: 1px solid var(--color-line);
-  }
-
-  .scene-progress {
-    display: block;
-    overflow: hidden;
-    width: 3.4rem;
-    height: 0.28rem;
-    margin-left: auto;
-    border-radius: 99px;
-    background: var(--color-line);
-  }
-
-  .scene-progress > b {
-    display: block;
-    width: 42%;
-    height: 100%;
-    background: var(--demo-ink);
-    animation: scene-progress 2.6s ease-in-out infinite;
-  }
-
-  .scene--build pre,
-  .scene-code {
+  .scene-measure {
     display: grid;
-    gap: 0.2rem;
-    flex: 1;
-    min-height: 0;
+    gap: 0.25rem;
+    margin: auto 0 0;
+    font-size: clamp(3.5rem, 8vw, 5rem);
+    font-weight: 600;
+    letter-spacing: -0.07em;
+    line-height: 0.95;
+  }
+
+  .scene-measure span {
+    color: var(--color-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.4;
+  }
+
+  .scene-note {
+    max-width: 34ch;
     margin: 0;
-    padding: 0.9rem 1rem;
-    overflow: hidden;
-    font-size: var(--demo-body-size);
-    font-weight: var(--demo-body-weight);
-    line-height: 1.5;
-    white-space: pre-wrap;
-  }
-
-  .scene-row {
-    display: flex;
-    gap: 0.4rem;
-    align-items: baseline;
-  }
-
-  .scene-tag {
-    margin-left: auto;
-    font-size: var(--demo-meta-size);
-    font-weight: var(--demo-meta-weight);
-  }
-
-  .scene-tag--ok {
-    color: var(--demo-muted);
-  }
-
-  .scene-tag--run {
-    color: var(--color-accent);
-  }
-
-  .c-dim {
-    color: var(--demo-muted);
-  }
-
-  .c-key {
-    color: var(--demo-ink);
-    font-weight: var(--demo-meta-weight);
-  }
-
-  .c-ok {
-    color: var(--demo-ink);
-  }
-
-  .is-enter {
-    animation: scene-enter 480ms ease both;
-  }
-
-  @keyframes scene-pulse {
-    0%,
-    100% {
-      opacity: 0.45;
-    }
-    50% {
-      opacity: 1;
-    }
-  }
-
-  @keyframes scene-enter {
-    from {
-      opacity: 0;
-      transform: translateY(0.45rem);
-    }
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
-
-  @keyframes scene-progress {
-    0% {
-      transform: translateX(-110%);
-    }
-    100% {
-      transform: translateX(280%);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .scene-dot,
-    .scene-think i,
-    .scene-progress > b,
-    .is-enter {
-      animation: none;
-    }
+    color: var(--color-muted);
+    font-size: 0.84rem;
+    line-height: 1.45;
   }
 </style>
-
-<script>
-  import { mountLiveScenes } from '../lib/live-scenes';
-
-  let stopScenes: (() => void) | undefined;
-
-  const start = () => {
-    stopScenes?.();
-    stopScenes = undefined;
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    stopScenes = mountLiveScenes(document, reduced);
-  };
-
-  start();
-  document.addEventListener('astro:page-load', start);
-  document.addEventListener('astro:before-swap', () => stopScenes?.());
-</script>

@@ -6,7 +6,7 @@ export const SITE = {
   description:
     'Tien Nguyen is a product manager and technical product owner working across payments, consumer products, and agentic operations in Ho Chi Minh City.',
   rssDescription: 'Notes and case studies from Tien Nguyen.',
-  ogImage: '/og-image.png',
+  ogImage: '/og/site/portfolio.png',
   author: 'Tien Nguyen',
   footerText: 'Tien Nguyen · Product management and applied AI',
 } as const;

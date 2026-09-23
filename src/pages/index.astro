@@ -115,13 +115,14 @@ const personSchema = {
               href={demo.href}
               target={demo.external ? '_blank' : undefined}
               rel={demo.external ? 'noopener noreferrer' : undefined}
+              aria-label={`${demo.title}. ${demo.external ? 'Open live demo' : 'Read in-progress project'}`}
             >
               <div class="demo-card__visual">
                 <ProductScene kind={demo.kind} />
               </div>
               <div class="demo-card__bar">
                 <span>{demo.title}</span>
-                <span>Open</span>
+                <span>{demo.external ? 'Open live demo' : 'Read project'}</span>
               </div>
             </a>
           ))

@@ -6,7 +6,7 @@ import { SITE } from '../../consts';
 
 const useCases = (await getCollection('works'))
   .filter((work) => work.data.link || work.id.startsWith('gelato'))
-  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+  .sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
 ---
 
 <BaseLayout
@@ -17,8 +17,8 @@ const useCases = (await getCollection('works'))
     <p class="eyebrow">Work</p>
     <h1>Selected work</h1>
     <p class="lead">
-      Live demos and personal projects. Gelato is still in progress. My Green SM and Colonial work
-      is described on the resume without internal product details.
+      Live demos first, then research in progress. Employer work is on the resume without internal
+      product details.
     </p>
   </section>
 
