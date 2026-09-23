@@ -50,15 +50,7 @@ const linkBetween = (layer: (typeof layers)[number]) => {
       {
         layers.map((layer) => {
           const link = linkBetween(layer);
-          return (
-            <line
-              class:list={['plane-link', { 'plane-link--selected': layer.id === 'gateway' }]}
-              x1={link.x1}
-              y1={link.y1}
-              x2={link.x2}
-              y2={link.y2}
-            />
-          );
+          return <line class="plane-link" x1={link.x1} y1={link.y1} x2={link.x2} y2={link.y2} />;
         })
       }
 
@@ -70,7 +62,7 @@ const linkBetween = (layer: (typeof layers)[number]) => {
 
       {
         layers.map((layer) => (
-          <g class:list={['plane-node', { 'plane-node--selected': layer.id === 'gateway' }]}>
+          <g class="plane-node">
             <rect x={layer.x - 54} y={layer.y - 22} width="108" height="44" rx="12" />
             <text class="plane-node__type" x={layer.x} y={layer.y - 3} text-anchor="middle">
               Layer
@@ -95,10 +87,14 @@ const linkBetween = (layer: (typeof layers)[number]) => {
       }
     </ol>
 
-    <p class="plane-detail">
-      Ops connects six layers. This is a design in progress, with checks and human approval before
-      execution.
-    </p>
+    <div class="plane-detail">
+      <span class="plane-detail__state">Overview</span>
+      <h3>Six connected layers</h3>
+      <p>
+        Ops connects gateway, memory, models, delivery, scenarios and outputs. Checks and human
+        approval remain part of this design.
+      </p>
+    </div>
   </div>
 </div>
 
@@ -154,27 +150,20 @@ const linkBetween = (layer: (typeof layers)[number]) => {
 
   .plane-body {
     display: grid;
-    flex: 1;
-    grid-template-columns: minmax(0, 1.5fr) minmax(13rem, 0.8fr);
+    grid-template-columns: minmax(0, 7fr) minmax(13rem, 5fr);
     gap: 1.5rem;
-    align-items: stretch;
+    align-items: start;
   }
 
   .plane-map {
     display: block;
     width: 100%;
-    height: 100%;
-    min-height: 13rem;
-    overflow: visible;
+    height: auto;
   }
 
   .plane-link {
     stroke: var(--color-line-strong);
     stroke-width: 1;
-  }
-
-  .plane-link--selected {
-    stroke: var(--color-accent-hover);
   }
 
   .plane-hub rect {
@@ -221,29 +210,40 @@ const linkBetween = (layer: (typeof layers)[number]) => {
     fill: var(--color-muted);
   }
 
-  .plane-node--selected rect {
-    fill: #fef6e7;
-    stroke: var(--color-accent-hover);
-  }
-
   .plane-list {
     display: none;
   }
 
   .plane-detail {
-    display: flex;
-    align-items: flex-end;
-    margin: 0;
     padding: 1.5rem;
+    border: 1px solid var(--line-structure);
     border-radius: 1rem;
-    color: var(--color-surface);
-    background: var(--color-ink);
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
-    font-weight: 500;
-    line-height: 1.4;
+    background: var(--color-surface);
   }
 
-  @media (max-width: 760px) {
+  .plane-detail__state {
+    display: block;
+    margin-bottom: 0.75rem;
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .plane-detail h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+  }
+
+  .plane-detail p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 1024px) {
     .scene--plane {
       min-height: 0;
     }
@@ -256,7 +256,9 @@ const linkBetween = (layer: (typeof layers)[number]) => {
       grid-template-columns: 1fr;
       gap: 1rem;
     }
+  }
 
+  @media (max-width: 760px) {
     .plane-map {
       display: none;
     }
