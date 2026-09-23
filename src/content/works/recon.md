@@ -1,6 +1,6 @@
 ---
 title: 'Recon'
-description: 'Daily research reports that score each item for relevance, source credibility, and predictive weight.'
+description: "Daily research reports that show each item's source, relevance, credibility, and a weight updated against later outcomes."
 tech:
   - Claude Code agents
   - Signal scoring
@@ -22,9 +22,9 @@ I built **Recon** to collect and score research items each day:
 1. **Sweep** sources on a daily cadence with Claude Code agents.
 2. **Produce** structured reports instead of free-form dumps.
 3. **Score** every signal for relevance, credibility, and predictive weight.
-4. **Update** weights when later outcomes provide more evidence.
+4. **Update** its weight when later outcomes show how useful the signal was.
 
-The report keeps each item's source and scores visible for review.
+Predictive weight records how strongly a signal counts in later reports. Each report keeps the source and scores visible for review.
 
 ## Outcome
 

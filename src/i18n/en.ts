@@ -110,7 +110,7 @@ export const en = {
   'search.eyebrow': 'Search',
   'search.sectionLabel': 'Site search',
   'search.fallback':
-    'The search index is generated at build time. Run <code>npm run build</code> and preview the site to try it — it is not available on the dev server.',
+    'Search is loading. If it does not appear, browse Work or Resume from the navigation.',
 
   // 404 — a theme-owned page, so its copy belongs here
   'notFound.title': 'Page not found',

@@ -22,6 +22,6 @@ I worked in Product Engineering at Colonial Surety, across insurance and payment
 3. Wrote B2B single sign-on requirements for two user types and partner sessions.
 4. Traced requirements to source transcripts and required sign-off on changes.
 
-## What is public
+## Scope
 
-This page repeats resume-level facts. It does not include internal architecture or a live Colonial demo.
+This public account covers my product responsibilities, not Colonial's internal architecture.

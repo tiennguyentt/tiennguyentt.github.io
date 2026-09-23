@@ -3,7 +3,7 @@ title: 'Knowledge Engine'
 description: 'Turns meeting notes into a source-linked wiki and checks requirements against the source before human sign-off.'
 tech:
   - Multi-model agents
-  - Karpathy KB pattern
+  - Source-linked wiki
   - Spec grading
   - Streamlit
 link: https://tienntt-knowledge-engine.streamlit.app/
@@ -19,11 +19,11 @@ I wanted a workflow I could use myself and demonstrate publicly, with source lin
 
 ## Decision
 
-I built **Knowledge Engine** with Claude and Codex, following the Karpathy LLM Knowledge Base pattern:
+I built **Knowledge Engine** with Claude and Codex. I used the Karpathy LLM Knowledge Base pattern to keep notes and derived specs linked:
 
 1. **Ingest** raw meetings and notes.
 2. **Trace** into a source-linked wiki.
-3. **Check** conflicts using an explicit source truth hierarchy.
+3. **Check** conflicts against a source hierarchy and flag unresolved claims for review.
 4. **Grade** specs for clarity and coverage before they leave the PM desk.
 5. **Sign off.** I review the changes before the spec goes to engineering.
 
