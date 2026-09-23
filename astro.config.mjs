@@ -6,7 +6,7 @@ import { unified } from '@astrojs/markdown-remark';
 import { remarkReadingTime } from './remark-reading-time.mjs';
 
 export default defineConfig({
-  site: 'https://portfolio-tienntt.vercel.app',
+  site: 'https://tiennguyentt.github.io',
   base: '/',
   integrations: [mdx(), sitemap()],
   markdown: {

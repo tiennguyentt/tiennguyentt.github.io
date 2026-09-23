@@ -1,6 +1,6 @@
 ---
 title: 'Sport Quant'
-description: 'Prediction-market research tool using Elo and Dixon-Coles estimates, fractional Kelly sizing, and a 1% exposure cap.'
+description: 'Prediction-market research tool using Elo and Dixon-Coles estimates, fractional Kelly sizing, and a 1% per-position cap.'
 tech:
   - Elo / Dixon-Coles
   - Fractional Kelly
@@ -24,11 +24,11 @@ I built **Sport Quant** with separate scoring, sizing, and risk checks:
 2. **Score** with an Elo + Dixon-Coles ensemble.
 3. **Find edge** relative to market prices.
 4. **Size** with fractional Kelly.
-5. **Gate** with deterministic risk rules and a 1% hard cap.
-6. **Apply the rule in code.** The language model explains the calculation but cannot override the cap.
+5. **Gate** with deterministic risk rules that cap each position at 1%.
+6. **Apply the cap in code.** The language model explains the calculation but cannot override it.
 
 ## Outcome
 
 - Live demo: [tienntt-sport-quant.streamlit.app](https://tienntt-sport-quant.streamlit.app/)
 - Source: [github.com/tiennguyentt/sport-quant](https://github.com/tiennguyentt/sport-quant)
-- The 1% exposure cap is checked in code, outside the language model.
+- Code rejects positions above the 1% cap. The language model cannot change that rule.

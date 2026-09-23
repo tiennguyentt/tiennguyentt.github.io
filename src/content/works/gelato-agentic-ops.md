@@ -1,6 +1,6 @@
 ---
 title: 'Gelato'
-description: 'In-progress personal project for routing agents, recording decisions, and requiring approval before execution.'
+description: 'In-progress design for routing agent tasks. The public artifact maps six supporting layers around an operations control point.'
 tech:
   - Agent orchestration
   - Route gates
@@ -11,11 +11,11 @@ publishDate: 2026-09-01
 
 ## Status
 
-This is personal research, separate from employer work. There is no public demo yet.
+This is a personal design, separate from employer work. The architecture map is the current public artifact. A live demo is not available yet.
 
 ## Layers
 
-The current design separates routing, model access, test scenarios, and review:
+The map separates an operations control point from six supporting layers:
 
 | Layer         | Function                                           |
 | ------------- | -------------------------------------------------- |
@@ -27,4 +27,4 @@ The current design separates routing, model access, test scenarios, and review:
 | Models        | Inference and training hooks with human sign-off   |
 | Outputs       | Drafts, listings, handoffs to humans               |
 
-Execution stays behind recorded checks and human approval.
+The design places execution behind recorded policy checks and human approval.

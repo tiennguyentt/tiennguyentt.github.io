@@ -37,46 +37,68 @@ const pageTitle =
 
 <BaseLayout
   title={pageTitle}
-  description={`Notes and writing — ${SITE.title}, a minimal portfolio and blog theme for Astro.`}
+  description={posts.length
+    ? `Notes and writing by ${SITE.title}.`
+    : `No notes published yet by ${SITE.title}.`}
 >
   <section class="page-head section">
     <p class="eyebrow">{t('blog.eyebrow')}</p>
-    <h1>Notes, essays, and release logs.</h1>
+    <h1>{posts.length ? 'Notes' : 'No notes published yet.'}</h1>
     <p class="lead">
-      The blog collection supports tags, descriptions, draft filtering, publish dates, and optional
-      hero images.
+      {
+        posts.length
+          ? 'Writing on product work and applied AI.'
+          : 'For now, start with selected work or my resume.'
+      }
     </p>
   </section>
 
-  <section class="section content-index" aria-label={t('blog.listLabel')}>
-    <div class="index-sidebar">
-      <p class="eyebrow">{t('blog.tagsEyebrow')}</p>
-      <nav class="tag-cloud" aria-label={t('blog.tagsNavLabel')}>
-        {allTags.map((tag) => <a href={withBase(`/blog/tags/${tag}/`)}>{tag}</a>)}
-      </nav>
-    </div>
-
-    <div>
-      <div class="entry-list">
-        {
-          posts.map((post) => (
-            <article class="entry-card">
-              <div class="entry-meta">
-                <time datetime={post.data.publishDate.toISOString()}>
-                  {formatDate(post.data.publishDate, 'short')}
-                </time>
-                <span>{readingTimes.get(post.id)}</span>
-                <span>{post.data.tags.join(' / ')}</span>
-              </div>
-              <h2>
-                <a href={withBase(`/blog/${post.id}/`)}>{post.data.title}</a>
-              </h2>
-              <p>{post.data.description}</p>
-            </article>
-          ))
-        }
+  {
+    posts.length === 0 && (
+      <div class="section action-row">
+        <a class="button" href={withBase('/works/')}>
+          Selected work
+        </a>
+        <a class="text-link" href={withBase('/resume/')}>
+          Resume
+        </a>
       </div>
-      <Pagination page={page} />
-    </div>
-  </section>
+    )
+  }
+
+  {
+    posts.length > 0 && (
+      <section class="section content-index" aria-label={t('blog.listLabel')}>
+        <div class="index-sidebar">
+          <p class="eyebrow">{t('blog.tagsEyebrow')}</p>
+          <nav class="tag-cloud" aria-label={t('blog.tagsNavLabel')}>
+            {allTags.map((tag) => (
+              <a href={withBase(`/blog/tags/${tag}/`)}>{tag}</a>
+            ))}
+          </nav>
+        </div>
+
+        <div>
+          <div class="entry-list">
+            {posts.map((post) => (
+              <article class="entry-card">
+                <div class="entry-meta">
+                  <time datetime={post.data.publishDate.toISOString()}>
+                    {formatDate(post.data.publishDate, 'short')}
+                  </time>
+                  <span>{readingTimes.get(post.id)}</span>
+                  <span>{post.data.tags.join(' / ')}</span>
+                </div>
+                <h2>
+                  <a href={withBase(`/blog/${post.id}/`)}>{post.data.title}</a>
+                </h2>
+                <p>{post.data.description}</p>
+              </article>
+            ))}
+          </div>
+          <Pagination page={page} />
+        </div>
+      </section>
+    )
+  }
 </BaseLayout>

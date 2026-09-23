@@ -35,6 +35,11 @@ const { works } = Astro.props;
               </a>
             </h2>
             <p>{work.data.description}</p>
+            {external && (
+              <p>
+                <a href={withBase(`/works/${work.id}/`)}>Read how it works</a>
+              </p>
+            )}
             <p class="work-grid__tags">{work.data.tech.slice(0, 3).join(' · ')}</p>
           </article>
         </li>
