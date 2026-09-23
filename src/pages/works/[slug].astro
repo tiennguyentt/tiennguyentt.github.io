@@ -47,6 +47,7 @@ const { Content } = await render(entry);
           )
         }
       </div>
+      {entry.data.link && <p>If the app is asleep, use its wake-up button.</p>}
       {
         entry.data.thumbnail && (
           <Image

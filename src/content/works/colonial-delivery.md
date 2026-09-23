@@ -11,17 +11,9 @@ order: 5
 publishDate: 2026-02-01
 ---
 
-## Context
-
-I worked in Product Engineering at Colonial Surety, across insurance and payments. There is no public demo of this employer work.
-
-## Work on the resume
+## Work
 
 1. Led a PCI payment gateway cutover from Transax to CardPointe across three live platforms after the previous gateway shut down.
 2. Designed one application flow for seven insurance products, including eligibility rules, shared claims, and partial-failure cases.
 3. Wrote B2B single sign-on requirements for two user types and partner sessions.
 4. Traced requirements to source transcripts and required sign-off on changes.
-
-## Scope
-
-This public account covers my product responsibilities, not Colonial's internal architecture.

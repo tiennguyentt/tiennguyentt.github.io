@@ -96,7 +96,7 @@ export const en = {
   'works.eyebrow': 'Works',
   'works.listLabel': 'Selected works',
   'work.eyebrow': 'Work',
-  'work.visit': 'Visit project',
+  'work.visit': 'Open app',
   'work.repository': 'View repository',
   'work.stackEyebrow': 'Stack',
 

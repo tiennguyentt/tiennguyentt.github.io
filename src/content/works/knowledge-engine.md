@@ -19,19 +19,19 @@ I wanted a workflow I could use myself and demonstrate publicly, with source lin
 
 ## Decision
 
-I built **Knowledge Engine** with Claude and Codex. I used the Karpathy LLM Knowledge Base pattern to keep notes and derived specs linked:
+I built **Knowledge Engine** with Claude and Codex. Following the Karpathy LLM Knowledge Base pattern, it keeps notes and derived specs linked:
 
 1. **Ingest** raw meetings and notes.
 2. **Trace** into a source-linked wiki.
 3. **Check** conflicts against a source hierarchy and flag unresolved claims for review.
-4. **Grade** specs for clarity and coverage before they leave the PM desk.
+4. **Grade** specs for clarity and coverage before engineering handoff.
 5. **Sign off.** I review the changes before the spec goes to engineering.
 
 Agent skills and subagents handle the steps. Source links and the reviewed changes show what they did.
 
 ## Outcome
 
-- Live demo: [tienntt-knowledge-engine.streamlit.app](https://tienntt-knowledge-engine.streamlit.app/)
+- Hosted app: [tienntt-knowledge-engine.streamlit.app](https://tienntt-knowledge-engine.streamlit.app/)
 - Requirements and acceptance criteria retain links to the meeting notes they came from.
 - I use the same source checks and approval step in my other agent projects.
 

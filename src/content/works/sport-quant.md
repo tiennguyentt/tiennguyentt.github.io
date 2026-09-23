@@ -1,6 +1,6 @@
 ---
 title: 'Sport Quant'
-description: 'Prediction-market research tool using Elo and Dixon-Coles estimates, fractional Kelly sizing, and a 1% per-position cap.'
+description: 'Elo and Dixon-Coles estimate match probabilities. Fractional Kelly sizes positions, capped at 1% in code.'
 tech:
   - Elo / Dixon-Coles
   - Fractional Kelly
@@ -29,6 +29,6 @@ I built **Sport Quant** with separate scoring, sizing, and risk checks:
 
 ## Outcome
 
-- Live demo: [tienntt-sport-quant.streamlit.app](https://tienntt-sport-quant.streamlit.app/)
+- Hosted app: [tienntt-sport-quant.streamlit.app](https://tienntt-sport-quant.streamlit.app/)
 - Source: [github.com/tiennguyentt/sport-quant](https://github.com/tiennguyentt/sport-quant)
 - Code rejects positions above the 1% cap. The language model cannot change that rule.
