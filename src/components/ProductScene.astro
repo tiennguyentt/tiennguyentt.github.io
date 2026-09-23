@@ -33,7 +33,7 @@ const { kind } = Astro.props;
     <div class="scene scene--sport" aria-hidden="true">
       <p class="scene-kicker">Prediction-market research</p>
       <p class="scene-measure">
-        1% <span>exposure cap</span>
+        1% <span>position cap</span>
       </p>
       <p class="scene-note">
         Elo and Dixon-Coles estimates. Fractional Kelly sizing. Code caps each position at 1%.
@@ -46,7 +46,7 @@ const { kind } = Astro.props;
   kind === 'recon' && (
     <div class="scene scene--recon" aria-hidden="true">
       <p class="scene-kicker">Daily research report</p>
-      <p class="scene-lead">Each item gets three checks</p>
+      <p class="scene-lead">Each item gets three scores</p>
       <ul class="scene-checks">
         <li>Relevance</li>
         <li>Source credibility</li>

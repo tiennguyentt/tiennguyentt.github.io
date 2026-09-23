@@ -13,8 +13,8 @@ const { works } = Astro.props;
 <ol class="work-grid">
   {
     works.map((work) => {
+      const hasHostedApp = Boolean(work.data.link);
       const href = work.data.link ?? withBase(`/works/${work.id}/`);
-      const external = Boolean(work.data.link);
 
       return (
         <li class="work-grid__item">
@@ -23,21 +23,21 @@ const { works } = Astro.props;
               <time datetime={work.data.publishDate.toISOString()}>
                 {formatDate(work.data.publishDate, 'short')}
               </time>
-              <span>{external ? 'Live demo' : 'In progress'}</span>
+              <span>{hasHostedApp ? 'Hosted app' : 'In progress'}</span>
             </div>
             <h2>
               <a
                 href={href}
-                target={external ? '_blank' : undefined}
-                rel={external ? 'noopener noreferrer' : undefined}
+                target={hasHostedApp ? '_blank' : undefined}
+                rel={hasHostedApp ? 'noopener noreferrer' : undefined}
               >
                 {work.data.title}
               </a>
             </h2>
             <p>{work.data.description}</p>
-            {external && (
+            {hasHostedApp && (
               <p>
-                <a href={withBase(`/works/${work.id}/`)}>Read how it works</a>
+                <a href={withBase(`/works/${work.id}/`)}>Read project</a>
               </p>
             )}
             <p class="work-grid__tags">{work.data.tech.slice(0, 3).join(' · ')}</p>

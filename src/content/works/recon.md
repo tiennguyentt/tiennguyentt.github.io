@@ -1,6 +1,6 @@
 ---
 title: 'Recon'
-description: "Daily research reports that show each item's source, relevance, credibility, and a weight updated against later outcomes."
+description: 'Each daily report shows source links and scores for relevance, credibility, and predictive weight.'
 tech:
   - Claude Code agents
   - Signal scoring
@@ -28,5 +28,5 @@ Predictive weight records how strongly a signal counts in later reports. Each re
 
 ## Outcome
 
-- Live demo: [tienntt-recon.streamlit.app](https://tienntt-recon.streamlit.app/)
+- Hosted app: [tienntt-recon.streamlit.app](https://tienntt-recon.streamlit.app/)
 - Each report shows the item's relevance, source credibility, and predictive weight.
