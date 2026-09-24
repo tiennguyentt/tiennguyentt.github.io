@@ -23,13 +23,13 @@ const pdfHref = withBase(RESUME_PDF);
 
   <section class="section resume-sheet" data-pagefind-body>
     <p class="resume-contact">
-      Ho Chi Minh City ·
+      Ho Chi Minh City ·{' '}
       <a href="mailto:tiennguyentthao@gmail.com">tiennguyentthao@gmail.com</a>
-      ·
+      ·{' '}
       <a href="tel:+84963351586">+84 963 351 586</a>
-      ·
+      ·{' '}
       <a href="https://www.linkedin.com/in/tiennguyenthithao/">LinkedIn</a>
-      ·
+      ·{' '}
       <a href="https://tiennguyentt.github.io/">tiennguyentt.github.io</a>
     </p>
 
@@ -213,6 +213,10 @@ const pdfHref = withBase(RESUME_PDF);
     color: var(--color-muted);
     font-size: 0.9rem;
     line-height: 1.45;
+  }
+
+  .resume-contact a[href^='tel:'] {
+    white-space: nowrap;
   }
 
   .resume-lead {
